@@ -181,18 +181,18 @@ section{position:relative}
 
 /* TRAINER */
 #trainer{background:#fff}
-.trainer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
-.tr-card{border-radius:var(--r);overflow:hidden;box-shadow:0 2px 14px rgba(0,0,0,.06)}
-.tr-photo{position:relative;aspect-ratio:3/4;background:radial-gradient(ellipse at 40% 40%,rgba(45,90,90,.28),transparent 55%),var(--ink2);overflow:hidden}
+.trainer-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;align-items:start}
+.tr-card{border-radius:var(--r);overflow:hidden;box-shadow:0 2px 14px rgba(0,0,0,.06);display:flex;flex-direction:column}
+.tr-photo{position:relative;aspect-ratio:4/5;background:radial-gradient(ellipse at 40% 40%,rgba(45,90,90,.28),transparent 55%),var(--ink2);overflow:hidden}
 .tr-photo img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .tr-photo-ph{position:absolute;inset:0;display:flex;align-items:flex-end;padding:16px}
 .tr-photo-ph p{font-family:'Noto Sans JP',sans-serif;font-size:9px;letter-spacing:.12em;color:rgba(255,255,255,.18)}
-.tr-info{background:var(--ink2);padding:20px 20px 22px}
+.tr-info{background:var(--ink2);padding:20px 20px 22px;flex:1;display:flex;flex-direction:column}
 .tr-role{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:10px;letter-spacing:.2em;color:var(--gold);margin-bottom:6px;display:block}
 .tr-name{font-family:'Noto Serif JP',serif;font-weight:400;font-size:17px;color:#fff;margin-bottom:2px}
 .tr-name-en{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:11px;color:rgba(184,150,90,.6);letter-spacing:.1em;margin-bottom:10px;display:block}
 .tr-bio{font-family:'Noto Sans JP',sans-serif;font-weight:300;font-size:13px;color:rgba(255,255,255,.7);line-height:1.8;margin-bottom:12px}
-.tr-tags{display:flex;flex-wrap:wrap;gap:5px}
+.tr-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto;padding-top:10px}
 .tr-tag{font-family:'Noto Sans JP',sans-serif;font-size:9px;letter-spacing:.08em;color:var(--gold);border:1px solid rgba(184,150,90,.22);padding:3px 9px;border-radius:100px}
 
 /* GALLERY */
