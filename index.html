@@ -369,7 +369,6 @@ footer{background:#0e0c08;padding:32px 44px;text-align:center;border-top:1px sol
   .trainer-grid{grid-template-columns:1fr;gap:12px}
   .tr-photo{aspect-ratio:3/4}
   .tr-photo img{object-position:top center}
-  .hero-slide{background-position:60% center}
   .tr-info{padding:14px 14px 16px}
   .tr-role{font-size:9px;margin-bottom:4px}
   .tr-name{font-size:15px}
@@ -873,28 +872,84 @@ window.addEventListener('scroll', () => hd.classList.toggle('sc', scrollY > 48))
 
 // ── HEROスライドショー ──
 (function(){
-  const slides = document.querySelectorAll('.hero-slide');
   const dotsWrap = document.getElementById('heroDots');
-  if(!slides.length) return;
+
+  // スマホ判定（580px以下）
+  const isMobile = () => window.innerWidth <= 580;
+
+  // スマホ用4スライド定義：[画像インデックス, background-position]
+  const mobileSlides = [
+    { img: 0, pos: 'left center' },
+    { img: 0, pos: 'right center' },
+    { img: 1, pos: 'left center' },
+    { img: 1, pos: 'right center' },
+  ];
+
+  const slideEls = document.querySelectorAll('.hero-slide');
+  if(!slideEls.length) return;
+
   let cur = 0;
-  // ドット生成
-  slides.forEach((_,i) => {
-    const d = document.createElement('button');
-    d.className = 'hero-dot' + (i===0?' active':'');
-    d.setAttribute('aria-label', `スライド${i+1}`);
-    d.addEventListener('click', () => goTo(i));
-    dotsWrap.appendChild(d);
-  });
-  const dots = dotsWrap.querySelectorAll('.hero-dot');
-  function goTo(n){
-    slides[cur].classList.remove('active');
-    dots[cur].classList.remove('active');
-    cur = (n + slides.length) % slides.length;
-    slides[cur].classList.add('active');
-    dots[cur].classList.add('active');
+  let timer = null;
+
+  function getList(){
+    return isMobile() ? mobileSlides : slideEls;
   }
-  // 5秒ごとに自動スライド
-  setInterval(() => goTo(cur + 1), 5000);
+
+  function buildDots(){
+    dotsWrap.innerHTML = '';
+    const len = getList().length;
+    for(let i = 0; i < len; i++){
+      const d = document.createElement('button');
+      d.className = 'hero-dot' + (i===0?' active':'');
+      d.setAttribute('aria-label', `スライド${i+1}`);
+      d.addEventListener('click', () => goTo(i));
+      dotsWrap.appendChild(d);
+    }
+  }
+
+  function goTo(n){
+    const list = getList();
+    const dots = dotsWrap.querySelectorAll('.hero-dot');
+
+    if(isMobile()){
+      // 全スライド非表示
+      slideEls.forEach(s => s.classList.remove('active'));
+      dots[cur] && dots[cur].classList.remove('active');
+      cur = (n + list.length) % list.length;
+      const target = list[cur];
+      slideEls[target.img].style.backgroundPosition = target.pos;
+      slideEls[target.img].classList.add('active');
+      dots[cur] && dots[cur].classList.add('active');
+    } else {
+      slideEls[cur].classList.remove('active');
+      dots[cur] && dots[cur].classList.remove('active');
+      cur = (n + slideEls.length) % slideEls.length;
+      slideEls[cur].classList.add('active');
+      dots[cur] && dots[cur].classList.add('active');
+    }
+  }
+
+  function startTimer(){
+    if(timer) clearInterval(timer);
+    timer = setInterval(() => goTo(cur + 1), 5000);
+  }
+
+  // 初期化
+  buildDots();
+  goTo(0);
+  startTimer();
+
+  // リサイズ時に再構築
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      cur = 0;
+      buildDots();
+      goTo(0);
+      startTimer();
+    }, 200);
+  });
 })();
 const obs = new IntersectionObserver(es => {
   es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); obs.unobserve(e.target); }});
