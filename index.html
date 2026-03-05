@@ -476,8 +476,7 @@ footer{background:#0e0c08;padding:32px 44px;text-align:center;border-top:1px sol
     ===================================
   -->
   <div class="hero-slides">
-    <div class="hero-slide active" style="background-image:url('images/hero01.jpg')"></div><!-- 店内写真1 -->
-    <div class="hero-slide" style="background-image:url('images/hero02.jpg')"></div><!-- 店内写真2 -->
+    <div class="hero-slide active" style="background-image:url('images/hero02.jpg')"></div>
   </div>
   <!-- スライドドット（JS自動生成） -->
   <div class="hero-dots" id="heroDots"></div>
@@ -922,11 +921,9 @@ document.querySelectorAll('.mob-link').forEach(a => {
   // スマホ判定（580px以下）
   const isMobile = () => window.innerWidth <= 580;
 
-  // スマホ用スライド定義：[画像インデックス, background-position]
+  // スマホ用スライド定義：[画像パス, background-position]
   const mobileSlides = [
-    { img: 0, pos: '10% center' },
-    { img: 0, pos: '85% center' },
-    { img: 1, pos: '30% center' },
+    { src: 'images/charm03.jpg', pos: '50% center' },
   ];
 
   const slideEls = document.querySelectorAll('.hero-slide');
@@ -956,13 +953,13 @@ document.querySelectorAll('.mob-link').forEach(a => {
     const dots = dotsWrap.querySelectorAll('.hero-dot');
 
     if(isMobile()){
-      // 全スライド非表示
       slideEls.forEach(s => s.classList.remove('active'));
       dots[cur] && dots[cur].classList.remove('active');
       cur = (n + list.length) % list.length;
       const target = list[cur];
-      slideEls[target.img].style.backgroundPosition = target.pos;
-      slideEls[target.img].classList.add('active');
+      slideEls[0].style.backgroundImage = `url('${target.src}')`;
+      slideEls[0].style.backgroundPosition = target.pos;
+      slideEls[0].classList.add('active');
       dots[cur] && dots[cur].classList.add('active');
     } else {
       slideEls[cur].classList.remove('active');
