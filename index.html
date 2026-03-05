@@ -49,7 +49,7 @@ header.sc{background:rgba(26,24,20,.95);backdrop-filter:blur(16px);box-shadow:0 
 .hbg span{width:22px;height:1px;background:#fff;display:block}
 
 /* HERO */
-#hero{min-height:100svh;position:relative;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
+#hero{min-height:85svh;position:relative;display:flex;flex-direction:column;justify-content:center;overflow:hidden}
 .hero-slides{position:absolute;inset:0;z-index:0;overflow:hidden}
 .hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.4s ease}
 .hero-slide.active{opacity:1}
@@ -303,7 +303,7 @@ footer{background:#0e0c08;padding:32px 44px;text-align:center;border-top:1px sol
   .gl{margin:7px auto}
 
   /* ── HERO ── */
-  #hero{min-height:100svh}
+  #hero{min-height:85svh}
   .hero-inner{padding:0 20px}
   .hero-badge{margin-bottom:12px;font-size:8px;padding:4px 12px}
   .hero-en{font-size:11px;margin-bottom:8px}
@@ -879,10 +879,10 @@ window.addEventListener('scroll', () => hd.classList.toggle('sc', scrollY > 48))
 
   // スマホ用4スライド定義：[画像インデックス, background-position]
   const mobileSlides = [
-    { img: 0, pos: 'left center' },
-    { img: 0, pos: 'right center' },
-    { img: 1, pos: 'left center' },
-    { img: 1, pos: 'right center' },
+    { img: 0, pos: '20% center' },
+    { img: 0, pos: '80% center' },
+    { img: 1, pos: '20% center' },
+    { img: 1, pos: '80% center' },
   ];
 
   const slideEls = document.querySelectorAll('.hero-slide');
