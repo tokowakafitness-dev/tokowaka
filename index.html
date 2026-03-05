@@ -47,7 +47,17 @@ header.sc{background:rgba(26,24,20,.95);backdrop-filter:blur(16px);box-shadow:0 
 .hb2{font-family:'Noto Sans JP',sans-serif;display:inline-block;background:#06C755;color:#fff;font-size:10px;font-weight:500;letter-spacing:.1em;padding:9px 14px;border-radius:var(--r);text-decoration:none;transition:opacity .25s;white-space:nowrap}
 .hb2:hover{opacity:.82}
 .hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
-.hbg span{width:22px;height:1px;background:#fff;display:block}
+.hbg span{width:22px;height:1px;background:#fff;display:block;transition:transform .3s,opacity .3s}
+.hbg.open span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.hbg.open span:nth-child(2){opacity:0}
+.hbg.open span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+/* モバイルメニュー */
+.mob-menu{display:none;position:fixed;top:62px;left:0;right:0;background:rgba(26,24,20,.97);backdrop-filter:blur(16px);z-index:199;padding:16px 0;border-top:1px solid var(--bd)}
+.mob-menu.open{display:block}
+.mob-menu a{display:block;font-family:'Noto Sans JP',sans-serif;font-size:13px;letter-spacing:.14em;color:rgba(255,255,255,.7);text-decoration:none;padding:13px 28px;border-bottom:1px solid rgba(255,255,255,.05);transition:color .2s}
+.mob-menu a:hover{color:var(--gold-l)}
+.mob-menu .mob-btns{display:flex;gap:10px;padding:16px 28px}
+.mob-menu .mob-btns a{border:none;padding:12px 0;flex:1;text-align:center;border-radius:var(--r);font-size:12px;font-weight:500;letter-spacing:.1em}
 
 /* HERO */
 #hero{min-height:85svh;position:relative;display:flex;flex-direction:column;justify-content:center;overflow:hidden;padding-top:62px;margin-top:62px}
@@ -435,6 +445,20 @@ footer{background:#0e0c08;padding:32px 44px;text-align:center;border-top:1px sol
   </div>
   <button class="hbg" id="hbg"><span></span><span></span><span></span></button>
 </header>
+
+<!-- モバイルメニュー -->
+<nav class="mob-menu" id="mobMenu">
+  <a href="#about" class="mob-link">コンセプト</a>
+  <a href="#charm" class="mob-link">特徴</a>
+  <a href="#plan" class="mob-link">料金</a>
+  <a href="#trainer" class="mob-link">トレーナー</a>
+  <a href="#gallery" class="mob-link">店内写真</a>
+  <a href="#access" class="mob-link">アクセス</a>
+  <div class="mob-btns">
+    <a href="https://tokowakafitness-dev.github.io/tokowaka-reservation/" style="background:var(--gold);color:#fff" target="_blank">無料カウンセリング</a>
+    <a href="https://lin.ee/2fr1Daok" style="background:#06C755;color:#fff" target="_blank">LINEで予約</a>
+  </div>
+</nav>
 
 <!-- HERO -->
 <section id="hero">
@@ -876,6 +900,20 @@ footer{background:#0e0c08;padding:32px 44px;text-align:center;border-top:1px sol
 <script>
 const hd = document.getElementById('hd');
 window.addEventListener('scroll', () => hd.classList.toggle('sc', scrollY > 48));
+
+// ── ハンバーガーメニュー ──
+const hbg = document.getElementById('hbg');
+const mobMenu = document.getElementById('mobMenu');
+hbg.addEventListener('click', () => {
+  hbg.classList.toggle('open');
+  mobMenu.classList.toggle('open');
+});
+document.querySelectorAll('.mob-link').forEach(a => {
+  a.addEventListener('click', () => {
+    hbg.classList.remove('open');
+    mobMenu.classList.remove('open');
+  });
+});
 
 // ── HEROスライドショー ──
 (function(){
