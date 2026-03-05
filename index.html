@@ -877,12 +877,11 @@ window.addEventListener('scroll', () => hd.classList.toggle('sc', scrollY > 48))
   // スマホ判定（580px以下）
   const isMobile = () => window.innerWidth <= 580;
 
-  // スマホ用4スライド定義：[画像インデックス, background-position]
+  // スマホ用スライド定義：[画像インデックス, background-position]
   const mobileSlides = [
     { img: 0, pos: '10% center' },
-    { img: 0, pos: '90% center' },
-    { img: 1, pos: '10% center' },
-    { img: 1, pos: '90% center' },
+    { img: 0, pos: '85% center' },
+    { img: 1, pos: '50% center' },
   ];
 
   const slideEls = document.querySelectorAll('.hero-slide');
