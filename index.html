@@ -476,7 +476,7 @@ footer{background:#0e0c08;padding:32px 44px;text-align:center;border-top:1px sol
     ===================================
   -->
   <div class="hero-slides">
-    <div class="hero-slide active" style="background-image:url('images/hero02.jpg')"></div>
+    <div class="hero-slide active" id="heroSlide0" style="background-image:url('images/hero02.jpg')"></div>
   </div>
   <!-- スライドドット（JS自動生成） -->
   <div class="hero-dots" id="heroDots"></div>
@@ -916,81 +916,36 @@ document.querySelectorAll('.mob-link').forEach(a => {
 
 // ── HEROスライドショー ──
 (function(){
+  const slide = document.getElementById('heroSlide0');
   const dotsWrap = document.getElementById('heroDots');
+  if(!slide) return;
 
-  // スマホ判定（580px以下）
-  const isMobile = () => window.innerWidth <= 580;
+  const MOBILE = 580;
+  const pcSrc   = 'images/hero02.jpg';
+  const mobSrc  = 'images/charm03.jpg';
 
-  // スマホ用スライド定義：[画像パス, background-position]
-  const mobileSlides = [
-    { src: 'images/charm03.jpg', pos: '50% center' },
-  ];
-
-  const slideEls = document.querySelectorAll('.hero-slide');
-  if(!slideEls.length) return;
-
-  let cur = 0;
-  let timer = null;
-
-  function getList(){
-    return isMobile() ? mobileSlides : slideEls;
-  }
-
-  function buildDots(){
-    dotsWrap.innerHTML = '';
-    const len = getList().length;
-    for(let i = 0; i < len; i++){
-      const d = document.createElement('button');
-      d.className = 'hero-dot' + (i===0?' active':'');
-      d.setAttribute('aria-label', `スライド${i+1}`);
-      d.addEventListener('click', () => goTo(i));
-      dotsWrap.appendChild(d);
-    }
-  }
-
-  function goTo(n){
-    const list = getList();
-    const dots = dotsWrap.querySelectorAll('.hero-dot');
-
-    if(isMobile()){
-      slideEls.forEach(s => s.classList.remove('active'));
-      dots[cur] && dots[cur].classList.remove('active');
-      cur = (n + list.length) % list.length;
-      const target = list[cur];
-      slideEls[0].style.backgroundImage = `url('${target.src}')`;
-      slideEls[0].style.backgroundPosition = target.pos;
-      slideEls[0].classList.add('active');
-      dots[cur] && dots[cur].classList.add('active');
+  function applyHero(){
+    if(window.innerWidth <= MOBILE){
+      slide.style.backgroundImage = `url('${mobSrc}')`;
+      slide.style.backgroundPosition = '50% center';
     } else {
-      slideEls[cur].classList.remove('active');
-      dots[cur] && dots[cur].classList.remove('active');
-      cur = (n + slideEls.length) % slideEls.length;
-      slideEls[cur].classList.add('active');
-      dots[cur] && dots[cur].classList.add('active');
+      slide.style.backgroundImage = `url('${pcSrc}')`;
+      slide.style.backgroundPosition = 'center';
     }
   }
 
-  function startTimer(){
-    if(timer) clearInterval(timer);
-    timer = setInterval(() => goTo(cur + 1), 5000);
-  }
+  // 初期適用
+  applyHero();
 
-  // 初期化
-  buildDots();
-  goTo(0);
-  startTimer();
-
-  // リサイズ時に再構築
+  // リサイズ時も切り替え
   let resizeTimer;
   window.addEventListener('resize', () => {
     clearTimeout(resizeTimer);
-    resizeTimer = setTimeout(() => {
-      cur = 0;
-      buildDots();
-      goTo(0);
-      startTimer();
-    }, 200);
+    resizeTimer = setTimeout(applyHero, 150);
   });
+
+  // ドットは不要（1枚のみ）なので非表示
+  dotsWrap.style.display = 'none';
 })();
 const obs = new IntersectionObserver(es => {
   es.forEach(e => { if(e.isIntersecting){ e.target.classList.add('on'); obs.unobserve(e.target); }});
