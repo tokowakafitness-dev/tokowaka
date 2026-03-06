@@ -146,6 +146,32 @@ section{position:relative}
 .charm-cta p strong{color:var(--teal);font-weight:400}
 .cta-pair{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 
+/* JOURNEY */
+#journey{background:var(--ink)}
+.journey-lead{text-align:center;max-width:560px;margin:0 auto 52px;position:relative}
+.journey-lead p{font-family:'Noto Serif JP',serif;font-weight:300;font-size:clamp(14px,1.6vw,17px);color:rgba(255,255,255,.75);line-height:2.2;letter-spacing:.05em}
+.journey-lead p strong{color:#fff;font-weight:400}
+.journey-phases{display:grid;grid-template-columns:1fr 1fr;gap:0;position:relative;max-width:760px;margin:0 auto}
+.journey-bridge{grid-column:1/-1;text-align:center;padding:20px 0;position:relative}
+.journey-bridge::before{content:'';display:block;width:1px;height:28px;background:linear-gradient(to bottom,rgba(184,150,90,.4),rgba(184,150,90,.1));margin:0 auto 12px}
+.journey-bridge p{font-family:'Noto Serif JP',serif;font-weight:300;font-size:13px;color:rgba(255,255,255,.45);line-height:1.9;letter-spacing:.06em}
+.jph{border-radius:var(--r);padding:28px 26px;position:relative}
+.jph1{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);margin-right:6px}
+.jph2{background:rgba(184,150,90,.07);border:1px solid rgba(184,150,90,.22);margin-left:6px}
+.jph-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:11px;letter-spacing:.22em;margin-bottom:10px;display:block}
+.jph1 .jph-num{color:rgba(255,255,255,.3)}.jph2 .jph-num{color:var(--gold)}
+.jph-period{font-family:'Noto Serif JP',serif;font-weight:300;font-size:26px;line-height:1;margin-bottom:4px;letter-spacing:.04em}
+.jph1 .jph-period{color:rgba(255,255,255,.8)}.jph2 .jph-period{color:var(--gold-l)}
+.jph-period span{font-family:'Noto Sans JP',sans-serif;font-size:11px;font-weight:300;opacity:.45;margin-left:3px}
+.jph-title{font-family:'Noto Serif JP',serif;font-weight:400;font-size:16px;color:#fff;margin:12px 0 4px;letter-spacing:.06em}
+.jph-sub{font-family:'Noto Sans JP',sans-serif;font-size:11px;color:rgba(255,255,255,.38);margin-bottom:14px;letter-spacing:.06em}
+.jph-ul{list-style:none}
+.jph-ul li{font-family:'Noto Sans JP',sans-serif;font-size:12px;color:rgba(255,255,255,.7);padding:3px 0;display:flex;gap:7px;line-height:1.7}
+.jph-ul li::before{content:'–';opacity:.3;flex-shrink:0}
+.journey-close{text-align:center;max-width:480px;margin:48px auto 0;position:relative}
+.journey-close::before{content:'';display:block;width:24px;height:1px;background:var(--gold);margin:0 auto 24px;opacity:.5}
+.journey-close p{font-family:'Noto Serif JP',serif;font-weight:300;font-size:clamp(13px,1.4vw,15px);color:rgba(255,255,255,.55);line-height:2.1;letter-spacing:.06em}
+
 /* PLAN */
 #plan{background:var(--cream)}
 .step-lbl{display:inline-flex;align-items:center;gap:8px;background:var(--ink);color:var(--gold-l);font-family:'Noto Sans JP',sans-serif;font-size:9px;font-weight:500;letter-spacing:.2em;padding:5px 16px;border-radius:100px;margin-bottom:16px}
@@ -351,6 +377,20 @@ footer{background:#0e0c08;padding:32px 44px;text-align:center;border-top:1px sol
   .charm-cta p{font-size:13px;line-height:1.65;margin-bottom:16px}
   .cta-pair{gap:8px}
 
+  /* ── JOURNEY ── */
+  .journey-lead{margin-bottom:28px}
+  .journey-lead p{font-size:13px;line-height:1.9}
+  .journey-phases{grid-template-columns:1fr;gap:10px}
+  .jph1{margin-right:0}.jph2{margin-left:0}
+  .jph{padding:18px 16px}
+  .jph-period{font-size:20px}
+  .jph-title{font-size:14px}
+  .jph-sub{font-size:10px;margin-bottom:10px}
+  .jph-ul li{font-size:11px}
+  .journey-bridge{padding:12px 0}
+  .journey-close{margin-top:28px}
+  .journey-close p{font-size:12px;line-height:1.85}
+
   /* ── PLAN ── */
   .step-lbl{font-size:8px;padding:4px 12px;margin-bottom:10px}
   .plan-dark{padding:18px 16px;margin-bottom:10px}
@@ -434,6 +474,7 @@ footer{background:#0e0c08;padding:32px 44px;text-align:center;border-top:1px sol
   <div class="h-nav">
     <a href="#about">コンセプト</a>
     <a href="#charm">特徴</a>
+    <a href="#journey">変化の道筋</a>
     <a href="#trainer">トレーナー</a>
     <a href="#plan">料金</a>
     <a href="#gallery">店内写真</a>
@@ -450,6 +491,7 @@ footer{background:#0e0c08;padding:32px 44px;text-align:center;border-top:1px sol
 <nav class="mob-menu" id="mobMenu">
   <a href="#about" class="mob-link">コンセプト</a>
   <a href="#charm" class="mob-link">特徴</a>
+  <a href="#journey" class="mob-link">変化の道筋</a>
   <a href="#trainer" class="mob-link">トレーナー</a>
   <a href="#plan" class="mob-link">料金</a>
   <a href="#gallery" class="mob-link">店内写真</a>
@@ -585,6 +627,52 @@ footer{background:#0e0c08;padding:32px 44px;text-align:center;border-top:1px sol
   </div>
 </section>
 
+<!-- JOURNEY -->
+<section id="journey">
+  <div class="si">
+    <div class="sh rv">
+      <span class="ey">Your Journey</span>
+      <div class="gl"></div>
+      <h2 class="sh-ja" style="color:#fff">「常若」を手に入れる、<br>6ヶ月の道筋。</h2>
+    </div>
+    <div class="journey-lead rv">
+      <p>身体は、<strong>正しい順番で整えれば、必ず変わります。</strong><br><br>焦って追い込むのではなく、まず土台を作り、<br>その上に成果を積み上げる。<br>TOKOWAKAが考える変化には、確かな道筋があります。</p>
+    </div>
+    <div class="journey-phases rv">
+      <div class="jph jph1">
+        <span class="jph-num">Phase 01</span>
+        <div class="jph-period">1〜3<span>ヶ月</span></div>
+        <h3 class="jph-title">土台をつくる</h3>
+        <p class="jph-sub">焦らず、まず身体を「整える」</p>
+        <ul class="jph-ul">
+          <li>姿勢・動作パターンの評価と改善</li>
+          <li>身体の使い方を根本から習得</li>
+          <li>理学療法士監修の個別プログラム設計</li>
+          <li>モビライゼーションで骨格の歪みにアプローチ</li>
+        </ul>
+      </div>
+      <div class="jph jph2">
+        <span class="jph-num">Phase 02</span>
+        <div class="jph-period">4〜6<span>ヶ月</span></div>
+        <h3 class="jph-title">成果を積み上げる</h3>
+        <p class="jph-sub">整った身体に、変化を刻む</p>
+        <ul class="jph-ul">
+          <li>習得した動作パターンを高強度へ応用</li>
+          <li>体型変化・パフォーマンスの本格向上</li>
+          <li>目標に向けた集中トレーニング</li>
+          <li>ストレッチ整体でコンディションを維持</li>
+        </ul>
+      </div>
+    </div>
+    <div class="journey-bridge rv">
+      <p>土台なき変化は、長続きしません。<br>だから私たちは、最初の3ヶ月を最も大切にします。</p>
+    </div>
+    <div class="journey-close rv">
+      <p>この道筋は、全員共通ではありません。<br>あなたの身体の状態・目標・生活リズムに合わせて、<br>トレーナーが個別に設計します。</p>
+    </div>
+  </div>
+</section>
+
 <!-- TRAINER -->
 <section id="trainer">
   <div class="si">
@@ -661,36 +749,6 @@ footer{background:#0e0c08;padding:32px 44px;text-align:center;border-top:1px sol
       <div class="gl"></div>
       <h2 class="sh-ja">料金プラン</h2>
       <p class="sh-sub">月額コース制 ── いつでも見直せる、続けやすい仕組み</p>
-    </div>
-
-    <!-- 6ヶ月アプローチイメージ -->
-    <div class="rv">
-      <div class="plan-dark">
-        <h3 class="plan-h">TOKOWAKAが考える、身体が変わる道筋</h3>
-        <p class="plan-sub">身体の根本から変えるには、段階的なアプローチが大切です。</p>
-        <div class="phases">
-          <div class="ph ph1">
-            <div class="ph-n" style="font-size:22px">1〜3<span class="ph-pr"> ヶ月</span></div>
-            <p class="ph-tit">地盤を整える</p>
-            <ul class="ph-ul">
-              <li>姿勢・動作の評価と改善</li>
-              <li>身体の使い方を根本から習得</li>
-              <li>理学療法士監修の個別プログラム</li>
-              <li>モビライゼーションで歪みにアプローチ</li>
-            </ul>
-          </div>
-          <div class="ph ph2">
-            <div class="ph-n" style="font-size:22px">4〜6<span class="ph-pr" style="color:rgba(184,150,90,.55)"> ヶ月</span></div>
-            <p class="ph-tit">成果を積み上げる</p>
-            <ul class="ph-ul">
-              <li>習得した動作を高強度へ応用</li>
-              <li>体型変化・パフォーマンス向上</li>
-              <li>目標に向けた集中トレーニング</li>
-              <li>ストレッチ整体でコンディションを維持</li>
-            </ul>
-          </div>
-        </div>
-      </div>
     </div>
 
     <div class="pl-arr rv">
@@ -831,7 +889,6 @@ footer{background:#0e0c08;padding:32px 44px;text-align:center;border-top:1px sol
             </td>
           </tr>
           <tr><th>営業時間</th><td><strong>8:00 〜 23:00</strong>　完全予約制</td></tr>
-          <tr><th>電話番号</th><td><strong>090-8178-9781</strong></td></tr>
           <tr>
             <th>SNS</th>
             <td>
@@ -865,12 +922,7 @@ footer{background:#0e0c08;padding:32px 44px;text-align:center;border-top:1px sol
       <h2 class="cta-title">まずは、<strong>お気軽に<br>ご相談ください。</strong></h2>
       <p class="cta-desc">身体の悩み・目標・ライフスタイルをお聞きし、あなたに合ったプランをご提案。初回カウンセリングは無料です。</p>
       <div class="cta-opts">
-        <!-- ⑳【リンク】電話番号 → href="tel:電話番号" と表示テキストを変更 -->
-        <a href="tel:09081789781" class="c-tel">
-          <span class="c-tll">お電話はこちら</span>
-          <span class="c-tn">090-8178-9781</span>
-        </a>
-        <!-- ㉑【リンク】LINE公式 → @448ftsdc を正式IDに変更 -->
+        <a href="https://tokowakafitness-dev.github.io/tokowaka-reservation/" class="btn-gold" target="_blank">無料カウンセリング予約はこちら</a>
         <a href="https://lin.ee/2fr1Daok" class="c-lin" target="_blank">
           <span class="c-lt">LINEで相談する</span>
           <span class="c-ls">@448ftsdc</span>
@@ -887,6 +939,7 @@ footer{background:#0e0c08;padding:32px 44px;text-align:center;border-top:1px sol
   <div class="f-nav">
     <a href="#about">コンセプト</a>
     <a href="#charm">特徴</a>
+    <a href="#journey">変化の道筋</a>
     <a href="#trainer">トレーナー</a>
     <a href="#plan">料金プラン</a>
     <a href="#gallery">店内写真</a>
