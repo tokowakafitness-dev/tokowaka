@@ -1122,7 +1122,8 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 
 function goToReservation() {
   var params = window.location.search;
-  window.open('https://reservation.tokowaka-gym.com/' + params, '_blank');
+  // インアプリブラウザでは window.open がブロックされるため location.href で遷移
+  window.location.href = 'https://reservation.tokowaka-gym.com/' + params;
 }
 </script>
 </body>
