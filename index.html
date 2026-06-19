@@ -186,6 +186,50 @@ section{position:relative}
 .plan-dark::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 48% 48% at 88% 12%,rgba(184,150,90,.1),transparent 65%),radial-gradient(ellipse 34% 34% at 12% 88%,rgba(45,90,90,.14),transparent 65%);pointer-events:none}
 .plan-h{font-family:'Noto Serif JP',serif;font-weight:300;font-size:17px;color:#fff;margin-bottom:3px;position:relative;letter-spacing:.05em}
 .plan-sub{font-family:'Noto Sans JP',sans-serif;font-size:13px;color:rgba(255,255,255,.82);margin-bottom:20px;position:relative}
+.plan-note{margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.07);font-family:'Noto Sans JP',sans-serif;font-size:10px;color:rgba(255,255,255,.26);line-height:1.72;position:relative}
+/* 展開式コースカード */
+.course-card{background:var(--ink2);border-radius:var(--r);margin-bottom:14px;overflow:hidden;position:relative}
+.course-card::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 48% 48% at 88% 12%,rgba(184,150,90,.08),transparent 65%);pointer-events:none}
+.course-card-header{padding:24px 28px;cursor:pointer;display:flex;align-items:flex-start;justify-content:space-between;gap:16px;position:relative}
+.course-card-header:hover .course-toggle{color:var(--gold-l)}
+.course-card-left{flex:1}
+.course-card-tag{font-family:'Noto Sans JP',sans-serif;font-size:9px;letter-spacing:.2em;color:var(--gold);display:inline-block;border:1px solid rgba(184,150,90,.35);padding:3px 10px;border-radius:100px;margin-bottom:10px}
+.course-card-tag.premium{background:var(--gold);color:#fff;border-color:var(--gold)}
+.course-card-tag.continued{background:rgba(61,122,122,.15);color:var(--teal-l);border-color:rgba(61,122,122,.3)}
+.course-card-title{font-family:'Noto Serif JP',serif;font-weight:300;font-size:18px;color:#fff;line-height:1.4;letter-spacing:.04em;margin-bottom:6px}
+.course-card-meta{font-family:'Noto Sans JP',sans-serif;font-size:11px;color:rgba(255,255,255,.4);letter-spacing:.1em;margin-bottom:10px}
+.course-card-desc{font-family:'Noto Sans JP',sans-serif;font-size:13px;color:rgba(255,255,255,.65);line-height:1.8}
+.course-toggle{font-family:'Noto Sans JP',sans-serif;font-size:10px;color:var(--gold);letter-spacing:.1em;white-space:nowrap;display:flex;flex-direction:column;align-items:center;gap:4px;padding-top:4px;transition:color .25s;flex-shrink:0}
+.course-toggle-icon{font-size:16px;transition:transform .3s;display:block}
+.course-card.open .course-toggle-icon{transform:rotate(180deg)}
+.course-card-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.course-card.open .course-card-body{max-height:600px}
+.course-card-inner{padding:0 28px 24px;border-top:1px solid rgba(255,255,255,.07)}
+.course-table{width:100%;border-collapse:collapse;margin-top:16px}
+.course-table thead tr{border-bottom:1px solid rgba(255,255,255,.12)}
+.course-table th{font-family:'Noto Sans JP',sans-serif;font-size:11px;font-weight:500;color:rgba(255,255,255,.45);padding:8px 0;letter-spacing:.1em}
+.course-table th:first-child{text-align:left}
+.course-table th:not(:first-child){text-align:right}
+.course-table tbody tr{border-bottom:1px solid rgba(255,255,255,.06)}
+.course-table tbody tr:last-child{border:none}
+.course-table tbody tr.highlight{background:rgba(184,150,90,.07)}
+.course-table td{padding:10px 0;font-family:'Noto Sans JP',sans-serif;font-size:13px;color:rgba(255,255,255,.7)}
+.course-table td:first-child{text-align:left}
+.course-table td.price-main{font-family:'Noto Serif JP',serif;font-size:18px;font-weight:300;color:#fff;text-align:right}
+.course-table td.price-sub{font-family:'Noto Serif JP',serif;font-size:15px;font-weight:300;color:var(--gold-l);text-align:right}
+.course-badge-pop{font-size:9px;color:var(--gold);letter-spacing:.06em;margin-left:6px}
+.course-include{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
+.course-include-item{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:var(--r);padding:10px 8px;text-align:center}
+.course-include-label{font-family:'Noto Sans JP',sans-serif;font-size:9px;color:rgba(255,255,255,.4);letter-spacing:.08em;display:block;margin-bottom:5px}
+.course-include-val{font-family:'Noto Serif JP',serif;font-size:11px;color:#fff;line-height:1.6;display:block}
+.course-condition{background:rgba(61,122,122,.08);border:1px solid rgba(61,122,122,.2);border-radius:var(--r);padding:10px 14px;margin-bottom:14px;font-family:'Noto Sans JP',sans-serif;font-size:11px;color:var(--teal-l);line-height:1.7}
+.cta-band{background:var(--ink2);border-radius:var(--r);margin-top:40px;padding:52px 44px;text-align:center;position:relative;overflow:hidden}
+.cta-band::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 48% at 50% 110%,rgba(45,90,90,.16),transparent 58%),radial-gradient(ellipse 42% 34% at 50% -8%,rgba(184,150,90,.09),transparent 58%);pointer-events:none}
+.cta-band p{font-family:'Noto Serif JP',serif;font-weight:300;font-size:clamp(16px,2vw,21px);color:#fff;line-height:1.85;margin-bottom:24px;position:relative}
+.cta-band p strong{color:var(--gold-l);font-weight:400}
+.pl-arr{text-align:center;padding:10px 0 8px}
+.pl-pill{display:inline-block;font-family:'Noto Sans JP',sans-serif;font-size:10px;color:var(--teal-l);border:1.5px solid rgba(61,122,122,.3);background:var(--teal-p);padding:5px 18px;border-radius:100px;letter-spacing:.08em}
+.pl-dn{display:block;color:var(--teal);font-size:18px;margin-top:6px}
 .phases{display:grid;grid-template-columns:1fr 1fr;gap:10px;position:relative}
 .ph{border-radius:var(--r);padding:20px 22px}
 .ph1{background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.07)}
@@ -238,6 +282,7 @@ section{position:relative}
 .tr-bio{font-family:'Noto Sans JP',sans-serif;font-weight:300;font-size:13px;color:rgba(255,255,255,.7);line-height:1.8;margin-bottom:12px}
 .tr-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto;padding-top:10px}
 .tr-tag{font-family:'Noto Sans JP',sans-serif;font-size:9px;letter-spacing:.08em;color:var(--gold);border:1px solid rgba(184,150,90,.22);padding:3px 9px;border-radius:100px}
+.tr-sns{margin-top:12px;padding-top:12px;border-top:1px solid rgba(184,150,90,.12)}
 
 /* GALLERY */
 #gallery{background:var(--ink2);overflow:hidden}
@@ -550,7 +595,8 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <div class="campaign-wrap rv">
         <div class="campaign-label">オープン記念</div>
         <div class="campaign-body">
-
+          <span class="campaign-main">体験当日ご入会で入会金0円</span>
+          <span class="campaign-sub">※体験後即日ご入会の方限定・2026年5月中のご入会に限る</span>
         </div>
       </div>
     </div>
@@ -705,6 +751,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <span class="tr-tag">減量設計・栄養管理</span>
             <span class="tr-tag">可動域・機能改善</span>
           </div>
+          <div class="tr-sns">
+            <a href="https://www.instagram.com/fit_ryunosuke/" class="sns-icon" target="_blank" aria-label="Instagram">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+            </a>
+          </div>
         </div>
       </div>
       <div class="tr-card rv d2">
@@ -722,6 +773,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <span class="tr-tag">ターゲット筋への精密刺激</span>
             <span class="tr-tag">可動域・機能改善</span>
             <span class="tr-tag">姿勢・アライメント評価</span>
+          </div>
+          <div class="tr-sns">
+            <a href="https://www.instagram.com/kamiyaru_fit/" class="sns-icon" target="_blank" aria-label="Instagram">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+            </a>
           </div>
         </div>
       </div>
@@ -741,6 +797,11 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
             <span class="tr-tag">減量設計・栄養管理</span>
             <span class="tr-tag">ターゲット筋への精密刺激</span>
           </div>
+          <div class="tr-sns">
+            <a href="https://www.instagram.com/takeru_fitness_/" class="sns-icon" target="_blank" aria-label="Instagram">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -754,165 +815,255 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
       <span class="ey">Plan &amp; Price</span>
       <div class="gl"></div>
       <h2 class="sh-ja">料金プラン</h2>
-      <p class="sh-sub">月額コース制 ── いつでも見直せる、続けやすい仕組み</p>
+      <p class="sh-sub">目的とペースに合わせて選べる、4つのコース</p>
     </div>
 
     <!-- 入会金 -->
-    <div class="rv" style="margin-bottom:24px;text-align:center">
+    <div class="rv" style="margin-bottom:36px;text-align:center">
       <div style="display:inline-flex;flex-direction:column;align-items:center;border:1px solid rgba(184,150,90,.3);border-radius:var(--r);padding:14px 48px;background:rgba(184,150,90,.05);width:auto">
         <span style="font-family:'Noto Sans JP',sans-serif;font-size:11px;color:rgba(0,0,0,.45);letter-spacing:.14em;display:block;margin-bottom:4px">入会金</span>
         <span style="font-family:'Noto Serif JP',serif;font-size:24px;font-weight:300;color:var(--gold)">¥33,000</span>
-        <span style="font-family:'Noto Sans JP',sans-serif;font-size:10px;color:rgba(0,0,0,.35);margin-top:2px">（税込）</span>
+        <span style="font-family:'Noto Sans JP',sans-serif;font-size:10px;color:rgba(0,0,0,.35);margin-top:2px">（税込）全コース共通</span>
       </div>
     </div>
 
-    <!-- 入門コース -->
-    <div class="rv" style="margin-bottom:14px">
-      <div class="step-lbl">はじめの3ヶ月 ── 挑戦価格でご案内</div>
-      <div class="plan-dark">
-        <h3 class="plan-h">入門コース <span style="font-size:13px;font-weight:300;color:var(--gold-l);margin-left:8px">まずはここからスタート</span></h3>
-        <p class="plan-sub">50分 / マンツーマン・完全個室。身体の土台をつくる最初の3ヶ月。</p>
-        <table style="width:100%;border-collapse:collapse;margin-top:4px">
-          <thead>
-            <tr style="border-bottom:1px solid rgba(255,255,255,.12)">
-              <th style="font-family:'Noto Sans JP',sans-serif;font-size:11px;font-weight:500;color:rgba(255,255,255,.45);padding:8px 0;text-align:left;letter-spacing:.1em">回数</th>
-              <th style="font-family:'Noto Sans JP',sans-serif;font-size:11px;font-weight:500;color:rgba(255,255,255,.45);padding:8px 0;text-align:right;letter-spacing:.1em">挑戦価格</th>
-              <th style="font-family:'Noto Sans JP',sans-serif;font-size:11px;font-weight:500;color:rgba(255,255,255,.45);padding:8px 0;text-align:right;letter-spacing:.1em">通常価格</th>
-              <th style="font-family:'Noto Sans JP',sans-serif;font-size:11px;font-weight:500;color:rgba(255,255,255,.45);padding:8px 0;text-align:right;letter-spacing:.1em">月額合計</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr style="border-bottom:1px solid rgba(255,255,255,.07)">
-              <td style="font-family:'Noto Sans JP',sans-serif;font-size:13px;color:rgba(255,255,255,.7);padding:10px 0">月4回</td>
-              <td style="font-family:'Noto Serif JP',serif;font-size:18px;font-weight:300;color:var(--gold-l);padding:10px 0;text-align:right">¥11,500</td>
-              <td style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:rgba(255,255,255,.35);padding:10px 0;text-align:right;text-decoration:line-through">¥12,000</td>
-              <td style="font-family:'Noto Serif JP',serif;font-size:18px;font-weight:300;color:#fff;padding:10px 0;text-align:right">¥46,000</td>
-            </tr>
-            <tr style="border-bottom:1px solid rgba(255,255,255,.07);background:rgba(184,150,90,.06)">
-              <td style="font-family:'Noto Sans JP',sans-serif;font-size:13px;color:rgba(255,255,255,.7);padding:10px 0">月8回 <span style="font-size:9px;color:var(--gold);margin-left:4px;letter-spacing:.06em">人気</span></td>
-              <td style="font-family:'Noto Serif JP',serif;font-size:18px;font-weight:300;color:var(--gold-l);padding:10px 0;text-align:right">¥10,900</td>
-              <td style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:rgba(255,255,255,.35);padding:10px 0;text-align:right;text-decoration:line-through">¥12,000</td>
-              <td style="font-family:'Noto Serif JP',serif;font-size:18px;font-weight:300;color:#fff;padding:10px 0;text-align:right">¥87,200</td>
-            </tr>
-            <tr>
-              <td style="font-family:'Noto Sans JP',sans-serif;font-size:13px;color:rgba(255,255,255,.7);padding:10px 0">月12回</td>
-              <td style="font-family:'Noto Serif JP',serif;font-size:18px;font-weight:300;color:var(--gold-l);padding:10px 0;text-align:right">¥10,200</td>
-              <td style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:rgba(255,255,255,.35);padding:10px 0;text-align:right;text-decoration:line-through">¥12,000</td>
-              <td style="font-family:'Noto Serif JP',serif;font-size:18px;font-weight:300;color:#fff;padding:10px 0;text-align:right">¥122,400</td>
-            </tr>
-          </tbody>
-        </table>
-        <p class="plan-note">※ 税込。回数は翌月1/3まで繰り越しOK。通常価格は4ヶ月目以降に適用。</p>
+    <!-- ① ボディケアコース -->
+    <div class="course-card rv" id="card1">
+      <div class="course-card-header" onclick="toggleCard('card1')">
+        <div class="course-card-left">
+          <span class="course-card-tag">月額制</span>
+          <h3 class="course-card-title">ボディケアコース</h3>
+          <p class="course-card-meta">75分 / マンツーマン・完全個室</p>
+          <p class="course-card-desc">継続的なケアとトレーニングで、身体を根本から整える月額コース。姿勢改善からボディメイクまで、あなたのペースに合わせてサポートします。</p>
+        </div>
+        <div class="course-toggle">
+          <span class="course-toggle-icon">∨</span>
+          <span>料金を見る</span>
+        </div>
+      </div>
+      <div class="course-card-body">
+        <div class="course-card-inner">
+          <table class="course-table">
+            <thead>
+              <tr>
+                <th>回数</th>
+                <th>1回あたり</th>
+                <th>月額</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>月4回</td>
+                <td class="price-sub">¥12,000</td>
+                <td class="price-main">¥48,000</td>
+              </tr>
+              <tr class="highlight">
+                <td>月8回 <span class="course-badge-pop">人気</span></td>
+                <td class="price-sub">¥11,500</td>
+                <td class="price-main">¥92,000</td>
+              </tr>
+              <tr>
+                <td>月12回</td>
+                <td class="price-sub">¥11,000</td>
+                <td class="price-main">¥132,000</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="plan-note">※ 税込。回数は翌月1/3まで繰り越しOK。</p>
+        </div>
       </div>
     </div>
 
-    <div class="pl-arr rv">
-      <div class="pl-pill">目的・ペースに合わせてコースを選ぶ</div>
-      <span class="pl-dn">↓</span>
+    <!-- ② フルサポートコース -->
+    <div class="course-card rv" id="card2" style="border:1px solid rgba(184,150,90,.3)">
+      <div class="course-card-header" onclick="toggleCard('card2')">
+        <div class="course-card-left">
+          <span class="course-card-tag premium">プレミアム</span>
+          <h3 class="course-card-title">フルサポートコース</h3>
+          <p class="course-card-meta">75分 / 週2回固定・完全個室</p>
+          <p class="course-card-desc">身体も食事も、すべてを任せる最高水準のプログラム。トレーニング・食事管理・週次進捗管理が一体となった集中コース。</p>
+          <div class="course-include">
+            <div class="course-include-item">
+              <span class="course-include-label">トレーニング</span>
+              <span class="course-include-val">週2回固定<br>完全個室</span>
+            </div>
+            <div class="course-include-item">
+              <span class="course-include-label">食事管理</span>
+              <span class="course-include-val">毎日記録<br>個別FB</span>
+            </div>
+            <div class="course-include-item">
+              <span class="course-include-label">進捗管理</span>
+              <span class="course-include-val">週次報告<br>目標修正</span>
+            </div>
+          </div>
+        </div>
+        <div class="course-toggle">
+          <span class="course-toggle-icon">∨</span>
+          <span>料金を見る</span>
+        </div>
+      </div>
+      <div class="course-card-body">
+        <div class="course-card-inner">
+          <table class="course-table">
+            <thead>
+              <tr>
+                <th>プラン</th>
+                <th>回数</th>
+                <th>1回あたり</th>
+                <th>総額</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>2ヶ月</td>
+                <td style="text-align:right;color:rgba(255,255,255,.5)">全16回</td>
+                <td class="price-sub">¥17,000</td>
+                <td class="price-main">¥272,000</td>
+              </tr>
+              <tr class="highlight">
+                <td>3ヶ月 <span class="course-badge-pop">人気</span></td>
+                <td style="text-align:right;color:rgba(255,255,255,.5)">全24回</td>
+                <td class="price-sub">¥16,500</td>
+                <td class="price-main">¥396,000</td>
+              </tr>
+              <tr>
+                <td>6ヶ月</td>
+                <td style="text-align:right;color:rgba(255,255,255,.5)">全48回</td>
+                <td class="price-sub">¥16,000</td>
+                <td class="price-main">¥768,000</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="plan-note">※ 税込。カウンセリング後にご案内。先着制。</p>
+        </div>
+      </div>
     </div>
 
-    <!-- 継続コース -->
-    <div class="rv" style="margin-bottom:14px">
-      <div class="step-lbl">4ヶ月目以降 ── 継続コース</div>
-      <div class="courses">
-        <div class="course c-tl">
-          <h4 class="c-n">スタンダード</h4>
-          <span class="c-t">⏱ 50分</span>
-          <p class="c-d">フルセッションで成果を積み上げる、スタンダードなコース。</p>
-          <div class="c-p"><span class="pn">¥12,000</span><span class="pu">〜 / 回（税込）</span></div>
-        </div>
-        <div class="course c-gd">
-          <h4 class="c-n">クイック</h4>
-          <span class="c-t">⏱ 30分</span>
-          <p class="c-d">トレーニングに特化した30分。多忙な方・習慣化した方に。</p>
-          <div class="c-p"><span class="pn">¥7,500</span><span class="pu">〜 / 回（税込）</span></div>
-        </div>
-        <div class="course c-rs">
-          <h4 class="c-n">ペアトレ</h4>
-          <span class="c-t">⏱ 50分 × 2名</span>
-          <p class="c-d">友人・パートナーと一緒に。お互いを高め合いながらお得に継続。</p>
-          <div class="c-p"><span class="pn">¥7,500</span><span class="pu">〜 / 人・回（税込）</span></div>
-        </div>
-      </div>
-      <p class="plan-note" style="text-align:center;margin-top:12px;padding-top:0;border:none">いずれも月4回〜12回でお選びいただけます。</p>
-    </div>
-
-    <!-- フルサポートコース -->
-    <div class="rv" style="margin-bottom:40px">
-      <div class="step-lbl" style="background:linear-gradient(90deg,var(--gold),var(--gold-l));color:#fff">プレミアムプラン ── フルサポートコース</div>
-      <div class="plan-dark" style="border:1px solid rgba(184,150,90,.35);position:relative;overflow:hidden">
-        <div style="position:absolute;top:0;right:0;background:var(--gold);font-family:'Noto Sans JP',sans-serif;font-size:9px;font-weight:500;color:#fff;letter-spacing:.12em;padding:5px 16px;border-bottom-left-radius:4px">3ヶ月集中プログラム</div>
-        <h3 class="plan-h" style="margin-top:8px">フルサポートコース</h3>
-        <p class="plan-sub">週2回・全24回／3ヶ月。身体も食事も、すべてを任せる最高水準のプログラム。</p>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:18px">
-          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:var(--r);padding:12px 8px;text-align:center">
-            <span style="font-family:'Noto Sans JP',sans-serif;font-size:9px;color:rgba(255,255,255,.4);letter-spacing:.08em;display:block;margin-bottom:6px">トレーニング</span>
-            <span style="font-family:'Noto Serif JP',serif;font-size:12px;color:#fff;line-height:1.6;display:block">週2回×3ヶ月<br>全24回</span>
-          </div>
-          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:var(--r);padding:12px 8px;text-align:center">
-            <span style="font-family:'Noto Sans JP',sans-serif;font-size:9px;color:rgba(255,255,255,.4);letter-spacing:.08em;display:block;margin-bottom:6px">食事管理</span>
-            <span style="font-family:'Noto Serif JP',serif;font-size:12px;color:#fff;line-height:1.6;display:block">毎日記録<br>個別FB</span>
-          </div>
-          <div style="background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);border-radius:var(--r);padding:12px 8px;text-align:center">
-            <span style="font-family:'Noto Sans JP',sans-serif;font-size:9px;color:rgba(255,255,255,.4);letter-spacing:.08em;display:block;margin-bottom:6px">進捗管理</span>
-            <span style="font-family:'Noto Serif JP',serif;font-size:12px;color:#fff;line-height:1.6;display:block">週次報告<br>目標修正</span>
-          </div>
-        </div>
-        <div style="border-top:1px solid rgba(184,150,90,.2);padding-top:16px;display:flex;align-items:baseline;justify-content:space-between;flex-wrap:wrap;gap:8px">
-          <div>
-            <span style="font-family:'Noto Sans JP',sans-serif;font-size:11px;color:rgba(255,255,255,.4);letter-spacing:.1em">月額換算</span>
-            <span style="font-family:'Noto Serif JP',serif;font-size:28px;font-weight:300;color:var(--gold-l);margin-left:10px">¥136,000</span>
-            <span style="font-family:'Noto Sans JP',sans-serif;font-size:11px;color:rgba(255,255,255,.4);margin-left:4px">/ 月（税込）</span>
-          </div>
-          <div style="text-align:right">
-            <span style="font-family:'Noto Sans JP',sans-serif;font-size:10px;color:rgba(255,255,255,.3)">セッション単価 ¥17,000 × 24回</span>
-          </div>
-        </div>
-        <p class="plan-note">※ 税込。カウンセリング後にご案内。先着制。</p>
+    <!-- 継続プランの区切り -->
+    <div class="rv" style="text-align:center;margin:36px 0 20px">
+      <div style="display:inline-flex;align-items:center;gap:12px">
+        <div style="width:40px;height:1px;background:rgba(45,122,122,.3)"></div>
+        <span style="font-family:'Noto Sans JP',sans-serif;font-size:10px;letter-spacing:.2em;color:var(--teal-l)">コース終了後の継続プラン</span>
+        <div style="width:40px;height:1px;background:rgba(45,122,122,.3)"></div>
       </div>
     </div>
 
-    <!-- 単価の合理性セクション -->
-    <div class="rv">
-      <div style="text-align:center;margin-bottom:28px">
-        <span class="ey">Why TOKOWAKA</span>
-        <div class="gl"></div>
-        <h3 style="font-family:'Noto Serif JP',serif;font-weight:300;font-size:clamp(17px,2.2vw,24px);color:var(--ink);line-height:1.6;letter-spacing:.05em">この価格に、これだけの価値が入っています。</h3>
-        <p style="font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--soft);margin-top:8px;line-height:1.9">TOKOWAKAの1セッションには、通常なら複数の専門家に依頼しなければ受けられないサービスが含まれています。</p>
+    <!-- ③ トレーニングコース -->
+    <div class="course-card rv" id="card3">
+      <div class="course-card-header" onclick="toggleCard('card3')">
+        <div class="course-card-left">
+          <span class="course-card-tag continued">継続プラン限定</span>
+          <h3 class="course-card-title">トレーニングコース</h3>
+          <p class="course-card-meta">50分 / マンツーマン・完全個室</p>
+          <div class="course-condition">ボディケアコースまたはフルサポートコースを3ヶ月以上継続した方限定のコースです。</div>
+          <p class="course-card-desc">目的に合わせて回数を選べる月額コース。トレーニングに集中した50分セッション。</p>
+        </div>
+        <div class="course-toggle">
+          <span class="course-toggle-icon">∨</span>
+          <span>料金を見る</span>
+        </div>
       </div>
-      <div style="background:var(--ink2);border-radius:var(--r);padding:28px 24px">
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px">
-          <div style="border-bottom:2px solid rgba(184,150,90,.3);padding-bottom:10px;grid-column:1/-1;display:grid;grid-template-columns:1fr auto;align-items:center">
-            <span style="font-family:'Noto Sans JP',sans-serif;font-size:11px;color:rgba(255,255,255,.4);letter-spacing:.1em">サービス</span>
-            <span style="font-family:'Noto Sans JP',sans-serif;font-size:11px;color:rgba(255,255,255,.4);letter-spacing:.1em;text-align:right">一般相場（60分）</span>
-          </div>
-          <div style="grid-column:1/-1;display:grid;grid-template-columns:1fr auto;align-items:center;border-bottom:1px solid rgba(255,255,255,.06);padding:10px 0">
-            <span style="font-family:'Noto Sans JP',sans-serif;font-size:13px;color:rgba(255,255,255,.75)">一般パーソナルジム</span>
-            <span style="font-family:'Noto Serif JP',serif;font-size:14px;color:rgba(255,255,255,.45);text-align:right">¥13,000〜¥18,000</span>
-          </div>
-          <div style="grid-column:1/-1;display:grid;grid-template-columns:1fr auto;align-items:center;border-bottom:1px solid rgba(255,255,255,.06);padding:10px 0">
-            <span style="font-family:'Noto Sans JP',sans-serif;font-size:13px;color:rgba(255,255,255,.75)">整体・ストレッチ施術</span>
-            <span style="font-family:'Noto Serif JP',serif;font-size:14px;color:rgba(255,255,255,.45);text-align:right">¥6,000〜¥10,000</span>
-          </div>
-          <div style="grid-column:1/-1;display:grid;grid-template-columns:1fr auto;align-items:center;padding:10px 0">
-            <span style="font-family:'Noto Sans JP',sans-serif;font-size:13px;color:rgba(255,255,255,.75)">専門的ストレッチ・コンディショニング施術</span>
-            <span style="font-family:'Noto Serif JP',serif;font-size:14px;color:rgba(255,255,255,.45);text-align:right">¥10,000〜¥15,000</span>
-          </div>
+      <div class="course-card-body">
+        <div class="course-card-inner">
+          <table class="course-table">
+            <thead>
+              <tr>
+                <th>回数</th>
+                <th>1回あたり</th>
+                <th>月額</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>月2回</td>
+                <td class="price-sub">¥11,000</td>
+                <td class="price-main">¥22,000</td>
+              </tr>
+              <tr>
+                <td>月4回</td>
+                <td class="price-sub">¥9,750</td>
+                <td class="price-main">¥39,000</td>
+              </tr>
+              <tr>
+                <td>月6回</td>
+                <td class="price-sub">¥9,500</td>
+                <td class="price-main">¥57,000</td>
+              </tr>
+              <tr class="highlight">
+                <td>月8回 <span class="course-badge-pop">人気</span></td>
+                <td class="price-sub">¥9,250</td>
+                <td class="price-main">¥74,000</td>
+              </tr>
+              <tr>
+                <td>月12回</td>
+                <td class="price-sub">¥9,000</td>
+                <td class="price-main">¥108,000</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="plan-note">※ 税込。</p>
         </div>
-        <div style="border-top:1px solid rgba(184,150,90,.25);padding-top:14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
-          <span style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:rgba(255,255,255,.4)">3つを別々に受けた場合の合計</span>
-          <span style="font-family:'Noto Serif JP',serif;font-size:16px;color:rgba(255,255,255,.35);text-decoration:line-through">¥29,000〜¥43,000</span>
-        </div>
-        <div style="border-top:1px solid rgba(184,150,90,.25);margin-top:14px;padding-top:14px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:8px">
-          <span style="font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--gold-l);letter-spacing:.08em">TOKOWAKAなら</span>
-          <span style="font-family:'Noto Serif JP',serif;font-size:22px;font-weight:300;color:var(--gold-l)">¥10,900〜 <span style="font-size:11px;font-family:'Noto Sans JP',sans-serif;color:rgba(255,255,255,.4)">すべて込み</span></span>
-        </div>
-        <p style="font-family:'Noto Sans JP',sans-serif;font-size:10px;color:rgba(255,255,255,.25);margin-top:12px;line-height:1.7">※ 各相場は2025年時点の東京都内の一般的な価格帯をもとにした参考値です。</p>
-      </div>
-      <div style="text-align:center;margin-top:20px;padding:20px;background:rgba(184,150,90,.05);border:1px solid rgba(184,150,90,.15);border-radius:var(--r)">
-        <p style="font-family:'Noto Serif JP',serif;font-weight:300;font-size:clamp(14px,1.8vw,17px);color:var(--ink);line-height:1.9">TOKOWAKAでは、<strong style="color:var(--teal);font-weight:400">パーソナルトレーニング・ストレッチ整体・専門的なボディケア</strong>が<br>1セッションの中にすべて含まれています。</p>
       </div>
     </div>
+
+    <!-- ④ ペアトレーニングコース -->
+    <div class="course-card rv" id="card4">
+      <div class="course-card-header" onclick="toggleCard('card4')">
+        <div class="course-card-left">
+          <span class="course-card-tag continued">継続プラン限定</span>
+          <h3 class="course-card-title">ペアトレーニングコース</h3>
+          <p class="course-card-meta">60分 / 2名・完全個室</p>
+          <div class="course-condition">ボディケアコースまたはフルサポートコースを3ヶ月以上継続した方限定のコースです。</div>
+          <p class="course-card-desc">友人・パートナーと一緒に続ける月額コース。2名で励まし合いながらお得に継続できます。</p>
+        </div>
+        <div class="course-toggle">
+          <span class="course-toggle-icon">∨</span>
+          <span>料金を見る</span>
+        </div>
+      </div>
+      <div class="course-card-body">
+        <div class="course-card-inner">
+          <table class="course-table">
+            <thead>
+              <tr>
+                <th>回数</th>
+                <th>1人1回あたり</th>
+                <th>月額（2名）</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>月2回</td>
+                <td class="price-sub">¥8,000</td>
+                <td class="price-main">¥32,000</td>
+              </tr>
+              <tr>
+                <td>月4回</td>
+                <td class="price-sub">¥6,750</td>
+                <td class="price-main">¥54,000</td>
+              </tr>
+              <tr>
+                <td>月6回</td>
+                <td class="price-sub">¥6,500</td>
+                <td class="price-main">¥78,000</td>
+              </tr>
+              <tr class="highlight">
+                <td>月8回 <span class="course-badge-pop">人気</span></td>
+                <td class="price-sub">¥6,250</td>
+                <td class="price-main">¥100,000</td>
+              </tr>
+              <tr>
+                <td>月12回</td>
+                <td class="price-sub">¥6,000</td>
+                <td class="price-main">¥144,000</td>
+              </tr>
+            </tbody>
+          </table>
+          <p class="plan-note">※ 税込。2名で同日利用が条件。</p>
+        </div>
+      </div>
+    </div>
+
 
     <div class="cta-band rv" style="margin-top:40px">
       <p>体験トレーニング無料キャンペーン実施中。<strong>あなたに合ったメニューをご提案。</strong></p>
@@ -925,7 +1076,7 @@ height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 
 
 <!-- GALLERY（一時非表示） -->
-<section id="gallery" style="display:none">
+<section id="gallery">
   <div class="gallery-hero rv">
     <!--
       メイン背景写真: gallery-hero-img の style に background-image:url('gallery-main.jpg') を追加
@@ -1122,8 +1273,18 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
 
 function goToReservation() {
   var params = window.location.search;
-  // インアプリブラウザでは window.open がブロックされるため location.href で遷移
-  window.location.href = 'https://reservation.tokowaka-gym.com/' + params;
+  window.open('https://reservation.tokowaka-gym.com/' + params, '_blank');
+}
+
+function toggleCard(id) {
+  const card = document.getElementById(id);
+  card.classList.toggle('open');
+}
+
+// コースカード展開
+function toggleCourse(id) {
+  const card = document.getElementById(id);
+  card.classList.toggle('open');
 }
 </script>
 </body>
