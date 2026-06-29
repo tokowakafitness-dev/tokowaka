@@ -237,13 +237,23 @@ header.sc{box-shadow:0 2px 18px rgba(27,42,71,.08);border-bottom:1px solid var(-
 .flow-title{font-family:'Shippori Mincho',serif;font-weight:600;font-size:15px;color:var(--navy);margin-bottom:6px}
 .flow-desc{font-family:'Noto Sans JP',sans-serif;font-size:11.5px;color:var(--soft);line-height:1.75}
 
-/* ===== GALLERY ===== */
-#gallery{background:var(--white)}
-.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.gal-item{border-radius:var(--r);overflow:hidden;aspect-ratio:4/3;background:var(--navy-d);position:relative}
-.gal-item img{width:100%;height:100%;object-fit:cover}
-.gal-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(27,42,71,.42);font-family:'Noto Sans JP',sans-serif;font-size:11px;background:linear-gradient(135deg,#e6ddcd,#d6cbb6)}
-.gal-cap{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(to top,rgba(19,32,58,.86),transparent);color:#fff;font-family:'Noto Sans JP',sans-serif;font-size:11px;padding:22px 12px 10px;letter-spacing:.04em}
+/* ===== GALLERY（背景写真＋自動スクロール＋拡大）===== */
+#gallery{position:relative;overflow:hidden;background:var(--navy);padding-bottom:64px}
+.gal-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.22}
+.gal-bg-ov{position:absolute;inset:0;background:linear-gradient(rgba(19,32,58,.55),rgba(19,32,58,.85))}
+#gallery .si{position:relative;z-index:2;padding-bottom:36px}
+#gallery .sh-ja{color:#fff}
+#gallery .ey{color:var(--gold-l)}
+#gallery .sh-sub{color:rgba(255,255,255,.6)}
+.gal-track-wrap{position:relative;z-index:2;overflow:hidden}
+.gal-track{display:flex;gap:14px;width:max-content;padding:0 40px}
+.gal-slide{flex:0 0 min(300px,72vw);height:210px;border-radius:var(--r);overflow:hidden;cursor:pointer;position:relative;box-shadow:0 10px 34px rgba(0,0,0,.35)}
+.gal-slide img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.gal-slide:hover img{transform:scale(1.05)}
+.gal-cap{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(to top,rgba(10,15,25,.9),transparent);color:#fff;font-family:'Noto Sans JP',sans-serif;font-size:11px;padding:24px 14px 12px;letter-spacing:.04em}
+.lightbox{position:fixed;inset:0;background:rgba(10,15,25,.94);z-index:9999;display:none;align-items:center;justify-content:center;cursor:zoom-out;padding:24px}
+.lightbox.open{display:flex}
+.lightbox img{max-width:92%;max-height:92%;border-radius:var(--r);box-shadow:0 24px 70px rgba(0,0,0,.6)}
 
 /* ===== PLAN ===== */
 #plan{background:var(--cream)}
@@ -710,19 +720,25 @@ footer{background:#0f1929;padding:38px 40px;text-align:center}
 
 <!-- ===== GALLERY ===== -->
 <section id="gallery">
+  <div class="gal-bg" style="background-image:url('https://tokowaka-gym.com/images/hero02.jpg')"></div>
+  <div class="gal-bg-ov"></div>
   <div class="si">
     <div class="sh rv">
       <span class="ey">Studio</span>
       <div class="gl"></div>
       <h2 class="sh-ja">通いたくなる、上質な空間。</h2>
-    </div>
-    <div class="gal-grid">
-      <div class="gal-item rv d1"><img src="https://tokowaka-gym.com/images/gallery01.jpg" alt="トレーニングスペース" onerror="this.style.display='none';this.parentNode.querySelector('.gal-ph').style.display='flex'"><div class="gal-ph" style="display:none">Studio Photo</div><div class="gal-cap">広々としたトレーニングスペース</div></div>
-      <div class="gal-item rv d2"><img src="https://tokowaka-gym.com/images/gallery02.jpg" alt="休憩スペース" onerror="this.style.display='none';this.parentNode.querySelector('.gal-ph').style.display='flex'"><div class="gal-ph" style="display:none">Studio Photo</div><div class="gal-cap">洗練された受付・待合スペース</div></div>
-      <div class="gal-item rv d3"><img src="https://tokowaka-gym.com/images/gallery03.jpg" alt="ストレッチスペース" onerror="this.style.display='none';this.parentNode.querySelector('.gal-ph').style.display='flex'"><div class="gal-ph" style="display:none">Studio Photo</div><div class="gal-cap">清潔なパウダールーム完備</div></div>
-      <div class="gal-item rv d4"><img src="https://tokowaka-gym.com/images/gallery04.jpg" alt="外観" onerror="this.style.display='none';this.parentNode.querySelector('.gal-ph').style.display='flex'"><div class="gal-ph" style="display:none">Studio Photo</div><div class="gal-cap">落ち着けるカウンセリング空間</div></div>
+      <p class="sh-sub">写真をクリックで拡大できます</p>
     </div>
   </div>
+  <div class="gal-track-wrap">
+    <div class="gal-track" id="galTrack">
+      <div class="gal-slide" onclick="openLB('gallery01.jpg')"><img src="https://tokowaka-gym.com/images/gallery01.jpg" alt=""><div class="gal-cap">完全個室のトレーニング空間</div></div>
+      <div class="gal-slide" onclick="openLB('gallery02.jpg')"><img src="https://tokowaka-gym.com/images/gallery02.jpg" alt=""><div class="gal-cap">ストレッチ・整体スペース</div></div>
+      <div class="gal-slide" onclick="openLB('gallery03.jpg')"><img src="https://tokowaka-gym.com/images/gallery03.jpg" alt=""><div class="gal-cap">カウンセリング・待合スペース</div></div>
+      <div class="gal-slide" onclick="openLB('gallery04.jpg')"><img src="https://tokowaka-gym.com/images/gallery04.jpg" alt=""><div class="gal-cap">洗練された上質な空間</div></div>
+    </div>
+  </div>
+  <div class="lightbox" id="lightbox" onclick="closeLB()"><img id="lbImg" src="" alt=""></div>
 </section>
 
 <!-- ===== PLAN ===== -->
@@ -953,6 +969,9 @@ document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)scrollTo({top:t.offsetTop-66,behavior:'smooth'})}));
 function goToReservation(){window.open('https://reservation.tokowaka-gym.com/'+location.search,'_blank')}
 (function(){var s=document.querySelectorAll('.hero-slide');if(s.length<2)return;var i=0;setInterval(function(){s[i].classList.remove('active');i=(i+1)%s.length;s[i].classList.add('active')},4000)})();
+(function(){var t=document.getElementById('galTrack');if(!t)return;Array.prototype.slice.call(t.children).forEach(function(c){t.appendChild(c.cloneNode(true))});var pos=0,paused=false;function tick(){if(!paused){pos+=0.5;if(pos>=t.scrollWidth/2)pos=0;t.style.transform='translateX(-'+pos+'px)'}requestAnimationFrame(tick)}tick();t.addEventListener('mouseenter',function(){paused=true});t.addEventListener('mouseleave',function(){paused=false})})();
+function openLB(f){var lb=document.getElementById('lightbox');document.getElementById('lbImg').src='https://tokowaka-gym.com/images/'+f;lb.classList.add('open')}
+function closeLB(){document.getElementById('lightbox').classList.remove('open')}
 function toggleCC(id){document.getElementById(id).classList.toggle('open')}
 function toggleFaq(el){el.classList.toggle('open')}
 </script>
