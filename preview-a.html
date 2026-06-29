@@ -311,10 +311,23 @@ header.sc{box-shadow:0 2px 18px rgba(27,42,71,.08);border-bottom:1px solid var(-
 .plan-div i{width:40px;height:1px;background:rgba(27,42,71,.18);display:block}
 
 /* ===== STATEMENT（ブランドの想い）===== */
-#statement{background:var(--navy);text-align:center}
+#statement{position:relative;overflow:hidden;text-align:center;background:var(--navy)}
+.stmt-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.16}
+.stmt-ov{position:absolute;inset:0;background:linear-gradient(rgba(19,32,58,.82),rgba(19,32,58,.93))}
+#statement .si{position:relative;z-index:2}
 .stmt-en{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;letter-spacing:.24em;color:var(--gold-l);display:block;margin-bottom:28px}
 .stmt-h{font-family:'Shippori Mincho',serif;font-weight:300;font-size:clamp(20px,3vw,30px);color:#fff;line-height:2.1;letter-spacing:.18em;margin-bottom:32px}
 .stmt-p{font-family:'Noto Sans JP',sans-serif;font-weight:300;font-size:13px;color:rgba(255,255,255,.62);line-height:2.5;letter-spacing:.1em;max-width:580px;margin:0 auto}
+
+/* ===== ミニキャンペーン帯（随時差し込み）===== */
+.mini-camp-wrap{max-width:var(--max);margin:48px auto;padding:0 40px}
+.mini-camp{display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;background:linear-gradient(120deg,var(--gold),var(--gold-l));border-radius:var(--r);padding:22px 34px;box-shadow:0 10px 32px rgba(184,150,90,.3)}
+.mini-camp-l{text-align:left}
+.mini-camp-ttl{font-family:'Shippori Mincho',serif;color:#fff;font-size:clamp(14px,1.9vw,18px);font-weight:600;line-height:1.45}
+.mini-camp-sub{font-family:'Noto Sans JP',sans-serif;color:rgba(255,255,255,.92);font-size:11px;letter-spacing:.04em;margin-top:5px;display:block}
+.mini-camp a{font-family:'Noto Sans JP',sans-serif;background:#fff;color:var(--gold);font-size:13px;font-weight:600;letter-spacing:.08em;padding:14px 30px;border-radius:var(--r);text-decoration:none;white-space:nowrap;transition:transform .2s,box-shadow .2s}
+.mini-camp a:hover{transform:translateY(-2px);box-shadow:0 8px 20px rgba(0,0,0,.15)}
+@media(max-width:580px){.mini-camp{flex-direction:column;text-align:center;padding:20px}.mini-camp-l{text-align:center}.mini-camp a{width:100%;text-align:center}}
 
 /* ===== CAMPAIGN ===== */
 #campaign{background:var(--navy-d);position:relative;overflow:hidden}
@@ -716,6 +729,15 @@ footer{background:#0f1929;padding:38px 40px;text-align:center}
     </div>
     <div class="gr-link rv"><a href="https://www.google.com/search?q=パーソナルジムTOKOWAKA+吉祥寺" target="_blank">Googleですべてのクチコミを見る</a></div>
   </div>
+  <div class="mini-camp-wrap rv">
+    <div class="mini-camp">
+      <div class="mini-camp-l">
+        <span class="mini-camp-ttl">夏のご入会キャンペーン｜入会金0円 ＋ 初回体験0円</span>
+        <span class="mini-camp-sub">3ヶ月間 最大30%OFF・毎月先着5名様まで</span>
+      </div>
+      <a href="javascript:void(0)" onclick="goToReservation()">無料体験を予約</a>
+    </div>
+  </div>
 </section>
 
 <!-- ===== 不安解消＋体験の流れ ===== -->
@@ -739,6 +761,15 @@ footer{background:#0f1929;padding:38px 40px;text-align:center}
       <div class="flow-step rv d2"><span class="flow-num">Step 02</span><div class="flow-circle"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h4 class="flow-title">カウンセリング</h4><p class="flow-desc">お悩み・目標を<br>丁寧にヒアリング</p></div>
       <div class="flow-step rv d3"><span class="flow-num">Step 03</span><div class="flow-circle"><svg viewBox="0 0 24 24"><path d="M6 8v8M18 8v8M9 12h6M4 10v4M20 10v4"/></svg></div><h4 class="flow-title">体験トレーニング</h4><p class="flow-desc">姿勢評価＋実際の<br>トレーニング</p></div>
       <div class="flow-step rv d4"><span class="flow-num">Step 04</span><div class="flow-circle"><svg viewBox="0 0 24 24"><path d="M12 3l2.2 5.6L20 9l-4.5 4 1.4 6L12 16l-4.9 3 1.4-6L4 9l5.8-.4z"/></svg></div><h4 class="flow-title">プランのご提案</h4><p class="flow-desc">当日入会で特典<br>無理な勧誘なし</p></div>
+    </div>
+  </div>
+  <div class="mini-camp-wrap rv">
+    <div class="mini-camp">
+      <div class="mini-camp-l">
+        <span class="mini-camp-ttl">まずは0円の体験から、はじめませんか？</span>
+        <span class="mini-camp-sub">入会金0円 ＋ 初回体験0円・毎月先着5名様まで</span>
+      </div>
+      <a href="javascript:void(0)" onclick="goToReservation()">無料体験を予約</a>
     </div>
   </div>
 </section>
@@ -873,6 +904,8 @@ footer{background:#0f1929;padding:38px 40px;text-align:center}
 
 <!-- ===== STATEMENT（ブランドの想い）===== -->
 <section id="statement">
+  <div class="stmt-bg" style="background-image:url('https://tokowaka-gym.com/images/hero02.jpg')"></div>
+  <div class="stmt-ov"></div>
   <div class="si">
     <div class="rv">
       <span class="stmt-en">Tokowaka</span>
