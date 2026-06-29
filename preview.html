@@ -68,8 +68,10 @@ header.sc{box-shadow:0 2px 18px rgba(27,42,71,.08);border-bottom:1px solid var(-
 
 /* ===== HERO ===== */
 #hero{position:relative;min-height:92vh;display:flex;align-items:center;overflow:hidden;margin-top:66px}
-.hero-bg{position:absolute;inset:0;z-index:0;background:url('https://tokowaka-gym.com/images/hero01.jpg') center/cover}
-.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,rgba(19,32,58,.86) 0%,rgba(19,32,58,.6) 48%,rgba(19,32,58,.28) 100%)}
+.hero-slides{position:absolute;inset:0;z-index:0}
+.hero-slide{position:absolute;inset:0;background-size:cover;background-position:center top;opacity:0;transition:opacity 1.6s ease}
+.hero-slide.active{opacity:1}
+.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(105deg,rgba(19,32,58,.88) 0%,rgba(19,32,58,.62) 48%,rgba(19,32,58,.32) 100%)}
 .hero-inner{position:relative;z-index:2;width:100%;max-width:var(--max);margin:0 auto;padding:40px 40px}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(205,168,108,.6);color:var(--gold-l);font-family:'Noto Sans JP',sans-serif;font-size:10px;letter-spacing:.2em;padding:6px 16px;border-radius:100px;margin-bottom:24px;background:rgba(19,32,58,.4);backdrop-filter:blur(4px)}
 .hero-badge i{width:5px;height:5px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
@@ -422,7 +424,12 @@ footer{background:#0f1929;padding:38px 40px;text-align:center}
 
 <!-- ===== HERO（フック：ターゲット＋ベネフィット＋共感）===== -->
 <section id="hero">
-  <div class="hero-bg"></div>
+  <div class="hero-slides">
+    <div class="hero-slide active" style="background-image:url('https://tokowaka-gym.com/images/hero01.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('https://tokowaka-gym.com/images/hero03.jpg')"></div>
+    <div class="hero-slide" style="background-image:url('https://tokowaka-gym.com/images/hero02.jpg')"></div>
+  </div>
+  <div class="hero-overlay"></div>
   <div class="hero-inner">
     <div class="hero-badge"><i></i>吉祥寺・完全個室パーソナルジム</div>
     <h1 class="hero-title">40代から、<br>自分の身体を<br><em>好きになりました。</em></h1>
@@ -945,6 +952,7 @@ const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.tar
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)scrollTo({top:t.offsetTop-66,behavior:'smooth'})}));
 function goToReservation(){window.open('https://reservation.tokowaka-gym.com/'+location.search,'_blank')}
+(function(){var s=document.querySelectorAll('.hero-slide');if(s.length<2)return;var i=0;setInterval(function(){s[i].classList.remove('active');i=(i+1)%s.length;s[i].classList.add('active')},4000)})();
 function toggleCC(id){document.getElementById(id).classList.toggle('open')}
 function toggleFaq(el){el.classList.toggle('open')}
 </script>
