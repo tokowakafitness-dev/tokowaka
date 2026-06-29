@@ -1,0 +1,943 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TOKOWAKA 吉祥寺 | パーソナルトレーニングジム</title>
+<meta name="description" content="吉祥寺の完全個室・完全マンツーマンのパーソナルジム。全部報われなかった人へ。運動×整体で、何歳からでも身体は変えられる。初回体験0円。">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@200;300;400;500;600&family=Noto+Sans+JP:wght@300;400;500;700&family=Shippori+Mincho:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#1b2a47;--navy-d:#13203a;--navy-l:#37527e;
+  --gold:#b8965a;--gold-l:#cda86c;--gold-p:#f3ecdc;
+  --cream:#f6f0e5;--warm:#faf5eb;--white:#fff;--stone:#e6ddcd;
+  --ink:#22201c;--soft:#5d574e;
+  --bd:rgba(27,42,71,.10);--r:3px;--max:1080px;
+}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Noto Serif JP','Shippori Mincho','游明朝',serif;
+  background:var(--white);color:var(--ink);overflow-x:hidden;
+  font-size:15px;line-height:1.95;font-weight:300;letter-spacing:.055em;
+}
+.rv{opacity:0;transform:translateY(20px);transition:opacity .9s ease,transform .9s ease}
+.rv.on{opacity:1;transform:none}
+.d1{transition-delay:.08s}.d2{transition-delay:.18s}.d3{transition-delay:.28s}.d4{transition-delay:.38s}.d5{transition-delay:.48s}
+img{display:block;max-width:100%}
+
+/* ===== HEADER ===== */
+header{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  padding:0 40px;height:66px;display:flex;align-items:center;justify-content:space-between;
+  background:rgba(255,255,255,.92);backdrop-filter:blur(14px);
+  transition:box-shadow .4s,background .4s;border-bottom:1px solid transparent;
+}
+header.sc{box-shadow:0 2px 18px rgba(27,42,71,.08);border-bottom:1px solid var(--bd)}
+.h-logo{font-family:'Cormorant Garamond',serif;font-size:20px;color:var(--navy);text-decoration:none;letter-spacing:.16em;line-height:1;font-weight:500}
+.h-logo small{font-family:'Noto Sans JP',sans-serif;font-size:8px;font-weight:400;letter-spacing:.26em;color:var(--gold);display:block;margin-top:4px;text-transform:uppercase}
+.h-nav{display:flex;align-items:center;gap:24px}
+.h-nav a{font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:.14em;color:var(--soft);text-decoration:none;transition:color .25s;white-space:nowrap}
+.h-nav a:hover{color:var(--gold)}
+.h-btns{display:flex;gap:8px;align-items:center}
+.hb1{font-family:'Noto Sans JP',sans-serif;display:inline-block;background:var(--gold);color:#fff;font-size:11px;font-weight:500;letter-spacing:.1em;padding:11px 20px;border-radius:var(--r);text-decoration:none;transition:background .25s;white-space:nowrap}
+.hb1:hover{background:var(--gold-l)}
+.hbg{display:none;flex-direction:column;gap:5px;cursor:pointer;background:none;border:none;padding:4px}
+.hbg span{width:24px;height:1.5px;background:var(--navy);display:block;transition:transform .3s,opacity .3s}
+.hbg.open span:nth-child(1){transform:translateY(6.5px) rotate(45deg)}
+.hbg.open span:nth-child(2){opacity:0}
+.hbg.open span:nth-child(3){transform:translateY(-6.5px) rotate(-45deg)}
+.mob-menu{display:none;position:fixed;top:66px;left:0;right:0;background:rgba(255,255,255,.98);backdrop-filter:blur(14px);z-index:199;padding:14px 0;border-top:1px solid var(--bd);box-shadow:0 8px 20px rgba(27,42,71,.08)}
+.mob-menu.open{display:block}
+.mob-menu a{display:block;font-family:'Noto Sans JP',sans-serif;font-size:13px;letter-spacing:.12em;color:var(--navy);text-decoration:none;padding:13px 28px;border-bottom:1px solid var(--bd);transition:color .2s}
+.mob-menu .mob-btns{display:flex;gap:10px;padding:16px 28px 6px}
+.mob-menu .mob-btns a{flex:1;text-align:center;padding:13px 0;border-radius:var(--r);font-size:12px;font-weight:500;letter-spacing:.08em;background:var(--gold);color:#fff;text-decoration:none}
+
+/* ===== 共通 ===== */
+.si{max-width:var(--max);margin:0 auto;padding:112px 40px}
+.sh{text-align:center;margin-bottom:60px}
+.ey{display:inline-block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;letter-spacing:.24em;color:var(--gold)}
+.gl{display:block;width:40px;height:1px;background:var(--gold);margin:16px auto}
+.sh-ja{font-family:'Shippori Mincho','Noto Serif JP',serif;font-weight:400;font-size:clamp(23px,3.2vw,34px);color:var(--navy);line-height:1.7;letter-spacing:.16em}
+.sh-sub{font-family:'Noto Sans JP',sans-serif;font-weight:400;font-size:13px;color:var(--soft);letter-spacing:.04em;margin-top:10px}
+.btn-gold{font-family:'Noto Sans JP',sans-serif;display:inline-block;background:var(--gold);color:#fff;font-size:13px;font-weight:500;letter-spacing:.12em;padding:16px 38px;border-radius:var(--r);text-decoration:none;transition:background .28s,transform .22s;box-shadow:0 6px 20px rgba(184,150,90,.3)}
+.btn-gold:hover{background:var(--gold-l);transform:translateY(-2px)}
+.cta-center{text-align:center;margin-top:40px}
+
+/* ===== HERO ===== */
+#hero{position:relative;min-height:92vh;display:flex;align-items:center;overflow:hidden;margin-top:66px}
+.hero-bg{position:absolute;inset:0;z-index:0;background:url('https://tokowaka-gym.com/images/hero01.jpg') center/cover}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,rgba(19,32,58,.86) 0%,rgba(19,32,58,.6) 48%,rgba(19,32,58,.28) 100%)}
+.hero-inner{position:relative;z-index:2;width:100%;max-width:var(--max);margin:0 auto;padding:40px 40px}
+.hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(205,168,108,.6);color:var(--gold-l);font-family:'Noto Sans JP',sans-serif;font-size:10px;letter-spacing:.2em;padding:6px 16px;border-radius:100px;margin-bottom:24px;background:rgba(19,32,58,.4);backdrop-filter:blur(4px)}
+.hero-badge i{width:5px;height:5px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
+.hero-title{font-family:'Shippori Mincho','Noto Serif JP',serif;font-weight:300;font-size:clamp(30px,5vw,56px);line-height:1.6;letter-spacing:.12em;color:#fff;margin-bottom:26px;text-shadow:0 2px 20px rgba(0,0,0,.4)}
+.hero-title em{font-style:normal;color:var(--gold-l)}
+.hero-lead{font-family:'Noto Sans JP',sans-serif;font-size:clamp(13px,1.5vw,16px);font-weight:300;color:rgba(255,255,255,.92);line-height:2.1;margin-bottom:34px;max-width:540px;text-shadow:0 1px 10px rgba(0,0,0,.5)}
+.hero-lead strong{color:var(--gold-l);font-weight:500}
+.hero-btns{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.hero-offer{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.1);border:1px solid rgba(205,168,108,.5);backdrop-filter:blur(6px);border-radius:var(--r);padding:12px 20px}
+.hero-offer .lbl{font-family:'Noto Sans JP',sans-serif;font-size:10px;color:rgba(255,255,255,.7);letter-spacing:.12em}
+.hero-offer .val{font-family:'Shippori Mincho',serif;font-weight:600;font-size:22px;color:var(--gold-l);line-height:1}
+.hero-offer .val small{font-size:12px;font-weight:400}
+
+/* ===== お客様の声① ビフォーアフター ===== */
+#voice1{background:var(--cream)}
+.voice-lead{text-align:center;font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(16px,2.2vw,22px);color:var(--navy);line-height:1.7;margin-bottom:44px}
+.voice-lead strong{color:var(--gold);font-weight:600}
+.ba-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+.ba-card{background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:0 4px 20px rgba(27,42,71,.07);display:flex;flex-direction:column}
+.ba-head{display:flex;align-items:center;gap:8px;padding:14px 16px 10px}
+.ba-no{font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:600;color:#fff;background:var(--navy);width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ba-attr{font-family:'Noto Sans JP',sans-serif;font-size:10px;color:var(--soft);letter-spacing:.04em}
+.ba-tag{font-family:'Noto Sans JP',sans-serif;font-size:9px;color:var(--gold);border:1px solid rgba(184,150,90,.4);padding:2px 8px;border-radius:100px;margin-left:auto}
+.ba-photo{aspect-ratio:16/10;background:var(--navy-d);position:relative;overflow:hidden}
+.ba-photo img{width:100%;height:100%;object-fit:cover}
+.ba-photo-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Noto Sans JP',sans-serif;font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.1em;background:linear-gradient(135deg,#e6ddcd,#d6cbb6)}
+.ba-result{padding:14px 16px 6px;display:flex;align-items:baseline;gap:8px}
+.ba-val{font-family:'Shippori Mincho',serif;font-weight:600;font-size:24px;color:var(--gold);line-height:1}
+.ba-val small{font-size:13px}
+.ba-meta{font-family:'Noto Sans JP',sans-serif;font-size:10px;color:var(--soft)}
+.ba-stars{color:var(--gold-l);font-size:12px;letter-spacing:1px;padding:0 16px}
+.ba-cmt{font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--soft);line-height:1.75;padding:6px 16px 18px}
+
+/* ===== お悩み ===== */
+#worry{background:var(--white)}
+.worry-wrap{display:grid;grid-template-columns:1.1fr .9fr;gap:48px;align-items:center}
+.worry-h{font-family:'Shippori Mincho',serif;font-weight:600;font-size:clamp(20px,2.8vw,30px);color:var(--navy);line-height:1.55;margin-bottom:8px}
+.worry-h em{font-style:normal;color:var(--gold);border-bottom:2px solid var(--gold-p)}
+.worry-sub{font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--soft);margin-bottom:28px;line-height:1.9}
+.worry-list{list-style:none}
+.worry-list li{font-family:'Noto Sans JP',sans-serif;font-size:15px;color:var(--ink);padding:15px 0;display:flex;gap:13px;align-items:flex-start;line-height:1.6;border-bottom:1px solid var(--bd)}
+.worry-list li::before{content:'✓';color:#fff;background:var(--gold);width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:2px}
+.worry-photo{border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;background:var(--navy-d);box-shadow:0 8px 30px rgba(27,42,71,.14)}
+.worry-photo img{width:100%;height:100%;object-fit:cover}
+.worry-empathy{grid-column:1/-1;text-align:center;margin-top:44px;padding:28px 32px;background:var(--cream);border-radius:var(--r);border-left:3px solid var(--gold)}
+.worry-empathy p{font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(15px,2vw,19px);color:var(--navy);line-height:1.8}
+.worry-empathy strong{color:var(--gold)}
+
+/* ===== 3つのポイント ===== */
+#points{background:var(--cream)}
+.pts-intro{text-align:center;font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--soft);margin-bottom:44px;line-height:1.9;position:relative}
+.pts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative}
+.pt-card{background:#fff;border:1px solid var(--bd);border-radius:var(--r);padding:34px 26px;text-align:center;box-shadow:0 4px 20px rgba(27,42,71,.06);transition:transform .3s,box-shadow .3s}
+.pt-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(27,42,71,.1)}
+.pt-icon{width:56px;height:56px;border-radius:50%;border:1px solid rgba(184,150,90,.4);display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
+.pt-icon svg{width:28px;height:28px;stroke:var(--gold);fill:none;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.pt-no{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:var(--gold);letter-spacing:.14em;display:block;margin-bottom:8px}
+.pt-title{font-family:'Shippori Mincho',serif;font-weight:600;font-size:18px;color:var(--navy);line-height:1.5;margin-bottom:12px}
+.pt-desc{font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--soft);line-height:1.85}
+.pt-desc strong{color:var(--gold);font-weight:500}
+
+/* ===== RESPONSIVE ===== */
+@media(max-width:860px){
+  header{padding:0 22px}
+  .h-nav,.h-btns{display:none}
+  .hbg{display:flex}
+  .si{padding:60px 24px}
+  .hero-inner{padding:32px 24px}
+  .ba-grid{grid-template-columns:1fr;gap:14px}
+  .worry-wrap{grid-template-columns:1fr;gap:28px}
+  .worry-photo{aspect-ratio:16/10;max-height:280px}
+  .pts-grid{grid-template-columns:1fr;gap:14px}
+}
+@media(max-width:580px){
+  .si{padding:48px 18px}
+  #hero{min-height:88vh}
+  .hero-title{font-size:clamp(26px,8vw,38px)}
+  .hero-lead{font-size:13px}
+  .hero-btns{gap:10px}
+  .btn-gold{padding:14px 28px;font-size:12px}
+  .sh-ja{font-size:21px}
+  .voice-lead{font-size:16px}
+  .worry-list li{font-size:13px}
+  .worry-empathy p{font-size:15px}
+}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+
+/* ===== TRAINER ===== */
+#trainer{background:var(--white)}
+.tr-banner{text-align:center;margin-bottom:40px}
+.tr-banner h3{font-family:'Shippori Mincho',serif;font-weight:600;font-size:clamp(18px,2.4vw,26px);color:var(--navy);line-height:1.5}
+.tr-banner h3 em{font-style:normal;color:var(--gold)}
+.tr-banner p{font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--soft);margin-top:10px}
+.tr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.tr-card{border-radius:var(--r);overflow:hidden;box-shadow:0 4px 20px rgba(27,42,71,.08);display:flex;flex-direction:column;background:#fff}
+.tr-photo{aspect-ratio:4/5;position:relative;overflow:hidden;background:var(--navy-d)}
+.tr-photo img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.tr-photo-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(27,42,71,.42);font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:.1em;background:linear-gradient(135deg,#e6ddcd,#d6cbb6)}
+.tr-catch{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(to top,rgba(19,32,58,.94),rgba(19,32,58,0));color:#fff;font-family:'Shippori Mincho',serif;font-weight:500;font-size:14px;padding:34px 18px 14px;line-height:1.55}
+.tr-info{padding:18px 20px 22px;flex:1;display:flex;flex-direction:column}
+.tr-name{font-family:'Shippori Mincho',serif;font-weight:600;font-size:18px;color:var(--navy);line-height:1.2}
+.tr-name-en{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12px;color:var(--gold);letter-spacing:.1em;display:block;margin:2px 0 2px}
+.tr-exp{font-family:'Noto Sans JP',sans-serif;font-size:10px;color:var(--soft);letter-spacing:.1em;margin-bottom:12px}
+.tr-bio{font-family:'Noto Sans JP',sans-serif;font-size:12.5px;color:var(--soft);line-height:1.85;margin-bottom:14px}
+.tr-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto}
+.tr-tag{font-family:'Noto Sans JP',sans-serif;font-size:9px;color:var(--gold);border:1px solid rgba(184,150,90,.35);padding:3px 9px;border-radius:100px}
+.tr-ig{margin-top:12px;padding-top:12px;border-top:1px solid var(--bd)}
+.tr-ig a{display:inline-flex;align-items:center;gap:6px;font-family:'Noto Sans JP',sans-serif;font-size:10px;color:var(--soft);text-decoration:none;letter-spacing:.06em}
+.tr-ig svg{width:15px;height:15px;stroke:var(--gold);fill:none;stroke-width:1.4}
+
+/* ===== INSTAGRAM 社会的証明 ===== */
+#instagram{background:var(--white)}
+.ig-stats{display:flex;justify-content:center;gap:50px;margin-bottom:40px;flex-wrap:wrap}
+.ig-stat{text-align:center}
+.ig-num{font-family:'Shippori Mincho',serif;font-weight:600;font-size:40px;color:var(--navy);line-height:1}
+.ig-num small{font-size:18px;color:var(--gold)}
+.ig-lbl{font-family:'Noto Sans JP',sans-serif;font-size:11px;color:var(--soft);letter-spacing:.06em;margin-top:10px}
+.ig-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:34px}
+.ig-item{aspect-ratio:4/5;border-radius:var(--r);overflow:hidden;background:linear-gradient(135deg,#e6ddcd,#d6cbb6);position:relative}
+.ig-item img{width:100%;height:100%;object-fit:cover}
+.ig-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(27,42,71,.42);font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:.08em}
+.ig-cta{text-align:center}
+.ig-cta a{display:inline-flex;align-items:center;gap:8px;font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--navy);text-decoration:none;border:1px solid var(--bd);border-radius:100px;padding:12px 28px;transition:border-color .25s,color .25s}
+.ig-cta a:hover{border-color:var(--gold);color:var(--gold)}
+.ig-cta svg{width:18px;height:18px;stroke:var(--gold);fill:none;stroke-width:1.4}
+
+/* ===== お客様の声②（Google風）===== */
+#voice2{background:var(--cream)}
+.gr-summary{display:flex;align-items:center;justify-content:center;gap:16px;margin-bottom:40px;flex-wrap:wrap}
+.gr-score{font-family:'Shippori Mincho',serif;font-weight:600;font-size:46px;color:var(--navy);line-height:1}
+.gr-score-r{display:flex;flex-direction:column;gap:4px}
+.gr-stars{color:var(--gold);font-size:18px;letter-spacing:2px}
+.gr-count{font-family:'Noto Sans JP',sans-serif;font-size:11px;color:var(--soft);letter-spacing:.04em}
+.gr-grid{columns:3;column-gap:18px}
+.gr-card{background:#fff;border-radius:var(--r);box-shadow:0 3px 16px rgba(27,42,71,.06);padding:22px 22px 20px;margin-bottom:18px;break-inside:avoid}
+.gr-top{display:flex;align-items:center;gap:10px;margin-bottom:10px}
+.gr-avatar{width:34px;height:34px;border-radius:50%;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;font-family:'Shippori Mincho',serif;font-size:15px;flex-shrink:0}
+.gr-meta{display:flex;flex-direction:column;gap:1px}
+.gr-name{font-family:'Noto Sans JP',sans-serif;font-size:12px;font-weight:500;color:var(--ink)}
+.gr-when{font-family:'Noto Sans JP',sans-serif;font-size:9.5px;color:#9a958c}
+.gr-card .gr-stars{font-size:12px;letter-spacing:1px;margin-bottom:8px}
+.gr-text{font-family:'Noto Sans JP',sans-serif;font-size:12.5px;color:var(--soft);line-height:1.85}
+.gr-g{margin-left:auto;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px;color:#9a958c}
+.gr-link{text-align:center;margin-top:8px}
+.gr-link a{font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--navy);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:3px;letter-spacing:.04em}
+
+/* ===== 不安解消＋体験の流れ ===== */
+#relief{background:var(--cream)}
+.relief-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:16px;margin-bottom:56px;position:relative}
+.relief-item{background:#fff;border:1px solid var(--bd);border-radius:var(--r);padding:22px 24px;display:flex;gap:14px;align-items:flex-start;box-shadow:0 3px 16px rgba(27,42,71,.05)}
+.relief-q{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:24px;color:var(--gold);line-height:1;flex-shrink:0}
+.relief-c h4{font-family:'Shippori Mincho',serif;font-weight:600;font-size:15px;color:var(--navy);margin-bottom:6px;line-height:1.5}
+.relief-c p{font-family:'Noto Sans JP',sans-serif;font-size:12.5px;color:var(--soft);line-height:1.8}
+.flow-h{text-align:center;font-family:'Shippori Mincho',serif;font-weight:600;font-size:clamp(17px,2.2vw,22px);color:var(--navy);margin-bottom:34px;position:relative}
+.flow-h em{font-style:normal;color:var(--gold)}
+.flow-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;position:relative}
+.flow-step{text-align:center;position:relative}
+.flow-num{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:var(--gold);letter-spacing:.14em;display:block;margin-bottom:10px}
+.flow-circle{width:64px;height:64px;border-radius:50%;border:1px solid rgba(184,150,90,.4);background:#fff;display:flex;align-items:center;justify-content:center;margin:0 auto 14px}
+.flow-circle svg{width:28px;height:28px;stroke:var(--gold);fill:none;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.flow-title{font-family:'Shippori Mincho',serif;font-weight:600;font-size:15px;color:var(--navy);margin-bottom:6px}
+.flow-desc{font-family:'Noto Sans JP',sans-serif;font-size:11.5px;color:var(--soft);line-height:1.75}
+
+/* ===== GALLERY ===== */
+#gallery{background:var(--white)}
+.gal-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.gal-item{border-radius:var(--r);overflow:hidden;aspect-ratio:4/3;background:var(--navy-d);position:relative}
+.gal-item img{width:100%;height:100%;object-fit:cover}
+.gal-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(27,42,71,.42);font-family:'Noto Sans JP',sans-serif;font-size:11px;background:linear-gradient(135deg,#e6ddcd,#d6cbb6)}
+.gal-cap{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(to top,rgba(19,32,58,.86),transparent);color:#fff;font-family:'Noto Sans JP',sans-serif;font-size:11px;padding:22px 12px 10px;letter-spacing:.04em}
+
+/* ===== PLAN ===== */
+#plan{background:var(--cream)}
+.plan-enroll{text-align:center;margin-bottom:24px}
+.plan-enroll-box{display:inline-flex;flex-direction:column;align-items:center;border:1px solid rgba(184,150,90,.4);border-radius:var(--r);padding:14px 46px;background:#fff}
+.plan-enroll-box .l{font-family:'Noto Sans JP',sans-serif;font-size:11px;color:var(--soft);letter-spacing:.14em;margin-bottom:4px}
+.plan-enroll-box .v{font-family:'Shippori Mincho',serif;font-size:24px;font-weight:600;color:var(--gold)}
+.plan-enroll-box .s{font-family:'Noto Sans JP',sans-serif;font-size:10px;color:#9a958c;margin-top:2px}
+.cc{background:#fff;border:1px solid var(--bd);border-radius:var(--r);margin-bottom:14px;overflow:hidden;position:relative;box-shadow:0 3px 16px rgba(27,42,71,.05)}
+.cc.gold-bd{border:1.5px solid rgba(184,150,90,.6)}
+.cc-head{padding:24px 28px;cursor:pointer;display:flex;align-items:flex-start;justify-content:space-between;gap:16px}
+.cc-left{flex:1}
+.cc-tag{font-family:'Noto Sans JP',sans-serif;font-size:9px;letter-spacing:.18em;color:var(--gold);display:inline-block;border:1px solid rgba(184,150,90,.4);padding:3px 10px;border-radius:100px;margin-bottom:10px}
+.cc-tag.premium{background:var(--gold);color:#fff;border-color:var(--gold)}
+.cc-tag.cont{background:var(--cream);color:var(--soft);border-color:var(--bd)}
+.cc-title{font-family:'Shippori Mincho',serif;font-weight:600;font-size:18px;color:var(--navy);line-height:1.4;margin-bottom:6px}
+.cc-meta{font-family:'Noto Sans JP',sans-serif;font-size:11px;color:var(--soft);letter-spacing:.08em;margin-bottom:10px}
+.cc-desc{font-family:'Noto Sans JP',sans-serif;font-size:12.5px;color:var(--soft);line-height:1.8}
+.cc-toggle{font-family:'Noto Sans JP',sans-serif;font-size:10px;color:var(--gold);letter-spacing:.08em;white-space:nowrap;display:flex;flex-direction:column;align-items:center;gap:5px;flex-shrink:0;padding-top:4px}
+.cc-toggle svg{width:16px;height:16px;stroke:var(--gold);fill:none;stroke-width:1.5;transition:transform .3s}
+.cc.open .cc-toggle svg{transform:rotate(180deg)}
+.cc-body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.cc.open .cc-body{max-height:640px}
+.cc-inner{padding:0 28px 24px;border-top:1px solid var(--bd)}
+.cc-cond{background:var(--cream);border:1px solid var(--bd);border-radius:var(--r);padding:10px 14px;margin:16px 0 0;font-family:'Noto Sans JP',sans-serif;font-size:11px;color:var(--soft);line-height:1.7}
+.ct{width:100%;border-collapse:collapse;margin-top:16px}
+.ct thead tr{border-bottom:1px solid var(--bd)}
+.ct th{font-family:'Noto Sans JP',sans-serif;font-size:11px;font-weight:500;color:var(--soft);padding:8px 0;letter-spacing:.08em;text-align:right}
+.ct th:first-child{text-align:left}
+.ct tbody tr{border-bottom:1px solid var(--bd)}
+.ct tbody tr:last-child{border:none}
+.ct tbody tr.hl{background:var(--gold-p)}
+.ct td{padding:10px 0;font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--ink);text-align:right}
+.ct td:first-child{text-align:left}
+.ct td.pm{font-family:'Shippori Mincho',serif;font-size:18px;font-weight:600;color:var(--navy)}
+.ct td.ps{font-family:'Shippori Mincho',serif;font-size:14px;color:var(--gold)}
+.pop{font-size:9px;color:var(--gold);letter-spacing:.06em;margin-left:6px}
+.cc-note{margin-top:12px;font-family:'Noto Sans JP',sans-serif;font-size:10px;color:#9a958c;line-height:1.7}
+.cc-inc{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:16px}
+.cc-inc-i{background:var(--cream);border:1px solid var(--bd);border-radius:var(--r);padding:10px 8px;text-align:center}
+.cc-inc-l{font-family:'Noto Sans JP',sans-serif;font-size:9px;color:var(--soft);display:block;margin-bottom:5px}
+.cc-inc-v{font-family:'Shippori Mincho',serif;font-size:11px;color:var(--navy);line-height:1.6;display:block}
+.plan-div{text-align:center;margin:34px 0 18px;display:flex;align-items:center;justify-content:center;gap:12px}
+.plan-div span{font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:.16em;color:var(--soft)}
+.plan-div i{width:40px;height:1px;background:rgba(27,42,71,.18);display:block}
+
+/* ===== STATEMENT（ブランドの想い）===== */
+#statement{background:var(--navy);text-align:center}
+.stmt-en{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;letter-spacing:.24em;color:var(--gold-l);display:block;margin-bottom:28px}
+.stmt-h{font-family:'Shippori Mincho',serif;font-weight:300;font-size:clamp(20px,3vw,30px);color:#fff;line-height:2.1;letter-spacing:.18em;margin-bottom:32px}
+.stmt-p{font-family:'Noto Sans JP',sans-serif;font-weight:300;font-size:13px;color:rgba(255,255,255,.62);line-height:2.5;letter-spacing:.1em;max-width:580px;margin:0 auto}
+
+/* ===== CAMPAIGN ===== */
+#campaign{background:var(--navy-d);position:relative;overflow:hidden}
+#campaign::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 50% at 50% 0%,rgba(184,150,90,.16),transparent 58%);pointer-events:none}
+.camp-inner{max-width:880px;margin:0 auto;text-align:center;position:relative}
+.camp-eyebrow{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;color:var(--gold-l);letter-spacing:.14em}
+.camp-h{font-family:'Shippori Mincho',serif;font-weight:600;font-size:clamp(22px,3.2vw,34px);color:#fff;line-height:1.4;margin:8px 0 6px}
+.camp-limit{display:inline-block;font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--navy-d);background:var(--gold-l);padding:6px 20px;border-radius:100px;letter-spacing:.08em;margin-bottom:36px;font-weight:500}
+.camp-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:18px}
+.camp-card{background:rgba(255,255,255,.05);border:1px solid rgba(205,168,108,.25);border-radius:var(--r);padding:26px 20px}
+.camp-n{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:var(--gold-l);letter-spacing:.1em;display:block;margin-bottom:12px}
+.camp-label{font-family:'Noto Sans JP',sans-serif;font-size:13px;color:rgba(255,255,255,.8);margin-bottom:4px}
+.camp-was{font-family:'Noto Sans JP',sans-serif;font-size:11px;color:rgba(255,255,255,.4);text-decoration:line-through}
+.camp-now{font-family:'Shippori Mincho',serif;font-weight:600;font-size:34px;color:var(--gold-l);line-height:1.1;margin-top:6px}
+.camp-now small{font-size:15px}
+.camp-fine{font-family:'Noto Sans JP',sans-serif;font-size:10px;color:rgba(255,255,255,.4);line-height:1.7;margin:14px 0 30px}
+.camp-cta{display:flex;flex-direction:column;align-items:center;gap:14px}
+.camp-cta .sub{font-family:'Shippori Mincho',serif;font-size:clamp(16px,2vw,20px);color:#fff;line-height:1.6}
+
+/* ===== FAQ ===== */
+#faq{background:var(--white)}
+.faq-wrap{max-width:760px;margin:0 auto}
+.faq-item{border-bottom:1px solid var(--bd)}
+.faq-q{padding:22px 8px;cursor:pointer;display:flex;align-items:center;gap:16px;font-family:'Shippori Mincho',serif;font-weight:500;font-size:16px;color:var(--navy)}
+.faq-q .qm{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:20px;color:var(--gold);flex-shrink:0}
+.faq-q .ic{margin-left:auto;width:16px;height:16px;flex-shrink:0;position:relative}
+.faq-q .ic::before,.faq-q .ic::after{content:'';position:absolute;background:var(--gold);transition:transform .3s}
+.faq-q .ic::before{top:7px;left:0;width:16px;height:1.5px}
+.faq-q .ic::after{top:0;left:7px;width:1.5px;height:16px}
+.faq-item.open .ic::after{transform:scaleY(0)}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease}
+.faq-item.open .faq-a{max-height:280px}
+.faq-a-in{padding:0 8px 24px 40px;font-family:'Noto Sans JP',sans-serif;font-size:13.5px;color:var(--soft);line-height:1.9}
+
+/* ===== ACCESS ===== */
+#access{background:var(--cream)}
+.ac-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start}
+.ac-map{border-radius:var(--r);overflow:hidden;border:1px solid var(--bd);aspect-ratio:1;background:#e8e2d8}
+.ac-map iframe{width:100%;height:100%;border:none}
+.ac-h{font-family:'Shippori Mincho',serif;font-weight:600;font-size:clamp(18px,2.2vw,24px);color:var(--navy);line-height:1.6;margin-bottom:24px}
+.ac-table{width:100%;border-collapse:collapse}
+.ac-table tr{border-bottom:1px solid var(--bd)}
+.ac-table th{font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:.1em;color:var(--gold);padding:14px 0;width:90px;font-weight:500;vertical-align:top;text-align:left;white-space:nowrap}
+.ac-table td{font-family:'Noto Sans JP',sans-serif;font-size:14px;color:var(--soft);padding:14px 0 14px 10px;line-height:1.85}
+.ac-table td strong{color:var(--ink)}
+.sns-row{display:flex;gap:12px;align-items:center}
+.sns-ic{display:inline-flex;align-items:center;justify-content:center;width:38px;height:38px;border-radius:50%;border:1px solid var(--bd);text-decoration:none;transition:border-color .25s}
+.sns-ic:hover{border-color:var(--gold)}
+.sns-ic svg{width:18px;height:18px;stroke:var(--navy);fill:none;stroke-width:1.4}
+
+/* ===== CONTACT ===== */
+#contact{background:var(--navy);position:relative;overflow:hidden}
+#contact::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 55% 50% at 50% 110%,rgba(184,150,90,.14),transparent 60%);pointer-events:none}
+.ct-box{max-width:680px;margin:0 auto;text-align:center;position:relative}
+.ct-free{display:inline-block;font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:.14em;color:var(--gold-l);border:1px solid rgba(205,168,108,.5);padding:6px 18px;border-radius:100px;margin-bottom:18px}
+.ct-title{font-family:'Shippori Mincho',serif;font-weight:600;font-size:clamp(22px,3vw,32px);color:#fff;line-height:1.55;margin-bottom:14px}
+.ct-title em{font-style:normal;color:var(--gold-l)}
+.ct-desc{font-family:'Noto Sans JP',sans-serif;font-size:13px;color:rgba(255,255,255,.7);line-height:1.95;max-width:440px;margin:0 auto 30px}
+.ct-opts{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.ct-tel{display:flex;flex-direction:column;align-items:center;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.15);border-radius:var(--r);padding:14px 28px;text-decoration:none;min-width:180px;transition:border-color .25s}
+.ct-tel:hover{border-color:var(--gold)}
+.ct-tel .l{font-family:'Noto Sans JP',sans-serif;font-size:11px;color:var(--gold-l);letter-spacing:.08em;margin-bottom:4px}
+.ct-tel .n{font-family:'Shippori Mincho',serif;font-size:16px;color:#fff}
+
+/* ===== FOOTER ===== */
+footer{background:#0f1929;padding:38px 40px;text-align:center}
+.f-logo{font-family:'Cormorant Garamond',serif;font-size:20px;color:rgba(255,255,255,.5);letter-spacing:.16em}
+.f-sub{font-family:'Noto Sans JP',sans-serif;font-size:8px;letter-spacing:.26em;color:rgba(205,168,108,.4);margin:3px 0 16px;text-transform:uppercase}
+.f-nav{display:flex;gap:18px;justify-content:center;flex-wrap:wrap;margin-bottom:14px}
+.f-nav a{font-family:'Noto Sans JP',sans-serif;font-size:10px;letter-spacing:.08em;color:rgba(255,255,255,.4);text-decoration:none;transition:color .2s}
+.f-nav a:hover{color:var(--gold-l)}
+.f-copy{font-family:'Noto Sans JP',sans-serif;font-size:9px;letter-spacing:.06em;color:rgba(255,255,255,.25)}
+
+@media(max-width:860px){
+  .tr-grid{grid-template-columns:1fr;max-width:380px;margin:0 auto}
+  .gr-grid{columns:1}
+  .relief-grid{grid-template-columns:1fr}
+  .flow-grid{grid-template-columns:1fr 1fr;gap:24px 14px}
+  .gal-grid{grid-template-columns:1fr 1fr}
+  .camp-grid{grid-template-columns:1fr}
+  .ac-grid{grid-template-columns:1fr;gap:28px}
+  .ig-grid{grid-template-columns:1fr 1fr}
+  .ig-stats{gap:32px}
+}
+@media(max-width:580px){
+  .gr-summary{gap:12px}.gr-score{font-size:38px}
+  .flow-grid{grid-template-columns:1fr}
+  .gal-grid{grid-template-columns:1fr 1fr;gap:10px}
+  .camp-now{font-size:30px}
+  .faq-q{font-size:14px}
+}
+/* LOX軸：見出しを細く・字間を広く（静かな高級感） */
+.pt-title,.cc-title,.tr-name,.flow-title,.relief-c h4,.faq-q,.ac-h,.gr-score,.plan-enroll-box .v{font-weight:400;letter-spacing:.05em}
+.camp-h,.ct-title,.flow-h,.tr-banner h3,.worry-h,.voice-lead{font-weight:300;letter-spacing:.1em}
+.pt-desc,.cc-desc,.tr-bio,.gr-text,.relief-c p,.ba-cmt,.hero-lead{letter-spacing:.045em}
+.cc-title,.camp-h,.ct-title{line-height:1.7}
+</style>
+</head>
+<body>
+
+<!-- ===== HEADER ===== -->
+<header id="hd">
+  <a href="#hero" class="h-logo">TOKOWAKA<small>Personal Gym · Kichijoji</small></a>
+  <nav class="h-nav">
+    <a href="#voice1">お客様の変化</a>
+    <a href="#worry">お悩み</a>
+    <a href="#points">特徴</a>
+    <a href="#trainer">トレーナー</a>
+    <a href="#plan">料金</a>
+    <a href="#faq">よくある質問</a>
+  </nav>
+  <div class="h-btns">
+    <a href="javascript:void(0)" onclick="goToReservation()" class="hb1">体験トレーニング予約</a>
+  </div>
+  <button class="hbg" id="hbg"><span></span><span></span><span></span></button>
+</header>
+<nav class="mob-menu" id="mobMenu">
+  <a href="#voice1" class="mob-link">お客様の変化</a>
+  <a href="#worry" class="mob-link">お悩み</a>
+  <a href="#points" class="mob-link">特徴</a>
+  <a href="#trainer" class="mob-link">トレーナー</a>
+  <a href="#plan" class="mob-link">料金</a>
+  <a href="#faq" class="mob-link">よくある質問</a>
+  <div class="mob-btns"><a href="javascript:void(0)" onclick="goToReservation()">体験トレーニング予約</a></div>
+</nav>
+
+<!-- ===== HERO（フック：ターゲット＋ベネフィット＋共感）===== -->
+<section id="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-inner">
+    <div class="hero-badge"><i></i>吉祥寺・完全個室パーソナルジム</div>
+    <h1 class="hero-title">40代から、<br>自分の身体を<br><em>好きになりました。</em></h1>
+    <p class="hero-lead">自己流・24ジム・パーソナル。全部試して、全部報われなかった人へ。<br><strong>「運動 × 整体」</strong>で、何歳からでもあなたの身体は変えられます。</p>
+    <div class="hero-btns">
+      <a href="javascript:void(0)" onclick="goToReservation()" class="btn-gold">体験トレーニングを申し込む</a>
+      <div class="hero-offer">
+        <span class="lbl">期間限定</span>
+        <span class="val">初回体験 <span style="font-size:28px">0</span><small>円</small></span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== お客様の声①（論より証拠・ビフォーアフター）===== -->
+<section id="voice1">
+  <div class="si">
+    <div class="sh rv">
+      <span class="ey">Real Results</span>
+      <div class="gl"></div>
+      <h2 class="sh-ja">こんな私も、変われた。</h2>
+    </div>
+    <p class="voice-lead rv">年齢も、運動経験も、関係ありません。<br><strong>「自分にもできた」</strong>——その声が、何よりの証拠です。</p>
+    <div class="ba-grid">
+      <!-- 01 ダイエット -->
+      <div class="ba-card rv d1">
+        <div class="ba-head"><span class="ba-no">01</span><span class="ba-attr">40代男性・運動不足</span><span class="ba-tag">ダイエット</span></div>
+        <div class="ba-photo"><img src="https://tokowaka-gym.com/images/before-after-01.jpg" alt="リモートワークでも-8kg" onerror="this.style.display='none';this.parentNode.querySelector('.ba-photo-ph').style.display='flex'"><div class="ba-photo-ph" style="display:none">Before → After 写真</div></div>
+        <div class="ba-result"><span class="ba-val">−8<small>kg</small></span><span class="ba-meta">期間 3〜4ヶ月／週1回</span></div>
+        <div class="ba-stars">★★★★★</div>
+        <p class="ba-cmt">「週1回だけで、筋肉をつけながら8kg落とせました」</p>
+      </div>
+      <!-- 04 ボディメイク -->
+      <div class="ba-card rv d2">
+        <div class="ba-head"><span class="ba-no">02</span><span class="ba-attr">30代男性・細身コンプレックス</span><span class="ba-tag">ボディメイク</span></div>
+        <div class="ba-photo"><img src="https://tokowaka-gym.com/images/before-after-02.jpg" alt="筋肉量+10kg超え" onerror="this.style.display='none';this.parentNode.querySelector('.ba-photo-ph').style.display='flex'"><div class="ba-photo-ph" style="display:none">Before → After 写真</div></div>
+        <div class="ba-result"><span class="ba-val">＋10<small>kg超</small></span><span class="ba-meta">筋肉量／ベンチ2倍</span></div>
+        <div class="ba-stars">★★★★★</div>
+        <p class="ba-cmt">「昔からのコンプレックスがなくなり、自分に大きな自信がつきました」</p>
+      </div>
+      <!-- 05 女性・ボディライン -->
+      <div class="ba-card rv d3">
+        <div class="ba-head"><span class="ba-no">03</span><span class="ba-attr">30代男性・運動不足</span><span class="ba-tag">ダイエット</span></div>
+        <div class="ba-photo"><img src="https://tokowaka-gym.com/images/before-after-03.jpg" alt="お腹周りが引き締まった" onerror="this.style.display='none';this.parentNode.querySelector('.ba-photo-ph').style.display='flex'"><div class="ba-photo-ph" style="display:none">Before → After 写真</div></div>
+        <div class="ba-result"><span class="ba-val" style="font-size:17px">お腹周りすっきり</span></div>
+        <div class="ba-stars">★★★★★</div>
+        <p class="ba-cmt">「お腹周りが引き締まり、姿勢も良くなって体が軽くなりました」</p>
+      </div>
+    </div>
+    <div class="cta-center rv">
+      <p style="font-family:'Shippori Mincho',serif;color:var(--navy);font-size:clamp(15px,2vw,19px);margin-bottom:20px">次に変わるのは、<strong style="color:var(--gold)">あなたの番</strong>です。</p>
+      <a href="javascript:void(0)" onclick="goToReservation()" class="btn-gold">無料体験を予約する</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== お悩み（身体の悩み・共感・ニーズ喚起）===== -->
+<section id="worry">
+  <div class="si">
+    <div class="sh rv">
+      <span class="ey">Your Worries</span>
+      <div class="gl"></div>
+      <h2 class="sh-ja">こんなお悩み、ありませんか？</h2>
+    </div>
+    <div class="worry-wrap">
+      <div class="rv">
+        <h3 class="worry-h">変われなかったのは、<br><em>あなたのせいじゃない。</em></h3>
+        <p class="worry-sub">続かなかったのも、戻ってしまったのも、正しい方法に出会えていなかっただけ。原因さえ分かれば、身体は応えてくれます。</p>
+        <ul class="worry-list">
+          <li>ジムやダイエットを何度試しても続かなかった</li>
+          <li>肩こり・腰痛・体力低下など、身体の不調が気になる</li>
+          <li>マッサージや整体に通っても、また同じ状態に戻ってしまう</li>
+          <li>自己流でやっているけど、本当に正しいのか自信がない</li>
+        </ul>
+      </div>
+      <div class="worry-photo rv d2">
+        <img src="https://tokowaka-gym.com/images/charm02.jpg" alt="身体の悩みに向き合う" onerror="this.style.display='none'">
+      </div>
+      <div class="worry-empathy rv">
+        <p>その不調も、続かなさも——<br><strong>「運動」と「整体」を組み合わせれば、根本から変えられます。</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 3つのポイント（解決の要素）===== -->
+<section id="points">
+  <div class="si">
+    <div class="sh rv">
+      <span class="ey">Why TOKOWAKA</span>
+      <div class="gl"></div>
+      <h2 class="sh-ja">あなたの悩みを解決する、3つの理由</h2>
+    </div>
+    <p class="pts-intro rv">TOKOWAKAが、これまで報われなかったあなたを変えられる理由。</p>
+    <div class="pts-grid">
+      <div class="pt-card rv d1">
+        <div class="pt-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="16.5" cy="9.5" r="2.3"/><path d="M3.5 19c0-3 2.5-5.2 5.5-5.2s5.5 2.2 5.5 5.2"/><path d="M15 18.2c.2-2 1.9-3.4 4-3.4"/></svg></div>
+        <span class="pt-no">Point 01</span>
+        <h3 class="pt-title">親身なトレーナー陣</h3>
+        <p class="pt-desc">その日の体調も、気分も、目標も。<strong>あなたのペースに寄り添い</strong>、毎回つくるオーダーメイド。無理な勧誘は一切ありません。</p>
+      </div>
+      <div class="pt-card rv d2">
+        <div class="pt-icon"><svg viewBox="0 0 24 24"><path d="M4 10v4M7 8v8M17 8v8M20 10v4"/><path d="M7 12h10"/></svg></div>
+        <span class="pt-no">Point 02</span>
+        <h3 class="pt-title">運動 × アフターケア</h3>
+        <p class="pt-desc">トレーニングだけでなく<strong>ストレッチ整体で身体を整える</strong>。鍛えながら不調もケアするから、無理なく続けられます。</p>
+      </div>
+      <div class="pt-card rv d3">
+        <div class="pt-icon"><svg viewBox="0 0 24 24"><rect x="6" y="3.5" width="12" height="17" rx="1"/><circle cx="14.3" cy="12" r=".9"/></svg></div>
+        <span class="pt-no">Point 03</span>
+        <h3 class="pt-title">¥6,000/1回〜・完全個室</h3>
+        <p class="pt-desc">続けやすい価格と、<strong>完全個室・手ぶらでOK</strong>の環境。人目を気にせず、自分の身体だけに集中できます。</p>
+      </div>
+    </div>
+    <div class="cta-center rv">
+      <a href="javascript:void(0)" onclick="goToReservation()" class="btn-gold">体験トレーニングを申し込む</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== TRAINER（解決するのは我々）===== -->
+<section id="trainer">
+  <div class="si">
+    <div class="sh rv">
+      <span class="ey">Trainer</span>
+      <div class="gl"></div>
+      <h2 class="sh-ja">そのお悩み、解決いたします。</h2>
+    </div>
+    <div class="tr-banner rv">
+      <h3>確かな経験と知識で、<em>全員がコンテスト入賞者</em></h3>
+      <p>あなたの目的に合わせて、選べる3名のトレーナー。</p>
+    </div>
+    <div class="tr-grid">
+      <!-- 鈴木 -->
+      <div class="tr-card rv d1">
+        <div class="tr-photo">
+          <img src="https://tokowaka-gym.com/images/trainer02.jpg" alt="鈴木 神海感留" onerror="this.style.display='none';this.parentNode.querySelector('.tr-photo-ph').style.display='flex'">
+          <div class="tr-photo-ph" style="display:none">Trainer Photo</div>
+          <div class="tr-catch">「身体のせいで運動できない」<br>を解決します。</div>
+        </div>
+        <div class="tr-info">
+          <h3 class="tr-name">鈴木 神海感留</h3>
+          <span class="tr-name-en">Kamiyaru Suzuki</span>
+          <span class="tr-exp">指導歴 7年</span>
+          <p class="tr-bio">自身の腰の持病と20kgの激太りを、正しいトレーニングで克服しコンテスト優勝。不調を抱えたまま諦めていた方へ、「動ける身体」と「理想の造形」を同時に実現する指導で、根本から変えます。</p>
+          <div class="tr-tags">
+            <span class="tr-tag">大幅ダイエット</span><span class="tr-tag">バルクアップ</span><span class="tr-tag">不調・機能改善</span><span class="tr-tag">APF Japan Classic 1位</span>
+          </div>
+          <div class="tr-ig"><a href="https://www.instagram.com/kamiyaru_fit/" target="_blank"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="var(--gold)" stroke="none"/></svg>Instagram</a></div>
+        </div>
+      </div>
+      <!-- 沖 -->
+      <div class="tr-card rv d2">
+        <div class="tr-photo">
+          <img src="https://tokowaka-gym.com/images/trainer03.jpg" alt="沖 孟" onerror="this.style.display='none';this.parentNode.querySelector('.tr-photo-ph').style.display='flex'">
+          <div class="tr-photo-ph" style="display:none">Trainer Photo</div>
+          <div class="tr-catch">「キツすぎないのに体が整う」<br>姿勢・体型を同時に変えます。</div>
+        </div>
+        <div class="tr-info">
+          <h3 class="tr-name">沖 孟</h3>
+          <span class="tr-name-en">Takeru Oki</span>
+          <span class="tr-exp">指導歴 5年</span>
+          <p class="tr-bio">痩せ型がコンプレックスだった私が、骨格を整えて狙った筋肉へ正しく効かせることでBBJファイナルへ。ミリ単位のフォーム調整で、見た目と身体の機能を同時に変えます。</p>
+          <div class="tr-tags">
+            <span class="tr-tag">女性のボディメイク</span><span class="tr-tag">姿勢・骨盤矯正</span><span class="tr-tag">BBJファイナル</span><span class="tr-tag">一般体操指導員</span>
+          </div>
+          <div class="tr-ig"><a href="https://www.instagram.com/takeru_fitness_/" target="_blank"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="var(--gold)" stroke="none"/></svg>Instagram</a></div>
+        </div>
+      </div>
+      <!-- 中野 -->
+      <div class="tr-card rv d3">
+        <div class="tr-photo">
+          <img src="https://tokowaka-gym.com/images/trainer01.jpg" alt="中野 龍之介" onerror="this.style.display='none';this.parentNode.querySelector('.tr-photo-ph').style.display='flex'">
+          <div class="tr-photo-ph" style="display:none">Trainer Photo</div>
+          <div class="tr-catch">「理想はあるのに、自分は無理」<br>そう思っているあなたへ。</div>
+        </div>
+        <div class="tr-info">
+          <h3 class="tr-name">中野 龍之介</h3>
+          <span class="tr-name-en">Ryunosuke Nakano</span>
+          <span class="tr-exp">指導歴 6年</span>
+          <p class="tr-bio">週1のトレーニングから4ヶ月で大会日本8位。忙しい中でも結果を出す、時間効率の高い設計が強みです。ゴールから逆算した緻密なプログラムで、あなたの理想を最短で追求します。</p>
+          <div class="tr-tags">
+            <span class="tr-tag">モデル・アスリート指導</span><span class="tr-tag">ヒップ育成</span><span class="tr-tag">大会日本8位</span><span class="tr-tag">英語対応</span>
+          </div>
+          <div class="tr-ig"><a href="https://www.instagram.com/fit_ryunosuke/" target="_blank"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="var(--gold)" stroke="none"/></svg>Instagram</a></div>
+        </div>
+      </div>
+    </div>
+    <div class="cta-center rv">
+      <a href="javascript:void(0)" onclick="goToReservation()" class="btn-gold">このトレーナーに相談する</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== INSTAGRAM 社会的証明 ===== -->
+<section id="instagram">
+  <div class="si">
+    <div class="sh rv">
+      <span class="ey">Instagram</span>
+      <div class="gl"></div>
+      <h2 class="sh-ja">日々の様子を、のぞいてみてください。</h2>
+      <p class="sh-sub">トレーナーの知識や雰囲気を、毎日の投稿でお届けしています。</p>
+    </div>
+    <div class="ig-stats rv">
+      <div class="ig-stat"><div class="ig-num">1,000<small>+</small></div><div class="ig-lbl">フォロワー（開設2ヶ月）</div></div>
+      <div class="ig-stat"><div class="ig-num">10,000<small>+</small></div><div class="ig-lbl">平均再生数 / 投稿</div></div>
+      <div class="ig-stat"><div class="ig-num">毎日</div><div class="ig-lbl">トレーニング情報を発信</div></div>
+    </div>
+    <div class="ig-grid">
+      <div class="ig-item rv d1"><img src="https://tokowaka-gym.com/images/ig-01.jpg" alt="" onerror="this.style.display='none';this.parentNode.querySelector('.ig-ph').style.display='flex'"><div class="ig-ph" style="display:none">Instagram 投稿</div></div>
+      <div class="ig-item rv d2"><img src="https://tokowaka-gym.com/images/ig-02.jpg" alt="" onerror="this.style.display='none';this.parentNode.querySelector('.ig-ph').style.display='flex'"><div class="ig-ph" style="display:none">Instagram 投稿</div></div>
+      <div class="ig-item rv d3"><img src="https://tokowaka-gym.com/images/ig-03.jpg" alt="" onerror="this.style.display='none';this.parentNode.querySelector('.ig-ph').style.display='flex'"><div class="ig-ph" style="display:none">Instagram 投稿</div></div>
+      <div class="ig-item rv d4"><img src="https://tokowaka-gym.com/images/ig-04.jpg" alt="" onerror="this.style.display='none';this.parentNode.querySelector('.ig-ph').style.display='flex'"><div class="ig-ph" style="display:none">Instagram 投稿</div></div>
+    </div>
+    <div class="ig-cta rv">
+      <a href="https://www.instagram.com/gym_tokowaka" target="_blank"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="var(--gold)" stroke="none"/></svg>@gym_tokowaka をフォローする</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== お客様の声②（実Googleレビュー）===== -->
+<section id="voice2">
+  <div class="si">
+    <div class="sh rv">
+      <span class="ey">Reviews</span>
+      <div class="gl"></div>
+      <h2 class="sh-ja">お客様からの、確かな信頼。</h2>
+    </div>
+    <div class="gr-summary rv">
+      <div class="gr-score">4.9</div>
+      <div class="gr-score-r">
+        <span class="gr-stars">★★★★★</span>
+        <span class="gr-count">Google クチコミ 多数掲載</span>
+      </div>
+    </div>
+    <div class="gr-grid">
+      <div class="gr-card rv"><div class="gr-top"><div class="gr-avatar">M</div><div class="gr-meta"><span class="gr-name">Google ユーザー</span><span class="gr-when">クチコミ</span></div><span class="gr-g">G</span></div><div class="gr-stars">★★★★★</div><p class="gr-text">過去他のパーソナルにも通っていましたが、ガンガン盛り上げる雰囲気や担当がちょくちょく変わるのに違和感が…。その点カミさんはとても落ち着いていて頼れる存在です。1年以上見ていただき、増量も目標通り、記録も伸び続けています。トレーニングが好きになり、習慣づくりができたのが何よりありがたかったです。</p></div>
+      <div class="gr-card rv"><div class="gr-top"><div class="gr-avatar">K</div><div class="gr-meta"><span class="gr-name">Google ユーザー</span><span class="gr-when">クチコミ</span></div><span class="gr-g">G</span></div><div class="gr-stars">★★★★★</div><p class="gr-text">40代半ばになり運動不足の弊害を感じ、完全個室のマンツーマンを条件に吉祥寺で探しました。お若いのに落ち着いていて、気分にムラがなく常にニュートラルで優しいです。褒め上手で乗せ上手で、運動嫌いで初心者のわたしでも楽しく通えています。筋トレ後は気分が良く自己肯定感が上がります。</p></div>
+      <div class="gr-card rv"><div class="gr-top"><div class="gr-avatar">B</div><div class="gr-meta"><span class="gr-name">Google ユーザー</span><span class="gr-when">クチコミ</span></div><span class="gr-g">G</span></div><div class="gr-stars">★★★★★</div><p class="gr-text">バドミントンのパフォーマンス向上とダイエット目的で開始。3ヶ月でウエスト-13cm、体重-12kgのダイエットに成功しました！コート内でのフットワークが劇的に軽くなったことに驚いています。解剖学に基づいた的確な指導のおかげで、怪我もしにくい体の使い方が身につきました。</p></div>
+      <div class="gr-card rv"><div class="gr-top"><div class="gr-avatar">R</div><div class="gr-meta"><span class="gr-name">Google ユーザー</span><span class="gr-when">クチコミ</span></div><span class="gr-g">G</span></div><div class="gr-stars">★★★★★</div><p class="gr-text">リモートワークでの運動不足解消とダイエットで週1で通い始め、3,4ヶ月で筋肉をつけつつ8キロの減量ができました。その時のコンディションに合わせて柔軟に指導してくれます。食生活のアドバイスや肩こりの家でのケアなど、トレーニング外のことも相談にのっていただけます。</p></div>
+      <div class="gr-card rv"><div class="gr-top"><div class="gr-avatar">T</div><div class="gr-meta"><span class="gr-name">Google ユーザー</span><span class="gr-when">クチコミ</span></div><span class="gr-g">G</span></div><div class="gr-stars">★★★★★</div><p class="gr-text">筋トレの右も左もわかりませんでしたが、担当トレーナーさんに丁寧にご指導いただきトレーニングが好きになりました。通い始めて少しずつボディラインも綺麗になり、周りにも褒められ自己肯定感も上がりました！無理な勧誘も無いですし、安心して通えます。</p></div>
+      <div class="gr-card rv"><div class="gr-top"><div class="gr-avatar">S</div><div class="gr-meta"><span class="gr-name">Google ユーザー</span><span class="gr-when">クチコミ</span></div><span class="gr-g">G</span></div><div class="gr-stars">★★★★★</div><p class="gr-text">デスクワーク中心で肩こりがひどく、マッサージに行ってもその場しのぎでしたが、ここは整体と可動域改善を組み合わせてくれるのが合っていました。ただ筋肉をつけるだけでなく、動かしにくい関節の可動域を広げてくれるので、終わった後の身体の軽さが全然違いました。</p></div>
+    </div>
+    <div class="gr-link rv"><a href="https://www.google.com/search?q=パーソナルジムTOKOWAKA+吉祥寺" target="_blank">Googleですべてのクチコミを見る</a></div>
+  </div>
+</section>
+
+<!-- ===== 不安解消＋体験の流れ ===== -->
+<section id="relief">
+  <div class="si">
+    <div class="sh rv">
+      <span class="ey">No Worries</span>
+      <div class="gl"></div>
+      <h2 class="sh-ja">はじめての方へ。</h2>
+      <p class="sh-sub">パーソナルが初めてでも、安心してお越しください。</p>
+    </div>
+    <div class="relief-grid">
+      <div class="relief-item rv d1"><span class="relief-q">Q</span><div class="relief-c"><h4>運動が苦手・初心者でも大丈夫？</h4><p>お客様の多くが運動初心者・運動嫌いの方です。その日の体調と目標に合わせ、無理のないメニューをつくります。</p></div></div>
+      <div class="relief-item rv d2"><span class="relief-q">Q</span><div class="relief-c"><h4>しつこい勧誘が不安…</h4><p>無理な勧誘は一切ありません。体験で実際の指導を受け、納得いただいてからご検討ください。</p></div></div>
+      <div class="relief-item rv d1"><span class="relief-q">Q</span><div class="relief-c"><h4>料金が高そうで踏み出せない</h4><p>1回¥6,000〜の継続しやすい価格設計。さらに今なら入会金・初回体験が0円です。</p></div></div>
+      <div class="relief-item rv d2"><span class="relief-q">Q</span><div class="relief-c"><h4>トレーナーとの相性が心配</h4><p>大会入賞トレーナーが3名在籍。目的・人柄の相性に合わせて、あなたに合う担当を選べます。</p></div></div>
+    </div>
+    <p class="flow-h rv">体験当日の<em>流れ</em></p>
+    <div class="flow-grid">
+      <div class="flow-step rv d1"><span class="flow-num">Step 01</span><div class="flow-circle"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div><h4 class="flow-title">ご予約</h4><p class="flow-desc">Web・お電話で<br>かんたん予約</p></div>
+      <div class="flow-step rv d2"><span class="flow-num">Step 02</span><div class="flow-circle"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h4 class="flow-title">カウンセリング</h4><p class="flow-desc">お悩み・目標を<br>丁寧にヒアリング</p></div>
+      <div class="flow-step rv d3"><span class="flow-num">Step 03</span><div class="flow-circle"><svg viewBox="0 0 24 24"><path d="M6 8v8M18 8v8M9 12h6M4 10v4M20 10v4"/></svg></div><h4 class="flow-title">体験トレーニング</h4><p class="flow-desc">姿勢評価＋実際の<br>トレーニング</p></div>
+      <div class="flow-step rv d4"><span class="flow-num">Step 04</span><div class="flow-circle"><svg viewBox="0 0 24 24"><path d="M12 3l2.2 5.6L20 9l-4.5 4 1.4 6L12 16l-4.9 3 1.4-6L4 9l5.8-.4z"/></svg></div><h4 class="flow-title">プランのご提案</h4><p class="flow-desc">当日入会で特典<br>無理な勧誘なし</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== GALLERY ===== -->
+<section id="gallery">
+  <div class="si">
+    <div class="sh rv">
+      <span class="ey">Studio</span>
+      <div class="gl"></div>
+      <h2 class="sh-ja">通いたくなる、上質な空間。</h2>
+    </div>
+    <div class="gal-grid">
+      <div class="gal-item rv d1"><img src="https://tokowaka-gym.com/images/gallery01.jpg" alt="トレーニングスペース" onerror="this.style.display='none';this.parentNode.querySelector('.gal-ph').style.display='flex'"><div class="gal-ph" style="display:none">Studio Photo</div><div class="gal-cap">広々としたトレーニングスペース</div></div>
+      <div class="gal-item rv d2"><img src="https://tokowaka-gym.com/images/gallery02.jpg" alt="休憩スペース" onerror="this.style.display='none';this.parentNode.querySelector('.gal-ph').style.display='flex'"><div class="gal-ph" style="display:none">Studio Photo</div><div class="gal-cap">洗練された受付・待合スペース</div></div>
+      <div class="gal-item rv d3"><img src="https://tokowaka-gym.com/images/gallery03.jpg" alt="ストレッチスペース" onerror="this.style.display='none';this.parentNode.querySelector('.gal-ph').style.display='flex'"><div class="gal-ph" style="display:none">Studio Photo</div><div class="gal-cap">清潔なパウダールーム完備</div></div>
+      <div class="gal-item rv d4"><img src="https://tokowaka-gym.com/images/gallery04.jpg" alt="外観" onerror="this.style.display='none';this.parentNode.querySelector('.gal-ph').style.display='flex'"><div class="gal-ph" style="display:none">Studio Photo</div><div class="gal-cap">落ち着けるカウンセリング空間</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== PLAN ===== -->
+<section id="plan">
+  <div class="si">
+    <div class="sh rv">
+      <span class="ey">Plan &amp; Price</span>
+      <div class="gl"></div>
+      <h2 class="sh-ja">料金プラン</h2>
+      <p class="sh-sub">目的とペースに合わせて選べる、4つのコース</p>
+    </div>
+    <div class="plan-enroll rv">
+      <div class="plan-enroll-box"><span class="l">入会金</span><span class="v">¥33,000</span><span class="s">（税込）全コース共通</span></div>
+    </div>
+    <!-- ① ボディケア -->
+    <div class="cc rv" id="cc1">
+      <div class="cc-head" onclick="toggleCC('cc1')">
+        <div class="cc-left">
+          <span class="cc-tag">月額制</span>
+          <h3 class="cc-title">ボディケアコース</h3>
+          <p class="cc-meta">75分 / マンツーマン・完全個室</p>
+          <p class="cc-desc">継続的なケアとトレーニングで、身体を根本から整える月額コース。</p>
+        </div>
+        <div class="cc-toggle"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg><span>料金を見る</span></div>
+      </div>
+      <div class="cc-body"><div class="cc-inner">
+        <table class="ct"><thead><tr><th>回数</th><th>1回あたり</th><th>月額</th></tr></thead><tbody>
+          <tr><td>月4回</td><td class="ps">¥12,000</td><td class="pm">¥48,000</td></tr>
+          <tr class="hl"><td>月8回<span class="pop">人気</span></td><td class="ps">¥11,500</td><td class="pm">¥92,000</td></tr>
+          <tr><td>月12回</td><td class="ps">¥11,000</td><td class="pm">¥132,000</td></tr>
+        </tbody></table>
+        <p class="cc-note">※ 税込。回数は翌月1/3まで繰り越しOK。</p>
+      </div></div>
+    </div>
+    <!-- ② フルサポート -->
+    <div class="cc gold-bd rv" id="cc2">
+      <div class="cc-head" onclick="toggleCC('cc2')">
+        <div class="cc-left">
+          <span class="cc-tag premium">プレミアム</span>
+          <h3 class="cc-title">フルサポートコース</h3>
+          <p class="cc-meta">75分 / 週2回固定・完全個室</p>
+          <p class="cc-desc">身体も食事も、すべてを任せる最高水準のプログラム。</p>
+          <div class="cc-inc">
+            <div class="cc-inc-i"><span class="cc-inc-l">トレーニング</span><span class="cc-inc-v">週2回固定<br>完全個室</span></div>
+            <div class="cc-inc-i"><span class="cc-inc-l">食事管理</span><span class="cc-inc-v">毎日記録<br>個別FB</span></div>
+            <div class="cc-inc-i"><span class="cc-inc-l">進捗管理</span><span class="cc-inc-v">週次報告<br>目標修正</span></div>
+          </div>
+        </div>
+        <div class="cc-toggle"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg><span>料金を見る</span></div>
+      </div>
+      <div class="cc-body"><div class="cc-inner">
+        <table class="ct"><thead><tr><th>プラン</th><th>回数</th><th>1回あたり</th><th>総額</th></tr></thead><tbody>
+          <tr><td>2ヶ月</td><td>全16回</td><td class="ps">¥17,000</td><td class="pm">¥272,000</td></tr>
+          <tr class="hl"><td>3ヶ月<span class="pop">人気</span></td><td>全24回</td><td class="ps">¥16,500</td><td class="pm">¥396,000</td></tr>
+          <tr><td>6ヶ月</td><td>全48回</td><td class="ps">¥16,000</td><td class="pm">¥768,000</td></tr>
+        </tbody></table>
+        <p class="cc-note">※ 税込。カウンセリング後にご案内。先着制。</p>
+      </div></div>
+    </div>
+    <div class="plan-div rv"><i></i><span>コース終了後の継続プラン</span><i></i></div>
+    <!-- ③ トレーニング -->
+    <div class="cc rv" id="cc3">
+      <div class="cc-head" onclick="toggleCC('cc3')">
+        <div class="cc-left">
+          <span class="cc-tag cont">継続プラン限定</span>
+          <h3 class="cc-title">トレーニングコース</h3>
+          <p class="cc-meta">50分 / マンツーマン・完全個室</p>
+          <div class="cc-cond">ボディケアまたはフルサポートを3ヶ月以上継続した方限定のコースです。</div>
+        </div>
+        <div class="cc-toggle"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg><span>料金を見る</span></div>
+      </div>
+      <div class="cc-body"><div class="cc-inner">
+        <table class="ct"><thead><tr><th>回数</th><th>1回あたり</th><th>月額</th></tr></thead><tbody>
+          <tr><td>月2回</td><td class="ps">¥11,000</td><td class="pm">¥22,000</td></tr>
+          <tr><td>月4回</td><td class="ps">¥9,750</td><td class="pm">¥39,000</td></tr>
+          <tr><td>月6回</td><td class="ps">¥9,500</td><td class="pm">¥57,000</td></tr>
+          <tr class="hl"><td>月8回<span class="pop">人気</span></td><td class="ps">¥9,250</td><td class="pm">¥74,000</td></tr>
+          <tr><td>月12回</td><td class="ps">¥9,000</td><td class="pm">¥108,000</td></tr>
+        </tbody></table>
+        <p class="cc-note">※ 税込。</p>
+      </div></div>
+    </div>
+    <!-- ④ ペアトレ -->
+    <div class="cc rv" id="cc4">
+      <div class="cc-head" onclick="toggleCC('cc4')">
+        <div class="cc-left">
+          <span class="cc-tag cont">継続プラン限定</span>
+          <h3 class="cc-title">ペアトレーニングコース</h3>
+          <p class="cc-meta">60分 / 2名・完全個室</p>
+          <div class="cc-cond">ボディケアまたはフルサポートを3ヶ月以上継続した方限定のコースです。</div>
+        </div>
+        <div class="cc-toggle"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg><span>料金を見る</span></div>
+      </div>
+      <div class="cc-body"><div class="cc-inner">
+        <table class="ct"><thead><tr><th>回数</th><th>1人1回あたり</th><th>月額（2名）</th></tr></thead><tbody>
+          <tr><td>月2回</td><td class="ps">¥8,000</td><td class="pm">¥32,000</td></tr>
+          <tr><td>月4回</td><td class="ps">¥6,750</td><td class="pm">¥54,000</td></tr>
+          <tr><td>月6回</td><td class="ps">¥6,500</td><td class="pm">¥78,000</td></tr>
+          <tr class="hl"><td>月8回<span class="pop">人気</span></td><td class="ps">¥6,250</td><td class="pm">¥100,000</td></tr>
+          <tr><td>月12回</td><td class="ps">¥6,000</td><td class="pm">¥144,000</td></tr>
+        </tbody></table>
+        <p class="cc-note">※ 税込。2名で同日利用が条件。</p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== STATEMENT（ブランドの想い）===== -->
+<section id="statement">
+  <div class="si">
+    <div class="rv">
+      <span class="stmt-en">Tokowaka</span>
+      <h2 class="stmt-h">身体が変わると、<br>毎日が変わる。</h2>
+      <p class="stmt-p">変わるのは、体型だけではありません。<br>姿勢が整い、動きが軽くなり、鏡を見るのが楽しみになる。<br>「自分にもできた」という小さな自信が、毎日を前向きにする。<br>TOKOWAKAが届けたいのは、体重計の数字ではなく、<br>自分を好きでいられる毎日です。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CAMPAIGN ===== -->
+<section id="campaign">
+  <div class="si">
+    <div class="camp-inner">
+      <span class="camp-eyebrow rv">Special Offer</span>
+      <h2 class="camp-h rv">夏のご入会<br>スペシャルキャンペーン</h2>
+      <span class="camp-limit rv">キャンペーン期間 ── 毎月先着5名様まで</span>
+      <div class="camp-grid">
+        <div class="camp-card rv d1"><span class="camp-n">Campaign 01</span><div class="camp-label">入会金</div><span class="camp-was">通常 ¥33,000（税込）</span><div class="camp-now">0<small>円</small></div></div>
+        <div class="camp-card rv d2"><span class="camp-n">Campaign 02</span><div class="camp-label">体験レッスン</div><span class="camp-was">通常 ¥5,500（税込）</span><div class="camp-now">0<small>円</small></div></div>
+        <div class="camp-card rv d3"><span class="camp-n">Campaign 03</span><div class="camp-label">3ヶ月間最大</div><span class="camp-was">　</span><div class="camp-now">30<small>%OFF</small></div></div>
+      </div>
+      <p class="camp-fine rv">※ 体験後当日のご入会でキャンペーンが適用となります。※ Campaign 03 の対象はフルサポートコースです。※ キャンペーン終了後、3ヶ月以上の継続が必要となります。</p>
+      <div class="camp-cta rv">
+        <p class="sub">期待を、行動に。<br>まずは0円の体験から。</p>
+        <a href="javascript:void(0)" onclick="goToReservation()" class="btn-gold">体験トレーニングを申し込む</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FAQ ===== -->
+<section id="faq">
+  <div class="si">
+    <div class="sh rv">
+      <span class="ey">FAQ</span>
+      <div class="gl"></div>
+      <h2 class="sh-ja">よくあるご質問</h2>
+    </div>
+    <div class="faq-wrap">
+      <div class="faq-item rv" onclick="toggleFaq(this)"><div class="faq-q"><span class="qm">Q</span>運動が苦手・初心者でも通えますか？<span class="ic"></span></div><div class="faq-a"><div class="faq-a-in">はい。お客様の多くが運動初心者・運動嫌いの方です。フォームの基礎から丁寧にお伝えし、その日の体調に合わせて無理のないメニューをご用意します。</div></div></div>
+      <div class="faq-item rv" onclick="toggleFaq(this)"><div class="faq-q"><span class="qm">Q</span>どのくらいの頻度で通えばよいですか？<span class="ic"></span></div><div class="faq-a"><div class="faq-a-in">目的により異なりますが、週1回から成果を出されている方が多くいらっしゃいます。ライフスタイルに合わせて最適な頻度をご提案します。</div></div></div>
+      <div class="faq-item rv" onclick="toggleFaq(this)"><div class="faq-q"><span class="qm">Q</span>厳しい食事制限はありますか？<span class="ic"></span></div><div class="faq-a"><div class="faq-a-in">極端な制限は行いません。生活に合わせて続けられる範囲で、抑えるべきポイントを一緒に考えます。「甘いものは食べてよいか」といったご相談にも丁寧にお応えします。</div></div></div>
+      <div class="faq-item rv" onclick="toggleFaq(this)"><div class="faq-q"><span class="qm">Q</span>持ち物は必要ですか？<span class="ic"></span></div><div class="faq-a"><div class="faq-a-in">手ぶらでOKです。シューズ・ウェアのレンタルをご用意しています。お仕事帰りにも気軽にお越しいただけます。</div></div></div>
+      <div class="faq-item rv" onclick="toggleFaq(this)"><div class="faq-q"><span class="qm">Q</span>しつこい勧誘はありませんか？<span class="ic"></span></div><div class="faq-a"><div class="faq-a-in">無理な勧誘は一切いたしません。体験で実際の指導を受けていただき、ご納得の上でご検討ください。</div></div></div>
+      <div class="faq-item rv" onclick="toggleFaq(this)"><div class="faq-q"><span class="qm">Q</span>整体・ストレッチもお願いできますか？<span class="ic"></span></div><div class="faq-a"><div class="faq-a-in">はい。トレーニングにストレッチ整体を組み合わせ、身体を整えながら鍛えるのがTOKOWAKAの特徴です。肩こり・腰痛などの不調ケアにも対応します。</div></div></div>
+      <div class="faq-item rv" onclick="toggleFaq(this)"><div class="faq-q"><span class="qm">Q</span>支払い方法は何がありますか？<span class="ic"></span></div><div class="faq-a"><div class="faq-a-in">各種お支払い方法に対応しております。詳細はカウンセリング時にご案内します。</div></div></div>
+      <div class="faq-item rv" onclick="toggleFaq(this)"><div class="faq-q"><span class="qm">Q</span>体験当日に入会しなくても大丈夫ですか？<span class="ic"></span></div><div class="faq-a"><div class="faq-a-in">もちろんです。ご自宅でじっくりご検討いただけます。なお、当日のご入会でキャンペーンが適用となります。</div></div></div>
+    </div>
+    <div class="cta-center rv">
+      <a href="javascript:void(0)" onclick="goToReservation()" class="btn-gold">無料体験を予約する</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== ACCESS ===== -->
+<section id="access">
+  <div class="si">
+    <div class="sh rv">
+      <span class="ey">Access</span>
+      <div class="gl"></div>
+      <h2 class="sh-ja">アクセス・店舗情報</h2>
+    </div>
+    <div class="ac-grid">
+      <div class="ac-map rv">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.6712533974614!2d139.582427!3d35.7097067!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6018efb9f7ebff9d%3A0x35e11e1a9065285!2z44OR44O844K544OK44Or44K444OgVE9LT1dBS0E!5e0!3m2!1sja!2sjp!4v1772614643405!5m2!1sja!2sjp" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="rv">
+        <h3 class="ac-h">吉祥寺エリアの<br>プライベートジム</h3>
+        <table class="ac-table">
+          <tr><th>住所</th><td>東京都武蔵野市吉祥寺東町2丁目17-7 VILLA VUONAMICO 103</td></tr>
+          <tr><th>アクセス</th><td><strong>吉祥寺駅</strong> 徒歩10分<br>「四軒寺」バス停より徒歩1分</td></tr>
+          <tr><th>営業時間</th><td><strong>8:00 〜 23:00</strong>　完全予約制</td></tr>
+          <tr><th>SNS</th><td>
+            <div class="sns-row">
+              <a href="https://www.instagram.com/gym_tokowaka" class="sns-ic" target="_blank" aria-label="Instagram"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="var(--navy)" stroke="none"/></svg></a>
+              <a href="https://lin.ee/2fr1Daok" class="sns-ic" target="_blank" aria-label="LINE"><svg viewBox="0 0 24 24"><path d="M21 11c0-4-4-7.2-9-7.2S3 7 3 11c0 3.6 3.2 6.6 7.5 7.1.3 0 .7.2.8.5.1.3 0 .8 0 .8s-.1.7-.2.9c0 .3-.2 1 .9.6 1.1-.5 6-3.5 8.2-6h0C20.3 14.4 21 12.8 21 11z"/></svg></a>
+              <a href="https://www.threads.com/@gym_tokowaka" class="sns-ic" target="_blank" aria-label="Threads"><svg viewBox="0 0 24 24"><path d="M12 21c-5 0-8-3.3-8-9s3-9 8-9c4 0 6.5 2.3 7 5M12 21c4 0 6-2 6-4.5S16 12 13.5 12s-3.5 1-3.5 2.5 1.3 2.3 3 2.3c2.5 0 3.5-2 3.5-4.8"/></svg></a>
+            </div>
+          </td></tr>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CONTACT ===== -->
+<section id="contact">
+  <div class="si">
+    <div class="ct-box rv">
+      <span class="ct-free">無料体験トレーニング実施中</span>
+      <h2 class="ct-title">まずは、<em>お気軽に</em>お試しください。</h2>
+      <p class="ct-desc">姿勢・動き・体の使い方を丁寧に確認しながら、今のあなたに合ったトレーニングをご提案します。運動が苦手な方でも大丈夫です。</p>
+      <div class="ct-opts">
+        <a href="javascript:void(0)" onclick="goToReservation()" class="btn-gold">体験トレーニング予約</a>
+        <a href="tel:07035498168" class="ct-tel"><span class="l">お電話で相談する</span><span class="n">070-3549-8168</span></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer>
+  <p class="f-logo">TOKOWAKA</p>
+  <p class="f-sub">Personal Gym · Kichijoji</p>
+  <div class="f-nav">
+    <a href="#voice1">お客様の変化</a><a href="#worry">お悩み</a><a href="#points">特徴</a><a href="#trainer">トレーナー</a><a href="#plan">料金</a><a href="#faq">よくある質問</a><a href="#access">アクセス</a>
+  </div>
+  <p class="f-copy">© 2026 TOKOWAKA 吉祥寺. All rights reserved.</p>
+</footer>
+
+<script>
+const hd=document.getElementById('hd');
+addEventListener('scroll',()=>hd.classList.toggle('sc',scrollY>40));
+const hbg=document.getElementById('hbg'),mob=document.getElementById('mobMenu');
+hbg.addEventListener('click',()=>{hbg.classList.toggle('open');mob.classList.toggle('open')});
+document.querySelectorAll('.mob-link').forEach(a=>a.addEventListener('click',()=>{hbg.classList.remove('open');mob.classList.remove('open')}));
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target)}}),{threshold:.08});
+document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
+document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)scrollTo({top:t.offsetTop-66,behavior:'smooth'})}));
+function goToReservation(){window.open('https://reservation.tokowaka-gym.com/'+location.search,'_blank')}
+function toggleCC(id){document.getElementById(id).classList.toggle('open')}
+function toggleFaq(el){el.classList.toggle('open')}
+</script>
+</body>
+</html>
