@@ -21,7 +21,7 @@ html{scroll-behavior:smooth}
 body{
   font-family:'Noto Serif JP','Shippori Mincho','游明朝',serif;
   background:var(--white);color:var(--ink);overflow-x:hidden;
-  font-size:15px;line-height:1.95;font-weight:300;letter-spacing:.055em;
+  font-size:15px;line-height:1.85;font-weight:300;letter-spacing:.035em;
 }
 .rv{opacity:0;transform:translateY(20px);transition:opacity .9s ease,transform .9s ease}
 .rv.on{opacity:1;transform:none}
@@ -56,11 +56,11 @@ header.sc{box-shadow:0 2px 18px rgba(27,42,71,.08);border-bottom:1px solid var(-
 .mob-menu .mob-btns a{flex:1;text-align:center;padding:13px 0;border-radius:var(--r);font-size:12px;font-weight:500;letter-spacing:.08em;background:var(--gold);color:#fff;text-decoration:none}
 
 /* ===== 共通 ===== */
-.si{max-width:var(--max);margin:0 auto;padding:112px 40px}
-.sh{text-align:center;margin-bottom:60px}
-.ey{display:inline-block;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:16px;letter-spacing:.24em;color:var(--gold)}
-.gl{display:block;width:40px;height:1px;background:var(--gold);margin:16px auto}
-.sh-ja{font-family:'Shippori Mincho','Noto Serif JP',serif;font-weight:400;font-size:clamp(23px,3.2vw,34px);color:var(--navy);line-height:1.7;letter-spacing:.16em}
+.si{max-width:var(--max);margin:0 auto;padding:100px 40px}
+.sh{text-align:center;margin-bottom:54px}
+.ey{display:inline-block;font-family:'Noto Sans JP',sans-serif;font-weight:500;font-size:12px;letter-spacing:.22em;color:var(--gold);text-transform:uppercase}
+.gl{display:block;width:36px;height:1px;background:var(--gold);margin:14px auto}
+.sh-ja{font-family:'Noto Serif JP',serif;font-weight:500;font-size:clamp(23px,3.3vw,35px);color:var(--navy);line-height:1.6;letter-spacing:.08em}
 .sh-sub{font-family:'Noto Sans JP',sans-serif;font-weight:400;font-size:13px;color:var(--soft);letter-spacing:.04em;margin-top:10px}
 .btn-gold{font-family:'Noto Sans JP',sans-serif;display:inline-block;background:var(--gold);color:#fff;font-size:13px;font-weight:500;letter-spacing:.12em;padding:16px 38px;border-radius:var(--r);text-decoration:none;transition:background .28s,transform .22s;box-shadow:0 6px 20px rgba(184,150,90,.3)}
 .btn-gold:hover{background:var(--gold-l);transform:translateY(-2px)}
@@ -382,11 +382,12 @@ footer{background:#0f1929;padding:38px 40px;text-align:center}
   .camp-now{font-size:30px}
   .faq-q{font-size:14px}
 }
-/* LOX軸：見出しを細く・字間を広く（静かな高級感） */
-.pt-title,.cc-title,.tr-name,.flow-title,.relief-c h4,.faq-q,.ac-h,.gr-score,.plan-enroll-box .v{font-weight:400;letter-spacing:.05em}
-.camp-h,.ct-title,.flow-h,.tr-banner h3,.worry-h,.voice-lead{font-weight:300;letter-spacing:.1em}
-.pt-desc,.cc-desc,.tr-bio,.gr-text,.relief-c p,.ba-cmt,.hero-lead{letter-spacing:.045em}
-.cc-title,.camp-h,.ct-title{line-height:1.7}
+/* 見出し：読みやすさ優先（旧HP準拠の可読性） */
+.pt-title,.cc-title,.tr-name,.flow-title,.relief-c h4,.faq-q,.ac-h{font-weight:500;letter-spacing:.04em}
+.camp-h,.ct-title,.flow-h,.tr-banner h3,.worry-h,.voice-lead{font-weight:500;letter-spacing:.05em}
+.pt-desc,.cc-desc,.tr-bio,.gr-text,.relief-c p,.ba-cmt,.hero-lead{letter-spacing:.03em}
+.cc-title,.camp-h,.ct-title{line-height:1.6}
+.hero-title{font-weight:400;letter-spacing:.08em}
 </style>
 </head>
 <body>
@@ -656,12 +657,12 @@ footer{background:#0f1929;padding:38px 40px;text-align:center}
       </div>
     </div>
     <div class="gr-grid">
-      <div class="gr-card rv"><div class="gr-top"><div class="gr-avatar">M</div><div class="gr-meta"><span class="gr-name">Google ユーザー</span><span class="gr-when">クチコミ</span></div><span class="gr-g">G</span></div><div class="gr-stars">★★★★★</div><p class="gr-text">過去他のパーソナルにも通っていましたが、ガンガン盛り上げる雰囲気や担当がちょくちょく変わるのに違和感が…。その点カミさんはとても落ち着いていて頼れる存在です。1年以上見ていただき、増量も目標通り、記録も伸び続けています。トレーニングが好きになり、習慣づくりができたのが何よりありがたかったです。</p></div>
-      <div class="gr-card rv"><div class="gr-top"><div class="gr-avatar">K</div><div class="gr-meta"><span class="gr-name">Google ユーザー</span><span class="gr-when">クチコミ</span></div><span class="gr-g">G</span></div><div class="gr-stars">★★★★★</div><p class="gr-text">40代半ばになり運動不足の弊害を感じ、完全個室のマンツーマンを条件に吉祥寺で探しました。お若いのに落ち着いていて、気分にムラがなく常にニュートラルで優しいです。褒め上手で乗せ上手で、運動嫌いで初心者のわたしでも楽しく通えています。筋トレ後は気分が良く自己肯定感が上がります。</p></div>
-      <div class="gr-card rv"><div class="gr-top"><div class="gr-avatar">B</div><div class="gr-meta"><span class="gr-name">Google ユーザー</span><span class="gr-when">クチコミ</span></div><span class="gr-g">G</span></div><div class="gr-stars">★★★★★</div><p class="gr-text">バドミントンのパフォーマンス向上とダイエット目的で開始。3ヶ月でウエスト-13cm、体重-12kgのダイエットに成功しました！コート内でのフットワークが劇的に軽くなったことに驚いています。解剖学に基づいた的確な指導のおかげで、怪我もしにくい体の使い方が身につきました。</p></div>
-      <div class="gr-card rv"><div class="gr-top"><div class="gr-avatar">R</div><div class="gr-meta"><span class="gr-name">Google ユーザー</span><span class="gr-when">クチコミ</span></div><span class="gr-g">G</span></div><div class="gr-stars">★★★★★</div><p class="gr-text">リモートワークでの運動不足解消とダイエットで週1で通い始め、3,4ヶ月で筋肉をつけつつ8キロの減量ができました。その時のコンディションに合わせて柔軟に指導してくれます。食生活のアドバイスや肩こりの家でのケアなど、トレーニング外のことも相談にのっていただけます。</p></div>
-      <div class="gr-card rv"><div class="gr-top"><div class="gr-avatar">T</div><div class="gr-meta"><span class="gr-name">Google ユーザー</span><span class="gr-when">クチコミ</span></div><span class="gr-g">G</span></div><div class="gr-stars">★★★★★</div><p class="gr-text">筋トレの右も左もわかりませんでしたが、担当トレーナーさんに丁寧にご指導いただきトレーニングが好きになりました。通い始めて少しずつボディラインも綺麗になり、周りにも褒められ自己肯定感も上がりました！無理な勧誘も無いですし、安心して通えます。</p></div>
-      <div class="gr-card rv"><div class="gr-top"><div class="gr-avatar">S</div><div class="gr-meta"><span class="gr-name">Google ユーザー</span><span class="gr-when">クチコミ</span></div><span class="gr-g">G</span></div><div class="gr-stars">★★★★★</div><p class="gr-text">デスクワーク中心で肩こりがひどく、マッサージに行ってもその場しのぎでしたが、ここは整体と可動域改善を組み合わせてくれるのが合っていました。ただ筋肉をつけるだけでなく、動かしにくい関節の可動域を広げてくれるので、終わった後の身体の軽さが全然違いました。</p></div>
+      <div class="gr-card rv"><div class="gr-top"><div class="gr-avatar">M</div><div class="gr-meta"><span class="gr-name">Google ユーザー</span><span class="gr-when">クチコミ</span></div><span class="gr-g"><svg viewBox="0 0 48 48" width="18" height="18" aria-label="Google"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.6 2.4 30.1 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.9 6.2C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.6c0-1.6-.1-3.2-.4-4.6H24v9.3h12.4c-.5 2.9-2.2 5.3-4.6 7l7.1 5.5c4.2-3.9 6.6-9.6 6.6-16.2z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.7-2.9-.7-4.6s.3-3.2.7-4.6l-7.9-6.2C1 16.5 0 20.1 0 24s1 7.5 2.6 10.8l7.9-6.2z"/><path fill="#34A853" d="M24 48c6.1 0 11.3-2 15-5.5l-7.1-5.5c-2 1.3-4.5 2.1-7.9 2.1-6.3 0-11.6-4.2-13.5-9.9l-7.9 6.2C6.5 42.6 14.6 48 24 48z"/></svg></span></div><div class="gr-stars">★★★★★</div><p class="gr-text">過去他のパーソナルにも通っていましたが、ガンガン盛り上げる雰囲気や担当がちょくちょく変わるのに違和感が…。その点カミさんはとても落ち着いていて頼れる存在です。1年以上見ていただき、増量も目標通り、記録も伸び続けています。トレーニングが好きになり、習慣づくりができたのが何よりありがたかったです。</p></div>
+      <div class="gr-card rv"><div class="gr-top"><div class="gr-avatar">K</div><div class="gr-meta"><span class="gr-name">Google ユーザー</span><span class="gr-when">クチコミ</span></div><span class="gr-g"><svg viewBox="0 0 48 48" width="18" height="18" aria-label="Google"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.6 2.4 30.1 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.9 6.2C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.6c0-1.6-.1-3.2-.4-4.6H24v9.3h12.4c-.5 2.9-2.2 5.3-4.6 7l7.1 5.5c4.2-3.9 6.6-9.6 6.6-16.2z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.7-2.9-.7-4.6s.3-3.2.7-4.6l-7.9-6.2C1 16.5 0 20.1 0 24s1 7.5 2.6 10.8l7.9-6.2z"/><path fill="#34A853" d="M24 48c6.1 0 11.3-2 15-5.5l-7.1-5.5c-2 1.3-4.5 2.1-7.9 2.1-6.3 0-11.6-4.2-13.5-9.9l-7.9 6.2C6.5 42.6 14.6 48 24 48z"/></svg></span></div><div class="gr-stars">★★★★★</div><p class="gr-text">40代半ばになり運動不足の弊害を感じ、完全個室のマンツーマンを条件に吉祥寺で探しました。お若いのに落ち着いていて、気分にムラがなく常にニュートラルで優しいです。褒め上手で乗せ上手で、運動嫌いで初心者のわたしでも楽しく通えています。筋トレ後は気分が良く自己肯定感が上がります。</p></div>
+      <div class="gr-card rv"><div class="gr-top"><div class="gr-avatar">B</div><div class="gr-meta"><span class="gr-name">Google ユーザー</span><span class="gr-when">クチコミ</span></div><span class="gr-g"><svg viewBox="0 0 48 48" width="18" height="18" aria-label="Google"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.6 2.4 30.1 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.9 6.2C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.6c0-1.6-.1-3.2-.4-4.6H24v9.3h12.4c-.5 2.9-2.2 5.3-4.6 7l7.1 5.5c4.2-3.9 6.6-9.6 6.6-16.2z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.7-2.9-.7-4.6s.3-3.2.7-4.6l-7.9-6.2C1 16.5 0 20.1 0 24s1 7.5 2.6 10.8l7.9-6.2z"/><path fill="#34A853" d="M24 48c6.1 0 11.3-2 15-5.5l-7.1-5.5c-2 1.3-4.5 2.1-7.9 2.1-6.3 0-11.6-4.2-13.5-9.9l-7.9 6.2C6.5 42.6 14.6 48 24 48z"/></svg></span></div><div class="gr-stars">★★★★★</div><p class="gr-text">バドミントンのパフォーマンス向上とダイエット目的で開始。3ヶ月でウエスト-13cm、体重-12kgのダイエットに成功しました！コート内でのフットワークが劇的に軽くなったことに驚いています。解剖学に基づいた的確な指導のおかげで、怪我もしにくい体の使い方が身につきました。</p></div>
+      <div class="gr-card rv"><div class="gr-top"><div class="gr-avatar">R</div><div class="gr-meta"><span class="gr-name">Google ユーザー</span><span class="gr-when">クチコミ</span></div><span class="gr-g"><svg viewBox="0 0 48 48" width="18" height="18" aria-label="Google"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.6 2.4 30.1 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.9 6.2C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.6c0-1.6-.1-3.2-.4-4.6H24v9.3h12.4c-.5 2.9-2.2 5.3-4.6 7l7.1 5.5c4.2-3.9 6.6-9.6 6.6-16.2z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.7-2.9-.7-4.6s.3-3.2.7-4.6l-7.9-6.2C1 16.5 0 20.1 0 24s1 7.5 2.6 10.8l7.9-6.2z"/><path fill="#34A853" d="M24 48c6.1 0 11.3-2 15-5.5l-7.1-5.5c-2 1.3-4.5 2.1-7.9 2.1-6.3 0-11.6-4.2-13.5-9.9l-7.9 6.2C6.5 42.6 14.6 48 24 48z"/></svg></span></div><div class="gr-stars">★★★★★</div><p class="gr-text">リモートワークでの運動不足解消とダイエットで週1で通い始め、3,4ヶ月で筋肉をつけつつ8キロの減量ができました。その時のコンディションに合わせて柔軟に指導してくれます。食生活のアドバイスや肩こりの家でのケアなど、トレーニング外のことも相談にのっていただけます。</p></div>
+      <div class="gr-card rv"><div class="gr-top"><div class="gr-avatar">T</div><div class="gr-meta"><span class="gr-name">Google ユーザー</span><span class="gr-when">クチコミ</span></div><span class="gr-g"><svg viewBox="0 0 48 48" width="18" height="18" aria-label="Google"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.6 2.4 30.1 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.9 6.2C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.6c0-1.6-.1-3.2-.4-4.6H24v9.3h12.4c-.5 2.9-2.2 5.3-4.6 7l7.1 5.5c4.2-3.9 6.6-9.6 6.6-16.2z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.7-2.9-.7-4.6s.3-3.2.7-4.6l-7.9-6.2C1 16.5 0 20.1 0 24s1 7.5 2.6 10.8l7.9-6.2z"/><path fill="#34A853" d="M24 48c6.1 0 11.3-2 15-5.5l-7.1-5.5c-2 1.3-4.5 2.1-7.9 2.1-6.3 0-11.6-4.2-13.5-9.9l-7.9 6.2C6.5 42.6 14.6 48 24 48z"/></svg></span></div><div class="gr-stars">★★★★★</div><p class="gr-text">筋トレの右も左もわかりませんでしたが、担当トレーナーさんに丁寧にご指導いただきトレーニングが好きになりました。通い始めて少しずつボディラインも綺麗になり、周りにも褒められ自己肯定感も上がりました！無理な勧誘も無いですし、安心して通えます。</p></div>
+      <div class="gr-card rv"><div class="gr-top"><div class="gr-avatar">S</div><div class="gr-meta"><span class="gr-name">Google ユーザー</span><span class="gr-when">クチコミ</span></div><span class="gr-g"><svg viewBox="0 0 48 48" width="18" height="18" aria-label="Google"><path fill="#EA4335" d="M24 9.5c3.5 0 6.6 1.2 9.1 3.6l6.8-6.8C35.6 2.4 30.1 0 24 0 14.6 0 6.5 5.4 2.6 13.2l7.9 6.2C12.4 13.7 17.7 9.5 24 9.5z"/><path fill="#4285F4" d="M46.1 24.6c0-1.6-.1-3.2-.4-4.6H24v9.3h12.4c-.5 2.9-2.2 5.3-4.6 7l7.1 5.5c4.2-3.9 6.6-9.6 6.6-16.2z"/><path fill="#FBBC05" d="M10.5 28.6c-.5-1.4-.7-2.9-.7-4.6s.3-3.2.7-4.6l-7.9-6.2C1 16.5 0 20.1 0 24s1 7.5 2.6 10.8l7.9-6.2z"/><path fill="#34A853" d="M24 48c6.1 0 11.3-2 15-5.5l-7.1-5.5c-2 1.3-4.5 2.1-7.9 2.1-6.3 0-11.6-4.2-13.5-9.9l-7.9 6.2C6.5 42.6 14.6 48 24 48z"/></svg></span></div><div class="gr-stars">★★★★★</div><p class="gr-text">デスクワーク中心で肩こりがひどく、マッサージに行ってもその場しのぎでしたが、ここは整体と可動域改善を組み合わせてくれるのが合っていました。ただ筋肉をつけるだけでなく、動かしにくい関節の可動域を広げてくれるので、終わった後の身体の軽さが全然違いました。</p></div>
     </div>
     <div class="gr-link rv"><a href="https://www.google.com/search?q=パーソナルジムTOKOWAKA+吉祥寺" target="_blank">Googleですべてのクチコミを見る</a></div>
   </div>
