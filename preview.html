@@ -225,7 +225,10 @@ header.sc{box-shadow:0 2px 18px rgba(27,42,71,.08);border-bottom:1px solid var(-
 .gr-name{font-family:'Noto Sans JP',sans-serif;font-size:12px;font-weight:500;color:var(--ink)}
 .gr-when{font-family:'Noto Sans JP',sans-serif;font-size:9.5px;color:#9a958c}
 .gr-card .gr-stars{font-size:12px;letter-spacing:1px;margin-bottom:8px}
-.gr-text{font-family:'Noto Sans JP',sans-serif;font-size:12.5px;color:var(--soft);line-height:1.85}
+.gr-text{font-family:'Noto Sans JP',sans-serif;font-size:12.5px;color:var(--soft);line-height:1.85;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.gr-card.open .gr-text{-webkit-line-clamp:unset;overflow:visible}
+.gr-more{font-family:'Noto Sans JP',sans-serif;font-size:11px;color:var(--gold);cursor:pointer;margin-top:9px;display:inline-block;letter-spacing:.04em}
+.gr-more:hover{text-decoration:underline}
 .gr-g{margin-left:auto;font-family:'Cormorant Garamond',serif;font-weight:600;font-size:18px;color:#9a958c}
 .gr-link{text-align:center;margin-top:8px}
 .gr-link a{font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--navy);text-decoration:none;border-bottom:1px solid var(--gold);padding-bottom:3px;letter-spacing:.04em}
@@ -310,14 +313,11 @@ header.sc{box-shadow:0 2px 18px rgba(27,42,71,.08);border-bottom:1px solid var(-
 .plan-div span{font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:.16em;color:var(--soft)}
 .plan-div i{width:40px;height:1px;background:rgba(27,42,71,.18);display:block}
 
-/* ===== STATEMENT（ブランドの想い）===== */
-#statement{position:relative;overflow:hidden;text-align:center;background:var(--navy)}
-.stmt-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.16}
-.stmt-ov{position:absolute;inset:0;background:linear-gradient(rgba(19,32,58,.82),rgba(19,32,58,.93))}
-#statement .si{position:relative;z-index:2}
-.stmt-en{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;letter-spacing:.24em;color:var(--gold-l);display:block;margin-bottom:28px}
-.stmt-h{font-family:'Shippori Mincho',serif;font-weight:300;font-size:clamp(20px,3vw,30px);color:#fff;line-height:2.1;letter-spacing:.18em;margin-bottom:32px}
-.stmt-p{font-family:'Noto Sans JP',sans-serif;font-weight:300;font-size:13px;color:rgba(255,255,255,.62);line-height:2.5;letter-spacing:.1em;max-width:580px;margin:0 auto}
+/* ===== STATEMENT（ブランドの想い・明るい）===== */
+#statement{background:var(--white);text-align:center}
+.stmt-en{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:15px;letter-spacing:.24em;color:var(--gold);display:block;margin-bottom:28px}
+.stmt-h{font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(20px,3vw,30px);color:var(--navy);line-height:1.9;letter-spacing:.1em;margin-bottom:32px}
+.stmt-p{font-family:'Noto Sans JP',sans-serif;font-weight:300;font-size:13px;color:var(--soft);line-height:2.4;letter-spacing:.06em;max-width:580px;margin:0 auto}
 
 /* ===== ミニキャンペーン帯（随時差し込み）===== */
 .mini-camp-wrap{max-width:var(--max);margin:48px auto;padding:0 40px}
@@ -458,9 +458,9 @@ footer{background:#0f1929;padding:38px 40px;text-align:center}
 <!-- ===== HERO（フック：ターゲット＋ベネフィット＋共感）===== -->
 <section id="hero">
   <div class="hero-slides">
-    <div class="hero-slide active" style="background-image:url('https://tokowaka-gym.com/images/hero01.jpg')"></div>
-    <div class="hero-slide" style="background-image:url('https://tokowaka-gym.com/images/hero03.jpg')"></div>
-    <div class="hero-slide" style="background-image:url('https://tokowaka-gym.com/images/hero02.jpg')"></div>
+    <div class="hero-slide active" style="background-image:url('https://tokowaka-gym.com/images/hero01.jpg');background-position:center 38%"></div>
+    <div class="hero-slide" style="background-image:url('https://tokowaka-gym.com/images/hero03.jpg');background-position:center 32%"></div>
+    <div class="hero-slide" style="background-image:url('https://tokowaka-gym.com/images/hero02.jpg');background-position:center 48%"></div>
   </div>
   <div class="hero-overlay"></div>
   <div class="hero-inner">
@@ -904,8 +904,6 @@ footer{background:#0f1929;padding:38px 40px;text-align:center}
 
 <!-- ===== STATEMENT（ブランドの想い）===== -->
 <section id="statement">
-  <div class="stmt-bg" style="background-image:url('https://tokowaka-gym.com/images/hero02.jpg')"></div>
-  <div class="stmt-ov"></div>
   <div class="si">
     <div class="rv">
       <span class="stmt-en">Tokowaka</span>
@@ -1030,6 +1028,7 @@ function goToReservation(){window.open('https://reservation.tokowaka-gym.com/'+l
 (function(){var t=document.getElementById('galTrack');if(!t)return;Array.prototype.slice.call(t.children).forEach(function(c){t.appendChild(c.cloneNode(true))});var pos=0,paused=false;function tick(){if(!paused){pos+=0.5;if(pos>=t.scrollWidth/2)pos=0;t.style.transform='translateX(-'+pos+'px)'}requestAnimationFrame(tick)}tick();t.addEventListener('mouseenter',function(){paused=true});t.addEventListener('mouseleave',function(){paused=false})})();
 function openLB(f){var lb=document.getElementById('lightbox');document.getElementById('lbImg').src='https://tokowaka-gym.com/images/'+f;lb.classList.add('open')}
 function closeLB(){document.getElementById('lightbox').classList.remove('open')}
+(function(){document.querySelectorAll('.gr-card').forEach(function(card){var txt=card.querySelector('.gr-text');if(!txt)return;if(txt.scrollHeight>txt.clientHeight+4){var m=document.createElement('span');m.className='gr-more';m.textContent='続きを読む';m.addEventListener('click',function(){card.classList.toggle('open');m.textContent=card.classList.contains('open')?'閉じる':'続きを読む'});card.appendChild(m)}})})();
 function toggleCC(id){document.getElementById(id).classList.toggle('open')}
 function toggleFaq(el){el.classList.toggle('open')}
 </script>
