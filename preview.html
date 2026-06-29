@@ -122,12 +122,14 @@ header.sc{box-shadow:0 2px 18px rgba(27,42,71,.08);border-bottom:1px solid var(-
 #points{background:var(--cream)}
 .pts-intro{text-align:center;font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--soft);margin-bottom:44px;line-height:1.9;position:relative}
 .pts-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;position:relative}
-.pt-card{background:#fff;border:1px solid var(--bd);border-radius:var(--r);padding:34px 26px;text-align:center;box-shadow:0 4px 20px rgba(27,42,71,.06);transition:transform .3s,box-shadow .3s}
+.pt-card{background:#fff;border:1px solid var(--bd);border-radius:var(--r);overflow:hidden;text-align:left;box-shadow:0 4px 20px rgba(27,42,71,.06);transition:transform .3s,box-shadow .3s;display:flex;flex-direction:column}
 .pt-card:hover{transform:translateY(-5px);box-shadow:0 10px 30px rgba(27,42,71,.1)}
-.pt-icon{width:56px;height:56px;border-radius:50%;border:1px solid rgba(184,150,90,.4);display:flex;align-items:center;justify-content:center;margin:0 auto 20px}
-.pt-icon svg{width:28px;height:28px;stroke:var(--gold);fill:none;stroke-width:1.3;stroke-linecap:round;stroke-linejoin:round}
+.pt-photo{aspect-ratio:16/10;overflow:hidden;background:linear-gradient(135deg,#e6ddcd,#d6cbb6);position:relative}
+.pt-photo img{width:100%;height:100%;object-fit:cover}
+.pt-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(27,42,71,.42);font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:.08em}
+.pt-body{padding:24px 24px 28px;flex:1}
 .pt-no{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:13px;color:var(--gold);letter-spacing:.14em;display:block;margin-bottom:8px}
-.pt-title{font-family:'Shippori Mincho',serif;font-weight:600;font-size:18px;color:var(--navy);line-height:1.5;margin-bottom:12px}
+.pt-title{font-family:'Noto Serif JP',serif;font-weight:600;font-size:18px;color:var(--navy);line-height:1.5;margin-bottom:12px}
 .pt-desc{font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--soft);line-height:1.85}
 .pt-desc strong{color:var(--gold);font-weight:500}
 
@@ -517,22 +519,28 @@ footer{background:#0f1929;padding:38px 40px;text-align:center}
     <p class="pts-intro rv">TOKOWAKAが、これまで報われなかったあなたを変えられる理由。</p>
     <div class="pts-grid">
       <div class="pt-card rv d1">
-        <div class="pt-icon"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3"/><circle cx="16.5" cy="9.5" r="2.3"/><path d="M3.5 19c0-3 2.5-5.2 5.5-5.2s5.5 2.2 5.5 5.2"/><path d="M15 18.2c.2-2 1.9-3.4 4-3.4"/></svg></div>
-        <span class="pt-no">Point 01</span>
-        <h3 class="pt-title">親身なトレーナー陣</h3>
-        <p class="pt-desc">その日の体調も、気分も、目標も。<strong>あなたのペースに寄り添い</strong>、毎回つくるオーダーメイド。無理な勧誘は一切ありません。</p>
+        <div class="pt-photo"><img src="https://tokowaka-gym.com/images/point01.jpg" alt="親身なトレーナー" onerror="this.style.display='none';this.parentNode.querySelector('.pt-ph').style.display='flex'"><div class="pt-ph" style="display:none">指導風景の写真</div></div>
+        <div class="pt-body">
+          <span class="pt-no">Point 01</span>
+          <h3 class="pt-title">親身なトレーナー陣</h3>
+          <p class="pt-desc">その日の体調も、気分も、目標も。<strong>あなたのペースに寄り添い</strong>、毎回つくるオーダーメイド。無理な勧誘は一切ありません。</p>
+        </div>
       </div>
       <div class="pt-card rv d2">
-        <div class="pt-icon"><svg viewBox="0 0 24 24"><path d="M4 10v4M7 8v8M17 8v8M20 10v4"/><path d="M7 12h10"/></svg></div>
-        <span class="pt-no">Point 02</span>
-        <h3 class="pt-title">運動 × アフターケア</h3>
-        <p class="pt-desc">トレーニングだけでなく<strong>ストレッチ整体で身体を整える</strong>。鍛えながら不調もケアするから、無理なく続けられます。</p>
+        <div class="pt-photo"><img src="https://tokowaka-gym.com/images/point02.jpg" alt="運動とアフターケア" onerror="this.style.display='none';this.parentNode.querySelector('.pt-ph').style.display='flex'"><div class="pt-ph" style="display:none">ストレッチ整体の写真</div></div>
+        <div class="pt-body">
+          <span class="pt-no">Point 02</span>
+          <h3 class="pt-title">運動 × アフターケア</h3>
+          <p class="pt-desc">トレーニングだけでなく<strong>ストレッチ整体で身体を整える</strong>。鍛えながら不調もケアするから、無理なく続けられます。</p>
+        </div>
       </div>
       <div class="pt-card rv d3">
-        <div class="pt-icon"><svg viewBox="0 0 24 24"><rect x="6" y="3.5" width="12" height="17" rx="1"/><circle cx="14.3" cy="12" r=".9"/></svg></div>
-        <span class="pt-no">Point 03</span>
-        <h3 class="pt-title">¥6,000/1回〜・完全個室</h3>
-        <p class="pt-desc">続けやすい価格と、<strong>完全個室・手ぶらでOK</strong>の環境。人目を気にせず、自分の身体だけに集中できます。</p>
+        <div class="pt-photo"><img src="https://tokowaka-gym.com/images/point03.jpg" alt="完全個室" onerror="this.style.display='none';this.parentNode.querySelector('.pt-ph').style.display='flex'"><div class="pt-ph" style="display:none">個室・施設の写真</div></div>
+        <div class="pt-body">
+          <span class="pt-no">Point 03</span>
+          <h3 class="pt-title">¥6,000/1回〜・完全個室</h3>
+          <p class="pt-desc">続けやすい価格と、<strong>完全個室・手ぶらでOK</strong>の環境。人目を気にせず、自分の身体だけに集中できます。</p>
+        </div>
       </div>
     </div>
     <div class="cta-center rv">
