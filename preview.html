@@ -127,11 +127,13 @@ header.sc{box-shadow:0 2px 18px rgba(27,42,71,.08);border-bottom:1px solid var(-
 .worry-list{list-style:none}
 .worry-list li{font-family:'Noto Sans JP',sans-serif;font-size:15px;color:rgba(255,255,255,.9);padding:15px 0;display:flex;gap:13px;align-items:flex-start;line-height:1.6;border-bottom:1px solid rgba(255,255,255,.12)}
 .worry-list li::before{content:'✓';color:#fff;background:var(--gold);width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;flex-shrink:0;margin-top:2px}
-.worry-photo{border-radius:var(--r);overflow:hidden;aspect-ratio:4/5;background:var(--navy-d);box-shadow:0 8px 30px rgba(0,0,0,.32)}
-.worry-photo img{width:100%;height:100%;object-fit:cover}
-.worry-empathy{grid-column:1/-1;text-align:center;margin-top:48px;padding:34px 36px;background:var(--cream);border-radius:var(--r);border-left:4px solid var(--gold);box-shadow:0 12px 40px rgba(0,0,0,.28)}
-.worry-empathy p{font-family:'Shippori Mincho',serif;font-weight:500;font-size:clamp(15px,2vw,19px);color:var(--navy);line-height:1.85}
-.worry-empathy strong{color:var(--gold)}
+.worry-photo{border-radius:var(--r);overflow:hidden;aspect-ratio:5/4;background:var(--navy-d);box-shadow:0 8px 30px rgba(0,0,0,.32)}
+.worry-photo img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.worry-empathy{grid-column:1/-1;text-align:center;margin-top:40px;padding:30px 36px;background:var(--cream);border-radius:var(--r);border-left:4px solid var(--gold);box-shadow:0 12px 40px rgba(0,0,0,.28)}
+.worry-empathy-h{font-family:'Shippori Mincho',serif;font-weight:600;font-size:clamp(18px,2.5vw,24px);color:var(--navy);line-height:1.5;margin-bottom:12px}
+.worry-empathy-h em{font-style:normal;color:var(--gold)}
+.worry-empathy p{font-family:'Noto Sans JP',sans-serif;font-weight:400;font-size:clamp(13px,1.7vw,15px);color:var(--soft);line-height:1.95}
+.worry-empathy strong{color:var(--gold);font-weight:600}
 
 /* ===== 3つのポイント ===== */
 #points{background:var(--cream)}
@@ -267,8 +269,8 @@ header.sc{box-shadow:0 2px 18px rgba(27,42,71,.08);border-bottom:1px solid var(-
 #gallery .sh-sub{color:rgba(255,255,255,.6)}
 .gal-track-wrap{position:relative;z-index:2;overflow:hidden}
 .gal-track{display:flex;gap:14px;width:max-content;padding:0 40px}
-.gal-slide{flex:0 0 min(300px,72vw);height:210px;border-radius:var(--r);overflow:hidden;cursor:pointer;position:relative;box-shadow:0 10px 34px rgba(0,0,0,.35)}
-.gal-slide img{width:100%;height:100%;object-fit:cover;transition:transform .5s}
+.gal-slide{flex:0 0 min(248px,64vw);height:330px;border-radius:var(--r);overflow:hidden;cursor:pointer;position:relative;box-shadow:0 10px 34px rgba(0,0,0,.35)}
+.gal-slide img{width:100%;height:100%;object-fit:cover;object-position:center 28%;transition:transform .5s}
 .gal-slide:hover img{transform:scale(1.05)}
 .gal-cap{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(to top,rgba(10,15,25,.9),transparent);color:#fff;font-family:'Noto Sans JP',sans-serif;font-size:11px;padding:24px 14px 12px;letter-spacing:.04em}
 .lightbox{position:fixed;inset:0;background:rgba(10,15,25,.94);z-index:9999;display:none;align-items:center;justify-content:center;cursor:zoom-out;padding:24px}
@@ -557,14 +559,13 @@ footer{background:#101b2e;padding:30px 40px;text-align:center}
           <li>マッサージや整体に通っても、また同じ状態に戻ってしまう</li>
           <li>自己流でやっているけど、本当に正しいのか自信がない</li>
         </ul>
-        <h3 class="worry-h" style="margin-top:34px">変われなかったのは、<br><em>あなたのせいじゃない。</em></h3>
-        <p class="worry-sub" style="margin-bottom:0">続かなかったのも、戻ってしまったのも、正しい方法に出会えていなかっただけ。原因さえ分かれば、身体は応えてくれます。</p>
       </div>
       <div class="worry-photo rv d2">
         <img src="https://tokowaka-gym.com/images/charm02.jpg" alt="身体の悩みに向き合う" onerror="this.style.display='none'">
       </div>
       <div class="worry-empathy rv">
-        <p>その不調も、続かなさも——<br><strong>「運動」と「整体」を組み合わせれば、根本から変えられます。</strong></p>
+        <h3 class="worry-empathy-h">変われなかったのは、<em>あなたのせいじゃない。</em></h3>
+        <p>続かなかったのも、戻ってしまったのも、正しい方法に出会えていなかっただけ。その不調も、続かなさも——<strong>「運動 × 整体」で、根本から変えられます。</strong></p>
       </div>
     </div>
   </div>
@@ -802,6 +803,10 @@ footer{background:#101b2e;padding:30px 40px;text-align:center}
       <div class="gal-slide" onclick="openLB('gallery02.jpg')"><img src="https://tokowaka-gym.com/images/gallery02.jpg" alt=""><div class="gal-cap">ストレッチ・整体スペース</div></div>
       <div class="gal-slide" onclick="openLB('gallery03.jpg')"><img src="https://tokowaka-gym.com/images/gallery03.jpg" alt=""><div class="gal-cap">カウンセリング・待合スペース</div></div>
       <div class="gal-slide" onclick="openLB('gallery04.jpg')"><img src="https://tokowaka-gym.com/images/gallery04.jpg" alt=""><div class="gal-cap">洗練された上質な空間</div></div>
+      <div class="gal-slide" onclick="openLB('gallery05.jpg')"><img src="https://tokowaka-gym.com/images/gallery05.jpg" alt=""><div class="gal-cap">丁寧なカウンセリング</div></div>
+      <div class="gal-slide" onclick="openLB('gallery06.jpg')"><img src="https://tokowaka-gym.com/images/gallery06.jpg" alt=""><div class="gal-cap">マンツーマン指導</div></div>
+      <div class="gal-slide" onclick="openLB('gallery07.jpg')"><img src="https://tokowaka-gym.com/images/gallery07.jpg" alt=""><div class="gal-cap">ストレッチ・整体ケア</div></div>
+      <div class="gal-slide" onclick="openLB('gallery08.jpg')"><img src="https://tokowaka-gym.com/images/gallery08.jpg" alt=""><div class="gal-cap">ペアトレーニング</div></div>
     </div>
   </div>
   <div class="lightbox" id="lightbox" onclick="closeLB()"><img id="lbImg" src="" alt=""></div>
