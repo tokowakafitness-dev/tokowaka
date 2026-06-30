@@ -69,8 +69,8 @@ header.sc{box-shadow:0 2px 18px rgba(27,42,71,.08);border-bottom:1px solid var(-
 /* ===== HERO ===== */
 #hero{display:grid;grid-template-columns:1.05fr .95fr;min-height:80vh;overflow:hidden;margin-top:66px;background:var(--cream)}
 .hero-inner{display:flex;flex-direction:column;justify-content:center;padding:50px 5.5vw}
-.hero-visual{position:relative;overflow:hidden;background:var(--navy-d)}
-.hero-slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1.6s ease}
+.hero-visual{display:grid;grid-template-columns:1fr 1fr;gap:2px;position:relative;overflow:hidden;background:var(--navy-d)}
+.hero-slide{position:relative;background-size:cover;background-position:center;min-height:100%;opacity:1;transition:opacity 1.6s ease}
 .hero-slide.active{opacity:1}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(184,150,90,.5);color:var(--gold);font-family:'Noto Sans JP',sans-serif;font-size:10px;letter-spacing:.2em;padding:6px 16px;border-radius:100px;margin-bottom:24px;background:#fff}
 .hero-badge i{width:5px;height:5px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
@@ -153,7 +153,9 @@ header.sc{box-shadow:0 2px 18px rgba(27,42,71,.08);border-bottom:1px solid var(-
   .hbg{display:flex}
   .si{padding:60px 24px}
   #hero{grid-template-columns:1fr;min-height:auto}
-  .hero-visual{min-height:50vh;order:2}
+  .hero-visual{min-height:56vh;order:2;display:block}
+  .hero-visual .hero-slide{position:absolute;inset:0;opacity:0}
+  .hero-visual .hero-slide.active{opacity:1}
   .hero-inner{padding:40px 24px;order:1}
   .ba-grid{grid-template-columns:1fr;gap:14px}
   .worry-wrap{grid-template-columns:1fr;gap:28px}
@@ -477,9 +479,8 @@ footer{background:#101b2e;padding:30px 40px;text-align:center}
     </div>
   </div>
   <div class="hero-visual">
-    <div class="hero-slide active" style="background-image:url('https://tokowaka-gym.com/images/hero01.jpg');background-position:center 30%"></div>
-    <div class="hero-slide" style="background-image:url('https://tokowaka-gym.com/images/hero03.jpg');background-position:center 25%"></div>
-    <div class="hero-slide" style="background-image:url('https://tokowaka-gym.com/images/hero02.jpg');background-position:center 50%"></div>
+    <div class="hero-slide active" style="background-image:url('https://tokowaka-gym.com/images/hero01.jpg');background-position:center 35%"></div>
+    <div class="hero-slide" style="background-image:url('https://tokowaka-gym.com/images/hero03.jpg');background-position:center 30%"></div>
   </div>
 </section>
 
@@ -577,10 +578,10 @@ footer{background:#101b2e;padding:30px 40px;text-align:center}
     <p class="pts-intro rv">TOKOWAKAが、これまで報われなかったあなたを変えられる理由。</p>
     <div class="pts-grid">
       <div class="pt-card rv d1">
-        <div class="pt-photo"><img src="https://tokowaka-gym.com/images/point01.jpg" alt="親身なトレーナー" onerror="this.style.display='none';this.parentNode.querySelector('.pt-ph').style.display='flex'"><div class="pt-ph" style="display:none">指導風景の写真</div></div>
+        <div class="pt-photo"><img src="https://tokowaka-gym.com/images/charm01.jpg" alt="精鋭トレーナー陣" onerror="this.style.display='none';this.parentNode.querySelector('.pt-ph').style.display='flex'"><div class="pt-ph" style="display:none">トレーナーの写真</div></div>
         <div class="pt-body">
           <span class="pt-no">Point 01</span>
-          <h3 class="pt-title">親身なトレーナー陣</h3>
+          <h3 class="pt-title">精鋭トレーナー陣</h3>
           <p class="pt-desc">その日の体調も、気分も、目標も。<strong>あなたのペースに寄り添い</strong>、毎回つくるオーダーメイド。無理な勧誘は一切ありません。</p>
         </div>
       </div>
