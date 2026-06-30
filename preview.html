@@ -259,6 +259,19 @@ header.sc{box-shadow:0 2px 18px rgba(27,42,71,.08);border-bottom:1px solid var(-
 .flow-title{font-family:'Shippori Mincho',serif;font-weight:600;font-size:15px;color:var(--navy);margin-bottom:6px}
 .flow-desc{font-family:'Noto Sans JP',sans-serif;font-size:11.5px;color:var(--soft);line-height:1.75}
 
+/* ===== 体験の流れ（縦タイムライン・画像付き）===== */
+#experience{background:var(--cream)}
+.exp-part{max-width:840px;margin:0 auto 36px}
+.exp-part-h{text-align:center;font-family:'Shippori Mincho',serif;font-weight:600;font-size:clamp(16px,2.2vw,21px);color:var(--navy);margin-bottom:22px;padding-bottom:12px;border-bottom:1px solid var(--bd);letter-spacing:.04em}
+.exp-part-h em{font-style:normal;color:var(--gold)}
+.exp-step{display:grid;grid-template-columns:48px 210px 1fr;gap:24px;align-items:center;padding:14px 0}
+.exp-num{width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.exp-img{border-radius:var(--r);overflow:hidden;aspect-ratio:4/3;box-shadow:0 6px 20px rgba(27,42,71,.1);background:var(--navy-d)}
+.exp-img img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.exp-body h4{font-family:'Shippori Mincho',serif;font-weight:600;font-size:17px;color:var(--navy);margin-bottom:6px}
+.exp-body p{font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--soft);line-height:1.85}
+@media(max-width:580px){.exp-step{grid-template-columns:40px 1fr;gap:14px;align-items:start}.exp-img{grid-column:2;aspect-ratio:16/10;margin:8px 0}}
+
 /* ===== GALLERY（背景写真＋自動スクロール＋拡大）===== */
 #gallery{position:relative;overflow:hidden;background:var(--navy);padding-bottom:64px}
 .gal-bg{position:absolute;inset:0;background-size:cover;background-position:center;opacity:.22}
@@ -766,13 +779,6 @@ footer{background:#101b2e;padding:30px 40px;text-align:center}
       <div class="relief-item rv d1"><span class="relief-q">Q</span><div class="relief-c"><h4>料金が高そうで踏み出せない</h4><p>1回¥6,000〜の継続しやすい価格設計。さらに今なら入会金・初回体験が0円です。</p></div></div>
       <div class="relief-item rv d2"><span class="relief-q">Q</span><div class="relief-c"><h4>トレーナーとの相性が心配</h4><p>大会入賞トレーナーが3名在籍。目的・人柄の相性に合わせて、あなたに合う担当を選べます。</p></div></div>
     </div>
-    <p class="flow-h rv">体験当日の<em>流れ</em></p>
-    <div class="flow-grid">
-      <div class="flow-step rv d1"><span class="flow-num">Step 01</span><div class="flow-circle"><svg viewBox="0 0 24 24"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></div><h4 class="flow-title">ご予約</h4><p class="flow-desc">Web・お電話で<br>かんたん予約</p></div>
-      <div class="flow-step rv d2"><span class="flow-num">Step 02</span><div class="flow-circle"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><h4 class="flow-title">カウンセリング</h4><p class="flow-desc">お悩み・目標を<br>丁寧にヒアリング</p></div>
-      <div class="flow-step rv d3"><span class="flow-num">Step 03</span><div class="flow-circle"><svg viewBox="0 0 24 24"><path d="M6 8v8M18 8v8M9 12h6M4 10v4M20 10v4"/></svg></div><h4 class="flow-title">体験トレーニング</h4><p class="flow-desc">姿勢評価＋実際の<br>トレーニング</p></div>
-      <div class="flow-step rv d4"><span class="flow-num">Step 04</span><div class="flow-circle"><svg viewBox="0 0 24 24"><path d="M12 3l2.2 5.6L20 9l-4.5 4 1.4 6L12 16l-4.9 3 1.4-6L4 9l5.8-.4z"/></svg></div><h4 class="flow-title">プランのご提案</h4><p class="flow-desc">当日入会で特典<br>無理な勧誘なし</p></div>
-    </div>
   </div>
   <div class="mini-camp-wrap rv">
     <div class="mini-camp">
@@ -781,6 +787,51 @@ footer{background:#101b2e;padding:30px 40px;text-align:center}
         <span class="mini-camp-sub">入会金0円 ＋ 初回体験0円・毎月先着5名様まで</span>
       </div>
       <a href="javascript:void(0)" onclick="goToReservation()">無料体験を予約</a>
+    </div>
+  </div>
+</section>
+
+<!-- ===== 体験の流れ ===== -->
+<section id="experience">
+  <div class="si">
+    <div class="sh rv">
+      <span class="ey">Trial Flow</span>
+      <div class="gl"></div>
+      <h2 class="sh-ja">無料体験の流れ</h2>
+    </div>
+    <div class="exp-part rv">
+      <h3 class="exp-part-h">ご予約 〜 ご来店</h3>
+      <div class="exp-step">
+        <div class="exp-num">1</div>
+        <div class="exp-img"><img src="https://tokowaka-gym.com/images/gallery02.jpg" alt=""></div>
+        <div class="exp-body"><h4>無料体験を予約</h4><p>Web・お電話で簡単にご予約。ご希望の日時をお選びいただけます。気になることは予約時にお気軽にご相談ください。</p></div>
+      </div>
+      <div class="exp-step">
+        <div class="exp-num">2</div>
+        <div class="exp-img"><img src="https://tokowaka-gym.com/images/gallery04.jpg" alt=""></div>
+        <div class="exp-body"><h4>店舗へご来店</h4><p>手ぶらでOK。シューズ・ウェアは無料貸出。吉祥寺駅徒歩10分、完全個室の隠れ家ジムでお待ちしています。</p></div>
+      </div>
+    </div>
+    <div class="exp-part rv">
+      <h3 class="exp-part-h">無料体験 <em>当日</em></h3>
+      <div class="exp-step">
+        <div class="exp-num">1</div>
+        <div class="exp-img"><img src="https://tokowaka-gym.com/images/gallery05.jpg" alt=""></div>
+        <div class="exp-body"><h4>カウンセリング</h4><p>お悩み・目標・生活習慣を丁寧にヒアリング。一人ひとりに合わせた最適なプランを一緒に設計します。</p></div>
+      </div>
+      <div class="exp-step">
+        <div class="exp-num">2</div>
+        <div class="exp-img"><img src="https://tokowaka-gym.com/images/gallery06.jpg" alt=""></div>
+        <div class="exp-body"><h4>トレーニング体験</h4><p>姿勢・動作を評価したうえで、実際のトレーニングを体験。運動が苦手な方でも、無理なく安心して取り組めます。</p></div>
+      </div>
+      <div class="exp-step">
+        <div class="exp-num">3</div>
+        <div class="exp-img"><img src="https://tokowaka-gym.com/images/gallery07.jpg" alt=""></div>
+        <div class="exp-body"><h4>振り返り・食事指導</h4><p>体験の振り返りと、毎日の食事のアドバイス。当日ご入会で特典あり。無理な勧誘は一切ありませんので、ご安心ください。</p></div>
+      </div>
+    </div>
+    <div class="cta-center rv">
+      <a href="javascript:void(0)" onclick="goToReservation()" class="btn-gold">無料体験を予約する</a>
     </div>
   </div>
 </section>
