@@ -214,10 +214,8 @@ header.sc{box-shadow:0 2px 18px rgba(27,42,71,.08);border-bottom:1px solid var(-
 .ig-num{font-family:'Shippori Mincho',serif;font-weight:600;font-size:40px;color:var(--navy);line-height:1}
 .ig-num small{font-size:18px;color:var(--gold)}
 .ig-lbl{font-family:'Noto Sans JP',sans-serif;font-size:11px;color:var(--soft);letter-spacing:.06em;margin-top:10px}
-.ig-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:34px}
-.ig-item{aspect-ratio:4/5;border-radius:var(--r);overflow:hidden;background:linear-gradient(135deg,#e6ddcd,#d6cbb6);position:relative}
-.ig-item img{width:100%;height:100%;object-fit:cover}
-.ig-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(27,42,71,.42);font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:.08em}
+.ig-embeds{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:34px;align-items:start;justify-items:center}
+.ig-embeds .instagram-media{margin:0 auto!important;min-width:auto!important;width:100%!important;max-width:340px!important}
 .ig-cta{text-align:center}
 .ig-cta a{display:inline-flex;align-items:center;gap:8px;font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--navy);text-decoration:none;border:1px solid var(--bd);border-radius:100px;padding:12px 28px;transition:border-color .25s,color .25s}
 .ig-cta a:hover{border-color:var(--gold);color:var(--gold)}
@@ -439,7 +437,7 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
   .gal-grid{grid-template-columns:1fr 1fr}
   .camp-grid{grid-template-columns:1fr}
   .ac-grid{grid-template-columns:1fr;gap:28px}
-  .ig-grid{grid-template-columns:1fr 1fr}
+  .ig-embeds{grid-template-columns:1fr}
   .ig-stats{gap:32px}
 }
 @media(max-width:580px){
@@ -717,11 +715,10 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
       <div class="ig-stat"><div class="ig-num">10,000<small>+</small></div><div class="ig-lbl">平均再生数 / 投稿</div></div>
       <div class="ig-stat"><div class="ig-num">毎日</div><div class="ig-lbl">トレーニング情報を発信</div></div>
     </div>
-    <div class="ig-grid">
-      <div class="ig-item rv d1"><img src="https://tokowaka-gym.com/images/ig-01.jpg" alt="" onerror="this.style.display='none';this.parentNode.querySelector('.ig-ph').style.display='flex'"><div class="ig-ph" style="display:none">Instagram 投稿</div></div>
-      <div class="ig-item rv d2"><img src="https://tokowaka-gym.com/images/ig-02.jpg" alt="" onerror="this.style.display='none';this.parentNode.querySelector('.ig-ph').style.display='flex'"><div class="ig-ph" style="display:none">Instagram 投稿</div></div>
-      <div class="ig-item rv d3"><img src="https://tokowaka-gym.com/images/ig-03.jpg" alt="" onerror="this.style.display='none';this.parentNode.querySelector('.ig-ph').style.display='flex'"><div class="ig-ph" style="display:none">Instagram 投稿</div></div>
-      <div class="ig-item rv d4"><img src="https://tokowaka-gym.com/images/ig-04.jpg" alt="" onerror="this.style.display='none';this.parentNode.querySelector('.ig-ph').style.display='flex'"><div class="ig-ph" style="display:none">Instagram 投稿</div></div>
+    <div class="ig-embeds rv">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DX1S77YT8tG/" data-instgrm-version="14"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DaIBz9Yh84g/" data-instgrm-version="14"></blockquote>
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DY5uQ2CSpTM/" data-instgrm-version="14"></blockquote>
     </div>
     <div class="ig-cta rv">
       <a href="https://www.instagram.com/gym_tokowaka" target="_blank"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="var(--gold)" stroke="none"/></svg>@gym_tokowaka をフォローする</a>
@@ -820,7 +817,7 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
       <h3 class="exp-part-h">無料体験 <em>当日</em></h3>
       <div class="exp-step">
         <div class="exp-num">1</div>
-        <div class="exp-img"><img src="https://tokowaka-gym.com/images/gallery05.jpg" alt=""></div>
+        <div class="exp-img"><img src="https://tokowaka-gym.com/images/gallery09.jpg" alt=""></div>
         <div class="exp-body"><h4>カウンセリング</h4><p>お悩み・目標・生活習慣を丁寧にヒアリング。一人ひとりに合わせた最適なプランを一緒に設計します。</p></div>
       </div>
       <div class="exp-step">
@@ -1101,6 +1098,9 @@ function goToReservation(){window.open('https://reservation.tokowaka-gym.com/'+l
 (function(){var t=document.getElementById('galTrack');if(!t)return;Array.prototype.slice.call(t.children).forEach(function(c){t.appendChild(c.cloneNode(true))});var pos=0,paused=false;function tick(){if(!paused){pos+=0.5;if(pos>=t.scrollWidth/2)pos=0;t.style.transform='translateX(-'+pos+'px)'}requestAnimationFrame(tick)}tick();t.addEventListener('mouseenter',function(){paused=true});t.addEventListener('mouseleave',function(){paused=false})})();
 function openLB(f){var lb=document.getElementById('lightbox');document.getElementById('lbImg').src='https://tokowaka-gym.com/images/'+f;lb.classList.add('open')}
 function closeLB(){document.getElementById('lightbox').classList.remove('open')}
+</script>
+<script async src="//www.instagram.com/embed.js"></script>
+<script>
 (function(){document.querySelectorAll('.gr-card').forEach(function(card){var txt=card.querySelector('.gr-text');if(!txt)return;if(txt.scrollHeight>txt.clientHeight+4){var m=document.createElement('span');m.className='gr-more';m.textContent='続きを読む';m.addEventListener('click',function(){card.classList.toggle('open');m.textContent=card.classList.contains('open')?'閉じる':'続きを読む'});card.appendChild(m)}})})();
 function toggleCC(id){document.getElementById(id).classList.toggle('open')}
 function toggleFaq(el){el.classList.toggle('open')}
