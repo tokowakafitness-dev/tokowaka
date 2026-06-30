@@ -22,7 +22,11 @@ body{
   font-family:'Noto Serif JP','Shippori Mincho','游明朝',serif;
   background:var(--white);color:var(--ink);overflow-x:hidden;
   font-size:15px;line-height:1.85;font-weight:300;letter-spacing:.035em;
+  display:flex;flex-direction:column;min-height:100vh;
 }
+/* セクション表示順（DOMは不変・視覚順のみ並べ替え）：トレーナー→口コミ→ギャラリー→Instagram→不安解消→体験の流れ */
+header{order:-1}
+#hero{order:1}#trust{order:2}#voice1{order:3}#worry{order:4}#points{order:5}#trainer{order:6}#voice2{order:7}#gallery{order:8}#instagram{order:9}#relief{order:10}#experience{order:11}#plan{order:12}#campaign{order:13}#faq{order:14}#statement{order:15}#access{order:16}#contact{order:17}footer{order:18}
 .rv{opacity:0;transform:translateY(20px);transition:opacity .9s ease,transform .9s ease}
 .rv.on{opacity:1;transform:none}
 .d1{transition-delay:.08s}.d2{transition-delay:.18s}.d3{transition-delay:.28s}.d4{transition-delay:.38s}.d5{transition-delay:.48s}
@@ -821,8 +825,8 @@ footer{background:#101b2e;padding:30px 40px;text-align:center}
       </div>
       <div class="exp-step">
         <div class="exp-num">2</div>
-        <div class="exp-img"><img src="https://tokowaka-gym.com/images/gallery06.jpg" alt=""></div>
-        <div class="exp-body"><h4>トレーニング体験</h4><p>姿勢・動作を評価したうえで、実際のトレーニングを体験。運動が苦手な方でも、無理なく安心して取り組めます。</p></div>
+        <div class="exp-img"><img src="https://tokowaka-gym.com/images/gallery08.jpg" alt=""></div>
+        <div class="exp-body"><h4>トレーニング体験</h4><p>姿勢・動作を評価したうえで、実際のトレーニングを体験。ご友人やパートナーとの<strong>ペアトレーニングも可能</strong>です。運動が苦手な方でも、安心して取り組めます。</p></div>
       </div>
       <div class="exp-step">
         <div class="exp-num">3</div>
