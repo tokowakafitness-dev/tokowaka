@@ -214,8 +214,11 @@ header.sc{box-shadow:0 2px 18px rgba(27,42,71,.08);border-bottom:1px solid var(-
 .ig-num{font-family:'Shippori Mincho',serif;font-weight:600;font-size:40px;color:var(--navy);line-height:1}
 .ig-num small{font-size:18px;color:var(--gold)}
 .ig-lbl{font-family:'Noto Sans JP',sans-serif;font-size:11px;color:var(--soft);letter-spacing:.06em;margin-top:10px}
-.ig-embeds{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:34px;align-items:start;justify-items:center}
-.ig-embeds .instagram-media{margin:0 auto!important;min-width:auto!important;width:100%!important;max-width:340px!important}
+.ig-embeds{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-bottom:34px;align-items:start;justify-items:center}
+.ig-reel{position:relative;display:block;width:100%;max-width:300px;aspect-ratio:9/16;border-radius:8px;overflow:hidden;background:var(--navy);box-shadow:0 10px 34px rgba(27,42,71,.16);text-decoration:none}
+.ig-reel video{width:100%;height:100%;object-fit:cover;display:block}
+.ig-reel .ig-tag{position:absolute;top:11px;right:11px;width:26px;height:26px;border-radius:50%;background:rgba(0,0,0,.32);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;pointer-events:none}
+.ig-reel .ig-tag svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:1.5}
 .ig-cta{text-align:center}
 .ig-cta a{display:inline-flex;align-items:center;gap:8px;font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--navy);text-decoration:none;border:1px solid var(--bd);border-radius:100px;padding:12px 28px;transition:border-color .25s,color .25s}
 .ig-cta a:hover{border-color:var(--gold);color:var(--gold)}
@@ -722,9 +725,18 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
       <div class="ig-stat"><div class="ig-num">毎日</div><div class="ig-lbl">トレーニング情報を発信</div></div>
     </div>
     <div class="ig-embeds rv">
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DX1S77YT8tG/" data-instgrm-version="14"></blockquote>
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DaIBz9Yh84g/" data-instgrm-version="14"></blockquote>
-      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DY5uQ2CSpTM/" data-instgrm-version="14"></blockquote>
+      <a class="ig-reel" href="https://www.instagram.com/reel/DX1S77YT8tG/" target="_blank" aria-label="Instagramリールを見る">
+        <video src="https://tokowaka-gym.com/videos/reel01.mp4" poster="https://tokowaka-gym.com/videos/reel01.jpg" autoplay muted loop playsinline preload="metadata"></video>
+        <span class="ig-tag"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="#fff" stroke="none"/></svg></span>
+      </a>
+      <a class="ig-reel" href="https://www.instagram.com/reel/DaIBz9Yh84g/" target="_blank" aria-label="Instagramリールを見る">
+        <video src="https://tokowaka-gym.com/videos/reel02.mp4" poster="https://tokowaka-gym.com/videos/reel02.jpg" autoplay muted loop playsinline preload="metadata"></video>
+        <span class="ig-tag"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="#fff" stroke="none"/></svg></span>
+      </a>
+      <a class="ig-reel" href="https://www.instagram.com/reel/DY5uQ2CSpTM/" target="_blank" aria-label="Instagramリールを見る">
+        <video src="https://tokowaka-gym.com/videos/reel03.mp4" poster="https://tokowaka-gym.com/videos/reel03.jpg" autoplay muted loop playsinline preload="metadata"></video>
+        <span class="ig-tag"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="#fff" stroke="none"/></svg></span>
+      </a>
     </div>
     <div class="ig-cta rv">
       <a href="https://www.instagram.com/gym_tokowaka" target="_blank"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="var(--gold)" stroke="none"/></svg>@gym_tokowaka をフォローする</a>
@@ -1105,7 +1117,6 @@ function goToReservation(){window.open('https://reservation.tokowaka-gym.com/'+l
 function openLB(f){var lb=document.getElementById('lightbox');document.getElementById('lbImg').src='https://tokowaka-gym.com/images/'+f;lb.classList.add('open')}
 function closeLB(){document.getElementById('lightbox').classList.remove('open')}
 </script>
-<script async src="//www.instagram.com/embed.js"></script>
 <script>
 (function(){document.querySelectorAll('.gr-card').forEach(function(card){var txt=card.querySelector('.gr-text');if(!txt)return;if(txt.scrollHeight>txt.clientHeight+4){var m=document.createElement('span');m.className='gr-more';m.textContent='続きを読む';m.addEventListener('click',function(){card.classList.toggle('open');m.textContent=card.classList.contains('open')?'閉じる':'続きを読む'});card.appendChild(m)}})})();
 function toggleCC(id){document.getElementById(id).classList.toggle('open')}
