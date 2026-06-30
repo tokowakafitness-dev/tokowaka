@@ -71,15 +71,16 @@ header.sc{box-shadow:0 2px 18px rgba(27,42,71,.08);border-bottom:1px solid var(-
 .hero-visual{position:absolute;inset:0;z-index:0;display:grid;grid-template-columns:1fr 1fr;gap:2px;background:var(--navy-d)}
 .hero-slide{position:relative;background-size:cover;background-position:center;min-height:100%;opacity:1;transition:opacity 1.6s ease}
 .hero-slide.active{opacity:1}
-.hero-overlay{position:absolute;inset:0;z-index:1;background:linear-gradient(100deg,rgba(12,17,28,.82) 0%,rgba(12,17,28,.5) 42%,rgba(12,17,28,.24) 100%)}
-.hero-inner{position:relative;z-index:2;width:100%;max-width:var(--max);margin:0 auto;padding:40px 40px;display:flex;flex-direction:column;justify-content:center}
+.hero-overlay{position:absolute;inset:0;z-index:1;background:radial-gradient(ellipse 60% 70% at 50% 52%,rgba(12,17,28,.58) 0%,rgba(12,17,28,.32) 55%,rgba(12,17,28,.12) 100%)}
+.hero-inner{position:relative;z-index:2;width:100%;max-width:var(--max);margin:0 auto;padding:40px 40px;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center}
 .hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(205,168,108,.6);color:var(--gold-l);font-family:'Noto Sans JP',sans-serif;font-size:10px;letter-spacing:.2em;padding:6px 16px;border-radius:100px;margin-bottom:24px;background:rgba(19,32,58,.45);backdrop-filter:blur(4px)}
 .hero-badge i{width:5px;height:5px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
 .hero-title{font-family:'Shippori Mincho','Noto Serif JP',serif;font-weight:500;font-size:clamp(28px,4.6vw,52px);line-height:1.55;letter-spacing:.1em;color:#fff;margin-bottom:26px;text-shadow:0 2px 28px rgba(0,0,0,.8),0 1px 4px rgba(0,0,0,.55)}
 .hero-title em{font-style:normal;color:var(--gold-l)}
 .hero-lead{font-family:'Noto Sans JP',sans-serif;font-size:clamp(13px,1.5vw,15px);font-weight:300;color:rgba(255,255,255,.92);line-height:2.1;margin-bottom:34px;max-width:540px;text-shadow:0 1px 12px rgba(0,0,0,.8),0 1px 3px rgba(0,0,0,.6)}
 .hero-lead strong{color:var(--gold-l);font-weight:500}
-.hero-btns{display:flex;gap:14px;align-items:center;flex-wrap:wrap}
+.hero-btns{display:flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:center}
+.hero-lead{margin-left:auto;margin-right:auto}
 .hero-offer{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.1);border:1px solid rgba(205,168,108,.5);backdrop-filter:blur(6px);border-radius:var(--r);padding:12px 20px}
 .hero-offer .lbl{font-family:'Noto Sans JP',sans-serif;font-size:10px;color:rgba(255,255,255,.7);letter-spacing:.12em}
 .hero-offer .val{font-family:'Shippori Mincho',serif;font-weight:600;font-size:22px;color:var(--gold-l);line-height:1}
@@ -474,8 +475,8 @@ footer{background:#101b2e;padding:30px 40px;text-align:center}
   <div class="hero-overlay"></div>
   <div class="hero-inner">
     <div class="hero-badge"><i></i>吉祥寺・完全個室パーソナルジム</div>
-    <h1 class="hero-title">40代から、<br>自分の身体を<br><em>好きになりました。</em></h1>
-    <p class="hero-lead">自己流・24ジム・パーソナル。全部試して、全部報われなかった人へ。<br><strong>「運動 × 整体」</strong>で、何歳からでもあなたの身体は変えられます。</p>
+    <h1 class="hero-title">最短3ヶ月で、<br><em>理想の身体を手に入れる。</em></h1>
+    <p class="hero-lead"><strong>運動 × 整体</strong>で、何歳からでも。<br>吉祥寺の完全個室で、トレーナーが成果まで伴走します。</p>
     <div class="hero-btns">
       <a href="javascript:void(0)" onclick="goToReservation()" class="btn-gold">体験トレーニングを申し込む</a>
       <div class="hero-offer">
