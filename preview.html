@@ -1,6 +1,9 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
+<!-- Google Tag Manager -->
+<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-WRJSW496');</script>
+<!-- End Google Tag Manager -->
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>TOKOWAKA 吉祥寺 | パーソナルトレーニングジム</title>
@@ -470,6 +473,9 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
 </style>
 </head>
 <body>
+<!-- Google Tag Manager (noscript) -->
+<noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WRJSW496" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+<!-- End Google Tag Manager (noscript) -->
 
 <!-- ===== HEADER ===== -->
 <header id="hd">
@@ -1125,7 +1131,7 @@ document.querySelectorAll('.mob-link').forEach(a=>a.addEventListener('click',()=
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target)}}),{threshold:.08});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)scrollTo({top:t.offsetTop-66,behavior:'smooth'})}));
-function goToReservation(){window.open('https://reservation.tokowaka-gym.com/'+location.search,'_blank')}
+function goToReservation(el){if(window.dataLayer)dataLayer.push({event:'cta_reservation_click',cta_location:(el&&el.getAttribute&&el.getAttribute('data-cta'))||'unknown'});window.open('https://reservation.tokowaka-gym.com/'+location.search,'_blank')}
 (function(){var s=document.querySelectorAll('.hero-slide');if(s.length<2)return;var i=0;setInterval(function(){s[i].classList.remove('active');i=(i+1)%s.length;s[i].classList.add('active')},4000)})();
 (function(){var t=document.getElementById('galTrack');if(!t)return;Array.prototype.slice.call(t.children).forEach(function(c){t.appendChild(c.cloneNode(true))});var pos=0,paused=false;function tick(){if(!paused){pos+=0.5;if(pos>=t.scrollWidth/2)pos=0;t.style.transform='translateX(-'+pos+'px)'}requestAnimationFrame(tick)}tick();t.addEventListener('mouseenter',function(){paused=true});t.addEventListener('mouseleave',function(){paused=false})})();
 function openLB(f){var lb=document.getElementById('lightbox');document.getElementById('lbImg').src='https://tokowaka-gym.com/images/'+f;lb.classList.add('open')}
