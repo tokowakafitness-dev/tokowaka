@@ -472,7 +472,7 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
 .hero-title{font-weight:600;letter-spacing:.08em}
 /* ===== スマホ最適化（2026-07-02）===== */
 @media(max-width:580px){
-  .hero-inner{justify-content:flex-start;padding-top:15%}
+  .hero-inner{justify-content:flex-start;padding-top:0}
   body{letter-spacing:.012em}
   .sh-ja,.cc-title,.pt-title,.tr-name,.relief-c h4{letter-spacing:.02em}
   .exp-step{display:block;padding:10px 0}
@@ -486,7 +486,6 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
   .cc-offer{font-size:12px}
   .plan-enroll-box{flex-wrap:wrap;gap:4px 8px}
   .gr-grid{columns:1}
-  #gallery{overflow:visible}
   .gal-track-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
   .gal-track{transform:none!important;padding:0 16px}
   .gal-slide{flex:0 0 72vw}
@@ -495,7 +494,7 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
 .sticky-cta{display:none}
 @media(max-width:860px){
   body{padding-bottom:74px}
-  .sticky-cta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:900;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);box-shadow:0 -4px 18px rgba(27,42,71,.15);padding:9px 14px calc(9px + env(safe-area-inset-bottom))}
+  .sticky-cta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:900;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);box-shadow:0 -4px 18px rgba(27,42,71,.15);padding:9px 14px calc(9px + env(safe-area-inset-bottom));transition:transform .3s ease}
   .sticky-cta a{display:flex;align-items:center;justify-content:center;background:linear-gradient(120deg,var(--gold),var(--gold-l));color:#fff;font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:15px;letter-spacing:.04em;padding:15px;border-radius:var(--r);text-decoration:none;box-shadow:0 4px 14px rgba(184,150,90,.35)}
 }
 </style>
@@ -1164,6 +1163,8 @@ function goToReservation(el){if(window.dataLayer)dataLayer.push({event:'cta_rese
 (function(){var s=document.querySelectorAll('.hero-slide');if(s.length<2)return;var i=0;setInterval(function(){s[i].classList.remove('active');i=(i+1)%s.length;s[i].classList.add('active')},4000)})();
 (function(){var t=document.getElementById('galTrack');if(!t||window.innerWidth<=580)return;Array.prototype.slice.call(t.children).forEach(function(c){t.appendChild(c.cloneNode(true))});var pos=0,paused=false;function tick(){if(!paused){pos+=0.5;if(pos>=t.scrollWidth/2)pos=0;t.style.transform='translateX(-'+pos+'px)'}requestAnimationFrame(tick)}tick();t.addEventListener('mouseenter',function(){paused=true});t.addEventListener('mouseleave',function(){paused=false})})();function openLB(f){var lb=document.getElementById('lightbox');document.getElementById('lbImg').src='https://tokowaka-gym.com/images/'+f;lb.classList.add('open')}
 function closeLB(){document.getElementById('lightbox').classList.remove('open')}
+/* 固定CTA：ヒーロー表示中は隠す（二重表示回避）*/
+(function(){var s=document.querySelector('.sticky-cta'),h=document.getElementById('hero');if(!s||!h||!window.IntersectionObserver)return;new IntersectionObserver(function(e){s.style.transform=e[0].isIntersecting?'translateY(130%)':'none'},{threshold:0.15}).observe(h)})();
 </script>
 <script>
 (function(){document.querySelectorAll('.gr-card').forEach(function(card){var txt=card.querySelector('.gr-text');if(!txt)return;if(txt.scrollHeight>txt.clientHeight+4){var m=document.createElement('span');m.className='gr-more';m.textContent='続きを読む';m.addEventListener('click',function(){card.classList.toggle('open');m.textContent=card.classList.contains('open')?'閉じる':'続きを読む'});card.appendChild(m)}})})();
