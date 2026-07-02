@@ -470,6 +470,29 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
 .pt-desc,.cc-desc,.tr-bio,.gr-text,.relief-c p,.ba-cmt,.hero-lead{letter-spacing:.03em}
 .cc-title,.camp-h,.ct-title{line-height:1.6}
 .hero-title{font-weight:600;letter-spacing:.08em}
+/* ===== スマホ最適化（2026-07-02）===== */
+.gr-more-wrap{display:none;text-align:center;margin-top:16px}
+.gr-more-btn{font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--navy);border:1px solid var(--bd);background:#fff;border-radius:100px;padding:11px 30px;cursor:pointer;transition:border-color .2s}
+.gr-more-btn:hover{border-color:var(--gold)}
+@media(max-width:580px){
+  .hero-inner{justify-content:flex-start;padding-top:15%}
+  body{letter-spacing:.012em}
+  .sh-ja,.cc-title,.pt-title,.tr-name,.relief-c h4{letter-spacing:.02em}
+  .exp-step{display:block;padding:10px 0}
+  .exp-num{margin-bottom:10px}
+  .exp-img{grid-column:auto;aspect-ratio:16/9;margin:0 0 10px}
+  .cc-head{padding:18px 15px}
+  .cc-inner{padding:0 15px 18px}
+  .ct th{font-size:10px}
+  .ct td{font-size:12px;padding:8px 0}
+  .ct td.pm{font-size:15px}.ct td.ps{font-size:12px}
+  .cc-offer{font-size:12px}
+  .plan-enroll-box{flex-wrap:wrap;gap:4px 8px}
+  .gr-grid{columns:1}
+  .gr-grid:not(.open) .gr-card:nth-child(n+4){display:none}
+  .gr-more-wrap{display:block}
+  .gal-track-wrap{overflow-x:auto;-webkit-overflow-scrolling:touch}
+}
 </style>
 </head>
 <body>
@@ -1133,7 +1156,9 @@ document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)scrollTo({top:t.offsetTop-66,behavior:'smooth'})}));
 function goToReservation(el){if(window.dataLayer)dataLayer.push({event:'cta_reservation_click',cta_location:(el&&el.getAttribute&&el.getAttribute('data-cta'))||'unknown'});window.open('https://reservation.tokowaka-gym.com/'+location.search,'_blank')}
 (function(){var s=document.querySelectorAll('.hero-slide');if(s.length<2)return;var i=0;setInterval(function(){s[i].classList.remove('active');i=(i+1)%s.length;s[i].classList.add('active')},4000)})();
-(function(){var t=document.getElementById('galTrack');if(!t)return;Array.prototype.slice.call(t.children).forEach(function(c){t.appendChild(c.cloneNode(true))});var pos=0,paused=false;function tick(){if(!paused){pos+=0.5;if(pos>=t.scrollWidth/2)pos=0;t.style.transform='translateX(-'+pos+'px)'}requestAnimationFrame(tick)}tick();t.addEventListener('mouseenter',function(){paused=true});t.addEventListener('mouseleave',function(){paused=false})})();
+(function(){var t=document.getElementById('galTrack');if(!t||window.innerWidth<=580)return;Array.prototype.slice.call(t.children).forEach(function(c){t.appendChild(c.cloneNode(true))});var pos=0,paused=false;function tick(){if(!paused){pos+=0.5;if(pos>=t.scrollWidth/2)pos=0;t.style.transform='translateX(-'+pos+'px)'}requestAnimationFrame(tick)}tick();t.addEventListener('mouseenter',function(){paused=true});t.addEventListener('mouseleave',function(){paused=false})})();
+/* 口コミ：スマホで初期3件＋「もっと見る」で展開 */
+(function(){var g=document.querySelector('.gr-grid');if(!g)return;var w=document.createElement('div');w.className='gr-more-wrap';var b=document.createElement('button');b.className='gr-more-btn';b.textContent='口コミをもっと見る';b.addEventListener('click',function(){g.classList.add('open');w.style.display='none'});w.appendChild(b);g.parentNode.insertBefore(w,g.nextSibling)})();
 function openLB(f){var lb=document.getElementById('lightbox');document.getElementById('lbImg').src='https://tokowaka-gym.com/images/'+f;lb.classList.add('open')}
 function closeLB(){document.getElementById('lightbox').classList.remove('open')}
 </script>
