@@ -279,6 +279,10 @@ header.sc{box-shadow:0 2px 18px rgba(27,42,71,.08);border-bottom:1px solid var(-
 .exp-num{width:44px;height:44px;border-radius:50%;background:var(--navy);color:#fff;font-family:'Cormorant Garamond',serif;font-style:italic;font-size:19px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .exp-img{border-radius:var(--r);overflow:hidden;aspect-ratio:4/3;box-shadow:0 6px 20px rgba(27,42,71,.1);background:var(--navy-d)}
 .exp-img img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
+.exp-img img.op-korten{object-position:center 30%}
+.exp-img img.op-training{object-position:center 50%}
+.exp-img img.op-review{object-position:center 40%}
+@media(max-width:580px){.exp-img img.op-korten{object-position:center 35%}.exp-img img.op-training{object-position:center 55%}.exp-img img.op-review{object-position:center 45%}}
 .exp-body h4{font-family:'Shippori Mincho',serif;font-weight:600;font-size:17px;color:var(--navy);margin-bottom:6px}
 .exp-body p{font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--soft);line-height:1.85}
 @media(max-width:580px){.exp-step{grid-template-columns:40px 1fr;gap:14px;align-items:start}.exp-img{grid-column:2;aspect-ratio:16/10;margin:8px 0}}
@@ -886,7 +890,7 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
       </div>
       <div class="exp-step">
         <div class="exp-num">2</div>
-        <div class="exp-img"><img src="https://tokowaka-gym.com/images/gallery04.jpg" alt="" style="object-position:center 20%"></div>
+        <div class="exp-img"><img src="https://tokowaka-gym.com/images/gallery04.jpg" alt="" class="op-korten"></div>
         <div class="exp-body"><h4>店舗へご来店</h4><p>手ぶらでOK。シューズ・ウェアは無料貸出。吉祥寺駅徒歩10分、完全個室の隠れ家ジムでお待ちしています。</p></div>
       </div>
     </div>
@@ -899,12 +903,12 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
       </div>
       <div class="exp-step">
         <div class="exp-num">2</div>
-        <div class="exp-img"><img src="https://tokowaka-gym.com/images/gallery08.jpg" alt="" style="object-position:center 40%"></div>
+        <div class="exp-img"><img src="https://tokowaka-gym.com/images/gallery08.jpg" alt="" class="op-training"></div>
         <div class="exp-body"><h4>トレーニング体験</h4><p>姿勢・動作を評価したうえで、実際のトレーニングを体験。ご友人やパートナーとの<strong>ペアトレーニングも可能</strong>です。運動が苦手な方でも、安心して取り組めます。</p></div>
       </div>
       <div class="exp-step">
         <div class="exp-num">3</div>
-        <div class="exp-img"><img src="https://tokowaka-gym.com/images/gallery05.jpg" alt=""></div>
+        <div class="exp-img"><img src="https://tokowaka-gym.com/images/gallery05.jpg" alt="" class="op-review"></div>
         <div class="exp-body"><h4>振り返り・食事指導</h4><p>体験の振り返りと、毎日の食事のアドバイス。当日ご入会で特典あり。無理な勧誘は一切ありませんので、ご安心ください。</p></div>
       </div>
     </div>
