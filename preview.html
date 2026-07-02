@@ -431,6 +431,12 @@ header.sc{box-shadow:0 2px 18px rgba(27,42,71,.08);border-bottom:1px solid var(-
 .ct-title em{font-style:normal;color:var(--gold-l)}
 .ct-desc{font-family:'Noto Sans JP',sans-serif;font-size:13px;color:rgba(255,255,255,.7);line-height:1.95;max-width:440px;margin:0 auto 30px}
 .ct-opts{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.ct-form{max-width:480px;margin:36px auto 0;text-align:left}
+.ct-form-lead{text-align:center;font-family:'Noto Sans JP',sans-serif;font-size:12px;color:rgba(255,255,255,.6);letter-spacing:.08em;margin-bottom:18px}
+.ct-form input,.ct-form textarea{width:100%;font-family:'Noto Sans JP',sans-serif;font-size:14px;padding:13px 15px;margin-bottom:12px;border:1px solid rgba(255,255,255,.25);border-radius:var(--r);background:rgba(255,255,255,.08);color:#fff;box-sizing:border-box}
+.ct-form input::placeholder,.ct-form textarea::placeholder{color:rgba(255,255,255,.5)}
+.ct-form input:focus,.ct-form textarea:focus{outline:none;border-color:var(--gold-l);background:rgba(255,255,255,.13)}
+.ct-form-btn{width:100%;background:linear-gradient(120deg,var(--gold),var(--gold-l));color:#fff;font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:15px;padding:15px;border:none;border-radius:var(--r);cursor:pointer;letter-spacing:.05em;margin-top:4px}
 .ct-tel{display:flex;flex-direction:column;align-items:center;background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.15);border-radius:var(--r);padding:14px 28px;text-decoration:none;min-width:180px;transition:border-color .25s}
 .ct-tel:hover{border-color:var(--gold)}
 .ct-tel .l{font-family:'Noto Sans JP',sans-serif;font-size:11px;color:var(--gold-l);letter-spacing:.08em;margin-bottom:4px}
@@ -1143,6 +1149,17 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
         <a href="javascript:void(0)" onclick="goToReservation()" class="btn-gold">体験トレーニング予約</a>
         <a href="tel:07035498168" class="ct-tel"><span class="l">お電話で相談する</span><span class="n">070-3549-8168</span></a>
       </div>
+      <form class="ct-form rv" action="https://formsubmit.co/tokowaka.fitness@gmail.com" method="POST">
+        <input type="hidden" name="_subject" value="【TOKOWAKA LP】お問い合わせ">
+        <input type="hidden" name="_captcha" value="true">
+        <input type="hidden" name="_template" value="table">
+        <input type="text" name="_honey" style="display:none">
+        <p class="ct-form-lead">または、フォームからお問い合わせ</p>
+        <input type="text" name="お名前" placeholder="お名前" required>
+        <input type="email" name="メールアドレス" placeholder="メールアドレス" required>
+        <textarea name="お問い合わせ内容" placeholder="お問い合わせ内容" rows="4" required></textarea>
+        <button type="submit" class="ct-form-btn">送信する</button>
+      </form>
     </div>
   </div>
 </section>
@@ -1153,7 +1170,7 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
   <p class="f-sub">Personal Gym · Kichijoji</p>
   <div class="f-legal">
     <a href="/privacy.html">プライバシーポリシー</a>
-    <a href="tel:07035498168">お問い合わせ</a>
+    <a href="#contact">お問い合わせ</a>
   </div>
   <p class="f-info">東京都武蔵野市吉祥寺東町2丁目17-7 VILLA VUONAMICO 103　｜　TEL 070-3549-8168　｜　営業時間 8:00〜23:00　完全予約制</p>
   <p class="f-copy">© 2026 TOKOWAKA 吉祥寺. All rights reserved.</p>
