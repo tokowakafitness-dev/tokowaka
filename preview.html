@@ -1170,15 +1170,19 @@ function goToReservation(el){if(window.dataLayer)dataLayer.push({event:'cta_rese
 function closeLB(){document.getElementById('lightbox').classList.remove('open')}
 /* 固定CTA：ヒーロー表示中は隠す（二重表示回避）*/
 (function(){var s=document.querySelector('.sticky-cta'),h=document.getElementById('hero');if(!s||!h||!window.IntersectionObserver)return;new IntersectionObserver(function(e){s.style.transform=e[0].isIntersecting?'translateY(130%)':'none'},{threshold:0.15}).observe(h)})();
+/* MCV：電話・LINEクリック */
+(function(){document.addEventListener('click',function(e){var a=e.target.closest?e.target.closest('a'):null;if(!a||!window.dataLayer)return;var hf=a.getAttribute('href')||'';if(hf.indexOf('tel:')===0)dataLayer.push({event:'tel_click'});else if(hf.indexOf('lin.ee')>-1||hf.indexOf('line.me')>-1)dataLayer.push({event:'line_click'})})})();
+/* MCV：スクロール深度 25/50/75/100% */
+(function(){var marks=[25,50,75,100],hit={};window.addEventListener('scroll',function(){var h=document.documentElement,max=h.scrollHeight-h.clientHeight;if(max<=0)return;var pct=h.scrollTop/max*100;marks.forEach(function(m){if(pct>=m&&!hit[m]){hit[m]=1;if(window.dataLayer)dataLayer.push({event:'scroll_depth',percent:m})}})},{passive:true})})();
 </script>
 <script>
 (function(){document.querySelectorAll('.gr-card').forEach(function(card){var txt=card.querySelector('.gr-text');if(!txt)return;if(txt.scrollHeight>txt.clientHeight+4){var m=document.createElement('span');m.className='gr-more';m.textContent='続きを読む';m.addEventListener('click',function(){card.classList.toggle('open');m.textContent=card.classList.contains('open')?'閉じる':'続きを読む'});card.appendChild(m)}})})();
-function toggleCC(id){document.getElementById(id).classList.toggle('open')}
-function toggleFaq(el){el.classList.toggle('open')}
+function toggleCC(id){var e=document.getElementById(id);e.classList.toggle('open');if(e.classList.contains('open')&&window.dataLayer)dataLayer.push({event:'plan_expand',plan_id:id})}
+function toggleFaq(el){el.classList.toggle('open');if(el.classList.contains('open')&&window.dataLayer)dataLayer.push({event:'faq_open'})}
 /* Instagramリール：指定秒から再生（data-start）・ループ時も同位置へ */
 (function(){document.querySelectorAll('.ig-reel video[data-start]').forEach(function(v){var s=parseFloat(v.dataset.start)||0;function seek(){try{v.currentTime=s}catch(e){}}if(v.readyState>=1)seek();else v.addEventListener('loadedmetadata',seek);v.addEventListener('timeupdate',function(){if(v.currentTime<s-0.3)seek()})})})();
 /* リールをタップで音声ON（他はミュート）・右下アイコンで状態表示 */
-(function(){var reels=Array.prototype.slice.call(document.querySelectorAll('.ig-reel'));var M='<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>';var S='<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>';reels.forEach(function(reel){var v=reel.querySelector('video');if(!v)return;reel.addEventListener('click',function(){var wasMuted=v.muted;reels.forEach(function(r){var vv=r.querySelector('video');if(vv)vv.muted=true;var sv=r.querySelector('.ig-sound svg');if(sv)sv.innerHTML=M});if(wasMuted){v.muted=false;v.volume=(v.dataset.volume!=null?parseFloat(v.dataset.volume):1);var p=v.play();if(p&&p.catch)p.catch(function(){});var sv2=reel.querySelector('.ig-sound svg');if(sv2)sv2.innerHTML=S}})})})();
+(function(){var reels=Array.prototype.slice.call(document.querySelectorAll('.ig-reel'));var M='<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>';var S='<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>';reels.forEach(function(reel){var v=reel.querySelector('video');if(!v)return;reel.addEventListener('click',function(){var wasMuted=v.muted;reels.forEach(function(r){var vv=r.querySelector('video');if(vv)vv.muted=true;var sv=r.querySelector('.ig-sound svg');if(sv)sv.innerHTML=M});if(wasMuted){v.muted=false;v.volume=(v.dataset.volume!=null?parseFloat(v.dataset.volume):1);if(window.dataLayer)dataLayer.push({event:'reel_sound_on'});var p=v.play();if(p&&p.catch)p.catch(function(){});var sv2=reel.querySelector('.ig-sound svg');if(sv2)sv2.innerHTML=S}})})})();
 </script>
 </body>
 </html>
