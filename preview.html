@@ -431,8 +431,12 @@ header.sc{box-shadow:0 2px 18px rgba(27,42,71,.08);border-bottom:1px solid var(-
 .ct-title em{font-style:normal;color:var(--gold-l)}
 .ct-desc{font-family:'Noto Sans JP',sans-serif;font-size:13px;color:rgba(255,255,255,.7);line-height:1.95;max-width:440px;margin:0 auto 30px}
 .ct-opts{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
-.ct-form{max-width:480px;margin:36px auto 0;text-align:left}
-.ct-form-lead{text-align:center;font-family:'Noto Sans JP',sans-serif;font-size:12px;color:rgba(255,255,255,.6);letter-spacing:.08em;margin-bottom:18px}
+.ct-form-acc{max-width:480px;margin:30px auto 0}
+.ct-form-toggle{cursor:pointer;font-family:'Noto Sans JP',sans-serif;font-size:13px;color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.3);border-radius:100px;padding:12px 30px;display:inline-block;list-style:none;transition:border-color .2s}
+.ct-form-toggle::-webkit-details-marker{display:none}
+.ct-form-toggle:hover{border-color:var(--gold-l)}
+.ct-form-acc[open] .ct-form-toggle{margin-bottom:20px}
+.ct-form{text-align:left}
 .ct-form input,.ct-form textarea{width:100%;font-family:'Noto Sans JP',sans-serif;font-size:14px;padding:13px 15px;margin-bottom:12px;border:1px solid rgba(255,255,255,.25);border-radius:var(--r);background:rgba(255,255,255,.08);color:#fff;box-sizing:border-box}
 .ct-form input::placeholder,.ct-form textarea::placeholder{color:rgba(255,255,255,.5)}
 .ct-form input:focus,.ct-form textarea:focus{outline:none;border-color:var(--gold-l);background:rgba(255,255,255,.13)}
@@ -1149,17 +1153,20 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
         <a href="javascript:void(0)" onclick="goToReservation()" class="btn-gold">体験トレーニング予約</a>
         <a href="tel:07035498168" class="ct-tel"><span class="l">お電話で相談する</span><span class="n">070-3549-8168</span></a>
       </div>
-      <form class="ct-form rv" action="https://formsubmit.co/tokowaka.fitness@gmail.com" method="POST">
-        <input type="hidden" name="_subject" value="【TOKOWAKA LP】お問い合わせ">
-        <input type="hidden" name="_captcha" value="true">
-        <input type="hidden" name="_template" value="table">
-        <input type="text" name="_honey" style="display:none">
-        <p class="ct-form-lead">または、フォームからお問い合わせ</p>
-        <input type="text" name="お名前" placeholder="お名前" required>
-        <input type="email" name="メールアドレス" placeholder="メールアドレス" required>
-        <textarea name="お問い合わせ内容" placeholder="お問い合わせ内容" rows="4" required></textarea>
-        <button type="submit" class="ct-form-btn">送信する</button>
-      </form>
+      <details class="ct-form-acc rv">
+        <summary class="ct-form-toggle">フォームでお問い合わせ</summary>
+        <form class="ct-form" action="https://formsubmit.co/tokowaka.fitness@gmail.com" method="POST">
+          <input type="hidden" name="_subject" value="【TOKOWAKA LP】お問い合わせ">
+          <input type="hidden" name="_captcha" value="true">
+          <input type="hidden" name="_template" value="table">
+          <input type="hidden" name="_next" value="https://tokowaka-gym.com/thanks.html">
+          <input type="text" name="_honey" style="display:none">
+          <input type="text" name="お名前" placeholder="お名前" required>
+          <input type="email" name="メールアドレス" placeholder="メールアドレス" required>
+          <textarea name="お問い合わせ内容" placeholder="お問い合わせ内容" rows="4" required></textarea>
+          <button type="submit" class="ct-form-btn">送信する</button>
+        </form>
+      </details>
     </div>
   </div>
 </section>
