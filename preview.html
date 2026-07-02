@@ -338,6 +338,10 @@ header.sc{box-shadow:0 2px 18px rgba(27,42,71,.08);border-bottom:1px solid var(-
 .ct td.ps{font-family:'Shippori Mincho',serif;font-size:14px;color:var(--gold)}
 .pop{font-size:9px;color:var(--gold);letter-spacing:.06em;margin-left:6px}
 .cc-note{margin-top:12px;font-family:'Noto Sans JP',sans-serif;font-size:10px;color:#9a958c;line-height:1.7}
+.ct-plan-label{font-family:'Noto Sans JP',sans-serif;font-size:13px;font-weight:600;color:var(--navy);margin:20px 0 6px;letter-spacing:.03em}
+.ct-plan-label:first-child{margin-top:4px}
+.ct-plan-label small{font-weight:400;font-size:11px;color:var(--soft);margin-left:6px}
+.ct td.disc{font-family:'Noto Sans JP',sans-serif;font-size:11px;color:var(--gold);text-align:right}
 .cc-offer{background:linear-gradient(120deg,var(--gold),var(--gold-l));color:#fff;font-family:'Noto Sans JP',sans-serif;font-size:13px;font-weight:600;text-align:center;padding:11px 14px;border-radius:var(--r);margin-bottom:14px;letter-spacing:.02em;line-height:1.5;box-shadow:0 4px 14px rgba(184,150,90,.28)}
 .cc-offer small{display:block;font-size:10px;font-weight:400;opacity:.92;margin-top:3px;letter-spacing:.04em}
 .plan-enroll-box .v s{opacity:.5;font-weight:400;margin-right:6px}
@@ -980,12 +984,19 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
         <div class="cc-toggle"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg><span>料金を見る</span></div>
       </div>
       <div class="cc-body"><div class="cc-inner">
-        <table class="ct"><thead><tr><th>プラン</th><th>回数</th><th>1回あたり</th><th>月額</th></tr></thead><tbody>
-          <tr><td>2ヶ月</td><td>月8回</td><td class="ps">¥17,000</td><td class="pm">¥136,000</td></tr>
-          <tr class="hl"><td>3ヶ月<span class="pop">人気</span></td><td>月8回</td><td class="ps">¥16,500</td><td class="pm">¥132,000</td></tr>
-          <tr><td>6ヶ月</td><td>月8回</td><td class="ps">¥16,000</td><td class="pm">¥128,000</td></tr>
+        <p class="ct-plan-label">3ヶ月プラン<small>4ヶ月目からプラン変更可能</small></p>
+        <table class="ct"><thead><tr><th>回数</th><th>1回あたり</th><th>月額</th></tr></thead><tbody>
+          <tr><td>月4回</td><td class="ps">¥18,000</td><td class="pm">¥72,000</td></tr>
+          <tr><td>月6回</td><td class="ps">¥17,500</td><td class="pm">¥105,000</td></tr>
+          <tr class="hl"><td>月8回<span class="pop">人気</span></td><td class="ps">¥17,000</td><td class="pm">¥136,000</td></tr>
         </tbody></table>
-        <p class="cc-note">※ 税込。カウンセリング後にご案内。先着制。</p>
+        <p class="ct-plan-label">6ヶ月プラン<small>フルサポ継続割・1回¥500お得</small></p>
+        <table class="ct"><thead><tr><th>回数</th><th>1回あたり</th><th>月額</th><th>お得</th></tr></thead><tbody>
+          <tr><td>月4回</td><td class="ps">¥17,500</td><td class="pm">¥70,000</td><td class="disc">¥12,000</td></tr>
+          <tr class="hl"><td>月6回<span class="pop">人気</span></td><td class="ps">¥17,000</td><td class="pm">¥102,000</td><td class="disc">¥18,000</td></tr>
+          <tr><td>月8回</td><td class="ps">¥16,500</td><td class="pm">¥132,000</td><td class="disc">¥24,000</td></tr>
+        </tbody></table>
+        <p class="cc-note">※ 税込。カウンセリング後にご案内。先着制。「お得」は6ヶ月間の割引総額（1回¥500 × 回数 × 6ヶ月）。</p>
       </div></div>
     </div>
     <!-- ③ トレーニング（通常コース）-->
