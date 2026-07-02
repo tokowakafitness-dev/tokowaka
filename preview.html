@@ -219,6 +219,9 @@ header.sc{box-shadow:0 2px 18px rgba(27,42,71,.08);border-bottom:1px solid var(-
 .ig-reel video{width:100%;height:100%;object-fit:cover;display:block}
 .ig-reel .ig-tag{position:absolute;top:11px;right:11px;width:26px;height:26px;border-radius:50%;background:rgba(0,0,0,.32);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;pointer-events:none}
 .ig-reel .ig-tag svg{width:15px;height:15px;stroke:#fff;fill:none;stroke-width:1.5}
+.ig-reel{cursor:pointer}
+.ig-reel .ig-sound{position:absolute;bottom:11px;right:11px;width:30px;height:30px;border-radius:50%;background:rgba(0,0,0,.5);backdrop-filter:blur(4px);display:flex;align-items:center;justify-content:center;pointer-events:none}
+.ig-reel .ig-sound svg{width:16px;height:16px;stroke:#fff;fill:none;stroke-width:1.6}
 .ig-cta{text-align:center}
 .ig-cta a{display:inline-flex;align-items:center;gap:8px;font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--navy);text-decoration:none;border:1px solid var(--bd);border-radius:100px;padding:12px 28px;transition:border-color .25s,color .25s}
 .ig-cta a:hover{border-color:var(--gold);color:var(--gold)}
@@ -726,16 +729,19 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
     </div>
     <div class="ig-embeds rv">
       <div class="ig-reel">
-        <video src="https://tokowaka-gym.com/videos/reel01.mp4" poster="https://tokowaka-gym.com/videos/reel01.jpg" autoplay muted loop playsinline preload="metadata"></video>
+        <video src="https://tokowaka-gym.com/videos/reel01.mp4#t=22" poster="https://tokowaka-gym.com/videos/reel01.jpg" data-start="22" autoplay muted loop playsinline preload="metadata"></video>
         <span class="ig-tag"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="#fff" stroke="none"/></svg></span>
+        <span class="ig-sound"><svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></span>
       </div>
       <div class="ig-reel">
-        <video src="https://tokowaka-gym.com/videos/reel02.mp4" poster="https://tokowaka-gym.com/videos/reel02.jpg" autoplay muted loop playsinline preload="metadata"></video>
+        <video src="https://tokowaka-gym.com/videos/reel02.mp4#t=4" poster="https://tokowaka-gym.com/videos/reel02.jpg" data-start="4" autoplay muted loop playsinline preload="metadata"></video>
         <span class="ig-tag"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="#fff" stroke="none"/></svg></span>
+        <span class="ig-sound"><svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></span>
       </div>
       <div class="ig-reel">
         <video src="https://tokowaka-gym.com/videos/reel03.mp4" poster="https://tokowaka-gym.com/videos/reel03.jpg" autoplay muted loop playsinline preload="metadata"></video>
         <span class="ig-tag"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="#fff" stroke="none"/></svg></span>
+        <span class="ig-sound"><svg viewBox="0 0 24 24"><polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/></svg></span>
       </div>
     </div>
     <div class="ig-cta rv">
@@ -1121,6 +1127,10 @@ function closeLB(){document.getElementById('lightbox').classList.remove('open')}
 (function(){document.querySelectorAll('.gr-card').forEach(function(card){var txt=card.querySelector('.gr-text');if(!txt)return;if(txt.scrollHeight>txt.clientHeight+4){var m=document.createElement('span');m.className='gr-more';m.textContent='続きを読む';m.addEventListener('click',function(){card.classList.toggle('open');m.textContent=card.classList.contains('open')?'閉じる':'続きを読む'});card.appendChild(m)}})})();
 function toggleCC(id){document.getElementById(id).classList.toggle('open')}
 function toggleFaq(el){el.classList.toggle('open')}
+/* Instagramリール：指定秒から再生（data-start）・ループ時も同位置へ */
+(function(){document.querySelectorAll('.ig-reel video[data-start]').forEach(function(v){var s=parseFloat(v.dataset.start)||0;function seek(){try{v.currentTime=s}catch(e){}}if(v.readyState>=1)seek();else v.addEventListener('loadedmetadata',seek);v.addEventListener('timeupdate',function(){if(v.currentTime<s-0.3)seek()})})})();
+/* リールをタップで音声ON（他はミュート）・右下アイコンで状態表示 */
+(function(){var reels=Array.prototype.slice.call(document.querySelectorAll('.ig-reel'));var M='<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>';var S='<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>';reels.forEach(function(reel){var v=reel.querySelector('video');if(!v)return;reel.addEventListener('click',function(){var wasMuted=v.muted;reels.forEach(function(r){var vv=r.querySelector('video');if(vv)vv.muted=true;var sv=r.querySelector('.ig-sound svg');if(sv)sv.innerHTML=M});if(wasMuted){v.muted=false;var p=v.play();if(p&&p.catch)p.catch(function(){});var sv2=reel.querySelector('.ig-sound svg');if(sv2)sv2.innerHTML=S}})})})();
 </script>
 </body>
 </html>
