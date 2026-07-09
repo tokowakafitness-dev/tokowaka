@@ -53,7 +53,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --navy:#1b2a47;--navy-d:#13203a;--navy-l:#37527e;
-  --gold:#b8965a;--gold-l:#cda86c;--gold-p:#f3ecdc;
+  --gold:#b8965a;--gold-l:#cda86c;--gold-p:#f3ecdc;--gold-hero:#eed7a0;
   --cream:#f6f0e5;--warm:#faf5eb;--white:#fff;--stone:#e6ddcd;
   --ink:#22201c;--soft:#5d574e;
   --bd:rgba(27,42,71,.10);--r:3px;--max:1080px;
@@ -121,11 +121,10 @@ header.sc{box-shadow:0 2px 18px rgba(27,42,71,.08);border-bottom:1px solid var(-
 .hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(205,168,108,.85);color:#fff;font-family:'Noto Sans JP',sans-serif;font-size:11px;font-weight:500;letter-spacing:.18em;padding:8px 20px;border-radius:100px;margin-bottom:24px;background:rgba(19,32,58,.78);backdrop-filter:blur(4px);box-shadow:0 4px 16px rgba(0,0,0,.3)}
 .hero-badge i{width:5px;height:5px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
 .hero-title{font-family:'Shippori Mincho','Noto Serif JP',serif;font-weight:600;font-size:clamp(31px,5.2vw,58px);line-height:1.5;letter-spacing:.08em;color:#fff;margin-bottom:26px;text-shadow:0 2px 16px rgba(0,0,0,.65),0 2px 6px rgba(0,0,0,.55),0 0 40px rgba(0,0,0,.4)}
-.hero-title em{font-style:normal;color:var(--gold-l)}
-.hero-title,.sh-ja,.ct-title,.worry-h,.tr-banner h3,.flow-h,.stmt-h,.camp-h,.ac-h{text-wrap:balance} /* 見出しのみ。本文段落に適用すると行が間延びするため広げない。1行に収まる場合は無効＝横幅目一杯を維持 */
+.hero-title em{font-style:normal;color:var(--gold-hero);text-shadow:0 1px 2px rgba(0,0,0,.85),0 2px 8px rgba(0,0,0,.75),0 2px 18px rgba(0,0,0,.6),0 0 40px rgba(0,0,0,.45)} /* HERO専用の明るい金＋強シャドー。パレット本体(--gold-l)は他箇所と共用のため不変 */.hero-title,.sh-ja,.ct-title,.worry-h,.tr-banner h3,.flow-h,.stmt-h,.camp-h,.ac-h{text-wrap:balance} /* 見出しのみ。本文段落に適用すると行が間延びするため広げない。1行に収まる場合は無効＝横幅目一杯を維持 */
 .br-sp{display:none}
 .hero-lead{font-family:'Noto Sans JP',sans-serif;font-size:clamp(13px,1.5vw,15px);font-weight:300;color:rgba(255,255,255,.92);line-height:2.1;margin-bottom:34px;max-width:540px;text-shadow:0 1px 12px rgba(0,0,0,.8),0 1px 3px rgba(0,0,0,.6)}
-.hero-lead strong{color:var(--gold-l);font-weight:500}
+.hero-lead strong{color:var(--gold-hero);font-weight:500}
 .hero-btns{display:flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:center}
 .hero-lead{margin-left:auto;margin-right:auto}
 .hero-offer{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.96);border:1px solid var(--gold);border-radius:var(--r);padding:12px 22px;box-shadow:0 6px 22px rgba(0,0,0,.3)}
@@ -150,11 +149,12 @@ header.sc{box-shadow:0 2px 18px rgba(27,42,71,.08);border-bottom:1px solid var(-
 .ba-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .ba-card{background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:0 4px 20px rgba(27,42,71,.07);display:flex;flex-direction:column}
 .ba-head{display:flex;align-items:center;gap:8px;padding:14px 16px 10px}
-.ba-no{font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:600;color:#fff;background:var(--navy);width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ba-no{font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:600;color:#fff;background:#2e5a8f;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0} /* 男性=青 */
+.ba-no-f{background:#c9829e} /* 女性=ピンク（番号で男女識別） */
 .ba-attr{font-family:'Noto Sans JP',sans-serif;font-size:10px;color:var(--soft);letter-spacing:.04em}
 .ba-tag{font-family:'Noto Sans JP',sans-serif;font-size:9px;color:var(--gold);border:1px solid rgba(184,150,90,.4);padding:2px 8px;border-radius:100px;margin-left:auto}
-.ba-photo{aspect-ratio:16/10;background:var(--navy-d);position:relative;overflow:hidden}
-.ba-photo img{width:100%;height:100%;object-fit:cover}
+.ba-photo{aspect-ratio:5/4;background:var(--navy-d);position:relative;overflow:hidden} /* 枠は横5:縦4。object-position:topと組で下側だけカット（足元の見切れ調整） */
+.ba-photo img{width:100%;height:100%;object-fit:cover;object-position:center top} /* 下側に写真が無い素材があるため上側優先 */
 .ba-photo-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Noto Sans JP',sans-serif;font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.1em;background:linear-gradient(135deg,#e6ddcd,#d6cbb6)}
 .ba-result{padding:14px 16px 6px;display:flex;align-items:baseline;gap:8px}
 .ba-val{font-family:'Shippori Mincho',serif;font-weight:600;font-size:24px;color:var(--gold);line-height:1}
@@ -604,7 +604,7 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
   <div class="hero-overlay"></div>
   <div class="hero-inner">
     <div class="hero-badge"><i></i>吉祥寺・完全個室パーソナルジム</div>
-    <h1 class="hero-title">最短3ヶ月で、<br><em>理想の身体を手に入れる。</em></h1>
+    <h1 class="hero-title">最短3ヶ月で、<br><em>理想の身体</em>を手に入れる。</h1>
     <p class="hero-lead"><strong>運動 × 整体</strong>で、何歳からでも。<br>吉祥寺の完全個室で、トレーナーが成果まで伴走します。</p>
     <div class="hero-btns">
       <div class="hero-offer">
@@ -641,26 +641,26 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
       <!-- 01 ダイエット -->
       <div class="ba-card rv d1">
         <div class="ba-head"><span class="ba-no">01</span><span class="ba-attr">40代男性・運動不足</span><span class="ba-tag">ダイエット</span></div>
-        <div class="ba-photo"><img src="https://tokowaka-gym.com/images/before-after-01.jpg" alt="リモートワークでも-8kg" onerror="this.style.display='none';this.parentNode.querySelector('.ba-photo-ph').style.display='flex'"><div class="ba-photo-ph" style="display:none">Before → After 写真</div></div>
+        <div class="ba-photo"><img src="images/before-after-01.png" alt="リモートワークでも-8kg" onerror="this.style.display='none';this.parentNode.querySelector('.ba-photo-ph').style.display='flex'"><div class="ba-photo-ph" style="display:none">Before → After 写真</div></div>
         <div class="ba-result"><span class="ba-val">−8<small>kg</small></span><span class="ba-meta">期間 3〜4ヶ月／週1回</span></div>
         <div class="ba-stars">★★★★★</div>
         <p class="ba-cmt">「週1回だけで、筋肉をつけながら8kg落とせました」</p>
       </div>
-      <!-- 04 ボディメイク -->
+      <!-- 02 ダイエット（男性・側面） -->
       <div class="ba-card rv d2">
-        <div class="ba-head"><span class="ba-no">02</span><span class="ba-attr">30代男性・細身コンプレックス</span><span class="ba-tag">ボディメイク</span></div>
-        <div class="ba-photo"><img src="https://tokowaka-gym.com/images/before-after-02.jpg" alt="筋肉量+10kg超え" onerror="this.style.display='none';this.parentNode.querySelector('.ba-photo-ph').style.display='flex'"><div class="ba-photo-ph" style="display:none">Before → After 写真</div></div>
-        <div class="ba-result"><span class="ba-val">＋10<small>kg超</small></span><span class="ba-meta">筋肉量／ベンチ2倍</span></div>
-        <div class="ba-stars">★★★★★</div>
-        <p class="ba-cmt">「昔からのコンプレックスがなくなり、自分に大きな自信がつきました」</p>
-      </div>
-      <!-- 05 女性・ボディライン -->
-      <div class="ba-card rv d3">
-        <div class="ba-head"><span class="ba-no">03</span><span class="ba-attr">30代男性・運動不足</span><span class="ba-tag">ダイエット</span></div>
-        <div class="ba-photo"><img src="https://tokowaka-gym.com/images/before-after-03.jpg" alt="お腹周りが引き締まった" onerror="this.style.display='none';this.parentNode.querySelector('.ba-photo-ph').style.display='flex'"><div class="ba-photo-ph" style="display:none">Before → After 写真</div></div>
+        <div class="ba-head"><span class="ba-no">02</span><span class="ba-attr">30代男性・運動不足</span><span class="ba-tag">ダイエット</span></div>
+        <div class="ba-photo"><img src="images/before-after-02.png" alt="お腹周りが引き締まった" onerror="this.style.display='none';this.parentNode.querySelector('.ba-photo-ph').style.display='flex'"><div class="ba-photo-ph" style="display:none">Before → After 写真</div></div>
         <div class="ba-result"><span class="ba-val" style="font-size:17px">お腹周りすっきり</span></div>
         <div class="ba-stars">★★★★★</div>
         <p class="ba-cmt">「お腹周りが引き締まり、姿勢も良くなって体が軽くなりました」</p>
+      </div>
+      <!-- 03 女性・ボディメイク -->
+      <div class="ba-card rv d3">
+        <div class="ba-head"><span class="ba-no ba-no-f">03</span><span class="ba-attr">30代女性・筋トレ初心者</span><span class="ba-tag">ボディメイク</span></div>
+        <div class="ba-photo"><img src="images/before-after-03.png" alt="ボディラインが綺麗になった" onerror="this.style.display='none';this.parentNode.querySelector('.ba-photo-ph').style.display='flex'"><div class="ba-photo-ph" style="display:none">Before → After 写真</div></div>
+        <div class="ba-result"><span class="ba-val" style="font-size:16px">「変わったね」と言われるように</span></div>
+        <div class="ba-stars">★★★★★</div>
+        <p class="ba-cmt">「ボディラインが綺麗になり、周りにも褒められて自己肯定感も上がりました」</p>
       </div>
     </div>
     <div class="cta-center rv">
