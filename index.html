@@ -122,8 +122,7 @@ header.sc{box-shadow:0 2px 18px rgba(27,42,71,.08);border-bottom:1px solid var(-
 .hero-badge i{width:5px;height:5px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
 .hero-title{font-family:'Shippori Mincho','Noto Serif JP',serif;font-weight:600;font-size:clamp(31px,5.2vw,58px);line-height:1.5;letter-spacing:.08em;color:#fff;margin-bottom:26px;text-shadow:0 2px 16px rgba(0,0,0,.65),0 2px 6px rgba(0,0,0,.55),0 0 40px rgba(0,0,0,.4)}
 .hero-title em{font-style:normal;color:var(--gold-l)}
-.nb{display:inline-block}
-.hero-title,.sh-ja,.sh-sub,.ct-title,.ct-desc,.worry-h,.voice-lead,.tr-banner h3,.tr-banner p,.flow-h,.stmt-h,.camp-h,.camp-sub,.ac-h,.pts-intro,.worry-empathy p{text-wrap:balance}
+.hero-title,.sh-ja,.ct-title,.worry-h,.tr-banner h3,.flow-h,.stmt-h,.camp-h,.ac-h{text-wrap:balance} /* 見出しのみ。本文段落に適用すると行が間延びするため広げない。1行に収まる場合は無効＝横幅目一杯を維持 */
 .br-sp{display:none}
 .hero-lead{font-family:'Noto Sans JP',sans-serif;font-size:clamp(13px,1.5vw,15px);font-weight:300;color:rgba(255,255,255,.92);line-height:2.1;margin-bottom:34px;max-width:540px;text-shadow:0 1px 12px rgba(0,0,0,.8),0 1px 3px rgba(0,0,0,.6)}
 .hero-lead strong{color:var(--gold-l);font-weight:500}
@@ -605,7 +604,7 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
   <div class="hero-overlay"></div>
   <div class="hero-inner">
     <div class="hero-badge"><i></i>吉祥寺・完全個室パーソナルジム</div>
-    <h1 class="hero-title">最短3ヶ月で、<br><em><span class="nb">理想の身体を</span><span class="nb">手に入れる。</span></em></h1>
+    <h1 class="hero-title">最短3ヶ月で、<br><em>理想の身体を手に入れる。</em></h1>
     <p class="hero-lead"><strong>運動 × 整体</strong>で、何歳からでも。<br>吉祥寺の完全個室で、トレーナーが成果まで伴走します。</p>
     <div class="hero-btns">
       <div class="hero-offer">
@@ -635,7 +634,7 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
     <div class="sh rv">
       <span class="ey">Real Results</span>
       <div class="gl"></div>
-      <h2 class="sh-ja"><span class="nb">こんな私も、</span><span class="nb">変われた。</span></h2>
+      <h2 class="sh-ja">こんな私も、変われた。</h2>
     </div>
     <p class="voice-lead rv">年齢も、運動経験も、関係ありません。<br><strong>「自分にもできた」</strong>——<br class="br-sp">その声が、何よりの証拠です。</p>
     <div class="ba-grid">
@@ -677,7 +676,7 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
     <div class="sh rv">
       <span class="ey">Your Worries</span>
       <div class="gl"></div>
-      <h2 class="sh-ja"><span class="nb">こんなお悩み、</span><span class="nb">ありませんか？</span></h2>
+      <h2 class="sh-ja">こんなお悩み、ありませんか？</h2>
     </div>
     <div class="worry-wrap">
       <div class="rv">
@@ -691,9 +690,9 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
       <div class="worry-photo rv d2">
         <img src="https://tokowaka-gym.com/images/charm02.jpg" alt="身体の悩みに向き合う" onerror="this.style.display='none'">
       </div>
-      <h3 class="worry-h rv"><span class="nb">変われなかったのは、</span><span class="nb"><em>あなたのせいじゃない。</em></span></h3>
+      <h3 class="worry-h rv">変われなかったのは、<br class="br-sp"><em>あなたのせいじゃない。</em></h3>
       <div class="worry-empathy rv">
-        <p>続かなかったのも、戻ってしまったのも、正しい方法に出会えなかっただけ。<br>その不調も、続かなさも——<strong>「運動 × 整体」で、根本から変えられます。</strong></p>
+        <p>続かなかったのも、戻ってしまったのも、正しい方法に出会えなかっただけ。<br>その不調も、続かなさも——<br class="br-sp"><strong>「運動×整体」で、根本から変わります。</strong></p>
       </div>
     </div>
   </div>
@@ -705,9 +704,9 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
     <div class="sh rv">
       <span class="ey">Why TOKOWAKA</span>
       <div class="gl"></div>
-      <h2 class="sh-ja"><span class="nb">あなたの悩みを解決する、</span><span class="nb">3つの理由</span></h2>
+      <h2 class="sh-ja">あなたの悩みを解決する、3つの理由</h2>
     </div>
-    <p class="pts-intro rv">TOKOWAKAが、これまで報われなかったあなたを変えられる理由。</p>
+    <p class="pts-intro rv">TOKOWAKAが、これまで報われなかった<br class="br-sp">あなたを変えられる理由。</p>
     <div class="pts-grid">
       <div class="pt-card rv d1">
         <div class="pt-photo"><img src="https://tokowaka-gym.com/images/charm01.jpg" alt="精鋭トレーナー陣" onerror="this.style.display='none';this.parentNode.querySelector('.pt-ph').style.display='flex'"><div class="pt-ph" style="display:none">トレーナーの写真</div></div>
@@ -746,7 +745,7 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
     <div class="sh rv">
       <span class="ey">Trainer</span>
       <div class="gl"></div>
-      <h2 class="sh-ja"><span class="nb">我々が、</span><span class="nb">あなたの理想へ</span><span class="nb">伴走します。</span></h2>
+      <h2 class="sh-ja">我々が、あなたの理想へ伴走します。</h2>
     </div>
     <div class="tr-banner rv">
       <h3>確かな経験と知識で、<br class="br-sp"><em>全員がコンテスト入賞者</em></h3>
@@ -820,7 +819,7 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
     <div class="sh rv">
       <span class="ey">Instagram</span>
       <div class="gl"></div>
-      <h2 class="sh-ja"><span class="nb">日々の様子を、</span><span class="nb">のぞいて</span><span class="nb">みてください。</span></h2>
+      <h2 class="sh-ja">日々の様子を、のぞいてみてください。</h2>
       <p class="sh-sub">トレーナーの知識や雰囲気を、毎日の投稿でお届けしています。</p>
     </div>
     <div class="ig-stats rv">
@@ -857,7 +856,7 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
     <div class="sh rv">
       <span class="ey">Reviews</span>
       <div class="gl"></div>
-      <h2 class="sh-ja"><span class="nb">お客様からの、</span><span class="nb">確かな信頼。</span></h2>
+      <h2 class="sh-ja">お客様からの、確かな信頼。</h2>
     </div>
     <div class="gr-summary rv">
       <div class="gr-score">4.9</div>
@@ -970,7 +969,7 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
     <div class="sh rv">
       <span class="ey">Studio</span>
       <div class="gl"></div>
-      <h2 class="sh-ja"><span class="nb">通いたくなる、</span><span class="nb">上質な空間。</span></h2>
+      <h2 class="sh-ja">通いたくなる、上質な空間。</h2>
       <p class="sh-sub">写真をクリックで拡大できます</p>
     </div>
   </div>
@@ -1195,7 +1194,7 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
   <div class="si">
     <div class="ct-box rv">
       <span class="ct-free">無料体験トレーニング実施中</span>
-      <h2 class="ct-title"><span class="nb">まずは、</span><span class="nb"><em>お気軽に</em>お試しください。</span></h2>
+      <h2 class="ct-title"><em>お気軽に</em>、ご相談ください。</h2>
       <p class="ct-desc">姿勢・動き・体の使い方を丁寧に確認しながら、今のあなたに合ったトレーニングをご提案します。運動が苦手な方でも大丈夫です。</p>
       <div class="ct-opts">
         <a href="javascript:void(0)" onclick="goToReservation()" class="btn-gold">体験トレーニング予約</a>
