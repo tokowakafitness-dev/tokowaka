@@ -53,7 +53,7 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 :root{
   --navy:#1b2a47;--navy-d:#13203a;--navy-l:#37527e;
-  --gold:#b8965a;--gold-l:#cda86c;--gold-p:#f3ecdc;
+  --gold:#b8965a;--gold-l:#cda86c;--gold-p:#f3ecdc;--gold-hero:#eed7a0;
   --cream:#f6f0e5;--warm:#faf5eb;--white:#fff;--stone:#e6ddcd;
   --ink:#22201c;--soft:#5d574e;
   --bd:rgba(27,42,71,.10);--r:3px;--max:1080px;
@@ -121,9 +121,10 @@ header.sc{box-shadow:0 2px 18px rgba(27,42,71,.08);border-bottom:1px solid var(-
 .hero-badge{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(205,168,108,.85);color:#fff;font-family:'Noto Sans JP',sans-serif;font-size:11px;font-weight:500;letter-spacing:.18em;padding:8px 20px;border-radius:100px;margin-bottom:24px;background:rgba(19,32,58,.78);backdrop-filter:blur(4px);box-shadow:0 4px 16px rgba(0,0,0,.3)}
 .hero-badge i{width:5px;height:5px;background:var(--gold);border-radius:50%;animation:pulse 2s infinite}
 .hero-title{font-family:'Shippori Mincho','Noto Serif JP',serif;font-weight:600;font-size:clamp(31px,5.2vw,58px);line-height:1.5;letter-spacing:.08em;color:#fff;margin-bottom:26px;text-shadow:0 2px 16px rgba(0,0,0,.65),0 2px 6px rgba(0,0,0,.55),0 0 40px rgba(0,0,0,.4)}
-.hero-title em{font-style:normal;color:var(--gold-l)}
+.hero-title em{font-style:normal;color:var(--gold-hero);text-shadow:0 1px 2px rgba(0,0,0,.85),0 2px 8px rgba(0,0,0,.75),0 2px 18px rgba(0,0,0,.6),0 0 40px rgba(0,0,0,.45)} /* HERO専用の明るい金＋強シャドー。パレット本体(--gold-l)は他箇所と共用のため不変 */.hero-title,.sh-ja,.ct-title,.worry-h,.tr-banner h3,.flow-h,.stmt-h,.camp-h,.ac-h{text-wrap:balance} /* 見出しのみ。本文段落に適用すると行が間延びするため広げない。1行に収まる場合は無効＝横幅目一杯を維持 */
+.br-sp{display:none}
 .hero-lead{font-family:'Noto Sans JP',sans-serif;font-size:clamp(13px,1.5vw,15px);font-weight:300;color:rgba(255,255,255,.92);line-height:2.1;margin-bottom:34px;max-width:540px;text-shadow:0 1px 12px rgba(0,0,0,.8),0 1px 3px rgba(0,0,0,.6)}
-.hero-lead strong{color:var(--gold-l);font-weight:500}
+.hero-lead strong{color:var(--gold-hero);font-weight:500}
 .hero-btns{display:flex;gap:14px;align-items:center;flex-wrap:wrap;justify-content:center}
 .hero-lead{margin-left:auto;margin-right:auto}
 .hero-offer{display:inline-flex;align-items:center;gap:10px;background:rgba(255,255,255,.96);border:1px solid var(--gold);border-radius:var(--r);padding:12px 22px;box-shadow:0 6px 22px rgba(0,0,0,.3)}
@@ -148,11 +149,12 @@ header.sc{box-shadow:0 2px 18px rgba(27,42,71,.08);border-bottom:1px solid var(-
 .ba-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .ba-card{background:#fff;border-radius:var(--r);overflow:hidden;box-shadow:0 4px 20px rgba(27,42,71,.07);display:flex;flex-direction:column}
 .ba-head{display:flex;align-items:center;gap:8px;padding:14px 16px 10px}
-.ba-no{font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:600;color:#fff;background:var(--navy);width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ba-no{font-family:'Cormorant Garamond',serif;font-size:13px;font-weight:600;color:#fff;background:#2e5a8f;width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0} /* 男性=青 */
+.ba-no-f{background:#c9829e} /* 女性=ピンク（番号で男女識別） */
 .ba-attr{font-family:'Noto Sans JP',sans-serif;font-size:10px;color:var(--soft);letter-spacing:.04em}
 .ba-tag{font-family:'Noto Sans JP',sans-serif;font-size:9px;color:var(--gold);border:1px solid rgba(184,150,90,.4);padding:2px 8px;border-radius:100px;margin-left:auto}
-.ba-photo{aspect-ratio:16/10;background:var(--navy-d);position:relative;overflow:hidden}
-.ba-photo img{width:100%;height:100%;object-fit:cover}
+.ba-photo{aspect-ratio:5/4;background:var(--navy-d);position:relative;overflow:hidden} /* 枠は横5:縦4。object-position:topと組で下側だけカット（足元の見切れ調整） */
+.ba-photo img{width:100%;height:100%;object-fit:cover;object-position:center top} /* 下側に写真が無い素材があるため上側優先 */
 .ba-photo-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-family:'Noto Sans JP',sans-serif;font-size:11px;color:rgba(255,255,255,.3);letter-spacing:.1em;background:linear-gradient(135deg,#e6ddcd,#d6cbb6)}
 .ba-result{padding:14px 16px 6px;display:flex;align-items:baseline;gap:8px}
 .ba-val{font-family:'Shippori Mincho',serif;font-weight:600;font-size:24px;color:var(--gold);line-height:1}
@@ -214,11 +216,13 @@ header.sc{box-shadow:0 2px 18px rgba(27,42,71,.08);border-bottom:1px solid var(-
 @media(max-width:580px){
   .si{padding:48px 18px}
   #hero{min-height:92vh}
-  .hero-title{font-size:clamp(26px,8vw,38px)}
+  .hero-title{font-size:clamp(22px,6.6vw,38px)}
   .hero-lead{font-size:13px}
   .hero-btns{gap:10px}
   .btn-gold{padding:14px 28px;font-size:12px}
-  .sh-ja{font-size:21px}
+  .sh-ja{font-size:18px;letter-spacing:.05em}
+  .ct-title{font-size:19px}
+  .br-sp{display:inline}
   .voice-lead{font-size:16px}
   .worry-list li{font-size:13px}
   .worry-empathy p{font-size:15px}
@@ -474,6 +478,7 @@ header.sc{box-shadow:0 2px 18px rgba(27,42,71,.08);border-bottom:1px solid var(-
 .ct-title em{font-style:normal;color:var(--gold-l)}
 .ct-desc{font-family:'Noto Sans JP',sans-serif;font-size:13px;color:rgba(255,255,255,.7);line-height:1.95;max-width:440px;margin:0 auto 30px}
 .ct-opts{display:flex;gap:14px;justify-content:center;flex-wrap:wrap}
+.ct-opts .btn-gold{display:flex;align-items:center;justify-content:center} /* 電話カードと同じ高さに伸びた時も文字を中央に */
 .ct-form-acc{max-width:480px;margin:30px auto 0}
 .ct-form-toggle{cursor:pointer;font-family:'Noto Sans JP',sans-serif;font-size:13px;color:rgba(255,255,255,.85);border:1px solid rgba(255,255,255,.3);border-radius:var(--r);padding:13px 30px;display:inline-block;list-style:none;transition:border-color .2s}
 .ct-form-toggle::-webkit-details-marker{display:none}
@@ -600,7 +605,7 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
   <div class="hero-overlay"></div>
   <div class="hero-inner">
     <div class="hero-badge"><i></i>吉祥寺・完全個室パーソナルジム</div>
-    <h1 class="hero-title">最短3ヶ月で、<br><em>理想の身体を手に入れる。</em></h1>
+    <h1 class="hero-title">最短3ヶ月で、<br><em>理想の身体</em>を手に入れる。</h1>
     <p class="hero-lead"><strong>運動 × 整体</strong>で、何歳からでも。<br>吉祥寺の完全個室で、トレーナーが成果まで伴走します。</p>
     <div class="hero-btns">
       <div class="hero-offer">
@@ -632,31 +637,31 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
       <div class="gl"></div>
       <h2 class="sh-ja">こんな私も、変われた。</h2>
     </div>
-    <p class="voice-lead rv">年齢も、運動経験も、関係ありません。<br><strong>「自分にもできた」</strong>——その声が、何よりの証拠です。</p>
+    <p class="voice-lead rv">年齢も、運動経験も、関係ありません。<br><strong>「自分にもできた」</strong>——<br class="br-sp">その声が、何よりの証拠です。</p>
     <div class="ba-grid">
       <!-- 01 ダイエット -->
       <div class="ba-card rv d1">
         <div class="ba-head"><span class="ba-no">01</span><span class="ba-attr">40代男性・運動不足</span><span class="ba-tag">ダイエット</span></div>
-        <div class="ba-photo"><img src="https://tokowaka-gym.com/images/before-after-01.jpg" alt="リモートワークでも-8kg" onerror="this.style.display='none';this.parentNode.querySelector('.ba-photo-ph').style.display='flex'"><div class="ba-photo-ph" style="display:none">Before → After 写真</div></div>
+        <div class="ba-photo"><img src="images/before-after-01.png" alt="リモートワークでも-8kg" onerror="this.style.display='none';this.parentNode.querySelector('.ba-photo-ph').style.display='flex'"><div class="ba-photo-ph" style="display:none">Before → After 写真</div></div>
         <div class="ba-result"><span class="ba-val">−8<small>kg</small></span><span class="ba-meta">期間 3〜4ヶ月／週1回</span></div>
         <div class="ba-stars">★★★★★</div>
         <p class="ba-cmt">「週1回だけで、筋肉をつけながら8kg落とせました」</p>
       </div>
-      <!-- 04 ボディメイク -->
+      <!-- 02 ダイエット（男性・側面） -->
       <div class="ba-card rv d2">
-        <div class="ba-head"><span class="ba-no">02</span><span class="ba-attr">30代男性・細身コンプレックス</span><span class="ba-tag">ボディメイク</span></div>
-        <div class="ba-photo"><img src="https://tokowaka-gym.com/images/before-after-02.jpg" alt="筋肉量+10kg超え" onerror="this.style.display='none';this.parentNode.querySelector('.ba-photo-ph').style.display='flex'"><div class="ba-photo-ph" style="display:none">Before → After 写真</div></div>
-        <div class="ba-result"><span class="ba-val">＋10<small>kg超</small></span><span class="ba-meta">筋肉量／ベンチ2倍</span></div>
-        <div class="ba-stars">★★★★★</div>
-        <p class="ba-cmt">「昔からのコンプレックスがなくなり、自分に大きな自信がつきました」</p>
-      </div>
-      <!-- 05 女性・ボディライン -->
-      <div class="ba-card rv d3">
-        <div class="ba-head"><span class="ba-no">03</span><span class="ba-attr">30代男性・運動不足</span><span class="ba-tag">ダイエット</span></div>
-        <div class="ba-photo"><img src="https://tokowaka-gym.com/images/before-after-03.jpg" alt="お腹周りが引き締まった" onerror="this.style.display='none';this.parentNode.querySelector('.ba-photo-ph').style.display='flex'"><div class="ba-photo-ph" style="display:none">Before → After 写真</div></div>
+        <div class="ba-head"><span class="ba-no">02</span><span class="ba-attr">30代男性・運動不足</span><span class="ba-tag">ダイエット</span></div>
+        <div class="ba-photo"><img src="images/before-after-02.png" alt="お腹周りが引き締まった" onerror="this.style.display='none';this.parentNode.querySelector('.ba-photo-ph').style.display='flex'"><div class="ba-photo-ph" style="display:none">Before → After 写真</div></div>
         <div class="ba-result"><span class="ba-val" style="font-size:17px">お腹周りすっきり</span></div>
         <div class="ba-stars">★★★★★</div>
         <p class="ba-cmt">「お腹周りが引き締まり、姿勢も良くなって体が軽くなりました」</p>
+      </div>
+      <!-- 03 女性・ボディメイク -->
+      <div class="ba-card rv d3">
+        <div class="ba-head"><span class="ba-no ba-no-f">03</span><span class="ba-attr">30代女性・筋トレ初心者</span><span class="ba-tag">ボディメイク</span></div>
+        <div class="ba-photo"><img src="images/before-after-03.png" alt="ボディラインが綺麗になった" onerror="this.style.display='none';this.parentNode.querySelector('.ba-photo-ph').style.display='flex'"><div class="ba-photo-ph" style="display:none">Before → After 写真</div></div>
+        <div class="ba-result"><span class="ba-val" style="font-size:16px">「変わったね」と言われるように</span></div>
+        <div class="ba-stars">★★★★★</div>
+        <p class="ba-cmt">「ボディラインが綺麗になり、周りにも褒められて自己肯定感も上がりました」</p>
       </div>
     </div>
     <div class="cta-center rv">
@@ -686,9 +691,9 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
       <div class="worry-photo rv d2">
         <img src="https://tokowaka-gym.com/images/charm02.jpg" alt="身体の悩みに向き合う" onerror="this.style.display='none'">
       </div>
-      <h3 class="worry-h rv">変われなかったのは、<em>あなたのせいじゃない。</em></h3>
+      <h3 class="worry-h rv">変われなかったのは、<br class="br-sp"><em>あなたのせいじゃない。</em></h3>
       <div class="worry-empathy rv">
-        <p>続かなかったのも、戻ってしまったのも、正しい方法に出会えなかっただけ。<br>その不調も、続かなさも——<strong>「運動 × 整体」で、根本から変えられます。</strong></p>
+        <p>続かなかったのも、戻ってしまったのも、正しい方法に出会えなかっただけ。<br>その不調も、続かなさも——<br class="br-sp"><strong>「運動×整体」で、根本から変わります。</strong></p>
       </div>
     </div>
   </div>
@@ -702,7 +707,7 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
       <div class="gl"></div>
       <h2 class="sh-ja">あなたの悩みを解決する、3つの理由</h2>
     </div>
-    <p class="pts-intro rv">TOKOWAKAが、これまで報われなかったあなたを変えられる理由。</p>
+    <p class="pts-intro rv">TOKOWAKAが、これまで報われなかった<br class="br-sp">あなたを変えられる理由。</p>
     <div class="pts-grid">
       <div class="pt-card rv d1">
         <div class="pt-photo"><img src="https://tokowaka-gym.com/images/charm01.jpg" alt="精鋭トレーナー陣" onerror="this.style.display='none';this.parentNode.querySelector('.pt-ph').style.display='flex'"><div class="pt-ph" style="display:none">トレーナーの写真</div></div>
@@ -744,7 +749,7 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
       <h2 class="sh-ja">我々が、あなたの理想へ伴走します。</h2>
     </div>
     <div class="tr-banner rv">
-      <h3>確かな経験と知識で、<em>全員がコンテスト入賞者</em></h3>
+      <h3>確かな経験と知識で、<br class="br-sp"><em>全員がコンテスト入賞者</em></h3>
       <p>あなたの目的に合わせて、選べる3名のトレーナー。</p>
     </div>
     <div class="tr-grid">
@@ -985,6 +990,206 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
 </section>
 
 <!-- ===== PLAN ===== -->
+<!-- ===== 30秒コース診断（#plan直前・計測装置兼パーソナライズ入口） ===== -->
+<style>
+#diagnosis{order:11} /* body flexのセクション順制御（line70）に準拠：experience(11)とplan(12)の間＝DOM順タイブレークでexperienceの後 */
+.diag{background:#f7f4ee;padding:72px 20px}
+.diag-inner{max-width:680px;margin:0 auto}
+.diag-en{font-family:'Cormorant Garamond',serif;font-style:italic;color:#b8965a;font-size:15px;letter-spacing:.12em;text-align:center}
+.diag-title{font-family:'Shippori Mincho',serif;font-weight:600;font-size:26px;text-align:center;margin:8px 0 6px;color:#1b2a47}
+.diag-lead{text-align:center;font-size:13.5px;color:#5d574e;margin-bottom:28px;line-height:1.9;font-weight:300}
+.diag-card{background:#fff;border:1px solid rgba(27,42,71,.10);border-radius:6px;padding:34px 28px;box-shadow:0 2px 14px rgba(27,42,71,.05)}
+.diag-progress{display:flex;justify-content:center;gap:10px;margin-bottom:26px}
+.diag-progress span{width:34px;height:3px;background:rgba(27,42,71,.10);transition:background .3s}
+.diag-progress span.on{background:#b8965a}
+.diag-qnum{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:#b8965a;text-align:center;letter-spacing:.1em}
+.diag-q{font-family:'Shippori Mincho',serif;font-weight:500;font-size:19px;color:#1b2a47;text-align:center;margin:6px 0 24px;line-height:1.7}
+.diag-opts{display:grid;gap:12px}
+.diag-opt{display:block;width:100%;text-align:left;background:#fff;border:1px solid rgba(27,42,71,.10);border-radius:4px;padding:16px 18px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;font-size:14.5px;font-weight:400;color:#22201c;transition:border-color .2s,background .2s}
+.diag-opt:hover{border-color:#b8965a;background:#f3ecdc}
+.diag-opt small{display:block;color:#5d574e;font-size:12px;margin-top:3px;font-weight:300}
+.diag-back{margin-top:18px;background:none;border:none;color:#5d574e;font-size:12px;cursor:pointer;text-decoration:underline;font-family:'Noto Sans JP',sans-serif}
+.diag-result-label{text-align:center;font-size:12.5px;color:#5d574e;letter-spacing:.08em}
+.diag-course{font-family:'Shippori Mincho',serif;font-weight:600;font-size:24px;color:#1b2a47;text-align:center;margin:10px 0 4px}
+.diag-course-sub{text-align:center;font-size:13px;color:#b8965a;margin-bottom:20px}
+.diag-reasons{border-top:1px solid rgba(27,42,71,.10);border-bottom:1px solid rgba(27,42,71,.10);padding:18px 4px;margin-bottom:18px}
+.diag-reasons li{list-style:none;font-size:13.5px;line-height:2;color:#22201c;padding-left:18px;position:relative}
+.diag-reasons li::before{content:"";position:absolute;left:2px;top:.95em;width:6px;height:6px;border-top:1px solid #b8965a;border-right:1px solid #b8965a;transform:rotate(45deg)}
+.diag-price{text-align:center;font-size:13px;color:#5d574e;margin-bottom:4px}
+.diag-price strong{font-family:'Shippori Mincho',serif;font-weight:600;font-size:20px;color:#1b2a47;margin:0 4px}
+.diag-offer{text-align:center;font-size:12.5px;color:#b8965a;background:#f3ecdc;border-radius:3px;padding:8px 10px;margin:12px 0 22px}
+.diag-cta-wrap{text-align:center}
+.diag-links{display:flex;justify-content:center;gap:26px;margin-top:16px}
+.diag-links a,.diag-links button{background:none;border:none;cursor:pointer;color:#5d574e;font-size:12px;text-decoration:underline;font-family:'Noto Sans JP',sans-serif}
+.diag-note{text-align:center;font-size:11px;color:#5d574e;margin-top:20px;line-height:1.8;font-weight:300}
+.diag-bullets-label{font-size:11px;color:#5d574e;letter-spacing:.08em;margin:18px 2px 6px}
+.diag-bodytext{font-size:13.5px;line-height:2.1;color:#22201c;margin:16px 2px;font-weight:300}
+.diag-anx{font-size:12.5px;color:#b8965a;margin:0 2px 8px;line-height:1.9}
+.diag-plan{background:#f7f4ee;border:1px solid rgba(27,42,71,.08);border-radius:4px;padding:18px 16px;margin:14px 0 8px;text-align:center}
+.diag-plan-label{font-size:11px;color:#5d574e;letter-spacing:.08em;margin-bottom:4px}
+.diag-plan-name{font-family:'Shippori Mincho',serif;font-weight:600;font-size:18px;color:#1b2a47}
+.diag-plan-dur{font-size:13px;color:#22201c;margin:8px 0 4px;line-height:1.8}
+.diag-sub{font-size:12px;color:#5d574e;margin:8px 2px 0;text-align:center}
+.diag-foot{font-size:11px;color:#5d574e;margin-top:10px;line-height:1.8;font-weight:300}
+</style>
+<section class="diag" id="diagnosis">
+  <div class="diag-inner">
+    <p class="diag-en">Course Match</p>
+    <h2 class="diag-title">30秒で、あなたに合うコースが分かります</h2>
+    <p class="diag-lead">3つの質問に答えるだけ。あなたの目的とペースに合わせて、<br>最適なコースをご提案します。</p>
+    <div class="diag-card">
+      <div class="diag-progress" id="diagProgress"></div>
+      <div id="diagBody"></div>
+    </div>
+    <p class="diag-note">診断は目安です。体験トレーニングのカウンセリングで、トレーナーがあなたの身体の状態を見て最終的なプランをご提案します。</p>
+  </div>
+</section>
+<script>
+/* 診断v3（2026-07-13 オーナー承認・diagnosis-content.md準拠）
+   内容変更は DIAG_CONFIG の編集のみで行う（ロジック不変更）
+   構成：Q1目的→目的別分岐（diet/bodymake=2問・care/health=1問）→Q3不安 → H-BASE型5点セット結果カード */
+var DIAG_CONFIG={
+questions:{
+ goal:{text:"いちばん近い目的はどれですか？",options:[
+  {value:"diet",label:"ダイエット・引き締め",note:"体重や体型を変えたい"},
+  {value:"bodymake",label:"ボディメイク・筋肉づくり",note:"理想の身体をデザインしたい"},
+  {value:"care",label:"不調・姿勢の改善",note:"肩こり・腰痛・姿勢が気になる"},
+  {value:"health",label:"体力・健康の維持",note:"何歳でも動ける身体でいたい"}]},
+ diet_amount:{text:"どのくらい減らしたいですか？",options:[
+  {value:"d3",label:"−3kg前後"},
+  {value:"d5",label:"−5kg前後"},
+  {value:"d8",label:"−8kg以上"}]},
+ diet_period:{text:"いつまでに目指したいですか？",options:[
+  {value:"m2",label:"1〜2ヶ月で"},
+  {value:"m3",label:"3ヶ月前後で"},
+  {value:"m6",label:"半年くらいかけて"},
+  {value:"free",label:"期限は決めていない"}]},
+ bm_change:{text:"目指す変化に近いのはどれですか？",options:[
+  {value:"b_shape",label:"メリハリをつけたい",note:"ヒップ・くびれ・肩まわりなど部位から"},
+  {value:"b_bulk",label:"全体的に大きくしたい",note:"筋量を増やしたい・痩せ型を変えたい"}]},
+ bm_period:{text:"いつまでに目指したいですか？",options:[
+  {value:"e3",label:"3ヶ月前後で"},
+  {value:"e6",label:"半年くらいかけて"},
+  {value:"ev",label:"大会・撮影・イベントの予定がある"},
+  {value:"free",label:"期限は決めていない"}]},
+ care_state:{text:"いまの状態に近いのはどれですか？",options:[
+  {value:"c_daily",label:"ほぼ毎日つらい",note:"肩・腰・首の慢性的な痛みや張り"},
+  {value:"c_often",label:"時々つらくなる",note:"デスクワークや疲れで悪化する"},
+  {value:"c_prevent",label:"予防したい",note:"大きな不調になる前に整えたい"}]},
+ health_habit:{text:"今の運動習慣に近いのはどれですか？",options:[
+  {value:"h_zero",label:"ほとんど運動していない",note:"何から始めればいいか分からない"},
+  {value:"h_some",label:"多少はしている",note:"自己流を卒業して効率を上げたい"}]},
+ concern:{text:"いちばん気になることは何ですか？",options:[
+  {value:"continue",label:"続けられるか不安",note:"運動が苦手・三日坊主になりがち"},
+  {value:"result",label:"本当に効果が出るか",note:"自己流では変わらなかった"},
+  {value:"meal",label:"食事も見てほしい",note:"食事管理まで任せたい"},
+  {value:"cost",label:"費用を抑えたい",note:"続けやすい価格がいい"}]}},
+flow:{
+ diet:["goal","diet_amount","diet_period","concern"],
+ bodymake:["goal","bm_change","bm_period","concern"],
+ care:["goal","care_state","concern"],
+ health:["goal","health_habit","concern"]},
+plans:{
+ t1:{name:"月額制 トレーニングコース（週1）",price:"¥48,000",unit:"/ 月（税込）",offer:"体験当日ご入会で入会金50%OFF（¥33,000 → ¥16,500）"},
+ t2:{name:"月額制 トレーニングコース（週2）",price:"¥92,000",unit:"/ 月（税込）",offer:"体験当日ご入会で入会金50%OFF（¥33,000 → ¥16,500）"},
+ bc:{name:"月額制 ボディケアコース",price:"¥10,000〜",unit:"/ 回（税込）",offer:"体験当日ご入会で入会金50%OFF（¥33,000 → ¥16,500）"},
+ full:{name:"プレミアム フルサポートコース",price:"¥136,000",unit:"/ 月（税込）",offer:"入会金0円 ＋ 最初の3ヶ月30%OFF（体験当日ご入会・毎月先着5名限定）"},
+ consult:{name:"体験カウンセリングで無料設計",price:"",unit:"",offer:"体験トレーニングは無料。トレーナーが現実的な計画を一緒に設計します"}},
+goalCopy:{
+ diet:{catch:"本気で、最後のダイエットにしたい方へ。",
+  bullets:["ジムも食事制限も、続かなかった","落ちてもすぐ戻る、を繰り返している","正しいやり方を、一度きちんと知りたい"],
+  body:"ダイエットの失敗でいちばん多いのは、食事を減らして体重だけ落とし、筋肉と代謝まで一緒に失う形です。食事を戻せば体重も戻る——この繰り返しが「痩せにくい身体」をつくります。TOKOWAKAは筋肉を守りながら脂肪を落とす順序で設計し、食事は我慢ではなく調整で。落とした後に戻らないことまで含めて、ダイエットと考えています。"},
+ bodymake:{catch:"理想の身体は、設計してつくる。",
+  bullets:["ヒップ・くびれ・肩など、変えたい部位がある","自己流トレーニングで伸び悩んでいる","痩せ型・筋量不足を本気で変えたい"],
+  body:"自己流で最も多い壁は、頑張った量のわりに「見せたい部位」が変わらないこと。フォームが数センチずれるだけで、効く筋肉は別の場所に変わります。全員がコンテスト入賞者のトレーナーが、あなたの骨格から逆算してフォームを設計。狙った部位に正確に効かせて積み上げます。"},
+ care:{catch:"その場しのぎのケアを、終わらせる。",
+  bullets:["肩こり・腰痛でマッサージ通いを繰り返している","デスクワークで姿勢の崩れを感じる","大きな不調になる前に整えたい"],
+  body:"ほぐして楽になっても、数日で元に戻る——原因である筋力の低下と動作のクセが残ったままだからです。TOKOWAKAはストレッチ整体で整えた状態を、トレーニングで「維持できる身体」に変えていきます。対症ではなく、原因へ。"},
+ health:{catch:"10年後も動ける身体を、いまから。",
+  bullets:["運動はほぼゼロ、でも危機感はある","体力・姿勢の衰えを感じ始めた","一人では続かないと分かっている"],
+  body:"健康のための運動でいちばん難しいのは、続けることです。何をどれだけやればいいか分からないまま始めると、効果を感じる前にやめてしまいます。安全な強度設計と完全マンツーマンの伴走で、「続く仕組み」ごとご提供します。"}},
+matrix:{
+ diet:{
+  d3:{m2:{main:"t1",dur:"週1 × 1〜2ヶ月で届く目安です",sub:"より確実に進めるなら：週2（月¥92,000）"},
+      m3:{main:"t1",dur:"週1 × 3ヶ月あれば十分な目安です",sub:""},
+      m6:{main:"t1",dur:"週1で、ゆとりを持って目指せます",sub:""},
+      free:{main:"t1",dur:"週1 × 約1〜2ヶ月が目安です",sub:""}},
+  d5:{m2:{main:"t2",dur:"週2 × 1〜2ヶ月の短期集中が目安です",sub:"食事管理込みで確度を上げるなら：フルサポート"},
+      m3:{main:"t1",dur:"週1 × 2〜3ヶ月が目安です",sub:"より早く進めるなら：週2（月¥92,000）"},
+      m6:{main:"t1",dur:"週1で、ゆとりを持って目指せます",sub:""},
+      free:{main:"t1",dur:"週1 × 約2〜3ヶ月が目安です",sub:""}},
+  d8:{m2:{main:"consult",dur:"このペースは身体への負担が大きいため、無理のない計画をご提案します",sub:"食事管理込みで挑戦するなら：フルサポート"},
+      m3:{main:"t2",dur:"週2 × 3ヶ月前後が目安です",sub:"食事込みで確実に進めるなら：フルサポート"},
+      m6:{main:"t1",dur:"週1 × 半年前後が目安です",sub:"より早く進めるなら：週2（月¥92,000）"},
+      free:{main:"t1",dur:"週1 × 約3〜4ヶ月が目安です",sub:"さらに短くするなら：週2（月¥92,000）"}}},
+ bodymake:{
+  b_shape:{e3:{main:"t2",dur:"週2 × 3ヶ月前後が目安です",sub:"食事管理込みで最短を狙うなら：フルサポート"},
+           e6:{main:"t1",dur:"週1 × 半年前後・部位設計で積み上げる目安です",sub:"より早く進めるなら：週2（月¥92,000）"},
+           ev:{main:"consult",dur:"期日から逆算した計画を、体験で無料設計します",sub:"最大確度で仕上げるなら：フルサポート"},
+           free:{main:"t1",dur:"週1から、部位設計で始められます",sub:"変化のスピードを上げるなら：週2（月¥92,000）"}},
+  b_bulk:{e3:{main:"t2",dur:"週2 × 3ヶ月前後が目安です",sub:"増量は食事が半分。食事管理込みなら：フルサポート"},
+          e6:{main:"t2",dur:"週2 × 半年でしっかり積み上げる目安です",sub:"食事管理込みなら：フルサポート"},
+          ev:{main:"consult",dur:"期日から逆算した計画を、体験で無料設計します",sub:"最大確度で仕上げるなら：フルサポート"},
+          free:{main:"t2",dur:"週2が、筋量アップの基本ペースです",sub:"食事管理込みなら：フルサポート"}}},
+ care:{
+  c_daily:{main:"bc",dur:"週1の整体×運動から始める目安です",sub:"回復を早めるなら：週2ペースもご相談ください"},
+  c_often:{main:"bc",dur:"月2回〜週1のペースが目安です",sub:""},
+  c_prevent:{main:"bc",dur:"月2回〜週1のペースで、崩れる前に整えます",sub:""}},
+ health:{
+  h_zero:{main:"t1",dur:"週1・安全な強度から始めます",sub:""},
+  h_some:{main:"t1",dur:"週1から、自己流を効率に変えます",sub:"ペースを上げるなら：週2（月¥92,000）"}}},
+concernNotes:{
+ continue:"「続けられるか不安」——だからこそ完全マンツーマン。毎回トレーナーが伴走します。",
+ result:"「効果が出るか」——全トレーナーがコンテスト入賞者。体験で自己流との違いをお確かめください。",
+ meal:"「食事も見てほしい」——毎日の食事記録への個別フィードバックは、フルサポートだけの機能です。",
+ cost:""},
+mealOverrideGoals:["diet","bodymake","health"],
+costFoot:"費用を抑えるなら：お友達・パートナーと一緒に通えるペアトレーニング（1人あたり¥6,000〜/回）もあります。体験時にご相談ください。",
+disclaimer:"※期間・ペースは一般的な目安で、個人差があります。体験時にあなたの状態に合わせた計画をご提案します。"};
+(function(){var cfg=DIAG_CONFIG,body=document.getElementById("diagBody"),prog=document.getElementById("diagProgress"),ans={},flow=["goal","concern"],idx=0;
+function track(ev,p){if(window.dataLayer)dataLayer.push(Object.assign({event:ev},p||{}))}
+if('IntersectionObserver' in window){new IntersectionObserver(function(es,obs){es.forEach(function(e){if(e.isIntersecting){track("diag_view");obs.disconnect()}})},{threshold:.5}).observe(document.getElementById("diagnosis"))}
+function renderProg(done){var t=flow.length,h="";for(var i=0;i<t;i++)h+='<span class="'+(done||i<=idx?'on':'')+'"></span>';prog.innerHTML=h}
+function renderQ(){renderProg(false);var qid=flow[idx],q=cfg.questions[qid];
+var h='<p class="diag-qnum">Q'+(idx+1)+' / '+flow.length+'</p><p class="diag-q">'+q.text+'</p><div class="diag-opts">';
+for(var i=0;i<q.options.length;i++){var o=q.options[i];h+='<button class="diag-opt" data-value="'+o.value+'">'+o.label+(o.note?'<small>'+o.note+'</small>':'')+'</button>'}
+h+='</div>'+(idx>0?'<button class="diag-back" id="diagBack">ひとつ前に戻る</button>':'');
+body.innerHTML=h;
+Array.prototype.forEach.call(body.querySelectorAll(".diag-opt"),function(btn){btn.addEventListener("click",function(){var v=btn.dataset.value;ans[qid]=v;track("diag_answer",{diag_step:qid,diag_answer:v});
+if(qid==="goal")flow=cfg.flow[v].slice();
+idx++;idx<flow.length?renderQ():renderR()})});
+var back=document.getElementById("diagBack");if(back)back.addEventListener("click",function(){idx--;renderQ()})}
+function renderR(){renderProg(true);var goal=ans.goal,cell;
+if(goal==="diet")cell=cfg.matrix.diet[ans.diet_amount][ans.diet_period];
+else if(goal==="bodymake")cell=cfg.matrix.bodymake[ans.bm_change][ans.bm_period];
+else if(goal==="care")cell=cfg.matrix.care[ans.care_state];
+else cell=cfg.matrix.health[ans.health_habit];
+var mainKey=cell.main,dur=cell.dur,sub=cell.sub;
+if(ans.concern==="meal"&&cfg.mealOverrideGoals.indexOf(goal)>-1&&mainKey!=="consult"){mainKey="full";dur="食事管理込みで、目安期間を最大確度で狙えます";sub=""}
+var plan=cfg.plans[mainKey],copy=cfg.goalCopy[goal],pattern=[],i;
+for(i=0;i<flow.length;i++)pattern.push(ans[flow[i]]);
+track("diag_complete",{diag_pattern:pattern.join("-"),diag_course:mainKey});
+var note=cfg.concernNotes[ans.concern]||"";
+var bl="";for(i=0;i<copy.bullets.length;i++)bl+='<li>'+copy.bullets[i]+'</li>';
+var h='<p class="diag-result-label">あなたの回答から</p>'
++'<p class="diag-course">'+copy.catch+'</p>'
++'<p class="diag-bullets-label">こんな方におすすめ</p><ul class="diag-reasons">'+bl+'</ul>'
++'<p class="diag-bodytext">'+copy.body+'</p>'
++(note?'<p class="diag-anx">'+note+'</p>':'')
++'<div class="diag-plan"><p class="diag-plan-label">あなたへのご提案</p><p class="diag-plan-name">'+plan.name+'</p><p class="diag-plan-dur">'+dur+'</p>'
++(plan.price?'<p class="diag-price"><strong>'+plan.price+'</strong>'+plan.unit+'</p>':'')
++'<p class="diag-offer">'+plan.offer+'</p></div>'
++(sub?'<p class="diag-sub">'+sub+'</p>':'')
++(ans.concern==="cost"?'<p class="diag-sub">'+cfg.costFoot+'</p>':'')
++'<p class="diag-foot">'+cfg.disclaimer+'</p>'
++'<div class="diag-cta-wrap"><a href="javascript:void(0)" class="btn-gold" id="diagCta" data-cta="diagnosis">この内容で体験トレーニングを申し込む（無料）</a></div>'
++'<div class="diag-links"><a href="#plan">全コースの料金を見る</a><button id="diagRetry">診断をやり直す</button></div>';
+body.innerHTML=h;
+document.getElementById("diagCta").addEventListener("click",function(){track("diag_cta_click",{diag_course:mainKey});goToReservation(this)});
+document.getElementById("diagRetry").addEventListener("click",function(){idx=0;ans={};flow=["goal","concern"];renderQ()})}
+renderQ()})();
+</script>
+
 <section id="plan">
   <div class="si">
     <div class="sh rv">
@@ -1023,10 +1228,10 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
         <div class="cc-left">
           <span class="cc-tag premium">プレミアム</span>
           <h3 class="cc-title">フルサポートコース</h3>
-          <p class="cc-meta">75分 / 週2回固定・完全個室</p>
+          <p class="cc-meta">75分 / マンツーマン・完全個室</p>
           <p class="cc-desc">身体も食事も、すべてを任せる最高水準のプログラム。</p>
           <div class="cc-inc">
-            <div class="cc-inc-i"><span class="cc-inc-l">トレーニング</span><span class="cc-inc-v">週2回固定<br>完全個室</span></div>
+            <div class="cc-inc-i"><span class="cc-inc-l">トレーニング</span><span class="cc-inc-v">マンツーマン<br>完全個室</span></div>
             <div class="cc-inc-i"><span class="cc-inc-l">食事管理</span><span class="cc-inc-v">毎日記録<br>個別FB</span></div>
             <div class="cc-inc-i"><span class="cc-inc-l">進捗管理</span><span class="cc-inc-v">週次報告<br>目標修正</span></div>
           </div>
@@ -1055,7 +1260,7 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
         <div class="cc-left">
           <span class="cc-tag">月額制</span>
           <h3 class="cc-title">トレーニングコース</h3>
-          <p class="cc-meta">50分 / マンツーマン・完全個室</p>
+          <p class="cc-meta">60分 / マンツーマン・完全個室</p>
           <p class="cc-desc">短時間で集中的に。続けやすい、マンツーマンのスタンダードコース。</p>
         </div>
         <div class="cc-toggle"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg><span>料金を見る</span></div>
@@ -1077,7 +1282,7 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
         <div class="cc-left">
           <span class="cc-tag">2名・月額制</span>
           <h3 class="cc-title">ペアトレーニングコース</h3>
-          <p class="cc-meta">60分 / 2名・完全個室</p>
+          <p class="cc-meta">75分 / 2名・完全個室</p>
           <p class="cc-desc">友人・パートナーと2人で。1人あたり¥6,000〜の、続けやすいコース。</p>
         </div>
         <div class="cc-toggle"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg><span>料金を見る</span></div>
@@ -1093,7 +1298,7 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
         <p class="cc-note">※ 税込。2名で同日利用が条件。</p>
       </div></div>
     </div>
-    <p class="plan-foot">※ 入会金割引・最初の3ヶ月30%OFF等のキャンペーンは、毎月先着5名様まで（体験当日のご入会が条件）。</p>
+    <p class="plan-foot">※ 表示時間はカウンセリング・お着替えを含むセッション全体の時間です。<br>※ 入会金割引・最初の3ヶ月30%OFF等のキャンペーンは、毎月先着5名様まで（体験当日のご入会が条件）。</p>
   </div>
 </section>
 
@@ -1190,7 +1395,7 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
   <div class="si">
     <div class="ct-box rv">
       <span class="ct-free">無料体験トレーニング実施中</span>
-      <h2 class="ct-title">まずは、<em>お気軽に</em>お試しください。</h2>
+      <h2 class="ct-title"><em>お気軽に</em>、ご相談ください。</h2>
       <p class="ct-desc">姿勢・動き・体の使い方を丁寧に確認しながら、今のあなたに合ったトレーニングをご提案します。運動が苦手な方でも大丈夫です。</p>
       <div class="ct-opts">
         <a href="javascript:void(0)" onclick="goToReservation()" class="btn-gold">体験トレーニング予約</a>
@@ -1257,6 +1462,17 @@ function toggleFaq(el){el.classList.toggle('open');if(el.classList.contains('ope
 (function(){document.querySelectorAll('.ig-reel video[data-start]').forEach(function(v){var s=parseFloat(v.dataset.start)||0;function seek(){try{v.currentTime=s}catch(e){}}if(v.readyState>=1)seek();else v.addEventListener('loadedmetadata',seek);v.addEventListener('timeupdate',function(){if(v.currentTime<s-0.3)seek()})})})();
 /* リールをタップで音声ON（他はミュート）・右下アイコンで状態表示 */
 (function(){var reels=Array.prototype.slice.call(document.querySelectorAll('.ig-reel'));var M='<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>';var S='<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>';reels.forEach(function(reel){var v=reel.querySelector('video');if(!v)return;reel.addEventListener('click',function(){var wasMuted=v.muted;reels.forEach(function(r){var vv=r.querySelector('video');if(vv)vv.muted=true;var sv=r.querySelector('.ig-sound svg');if(sv)sv.innerHTML=M});if(wasMuted){v.muted=false;v.volume=(v.dataset.volume!=null?parseFloat(v.dataset.volume):1);if(window.dataLayer)dataLayer.push({event:'reel_sound_on'});var p=v.play();if(p&&p.catch)p.catch(function(){});var sv2=reel.querySelector('.ig-sound svg');if(sv2)sv2.innerHTML=S}})})})();
+/* UTM別ヒーロー出し分け：URLに ?p=<キー> または utm_content=<キー> がありPERSONA_CONFIGに定義がある時のみ差し替え。無ければ一切何もしない（未稼働状態で本番同居可）。文言変更はCONFIG編集のみ */
+var PERSONA_CONFIG={
+ diet:{badge:"吉祥寺・完全個室パーソナルジム",title:"最短3ヶ月で、<br><em>もう戻らない</em>身体へ。",lead:"<strong>運動 × 整体 × 食事管理</strong>で、リバウンドしない痩せ方を。<br>吉祥寺の完全個室で、トレーナーが成果まで伴走します。"},
+ bodymake:{badge:"吉祥寺・完全個室パーソナルジム",title:"<em>理想の身体</em>を、<br>デザインする。",lead:"<strong>コンテスト入賞トレーナー</strong>があなた専属に。<br>骨格から逆算して、見せたい身体をつくります。"},
+ care:{badge:"吉祥寺・完全個室パーソナルジム",title:"痛みと不調のない、<br><em>動ける身体</em>へ。",lead:"<strong>運動 × 整体</strong>で、肩こり・腰痛・姿勢を根本から。<br>何歳からでも、身体は変えられます。"}};
+(function(){try{var q=new URLSearchParams(location.search),key=q.get("p")||q.get("utm_content");if(!key)return;var c=PERSONA_CONFIG[key];if(!c)return;
+var b=document.querySelector(".hero-badge"),t=document.querySelector(".hero-title"),l=document.querySelector(".hero-lead");
+if(b&&c.badge)b.innerHTML="<i></i>"+c.badge;if(t&&c.title)t.innerHTML=c.title;if(l&&c.lead)l.innerHTML=c.lead;
+if(window.dataLayer)dataLayer.push({event:"persona_view",persona:key})}catch(e){}})();
+/* セクション計測：画面中央帯に入ったら section_view（初回のみ）、離れたら滞在秒数を section_dwell で送出 */
+(function(){if(!('IntersectionObserver' in window))return;var secs=document.querySelectorAll('section[id]');var seen={},enter={};var io=new IntersectionObserver(function(es){es.forEach(function(e){var id=e.target.id;if(e.isIntersecting){if(!seen[id]){seen[id]=1;if(window.dataLayer)dataLayer.push({event:'section_view',section_id:id})}if(!enter[id])enter[id]=Date.now()}else if(enter[id]){var s=Math.round((Date.now()-enter[id])/1000);enter[id]=0;if(s>=1&&s<=1800&&window.dataLayer)dataLayer.push({event:'section_dwell',section_id:id,dwell_seconds:s})}})},{rootMargin:'-35% 0px -35% 0px',threshold:0});secs.forEach(function(s){io.observe(s)})})();
 </script>
 </body>
 </html>
