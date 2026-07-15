@@ -575,7 +575,7 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
     <a href="#trainer">トレーナー</a>
     <a href="#gallery">店内写真</a>
     <a href="#experience">体験の流れ</a>
-    <a href="#plan">料金</a>
+    <a href="#diagnosis">料金</a>
     <a href="#faq">よくある質問</a>
     <a href="#access">アクセス</a>
   </nav>
@@ -590,7 +590,7 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
   <a href="#trainer" class="mob-link">トレーナー</a>
   <a href="#gallery" class="mob-link">店内写真</a>
   <a href="#experience" class="mob-link">体験の流れ</a>
-  <a href="#plan" class="mob-link">料金</a>
+  <a href="#diagnosis" class="mob-link">料金</a>
   <a href="#faq" class="mob-link">よくある質問</a>
   <a href="#access" class="mob-link">アクセス</a>
   <div class="mob-btns"><a href="javascript:void(0)" onclick="goToReservation()">体験トレーニング予約</a></div>
@@ -1178,7 +1178,6 @@ painDur:{
  health:"痛みと相談しながら、整体×運動で動ける身体をつくる目安です"},
 mealOverrideGoals:["diet","bodymake","health"],
 costFoot:"費用を抑えるなら：お友達・パートナーと一緒に通えるペアトレーニング（1人あたり¥6,000〜/回）もあります。体験時にご相談ください。",
-assurances:["月会費・入会金のほかに、追加費用はかかりません","回数は翌月1/3まで繰り越しOK"],
 trainers:{
  suzuki:{name:"鈴木 神海感留",tags:"大幅ダイエット・バルクアップ・不調/機能改善｜APF Japan Classic 出場",photo:"https://tokowaka-gym.com/images/trainer02.jpg"},
  oki:{name:"沖 孟",tags:"女性のボディメイク・姿勢/骨盤矯正｜BBJファイナリスト",tagsAlt:"ボディメイク・姿勢/骨盤矯正・機能改善｜BBJファイナリスト",photo:"https://tokowaka-gym.com/images/trainer03.jpg"},
@@ -1268,7 +1267,6 @@ var h='<p class="diag-result-label">あなたの回答から</p>'
 +(plan.price?'<p class="diag-price"><strong>'+plan.price+'</strong>'+plan.unit+'</p>':'')
 +(mainKey==="training"?'<p class="diag-scene-cap" style="margin:2px 0 0">※期間の目安は週1ペースの場合です。月2回からでも始められます</p>':'')
 +'<p class="diag-offer">'+plan.offer+'</p>'
-+(mainKey!=="consult"?'<p class="diag-scene-cap" style="margin:8px 0 0;text-align:center">'+cfg.assurances.join('　/　')+'</p>':'')
 +(tr?'<p class="diag-plan-label" style="margin-top:14px">あなたの担当候補</p>'+(tr.photo?'<img class="diag-trainer-photo" src="'+tr.photo+'" alt="'+tr.name+'" loading="lazy">':'')+'<p class="diag-trainer-name">'+tr.name+'</p><p class="diag-trainer-tags">'+trTags+'</p><p class="diag-scene-cap" style="margin:4px 0 0">'+cfg.trainerNote+'</p>':'')
 +'</div>'
 +(mainKey==="training"?'<div class="diag-upsell"><p class="diag-upsell-t">'+cfg.upsell.title+'</p><p class="diag-plan-name" style="font-size:16px">'+cfg.upsell.name+'</p><p class="diag-upsell-d">'+cfg.upsell.desc+'</p><p class="diag-price" style="margin:6px 0 0"><strong style="font-size:17px">'+cfg.upsell.price+'</strong>'+cfg.upsell.unit+'</p><p class="diag-offer" style="margin:8px 0 0">'+cfg.upsell.offer+'</p><p style="text-align:center;margin:10px 0 0"><a href="#plan" id="diagUpsell" style="font-size:12px;color:#5d574e">'+cfg.upsell.link+'</a></p></div>':'')
