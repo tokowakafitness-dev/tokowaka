@@ -993,6 +993,7 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
 <!-- ===== 30秒コース診断（#plan直前・計測装置兼パーソナライズ入口） ===== -->
 <style>
 #diagnosis{order:11} /* body flexのセクション順制御（line70）に準拠：experience(11)とplan(12)の間＝DOM順タイブレークでexperienceの後 */
+.nb{display:inline-block} /* 文節単位の改行制御（span.nbで包んだ塊の内部では改行しない） */
 .diag{background:#f7f4ee;padding:72px 20px}
 .diag-inner{max-width:680px;margin:0 auto}
 .diag-en{font-family:'Cormorant Garamond',serif;font-style:italic;color:#b8965a;font-size:15px;letter-spacing:.12em;text-align:center}
@@ -1049,7 +1050,7 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
   <div class="diag-inner">
     <p class="diag-en">Plan Diagnosis</p>
     <h2 class="diag-title"><span class="nb">まずは30秒、</span><span class="nb">プラン診断。</span></h2>
-    <p class="diag-lead">AI設計の診断が、あなたに合うコース・料金・担当をご提案。<br>タップで答えるだけ・登録不要。</p>
+    <p class="diag-lead"><span class="nb">AI設計の診断が、</span><span class="nb">あなたに合う</span><span class="nb">コース・料金・担当を</span><span class="nb">ご提案。</span><br><span class="nb">タップで答えるだけ・</span><span class="nb">登録不要。</span></p>
     <div class="diag-card">
       <div class="diag-progress" id="diagProgress"></div>
       <div id="diagBody"></div>
