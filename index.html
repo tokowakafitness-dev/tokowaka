@@ -730,7 +730,7 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
         <div class="pt-body">
           <span class="pt-no">Point 03</span>
           <h3 class="pt-title">¥6,000/1回〜・完全個室</h3>
-          <p class="pt-desc">続けやすい価格と、<strong>完全個室・手ぶらでOK</strong>の環境。人目を気にせず、自分の身体だけに集中できます。</p>
+          <p class="pt-desc">続けやすい価格<small>（¥6,000はペアトレーニング利用時・1人あたり）</small>と、<strong>完全個室・手ぶらでOK</strong>の環境。人目を気にせず、自分の身体だけに集中できます。</p>
         </div>
       </div>
     </div>
@@ -990,6 +990,290 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
 </section>
 
 <!-- ===== PLAN ===== -->
+<!-- ===== 30秒コース診断（#plan直前・計測装置兼パーソナライズ入口） ===== -->
+<style>
+#diagnosis{order:11} /* body flexのセクション順制御（line70）に準拠：experience(11)とplan(12)の間＝DOM順タイブレークでexperienceの後 */
+.diag{background:#f7f4ee;padding:72px 20px}
+.diag-inner{max-width:680px;margin:0 auto}
+.diag-en{font-family:'Cormorant Garamond',serif;font-style:italic;color:#b8965a;font-size:15px;letter-spacing:.12em;text-align:center}
+.diag-title{font-family:'Shippori Mincho',serif;font-weight:600;font-size:26px;text-align:center;margin:8px 0 6px;color:#1b2a47}
+.diag-lead{text-align:center;font-size:13.5px;color:#5d574e;margin-bottom:28px;line-height:1.9;font-weight:300}
+.diag-card{background:#fff;border:1px solid rgba(27,42,71,.10);border-radius:6px;padding:34px 28px;box-shadow:0 2px 14px rgba(27,42,71,.05)}
+.diag-progress{display:flex;justify-content:center;gap:10px;margin-bottom:26px}
+.diag-progress span{width:34px;height:3px;background:rgba(27,42,71,.10);transition:background .3s}
+.diag-progress span.on{background:#b8965a}
+.diag-qnum{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:14px;color:#b8965a;text-align:center;letter-spacing:.1em}
+.diag-q{font-family:'Shippori Mincho',serif;font-weight:500;font-size:19px;color:#1b2a47;text-align:center;margin:6px 0 24px;line-height:1.7}
+.diag-opts{display:grid;gap:12px}
+.diag-opt{display:block;width:100%;text-align:left;background:#fff;border:1px solid rgba(27,42,71,.10);border-radius:4px;padding:16px 18px;cursor:pointer;font-family:'Noto Sans JP',sans-serif;font-size:14.5px;font-weight:400;color:#22201c;transition:border-color .2s,background .2s}
+.diag-opt:hover{border-color:#b8965a;background:#f3ecdc}
+.diag-opt small{display:block;color:#5d574e;font-size:12px;margin-top:3px;font-weight:300}
+.diag-back{margin-top:18px;background:none;border:none;color:#5d574e;font-size:12px;cursor:pointer;text-decoration:underline;font-family:'Noto Sans JP',sans-serif}
+.diag-result-label{text-align:center;font-size:12.5px;color:#5d574e;letter-spacing:.08em}
+.diag-course{font-family:'Shippori Mincho',serif;font-weight:600;font-size:24px;color:#1b2a47;text-align:center;margin:10px 0 4px}
+.diag-course-sub{text-align:center;font-size:13px;color:#b8965a;margin-bottom:20px}
+.diag-reasons{border-top:1px solid rgba(27,42,71,.10);border-bottom:1px solid rgba(27,42,71,.10);padding:18px 4px;margin-bottom:18px}
+.diag-reasons li{list-style:none;font-size:13.5px;line-height:2;color:#22201c;padding-left:18px;position:relative}
+.diag-reasons li::before{content:"";position:absolute;left:2px;top:.95em;width:6px;height:6px;border-top:1px solid #b8965a;border-right:1px solid #b8965a;transform:rotate(45deg)}
+.diag-price{text-align:center;font-size:13px;color:#5d574e;margin-bottom:4px}
+.diag-price strong{font-family:'Shippori Mincho',serif;font-weight:600;font-size:20px;color:#1b2a47;margin:0 4px}
+.diag-offer{text-align:center;font-size:12.5px;color:#b8965a;background:#f3ecdc;border-radius:3px;padding:8px 10px;margin:12px 0 22px}
+.diag-cta-wrap{text-align:center}
+.diag-links{display:flex;justify-content:center;gap:26px;margin-top:16px}
+.diag-links a,.diag-links button{background:none;border:none;cursor:pointer;color:#5d574e;font-size:12px;text-decoration:underline;font-family:'Noto Sans JP',sans-serif}
+.diag-note{text-align:center;font-size:11px;color:#5d574e;margin-top:20px;line-height:1.8;font-weight:300}
+.diag-bullets-label{font-size:11px;color:#5d574e;letter-spacing:.08em;margin:18px 2px 6px}
+.diag-bodytext{font-size:13.5px;line-height:2.1;color:#22201c;margin:16px 2px;font-weight:300}
+.diag-anx{font-size:12.5px;color:#b8965a;margin:0 2px 8px;line-height:1.9}
+.diag-plan{background:#f7f4ee;border:1px solid rgba(27,42,71,.08);border-radius:4px;padding:18px 16px;margin:14px 0 8px;text-align:center}
+.diag-plan-label{font-size:11px;color:#5d574e;letter-spacing:.08em;margin-bottom:4px}
+.diag-plan-goal{font-family:'Shippori Mincho',serif;font-size:14px;font-weight:500;color:#1b2a47;margin-bottom:6px;line-height:1.7}
+.diag-plan-name{font-family:'Shippori Mincho',serif;font-weight:600;font-size:18px;color:#1b2a47}
+.diag-plan-dur{font-size:13px;color:#22201c;margin:8px 0 4px;line-height:1.8}
+.diag-plan-rec{font-size:12px;color:#b8965a;margin:0 0 6px;line-height:1.8}
+.diag-sub{font-size:12px;color:#5d574e;margin:8px 2px 0;text-align:center}
+.diag-foot{font-size:11px;color:#5d574e;margin-top:10px;line-height:1.8;font-weight:300}
+.diag-trainer-photo{width:72px;height:72px;border-radius:50%;object-fit:cover;object-position:top center;display:block;margin:6px auto 4px;border:1px solid rgba(184,150,90,.4)}
+.diag-trainer-name{font-family:'Shippori Mincho',serif;font-weight:600;font-size:16px;color:#1b2a47;margin-top:2px}
+.diag-trainer-tags{font-size:11.5px;color:#5d574e;margin-top:2px;line-height:1.7}
+.diag-scene{aspect-ratio:16/10;overflow:hidden;border-radius:4px;margin:14px 0 4px}
+.diag-scene img{width:100%;height:100%;object-fit:cover;display:block}
+.diag-scene-cap{font-size:11px;color:#5d574e;text-align:center;margin-bottom:8px}
+.diag-ba{overflow:hidden;border-radius:4px;margin:10px 0 4px}
+.diag-ba img{width:100%;display:block}
+.diag-upsell{border:1px solid rgba(184,150,90,.45);background:#fff;border-radius:4px;padding:16px 16px 14px;margin:10px 0 4px;text-align:center}
+.diag-upsell-t{font-size:11px;color:#b8965a;letter-spacing:.08em;margin-bottom:4px}
+.diag-upsell-d{font-size:12px;color:#5d574e;line-height:1.9;margin-top:4px;text-align:left}
+</style>
+<section class="diag" id="diagnosis">
+  <div class="diag-inner">
+    <p class="diag-en">Course Match</p>
+    <h2 class="diag-title">30秒で、あなたに合うコースが分かります</h2>
+    <p class="diag-lead">タップで答えるだけ・約30秒。あなたの目的とペースに合わせて、<br>最適なコースと担当候補をご提案します。</p>
+    <div class="diag-card">
+      <div class="diag-progress" id="diagProgress"></div>
+      <div id="diagBody"></div>
+    </div>
+    <p class="diag-note">診断は目安です。体験トレーニングのカウンセリングで、トレーナーがあなたの身体の状態を見て最終的なプランをご提案します。</p>
+  </div>
+</section>
+<script>
+/* 診断v3（2026-07-13 オーナー承認・diagnosis-content.md準拠）
+   内容変更は DIAG_CONFIG の編集のみで行う（ロジック不変更）
+   構成：Q1目的→目的別分岐（diet/bodymake=2問・care/health=1問）→Q3不安 → H-BASE型5点セット結果カード */
+var DIAG_CONFIG={
+questions:{
+ goal:{text:"いちばん近い目的はどれですか？",options:[
+  {value:"diet",label:"ダイエット・引き締め",note:"体重や体型を変えたい"},
+  {value:"bodymake",label:"ボディメイク・筋肉づくり",note:"理想の身体をデザインしたい"},
+  {value:"care",label:"不調・姿勢の改善",note:"肩こり・腰痛・姿勢が気になる"},
+  {value:"health",label:"体力・健康の維持",note:"何歳でも動ける身体でいたい"}]},
+ diet_amount:{text:"どのくらい減らしたいですか？",options:[
+  {value:"d3",label:"−3kg前後"},
+  {value:"d5",label:"−5kg前後"},
+  {value:"d8",label:"−8kg以上"}]},
+ diet_period:{text:"いつまでに目指したいですか？",options:[
+  {value:"m2",label:"1〜2ヶ月で"},
+  {value:"m3",label:"3ヶ月前後で"},
+  {value:"m6",label:"半年くらいかけて"},
+  {value:"free",label:"期限は決めていない"}]},
+ bm_change:{text:"目指す変化に近いのはどれですか？",options:[
+  {value:"b_shape",label:"メリハリをつけたい",note:"ヒップ・くびれ・肩まわりなど部位から"},
+  {value:"b_bulk",label:"全体的に大きくしたい",note:"筋量を増やしたい・痩せ型を変えたい"}]},
+ bm_period:{text:"いつまでに目指したいですか？",options:[
+  {value:"e3",label:"3ヶ月前後で"},
+  {value:"e6",label:"半年くらいかけて"},
+  {value:"ev",label:"大会・撮影・イベントの予定がある"},
+  {value:"free",label:"期限は決めていない"}]},
+ care_state:{text:"いまの状態に近いのはどれですか？",options:[
+  {value:"c_daily",label:"ほぼ毎日つらい",note:"肩・腰・首の慢性的な痛みや張り"},
+  {value:"c_often",label:"時々つらくなる",note:"デスクワークや疲れで悪化する"},
+  {value:"c_prevent",label:"予防したい",note:"大きな不調になる前に整えたい"}]},
+ health_habit:{text:"今の運動習慣に近いのはどれですか？",options:[
+  {value:"h_zero",label:"ほとんど運動していない",note:"何から始めればいいか分からない"},
+  {value:"h_some",label:"多少はしている",note:"自己流を卒業して効率を上げたい"}]},
+ concern:{text:"いちばん気になることは何ですか？",options:[
+  {value:"continue",label:"続けられるか不安",note:"運動が苦手・三日坊主になりがち"},
+  {value:"result",label:"本当に効果が出るか",note:"自己流では変わらなかった"},
+  {value:"trainer",label:"トレーナーとの相性",note:"合う人に教わりたい・雰囲気が心配"},
+  {value:"meal",label:"食事も見てほしい",note:"食事管理まで任せたい"},
+  {value:"cost",label:"費用を抑えたい",note:"続けやすい価格がいい"}]},
+ gender:{text:"最後に、あなたに合わせた結果を表示します。性別を教えてください",options:[
+  {value:"female",label:"女性"},
+  {value:"male",label:"男性"},
+  {value:"na",label:"回答しない"}]},
+ age:{text:"年代を教えてください",options:[
+  {value:"a20",label:"20代以下"},
+  {value:"a30",label:"30代"},
+  {value:"a40",label:"40代"},
+  {value:"a50",label:"50代"},
+  {value:"a60",label:"60代以上"}]}},
+flow:{
+ diet:["goal","diet_amount","diet_period","concern","gender","age"],
+ bodymake:["goal","bm_change","bm_period","concern","gender","age"],
+ care:["goal","care_state","concern","gender","age"],
+ health:["goal","health_habit","concern","gender","age"]},
+plans:{
+ training:{name:"月額制 トレーニングコース",price:"¥22,000〜",unit:"/ 月（税込・月2回の場合）",offer:"体験当日ご入会で入会金50%OFF（¥33,000 → ¥16,500）"},
+ bc:{name:"月額制 ボディケアコース",price:"¥48,000〜",unit:"/ 月（税込・月4回の場合）",offer:"体験当日ご入会で入会金50%OFF（¥33,000 → ¥16,500）"},
+ full:{name:"プレミアム フルサポートコース",price:"¥72,000〜",unit:"/ 月（税込・月4回の場合）",offer:"入会金0円 ＋ 最初の3ヶ月30%OFF（体験当日ご入会・毎月先着5名限定）"},
+ consult:{name:"体験カウンセリングで無料設計",price:"",unit:"",offer:"体験トレーニングは無料。トレーナーが現実的な計画を一緒に設計します"}},
+goalCopy:{
+ diet:{catch:"本気で、最後のダイエットにしたい方へ。",
+  bullets:["ジムも食事制限も、続かなかった","落ちてもすぐ戻る、を繰り返している","正しいやり方を、一度きちんと知りたい"],
+  body:"ダイエットの失敗でいちばん多いのは、食事を減らして体重だけ落とし、筋肉と代謝まで一緒に失う形です。食事を戻せば体重も戻る——この繰り返しが「痩せにくい身体」をつくります。TOKOWAKAは筋肉を守りながら脂肪を落とす順序で設計し、食事は我慢ではなく調整で。落とした後に戻らないことまで含めて、ダイエットと考えています。"},
+ bodymake:{catch:"理想の身体は、設計してつくる。",
+  bullets:["ヒップ・くびれ・肩など、変えたい部位がある","自己流トレーニングで伸び悩んでいる","痩せ型・筋量不足を本気で変えたい"],
+  body:"自己流で最も多い壁は、頑張った量のわりに「見せたい部位」が変わらないこと。フォームが数センチずれるだけで、効く筋肉は別の場所に変わります。全員がコンテスト入賞者のトレーナーが、あなたの骨格から逆算してフォームを設計。狙った部位に正確に効かせて、理想の身体に近づけます。"},
+ care:{catch:"その場しのぎのケアを、終わらせる。",
+  bullets:["肩こり・腰痛でマッサージ通いを繰り返している","デスクワークで姿勢の崩れを感じる","大きな不調になる前に整えたい"],
+  body:"ほぐして楽になっても、数日で元に戻る——原因である筋力の低下と動作のクセが残ったままだからです。TOKOWAKAはストレッチ整体で歪みを整え、トレーニングで「維持できる身体」に変えていきます。対症ではなく、原因へ。"},
+ health:{catch:"10年後も動ける身体を、いまから。",
+  bullets:["運動はほぼゼロ、でも危機感はある","体力・姿勢の衰えを感じ始めた","一人では続かないと分かっている"],
+  body:"健康のための運動でいちばん難しいのは、無理なく続けることです。「何をどれだけやればいいか」「身体の正しい使い方」が分からないまま始めると、怪我をしたり、効果を感じる前にやめてしまいます。安全な強度設計と完全マンツーマンの伴走で、「安心して続く習慣」をご提供します。"}},
+matrix:{
+ diet:{
+  d3:{m2:{goal:"−3kg前後を、1〜2ヶ月で達成するなら",main:"training",dur:"1〜2ヶ月で届く目安です",sub:""},
+      m3:{goal:"−3kg前後を、3ヶ月前後で達成するなら",main:"training",dur:"3ヶ月あれば十分な目安です",sub:""},
+      m6:{goal:"−3kg前後を、半年かけて無理なく達成するなら",main:"training",dur:"ゆとりを持って目指せます",sub:""},
+      free:{goal:"−3kg前後を、無理のないペースで達成するなら",main:"training",dur:"約1〜2ヶ月が目安です",sub:""}},
+  d5:{m2:{goal:"−5kg前後を、1〜2ヶ月で達成するなら",main:"training",dur:"1〜2ヶ月の短期集中プランをご提案します",rec:"最短で目指すなら、週2ペースがおすすめです",sub:"食事管理込みで確度を上げるなら：フルサポート"},
+      m3:{goal:"−5kg前後を、3ヶ月前後で達成するなら",main:"training",dur:"2〜3ヶ月が目安です",sub:""},
+      m6:{goal:"−5kg前後を、半年かけて無理なく達成するなら",main:"training",dur:"ゆとりを持って目指せます",sub:""},
+      free:{goal:"−5kg前後を、無理のないペースで達成するなら",main:"training",dur:"約2〜3ヶ月が目安です",sub:""}},
+  d8:{m2:{goal:"−8kg以上を、1〜2ヶ月で目指すなら",main:"consult",dur:"このペースは身体への負担が大きいため、無理のない計画をご提案します",sub:"食事管理込みで挑戦するなら：フルサポート"},
+      m3:{goal:"−8kg以上を、3ヶ月前後で達成するなら",main:"training",dur:"3ヶ月前後の集中プランをご提案します",rec:"週2ペース＋食事管理の併用がおすすめです",sub:"食事込みで確実に進めるなら：フルサポート"},
+      m6:{goal:"−8kg以上を、半年かけて達成するなら",main:"training",dur:"半年前後が目安です",sub:""},
+      free:{goal:"−8kg以上を、無理のないペースで達成するなら",main:"training",dur:"約3〜4ヶ月が目安です",sub:""}}},
+ bodymake:{
+  b_shape:{e3:{goal:"メリハリのある身体を、3ヶ月前後でつくるなら",main:"training",dur:"3ヶ月前後が目安です",rec:"3ヶ月で仕上げるなら、週2ペースがおすすめです",sub:"食事管理込みで最短を狙うなら：フルサポート"},
+           e6:{goal:"メリハリのある身体を、半年かけてつくるなら",main:"training",dur:"半年前後・部位設計で積み上げる目安です",sub:""},
+           ev:{goal:"大会・撮影に向けて仕上げるなら",main:"consult",dur:"期日から逆算した計画を、体験で無料設計します",sub:"最大確度で仕上げるなら：フルサポート"},
+           free:{goal:"メリハリのある身体を、じっくりつくるなら",main:"training",dur:"部位設計から始められます",sub:""}},
+  b_bulk:{e3:{goal:"筋量アップを、3ヶ月前後で目指すなら",main:"training",dur:"3ヶ月前後が目安です",rec:"筋量アップは週2ペースが基本です",sub:"増量は食事が半分。食事管理込みなら：フルサポート"},
+          e6:{goal:"筋量アップを、半年かけて積み上げるなら",main:"training",dur:"半年でしっかり積み上げる目安です",rec:"週2ペースでの積み上げがおすすめです",sub:"食事管理込みなら：フルサポート"},
+          ev:{goal:"大会・撮影に向けて仕上げるなら",main:"consult",dur:"期日から逆算した計画を、体験で無料設計します",sub:"最大確度で仕上げるなら：フルサポート"},
+          free:{goal:"筋量アップを、じっくり積み上げるなら",main:"training",dur:"しっかり積み上げる計画をご提案します",rec:"筋量アップは週2ペースが基本です",sub:"食事管理込みなら：フルサポート"}}},
+ care:{
+  c_daily:{goal:"毎日のつらさを、根本から変えるなら",main:"bc",dur:"週1の整体×運動から始める目安です",sub:"回復を早めるなら：週2ペースもご相談ください"},
+  c_often:{goal:"繰り返す不調を、終わらせるなら",main:"bc",dur:"月2回〜週1のペースが目安です",sub:""},
+  c_prevent:{goal:"崩れる前に、整えるなら",main:"bc",dur:"月2回〜週1のペースで、崩れる前に整えます",sub:""}},
+ health:{
+  h_zero:{goal:"ゼロから、安全に始めるなら",main:"training",dur:"安全な強度から始めます",sub:""},
+  h_some:{goal:"自己流を、卒業するなら",main:"training",dur:"自己流を、効率に変えます",sub:""}}},
+concernNotes:{
+ continue:"「続けられるか不安」——だからこそ完全マンツーマン。毎回トレーナーが伴走します。",
+ result:"「効果が出るか」——全トレーナーがコンテスト入賞者。体験で自己流との違いをお確かめください。",
+ trainer:"「トレーナーとの相性」——個性の異なる3名が在籍しています。下の担当候補と、まずは無料体験で相性をお確かめください。合わなければ入会しなくて大丈夫です。",
+ meal:"「食事も見てほしい」——毎日の食事記録への個別フィードバックは、フルサポートだけの機能です。",
+ cost:""},
+mealOverrideGoals:["diet","bodymake","health"],
+costFoot:"費用を抑えるなら：お友達・パートナーと一緒に通えるペアトレーニング（1人あたり¥6,000〜/回）もあります。体験時にご相談ください。",
+assurances:["月会費・入会金のほかに、追加費用はかかりません","回数は翌月1/3まで繰り越しOK"],
+trainers:{
+ suzuki:{name:"鈴木 神海感留",tags:"大幅ダイエット・バルクアップ・不調/機能改善｜APF Japan Classic 出場",photo:"https://tokowaka-gym.com/images/trainer02.jpg"},
+ oki:{name:"沖 孟",tags:"女性のボディメイク・姿勢/骨盤矯正｜BBJファイナリスト",tagsAlt:"ボディメイク・姿勢/骨盤矯正・機能改善｜BBJファイナリスト",photo:"https://tokowaka-gym.com/images/trainer03.jpg"},
+ nakano:{name:"中野 龍之介",tags:"ヒップ育成・モデル/アスリート指導",photo:"https://tokowaka-gym.com/images/trainer01.jpg"}},
+/* trainerMode: "fixed"=優先トレーナー中心（fixedExceptionsの例外のみ別）／"match"=目的×性別マッチング */
+trainerMode:"fixed",
+fixedTrainer:"oki",
+fixedExceptions:[{cond:{goal:"bodymake",bm_change:"b_bulk"},trainer:"suzuki"}],
+trainerNote:"※担当はご希望・予約状況により調整します",
+trainerMatch:{
+ diet:{female:"oki",male:"suzuki",na:"suzuki"},
+ bodymake:{female:"oki",male:"suzuki",na:"suzuki"},
+ care:{female:"oki",male:"suzuki",na:"oki"},
+ health:{female:"oki",male:"suzuki",na:"suzuki"}},
+sceneImages:{
+ /* 目的キー: {src, cap}。srcを空にすればその目的では非表示。差し替えはURLの変更のみ */
+ diet:{src:"https://tokowaka-gym.com/images/gallery06.jpg",cap:"マンツーマンのトレーニング風景"},
+ bodymake:{src:"https://tokowaka-gym.com/images/gallery08.jpg",cap:"フォーム指導の様子"},
+ care:{src:"https://tokowaka-gym.com/images/gallery07.jpg",cap:"ストレッチ整体の施術風景"},
+ health:{src:"https://tokowaka-gym.com/images/gallery05.jpg",cap:"身体の状態チェックの様子"}},
+baImages:{
+ /* 「性別-目的」キーが目的キーに優先。care/health はビフォーアフターが馴染まないため未設定 */
+ diet:{src:"https://tokowaka-gym.com/images/before-after-01.jpg",cap:"お客様の変化（ダイエット）※個人の結果であり、成果には個人差があります"},
+ "female-diet":{src:"https://tokowaka-gym.com/images/before-after-03.png",cap:"お客様の変化（女性・引き締め）※個人の結果であり、成果には個人差があります"},
+ bodymake:{src:"https://tokowaka-gym.com/images/before-after-02.jpg",cap:"お客様の変化（ボディメイク）※個人の結果であり、成果には個人差があります"},
+ "female-bodymake":{src:"https://tokowaka-gym.com/images/before-after-03.png",cap:"お客様の変化（女性）※個人の結果であり、成果には個人差があります"}},
+upsell:{title:"より早く、確実に目指すなら",name:"プレミアム フルサポートコース",desc:"トレーニングに加えて、毎日の食事記録への個別フィードバックと週次の進捗管理まで。身体づくりの全部を、トレーナーが一緒に管理します。",price:"¥72,000〜",unit:"/ 月（税込・月4回の場合）",offer:"入会金0円 ＋ 最初の3ヶ月30%OFF（体験当日ご入会・毎月先着5名限定）",link:"フルサポートの詳細を見る"},
+personaLines:{
+ genderGoal:{
+  "female-bodymake":"女性のボディメイクは、太くせずメリハリをつくる設計が要。骨盤・姿勢からラインを整えます。",
+  "female-diet":"女性のダイエットは、落とすだけでなく姿勢とラインを一緒に整えると仕上がりが変わります。",
+  "male-diet":"男性のダイエットは、筋量を残すことが最短ルート。代謝を落とさずに絞ります。",
+  "male-bodymake":"肩・胸・背中の立体感は、フォームの精度で決まります。効かせる技術からお伝えします。"},
+ age:{
+  a50:"50代からは「安全な強度設計」がすべての前提です。関節や体力の状態を見ながら、無理のない負荷で確実に積み上げます。",
+  a60:"60代からは、まず動ける身体の土台づくりから。整体を組み合わせ、安全第一で進めます。"}},
+disclaimer:"※期間・ペースは一般的な目安で、個人差があります。体験時にあなたの状態に合わせた計画をご提案します。"};
+(function(){var cfg=DIAG_CONFIG,body=document.getElementById("diagBody"),prog=document.getElementById("diagProgress"),ans={},flow=["goal","concern"],idx=0;
+function track(ev,p){if(window.dataLayer)dataLayer.push(Object.assign({event:ev},p||{}))}
+if('IntersectionObserver' in window){new IntersectionObserver(function(es,obs){es.forEach(function(e){if(e.isIntersecting){track("diag_view");obs.disconnect()}})},{threshold:.5}).observe(document.getElementById("diagnosis"))}
+function renderProg(done){var t=flow.length,h="";for(var i=0;i<t;i++)h+='<span class="'+(done||i<=idx?'on':'')+'"></span>';prog.innerHTML=h}
+function renderQ(){renderProg(false);var qid=flow[idx],q=cfg.questions[qid];
+var h='<p class="diag-qnum">Q'+(idx+1)+' / '+flow.length+'</p><p class="diag-q">'+q.text+'</p><div class="diag-opts">';
+for(var i=0;i<q.options.length;i++){var o=q.options[i];h+='<button class="diag-opt" data-value="'+o.value+'">'+o.label+(o.note?'<small>'+o.note+'</small>':'')+'</button>'}
+h+='</div>'+(idx>0?'<button class="diag-back" id="diagBack">ひとつ前に戻る</button>':'');
+body.innerHTML=h;
+Array.prototype.forEach.call(body.querySelectorAll(".diag-opt"),function(btn){btn.addEventListener("click",function(){var v=btn.dataset.value;ans[qid]=v;track("diag_answer",{diag_step:qid,diag_answer:v});
+if(qid==="goal")flow=cfg.flow[v].slice();
+idx++;idx<flow.length?renderQ():renderR()})});
+var back=document.getElementById("diagBack");if(back)back.addEventListener("click",function(){idx--;renderQ()})}
+function renderR(){renderProg(true);var goal=ans.goal,cell;
+if(goal==="diet")cell=cfg.matrix.diet[ans.diet_amount][ans.diet_period];
+else if(goal==="bodymake")cell=cfg.matrix.bodymake[ans.bm_change][ans.bm_period];
+else if(goal==="care")cell=cfg.matrix.care[ans.care_state];
+else cell=cfg.matrix.health[ans.health_habit];
+var mainKey=cell.main,dur=cell.dur,sub=cell.sub,rec=cell.rec||"";
+if(ans.concern==="meal"&&cfg.mealOverrideGoals.indexOf(goal)>-1&&mainKey!=="consult"){mainKey="full";dur="食事管理込みで、目安期間を最大確度で狙えます";sub="";rec=""}
+var plan=cfg.plans[mainKey],copy=cfg.goalCopy[goal],pattern=[],i;
+for(i=0;i<flow.length;i++)pattern.push(ans[flow[i]]);
+track("diag_complete",{diag_pattern:pattern.join("-"),diag_course:mainKey,diag_gender:ans.gender,diag_age:ans.age});
+var note=cfg.concernNotes[ans.concern]||"";
+var pl=[];
+if(cfg.personaLines.genderGoal[ans.gender+"-"+goal])pl.push(cfg.personaLines.genderGoal[ans.gender+"-"+goal]);
+if(cfg.personaLines.age[ans.age])pl.push(cfg.personaLines.age[ans.age]);
+var tKey;
+if(cfg.trainerMode==="fixed"){tKey=cfg.fixedTrainer;
+for(var ei=0;ei<cfg.fixedExceptions.length;ei++){var ex=cfg.fixedExceptions[ei],hit=true;for(var ek in ex.cond){if(ans[ek]!==ex.cond[ek])hit=false}if(hit){tKey=ex.trainer;break}}}
+else{tKey=(cfg.trainerMatch[goal]||{})[ans.gender]}
+var tr=tKey?cfg.trainers[tKey]:null;
+var trTags=tr?(ans.gender==="male"&&tr.tagsAlt?tr.tagsAlt:tr.tags):"";
+var ba=cfg.baImages[ans.gender+"-"+goal]||cfg.baImages[goal];
+var bl="";for(i=0;i<copy.bullets.length;i++)bl+='<li>'+copy.bullets[i]+'</li>';
+var h='<p class="diag-result-label">あなたの回答から</p>'
++'<p class="diag-course">'+copy.catch+'</p>'
++'<p class="diag-bullets-label">こんな方におすすめ</p><ul class="diag-reasons">'+bl+'</ul>'
++'<p class="diag-bodytext">'+copy.body+'</p>'
++(pl.length?'<p class="diag-bodytext" style="margin-top:0">'+pl.join("<br>")+'</p>':'')
++(note?'<p class="diag-anx">'+note+'</p>':'')
++(cfg.sceneImages[goal]&&cfg.sceneImages[goal].src?'<div class="diag-scene"><img src="'+cfg.sceneImages[goal].src+'" alt="'+cfg.sceneImages[goal].cap+'" loading="lazy"></div><p class="diag-scene-cap">'+cfg.sceneImages[goal].cap+'</p>':'')
++(ba&&ba.src?'<div class="diag-ba"><img src="'+ba.src+'" alt="'+ba.cap+'" loading="lazy"></div><p class="diag-scene-cap">'+ba.cap+'</p>':'')
++'<div class="diag-plan"><p class="diag-plan-goal">'+(cell.goal||"あなたへのご提案")+'</p><p class="diag-plan-name">'+plan.name+'</p><p class="diag-plan-dur">'+dur+'</p>'
++(rec?'<p class="diag-plan-rec">'+rec+'</p>':'')
++(plan.price?'<p class="diag-price"><strong>'+plan.price+'</strong>'+plan.unit+'</p>':'')
++(mainKey==="training"?'<p class="diag-scene-cap" style="margin:2px 0 0">※期間の目安は週1ペースの場合です。月2回からでも始められます</p>':'')
++'<p class="diag-offer">'+plan.offer+'</p>'
++(mainKey!=="consult"?'<p class="diag-scene-cap" style="margin:8px 0 0;text-align:center">'+cfg.assurances.join('　/　')+'</p>':'')
++(tr?'<p class="diag-plan-label" style="margin-top:14px">あなたの担当候補</p>'+(tr.photo?'<img class="diag-trainer-photo" src="'+tr.photo+'" alt="'+tr.name+'" loading="lazy">':'')+'<p class="diag-trainer-name">'+tr.name+'</p><p class="diag-trainer-tags">'+trTags+'</p><p class="diag-scene-cap" style="margin:4px 0 0">'+cfg.trainerNote+'</p>':'')
++'</div>'
++(mainKey==="training"?'<div class="diag-upsell"><p class="diag-upsell-t">'+cfg.upsell.title+'</p><p class="diag-plan-name" style="font-size:16px">'+cfg.upsell.name+'</p><p class="diag-upsell-d">'+cfg.upsell.desc+'</p><p class="diag-price" style="margin:6px 0 0"><strong style="font-size:17px">'+cfg.upsell.price+'</strong>'+cfg.upsell.unit+'</p><p class="diag-offer" style="margin:8px 0 0">'+cfg.upsell.offer+'</p><p style="text-align:center;margin:10px 0 0"><a href="#plan" id="diagUpsell" style="font-size:12px;color:#5d574e">'+cfg.upsell.link+'</a></p></div>':'')
++(mainKey!=="training"&&sub?'<p class="diag-sub">'+sub+'</p>':'')
++(ans.concern==="cost"?'<p class="diag-sub">'+cfg.costFoot+'</p>':'')
++'<p class="diag-foot">'+cfg.disclaimer+'</p>'
++'<div class="diag-cta-wrap"><a href="javascript:void(0)" class="btn-gold" id="diagCta" data-cta="diagnosis">この内容で体験トレーニングを申し込む（無料）</a></div>'
++'<div class="diag-links"><a href="#plan" id="diagSeeAll">全コースの料金を見る</a><button id="diagRetry">診断をやり直す</button></div>';
+body.innerHTML=h;
+document.getElementById("diagCta").addEventListener("click",function(){track("diag_cta_click",{diag_course:mainKey});goToReservation(this)});
+var ccMap={training:"cc3",bc:"cc1",full:"cc2"},see=document.getElementById("diagSeeAll");
+if(see&&ccMap[mainKey])see.addEventListener("click",function(){var e=document.getElementById(ccMap[mainKey]);if(e&&e.classList&&(e.classList.contains("open")===false))toggleCC(ccMap[mainKey])});
+var ups=document.getElementById("diagUpsell");
+if(ups)ups.addEventListener("click",function(){track("diag_upsell_click",{diag_course:mainKey});var e=document.getElementById("cc2");if(e&&e.classList&&(e.classList.contains("open")===false))toggleCC("cc2")});
+document.getElementById("diagRetry").addEventListener("click",function(){idx=0;ans={};flow=["goal","concern"];renderQ()})}
+renderQ()})();
+</script>
+
 <section id="plan">
   <div class="si">
     <div class="sh rv">
@@ -1073,7 +1357,7 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
           <tr class="hl"><td>月8回<span class="pop">人気</span></td><td class="ps">¥9,250</td><td class="pm">¥74,000</td></tr>
           <tr><td>月12回</td><td class="ps">¥9,000</td><td class="pm">¥108,000</td></tr>
         </tbody></table>
-        <p class="cc-note">※ 税込。</p>
+        <p class="cc-note">※ 税込。回数は翌月1/3まで繰り越しOK。</p>
       </div></div>
     </div>
     <!-- ④ ペアトレ -->
@@ -1095,7 +1379,7 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
           <tr class="hl"><td>月8回<span class="pop">人気</span></td><td class="ps">¥6,250</td><td class="pm">¥100,000</td></tr>
           <tr><td>月12回</td><td class="ps">¥6,000</td><td class="pm">¥144,000</td></tr>
         </tbody></table>
-        <p class="cc-note">※ 税込。2名で同日利用が条件。</p>
+        <p class="cc-note">※ 税込。2名で同日利用が条件。回数は翌月1/3まで繰り越しOK。</p>
       </div></div>
     </div>
     <p class="plan-foot">※ 表示時間はカウンセリング・お着替えを含むセッション全体の時間です。<br>※ 入会金割引・最初の3ヶ月30%OFF等のキャンペーンは、毎月先着5名様まで（体験当日のご入会が条件）。</p>
@@ -1224,6 +1508,7 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
   <p class="f-logo">TOKOWAKA</p>
   <p class="f-sub">Personal Gym · Kichijoji</p>
   <div class="f-legal">
+    <a href="/blog/">コラム</a>
     <a href="/privacy.html">プライバシーポリシー</a>
     <a href="#contact">お問い合わせ</a>
   </div>
@@ -1262,6 +1547,17 @@ function toggleFaq(el){el.classList.toggle('open');if(el.classList.contains('ope
 (function(){document.querySelectorAll('.ig-reel video[data-start]').forEach(function(v){var s=parseFloat(v.dataset.start)||0;function seek(){try{v.currentTime=s}catch(e){}}if(v.readyState>=1)seek();else v.addEventListener('loadedmetadata',seek);v.addEventListener('timeupdate',function(){if(v.currentTime<s-0.3)seek()})})})();
 /* リールをタップで音声ON（他はミュート）・右下アイコンで状態表示 */
 (function(){var reels=Array.prototype.slice.call(document.querySelectorAll('.ig-reel'));var M='<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><line x1="23" y1="9" x2="17" y2="15"/><line x1="17" y1="9" x2="23" y2="15"/>';var S='<polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/><path d="M15.54 8.46a5 5 0 0 1 0 7.07"/><path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>';reels.forEach(function(reel){var v=reel.querySelector('video');if(!v)return;reel.addEventListener('click',function(){var wasMuted=v.muted;reels.forEach(function(r){var vv=r.querySelector('video');if(vv)vv.muted=true;var sv=r.querySelector('.ig-sound svg');if(sv)sv.innerHTML=M});if(wasMuted){v.muted=false;v.volume=(v.dataset.volume!=null?parseFloat(v.dataset.volume):1);if(window.dataLayer)dataLayer.push({event:'reel_sound_on'});var p=v.play();if(p&&p.catch)p.catch(function(){});var sv2=reel.querySelector('.ig-sound svg');if(sv2)sv2.innerHTML=S}})})})();
+/* UTM別ヒーロー出し分け：URLに ?p=<キー> または utm_content=<キー> がありPERSONA_CONFIGに定義がある時のみ差し替え。無ければ一切何もしない（未稼働状態で本番同居可）。文言変更はCONFIG編集のみ */
+var PERSONA_CONFIG={
+ diet:{badge:"吉祥寺・完全個室パーソナルジム",title:"最短3ヶ月で、<br><em>もう戻らない</em>身体へ。",lead:"<strong>運動 × 整体 × 食事管理</strong>で、リバウンドしない痩せ方を。<br>吉祥寺の完全個室で、トレーナーが成果まで伴走します。"},
+ bodymake:{badge:"吉祥寺・完全個室パーソナルジム",title:"<em>理想の身体</em>を、<br>デザインする。",lead:"<strong>コンテスト入賞トレーナー</strong>があなた専属に。<br>骨格から逆算して、見せたい身体をつくります。"},
+ care:{badge:"吉祥寺・完全個室パーソナルジム",title:"痛みと不調のない、<br><em>動ける身体</em>へ。",lead:"<strong>運動 × 整体</strong>で、肩こり・腰痛・姿勢を根本から。<br>何歳からでも、身体は変えられます。"}};
+(function(){try{var q=new URLSearchParams(location.search),key=q.get("p")||q.get("utm_content");if(!key)return;var c=PERSONA_CONFIG[key];if(!c)return;
+var b=document.querySelector(".hero-badge"),t=document.querySelector(".hero-title"),l=document.querySelector(".hero-lead");
+if(b&&c.badge)b.innerHTML="<i></i>"+c.badge;if(t&&c.title)t.innerHTML=c.title;if(l&&c.lead)l.innerHTML=c.lead;
+if(window.dataLayer)dataLayer.push({event:"persona_view",persona:key})}catch(e){}})();
+/* セクション計測：画面中央帯に入ったら section_view（初回のみ）、離れたら滞在秒数を section_dwell で送出 */
+(function(){if(!('IntersectionObserver' in window))return;var secs=document.querySelectorAll('section[id]');var seen={},enter={};var io=new IntersectionObserver(function(es){es.forEach(function(e){var id=e.target.id;if(e.isIntersecting){if(!seen[id]){seen[id]=1;if(window.dataLayer)dataLayer.push({event:'section_view',section_id:id})}if(!enter[id])enter[id]=Date.now()}else if(enter[id]){var s=Math.round((Date.now()-enter[id])/1000);enter[id]=0;if(s>=1&&s<=1800&&window.dataLayer)dataLayer.push({event:'section_dwell',section_id:id,dwell_seconds:s})}})},{rootMargin:'-35% 0px -35% 0px',threshold:0});secs.forEach(function(s){io.observe(s)})})();
 </script>
 </body>
 </html>
