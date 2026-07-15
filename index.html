@@ -1093,8 +1093,8 @@ questions:{
   {value:"h_zero",label:"ほとんど運動していない",note:"何から始めればいいか分からない"},
   {value:"h_some",label:"多少はしている",note:"自己流を卒業して効率を上げたい"}]},
  concern:{text:"いちばん気になることは何ですか？",options:[
-  {value:"continue",label:"続けられるか不安",note:"運動が苦手・三日坊主になりがち"},
-  {value:"result",label:"本当に効果が出るか",note:"自己流では変わらなかった"},
+  {value:"anxiety",label:"続けられるか・効果が出るか",note:"運動が苦手・自己流では変わらなかった"},
+  {value:"pain",label:"身体の痛み・不調が心配",note:"膝・腰など、運動していいか不安"},
   {value:"trainer",label:"トレーナーとの相性",note:"合う人に教わりたい・雰囲気が心配"},
   {value:"meal",label:"食事も見てほしい",note:"食事管理まで任せたい"},
   {value:"cost",label:"費用を抑えたい",note:"続けやすい価格がいい"}]},
@@ -1162,11 +1162,20 @@ matrix:{
   h_zero:{goal:"ゼロから、安全に始めるなら",main:"training",dur:"安全な強度から始めます",sub:""},
   h_some:{goal:"自己流を、卒業するなら",main:"training",dur:"自己流を、効率に変えます",sub:""}}},
 concernNotes:{
- continue:"「続けられるか不安」——だからこそ完全マンツーマン。毎回トレーナーが伴走します。",
- result:"「効果が出るか」——全トレーナーがコンテスト入賞者。体験で自己流との違いをお確かめください。",
+ anxiety:"「続くか・効果が出るか」——不安はあって当たり前です。だからこそ完全マンツーマン。コンテスト入賞トレーナーが毎回伴走し、正しいやり方で積み上げます。まずは体験で違いをお確かめください。",
  trainer:"「トレーナーとの相性」——個性の異なる3名が在籍しています。下の担当候補と、まずは無料体験で相性をお確かめください。合わなければ入会しなくて大丈夫です。",
+ pain:"「痛み・不調が心配」——だから、整体とトレーニングが一体のコースを。痛みの原因を整えながら、無理のない強度で目標に向かいます。",
  meal:"「食事も見てほしい」——毎日の食事記録への個別フィードバックは、フルサポートだけの機能です。",
  cost:""},
+/* コース振り替え（優先順位：正直提示consult＞食事meal＞不調pain＞年齢age＞通常マトリクス） */
+ageOverrides:[
+ {cond:{goal:"health",age:"a50"},dur:"鍛える前に、整える。整体×運動の週1から始める目安です",sub:"運動中心で進めたい方は、体験時にご相談ください"},
+ {cond:{goal:"health",age:"a60"},dur:"鍛える前に、整える。整体×運動の週1から始める目安です",sub:"運動中心で進めたい方は、体験時にご相談ください"},
+ {cond:{goal:"diet",age:"a60"},dur:"整体で身体を整えながら、無理のない強度で落としていく目安です",sub:"体力に自信のある方は、トレーニングコースも体験時にご相談ください"}],
+painDur:{
+ diet:"痛みの原因を整えながら、無理のない強度で目標に向かう目安です",
+ bodymake:"まず痛み・歪みを整えてから、狙った部位に正確に効かせていく目安です",
+ health:"痛みと相談しながら、整体×運動で動ける身体をつくる目安です"},
 mealOverrideGoals:["diet","bodymake","health"],
 costFoot:"費用を抑えるなら：お友達・パートナーと一緒に通えるペアトレーニング（1人あたり¥6,000〜/回）もあります。体験時にご相談ください。",
 assurances:["月会費・入会金のほかに、追加費用はかかりません","回数は翌月1/3まで繰り越しOK"],
@@ -1207,7 +1216,7 @@ personaLines:{
   a50:"50代からは「安全な強度設計」がすべての前提です。関節や体力の状態を見ながら、無理のない負荷で確実に積み上げます。",
   a60:"60代からは、まず動ける身体の土台づくりから。整体を組み合わせ、安全第一で進めます。"}},
 disclaimer:"※期間・ペースは一般的な目安で、個人差があります。体験時にあなたの状態に合わせた計画をご提案します。"};
-(function(){var cfg=DIAG_CONFIG,body=document.getElementById("diagBody"),prog=document.getElementById("diagProgress"),ans={},flow=["goal","concern"],idx=0;
+(function(){var cfg=DIAG_CONFIG,body=document.getElementById("diagBody"),prog=document.getElementById("diagProgress"),ans={},flow=cfg.flow.diet.slice(),idx=0;
 function track(ev,p){if(window.dataLayer)dataLayer.push(Object.assign({event:ev},p||{}))}
 if('IntersectionObserver' in window){new IntersectionObserver(function(es,obs){es.forEach(function(e){if(e.isIntersecting){track("diag_view");obs.disconnect()}})},{threshold:.5}).observe(document.getElementById("diagnosis"))}
 function renderProg(done){var t=flow.length,h="";for(var i=0;i<t;i++)h+='<span class="'+(done||i<=idx?'on':'')+'"></span>';prog.innerHTML=h}
@@ -1226,6 +1235,8 @@ else if(goal==="bodymake")cell=cfg.matrix.bodymake[ans.bm_change][ans.bm_period]
 else if(goal==="care")cell=cfg.matrix.care[ans.care_state];
 else cell=cfg.matrix.health[ans.health_habit];
 var mainKey=cell.main,dur=cell.dur,sub=cell.sub,rec=cell.rec||"";
+if(mainKey==="training"){for(var ai=0;ai<cfg.ageOverrides.length;ai++){var ao=cfg.ageOverrides[ai],aok=true;for(var ak in ao.cond){if(ans[ak]!==ao.cond[ak])aok=false}if(aok){mainKey="bc";dur=ao.dur;sub=ao.sub||"";rec="";break}}}
+if(ans.concern==="pain"&&mainKey==="training"){mainKey="bc";dur=cfg.painDur[goal]||dur;sub="";rec=""}
 if(ans.concern==="meal"&&cfg.mealOverrideGoals.indexOf(goal)>-1&&mainKey!=="consult"){mainKey="full";dur="食事管理込みで、目安期間を最大確度で狙えます";sub="";rec=""}
 var plan=cfg.plans[mainKey],copy=cfg.goalCopy[goal],pattern=[],i;
 for(i=0;i<flow.length;i++)pattern.push(ans[flow[i]]);
@@ -1240,7 +1251,9 @@ for(var ei=0;ei<cfg.fixedExceptions.length;ei++){var ex=cfg.fixedExceptions[ei],
 else{tKey=(cfg.trainerMatch[goal]||{})[ans.gender]}
 var tr=tKey?cfg.trainers[tKey]:null;
 var trTags=tr?(ans.gender==="male"&&tr.tagsAlt?tr.tagsAlt:tr.tags):"";
-var ba=cfg.baImages[ans.gender+"-"+goal]||cfg.baImages[goal];
+/* 画像の多段キー参照：性別-年代-目的 ＞ 性別-目的 ＞ 年代-目的 ＞ 目的。将来はキー追加のみで出し分け拡張可 */
+var ba=cfg.baImages[ans.gender+"-"+ans.age+"-"+goal]||cfg.baImages[ans.gender+"-"+goal]||cfg.baImages[ans.age+"-"+goal]||cfg.baImages[goal];
+var scn=cfg.sceneImages[ans.gender+"-"+ans.age+"-"+goal]||cfg.sceneImages[ans.gender+"-"+goal]||cfg.sceneImages[ans.age+"-"+goal]||((mainKey==="bc"&&goal!=="care")?cfg.sceneImages.care:cfg.sceneImages[goal]);
 var bl="";for(i=0;i<copy.bullets.length;i++)bl+='<li>'+copy.bullets[i]+'</li>';
 var h='<p class="diag-result-label">あなたの回答から</p>'
 +'<p class="diag-course">'+copy.catch+'</p>'
@@ -1248,7 +1261,7 @@ var h='<p class="diag-result-label">あなたの回答から</p>'
 +'<p class="diag-bodytext">'+copy.body+'</p>'
 +(pl.length?'<p class="diag-bodytext" style="margin-top:0">'+pl.join("<br>")+'</p>':'')
 +(note?'<p class="diag-anx">'+note+'</p>':'')
-+(cfg.sceneImages[goal]&&cfg.sceneImages[goal].src?'<div class="diag-scene"><img src="'+cfg.sceneImages[goal].src+'" alt="'+cfg.sceneImages[goal].cap+'" loading="lazy"></div><p class="diag-scene-cap">'+cfg.sceneImages[goal].cap+'</p>':'')
++(scn&&scn.src?'<div class="diag-scene"><img src="'+scn.src+'" alt="'+scn.cap+'" loading="lazy"></div><p class="diag-scene-cap">'+scn.cap+'</p>':'')
 +(ba&&ba.src?'<div class="diag-ba"><img src="'+ba.src+'" alt="'+ba.cap+'" loading="lazy"></div><p class="diag-scene-cap">'+ba.cap+'</p>':'')
 +'<div class="diag-plan"><p class="diag-plan-goal">'+(cell.goal||"あなたへのご提案")+'</p><p class="diag-plan-name">'+plan.name+'</p><p class="diag-plan-dur">'+dur+'</p>'
 +(rec?'<p class="diag-plan-rec">'+rec+'</p>':'')
@@ -1270,7 +1283,7 @@ var ccMap={training:"cc3",bc:"cc1",full:"cc2"},see=document.getElementById("diag
 if(see&&ccMap[mainKey])see.addEventListener("click",function(){var e=document.getElementById(ccMap[mainKey]);if(e&&e.classList&&(e.classList.contains("open")===false))toggleCC(ccMap[mainKey])});
 var ups=document.getElementById("diagUpsell");
 if(ups)ups.addEventListener("click",function(){track("diag_upsell_click",{diag_course:mainKey});var e=document.getElementById("cc2");if(e&&e.classList&&(e.classList.contains("open")===false))toggleCC("cc2")});
-document.getElementById("diagRetry").addEventListener("click",function(){idx=0;ans={};flow=["goal","concern"];renderQ()})}
+document.getElementById("diagRetry").addEventListener("click",function(){idx=0;ans={};flow=cfg.flow.diet.slice();renderQ()})}
 renderQ()})();
 </script>
 
