@@ -1253,8 +1253,9 @@ else{upTitle=cfg.upsell.title;upDesc=(mainKey==="bc"?cfg.upsell.descBc:cfg.upsel
 var plan=cfg.plans[mainKey],copy=cfg.goalCopy[goal],pattern=[],i;
 for(i=0;i<flow.length;i++)pattern.push(ans[flow[i]]);
 track("diag_complete",{diag_pattern:pattern.join("-"),diag_course:mainKey,diag_gender:ans.gender,diag_age:ans.age});
-/* 診断ログをスプレッドシートへ送信（回答コードのみ・GAS側でラベル変換。DIAG_LOG_URLが空なら何もしない） */
-try{if(cfg.logUrl){var d1=ans.diet_amount||ans.bm_change||ans.care_state||ans.health_habit||"",d2=ans.diet_period||ans.bm_period||"";var payload=JSON.stringify({t:cfg.logToken,goal:ans.goal,detail1:d1,detail2:d2,concern:ans.concern,gender:ans.gender,age:ans.age,course:mainKey});navigator.sendBeacon(cfg.logUrl,new Blob([payload],{type:"text/plain;charset=UTF-8"}))}}catch(e){}
+/* 診断ログをスプレッドシートへ送信（回答コードのみ・GAS側でラベル変換。logUrlが空なら何もしない） */
+var diagId="dg_"+(Date.now().toString(36)+Math.floor(Math.random()*1e6).toString(36)).replace(/[^a-z0-9]/g,"").slice(0,14);
+try{if(cfg.logUrl){var d1=ans.diet_amount||ans.bm_change||ans.care_state||ans.health_habit||"",d2=ans.diet_period||ans.bm_period||"";var payload=JSON.stringify({t:cfg.logToken,id:diagId,goal:ans.goal,detail1:d1,detail2:d2,concern:ans.concern,gender:ans.gender,age:ans.age,course:mainKey});navigator.sendBeacon(cfg.logUrl,new Blob([payload],{type:"text/plain;charset=UTF-8"}))}}catch(e){}
 var note=cfg.concernNotes[ans.concern]||"";
 var pl=[];
 if(cfg.personaLines.genderGoal[ans.gender+"-"+goal])pl.push(cfg.personaLines.genderGoal[ans.gender+"-"+goal]);
@@ -1291,7 +1292,7 @@ var h='<p class="diag-result-label">あなたの回答から</p>'
 +'<div class="diag-cta-wrap"><a href="javascript:void(0)" class="btn-gold" id="diagCta" data-cta="diagnosis">この内容で体験トレーニングを申し込む（無料）</a></div>'
 +'<div class="diag-links"><a href="#plan" id="diagSeeAll">全コースの料金を見る</a><button id="diagRetry">診断をやり直す</button></div>';
 body.innerHTML=h;
-document.getElementById("diagCta").addEventListener("click",function(){track("diag_cta_click",{diag_course:mainKey});goToReservation(this)});
+document.getElementById("diagCta").addEventListener("click",function(){track("diag_cta_click",{diag_course:mainKey});try{if(cfg.logUrl)navigator.sendBeacon(cfg.logUrl,new Blob([JSON.stringify({t:cfg.logToken,mode:"cta",id:diagId})],{type:"text/plain;charset=UTF-8"}))}catch(e){}goToReservation(this)});
 var ccMap={training:"cc3",bc:"cc1",full:"cc2"},see=document.getElementById("diagSeeAll");
 if(see&&ccMap[mainKey])see.addEventListener("click",function(){var e=document.getElementById(ccMap[mainKey]);if(e&&e.classList&&(e.classList.contains("open")===false))toggleCC(ccMap[mainKey])});
 var ups=document.getElementById("diagUpsell");
