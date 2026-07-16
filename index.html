@@ -1219,7 +1219,8 @@ personaLines:{
  age:{
   a50:"50代からは「安全な強度設計」がすべての前提です。関節や体力の状態を見ながら、無理のない負荷で確実に積み上げます。",
   a60:"60代からは、まず動ける身体の土台づくりから。整体を組み合わせ、安全第一で進めます。"}},
-disclaimer:"※期間・ペースは一般的な目安で、個人差があります。体験時にあなたの状態に合わせた計画をご提案します。"};
+disclaimer:"※期間・ペースは一般的な目安で、個人差があります。体験時にあなたの状態に合わせた計画をご提案します。",
+logUrl:"https://script.google.com/macros/s/AKfycbzqKhgC4VEYO1bNPafO_5fTdRI4tPmPZQttxH5_Ecy_4Ku8rf1mW5XPJXXbiz-ob3g5/exec",logToken:"tokowaka-diag-2026"};/* GAS Webアプリ（診断ログ収集）。2026-07-16設定 */
 (function(){var cfg=DIAG_CONFIG,body=document.getElementById("diagBody"),prog=document.getElementById("diagProgress"),ans={},flow=cfg.flow.diet.slice(),idx=0;
 function track(ev,p){if(window.dataLayer)dataLayer.push(Object.assign({event:ev},p||{}))}
 if('IntersectionObserver' in window){new IntersectionObserver(function(es,obs){es.forEach(function(e){if(e.isIntersecting){track("diag_view");obs.disconnect()}})},{threshold:.5}).observe(document.getElementById("diagnosis"))}
@@ -1252,6 +1253,8 @@ else{upTitle=cfg.upsell.title;upDesc=(mainKey==="bc"?cfg.upsell.descBc:cfg.upsel
 var plan=cfg.plans[mainKey],copy=cfg.goalCopy[goal],pattern=[],i;
 for(i=0;i<flow.length;i++)pattern.push(ans[flow[i]]);
 track("diag_complete",{diag_pattern:pattern.join("-"),diag_course:mainKey,diag_gender:ans.gender,diag_age:ans.age});
+/* 診断ログをスプレッドシートへ送信（回答コードのみ・GAS側でラベル変換。DIAG_LOG_URLが空なら何もしない） */
+try{if(cfg.logUrl){var d1=ans.diet_amount||ans.bm_change||ans.care_state||ans.health_habit||"",d2=ans.diet_period||ans.bm_period||"";var payload=JSON.stringify({t:cfg.logToken,goal:ans.goal,detail1:d1,detail2:d2,concern:ans.concern,gender:ans.gender,age:ans.age,course:mainKey});navigator.sendBeacon(cfg.logUrl,new Blob([payload],{type:"text/plain;charset=UTF-8"}))}}catch(e){}
 var note=cfg.concernNotes[ans.concern]||"";
 var pl=[];
 if(cfg.personaLines.genderGoal[ans.gender+"-"+goal])pl.push(cfg.personaLines.genderGoal[ans.gender+"-"+goal]);
