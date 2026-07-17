@@ -1061,6 +1061,8 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
   </div>
 </section>
 <script>
+/* 流入元の取得（UTM＋参照元＋gclid）。診断ログの媒体別分析用 */
+function _diagSrc(){var o={usrc:"",umed:"",ucmp:"",gclid:0,ref:""};try{var q=new URLSearchParams(location.search);o.usrc=q.get("utm_source")||"";o.umed=q.get("utm_medium")||"";o.ucmp=q.get("utm_campaign")||"";o.gclid=q.get("gclid")?1:0;if(document.referrer){var u=new URL(document.referrer);if(u.hostname&&u.hostname.indexOf("tokowaka-gym.com")<0)o.ref=u.hostname}}catch(e){}return o}
 /* 診断v3（2026-07-13 オーナー承認・diagnosis-content.md準拠）
    内容変更は DIAG_CONFIG の編集のみで行う（ロジック不変更）
    構成：Q1目的→目的別分岐（diet/bodymake=2問・care/health=1問）→Q3不安 → H-BASE型5点セット結果カード */
@@ -1255,7 +1257,7 @@ for(i=0;i<flow.length;i++)pattern.push(ans[flow[i]]);
 track("diag_complete",{diag_pattern:pattern.join("-"),diag_course:mainKey,diag_gender:ans.gender,diag_age:ans.age});
 /* 診断ログをスプレッドシートへ送信（回答コードのみ・GAS側でラベル変換。logUrlが空なら何もしない） */
 var diagId="dg_"+(Date.now().toString(36)+Math.floor(Math.random()*1e6).toString(36)).replace(/[^a-z0-9]/g,"").slice(0,14);
-try{if(cfg.logUrl){var d1=ans.diet_amount||ans.bm_change||ans.care_state||ans.health_habit||"",d2=ans.diet_period||ans.bm_period||"";var payload=JSON.stringify({t:cfg.logToken,id:diagId,goal:ans.goal,detail1:d1,detail2:d2,concern:ans.concern,gender:ans.gender,age:ans.age,course:mainKey});navigator.sendBeacon(cfg.logUrl,new Blob([payload],{type:"text/plain;charset=UTF-8"}))}}catch(e){}
+try{if(cfg.logUrl){var d1=ans.diet_amount||ans.bm_change||ans.care_state||ans.health_habit||"",d2=ans.diet_period||ans.bm_period||"";var src=_diagSrc();var payload=JSON.stringify({t:cfg.logToken,id:diagId,goal:ans.goal,detail1:d1,detail2:d2,concern:ans.concern,gender:ans.gender,age:ans.age,course:mainKey,usrc:src.usrc,umed:src.umed,ucmp:src.ucmp,gclid:src.gclid,ref:src.ref});navigator.sendBeacon(cfg.logUrl,new Blob([payload],{type:"text/plain;charset=UTF-8"}))}}catch(e){}
 var note=cfg.concernNotes[ans.concern]||"";
 var pl=[];
 if(cfg.personaLines.genderGoal[ans.gender+"-"+goal])pl.push(cfg.personaLines.genderGoal[ans.gender+"-"+goal]);
