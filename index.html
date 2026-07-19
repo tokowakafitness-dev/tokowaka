@@ -28,22 +28,189 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "HealthClub",
-  "name": "パーソナルジム TOKOWAKA 吉祥寺",
-  "description": "吉祥寺の完全個室・完全マンツーマンのパーソナルジム。運動×整体で、何歳からでも身体は変えられる。",
-  "image": "https://tokowaka-gym.com/images/hero01.jpg",
-  "url": "https://tokowaka-gym.com/",
-  "telephone": "+81-70-3549-8168",
-  "priceRange": "¥¥",
-  "address": {
-    "@type": "PostalAddress",
-    "streetAddress": "吉祥寺東町2-17-7 VILLA VUONAMICO 103",
-    "addressLocality": "武蔵野市",
-    "addressRegion": "東京都",
-    "postalCode": "180-0002",
-    "addressCountry": "JP"
-  },
-  "areaServed": "吉祥寺"
+  "@graph": [
+    {
+      "@type": ["HealthClub", "LocalBusiness"],
+      "@id": "https://tokowaka-gym.com/#gym",
+      "name": "パーソナルジム TOKOWAKA 吉祥寺",
+      "alternateName": "TOKOWAKA（ときわか）",
+      "description": "吉祥寺駅徒歩10分の完全個室・完全マンツーマンのパーソナルジム。運動×整体を組み合わせ、何歳からでも根本から身体を変える。運動初心者・40代以上・肩こり腰痛のケアにも対応。初回体験0円。",
+      "image": [
+        "https://tokowaka-gym.com/images/hero01.jpg",
+        "https://tokowaka-gym.com/images/hero03.jpg"
+      ],
+      "url": "https://tokowaka-gym.com/",
+      "telephone": "+81-70-3549-8168",
+      "priceRange": "¥¥",
+      "currenciesAccepted": "JPY",
+      "slogan": "運動 × 整体で、何歳からでも。",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "吉祥寺東町2丁目17-7 VILLA VUONAMICO 103",
+        "addressLocality": "武蔵野市",
+        "addressRegion": "東京都",
+        "postalCode": "180-0002",
+        "addressCountry": "JP"
+      },
+      "areaServed": [
+        { "@type": "City", "name": "吉祥寺" },
+        { "@type": "City", "name": "三鷹" },
+        { "@type": "City", "name": "武蔵野市" }
+      ],
+      "publicAccess": true,
+      "openingHoursSpecification": [
+        {
+          "@type": "OpeningHoursSpecification",
+          "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+          "opens": "08:00",
+          "closes": "23:00"
+        }
+      ],
+      "sameAs": [
+        "https://www.instagram.com/gym_tokowaka/",
+        "https://lin.ee/2fr1Daok"
+      ],
+      "aggregateRating": {
+        "@type": "AggregateRating",
+        "ratingValue": "5.0",
+        "bestRating": "5",
+        "ratingCount": "35"
+      },
+      "employee": [
+        {
+          "@type": "Person",
+          "name": "鈴木",
+          "jobTitle": "パーソナルトレーナー",
+          "description": "コンテスト優勝トレーナー。自身の腰の持病と20kgの激太りを正しいトレーニングで克服。",
+          "sameAs": "https://www.instagram.com/kamiyaru_fit/"
+        },
+        {
+          "@type": "Person",
+          "name": "沖",
+          "jobTitle": "パーソナルトレーナー",
+          "description": "コンテスト入賞トレーナー。キツすぎない指導で姿勢・体型を同時に整える。",
+          "sameAs": "https://www.instagram.com/takeru_fitness_/"
+        },
+        {
+          "@type": "Person",
+          "name": "中野",
+          "jobTitle": "パーソナルトレーナー",
+          "description": "コンテスト入賞トレーナー。「理想はあるのに自分には無理」と思う方の伴走を得意とする。",
+          "sameAs": "https://www.instagram.com/fit_ryunosuke/"
+        }
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "料金プラン",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "初回体験トレーニング" },
+            "price": "0",
+            "priceCurrency": "JPY",
+            "description": "初回体験0円（期間限定）。手ぶらでOK・シューズ/ウェア無料貸出。"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "月額制 トレーニングコース" },
+            "price": "22000",
+            "priceCurrency": "JPY",
+            "description": "月2回の場合・税込。体験当日ご入会で入会金50%OFF。"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "月額制 ボディケアコース" },
+            "price": "48000",
+            "priceCurrency": "JPY",
+            "description": "月4回の場合・税込。トレーニングとストレッチ整体を組み合わせ身体を整える。"
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": { "@type": "Service", "name": "プレミアム フルサポートコース" },
+            "price": "72000",
+            "priceCurrency": "JPY",
+            "description": "月4回の場合・税込。食事記録への個別フィードバックと週次進捗管理まで。入会金0円＋最初の3ヶ月30%OFF（毎月先着5名）。"
+          }
+        ]
+      },
+      "review": [
+        {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "author": { "@type": "Person", "name": "40代・男性会員" },
+          "reviewBody": "週1回だけで、筋肉をつけながら8kg落とせました。"
+        },
+        {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "author": { "@type": "Person", "name": "40代・女性会員" },
+          "reviewBody": "お腹周りが引き締まり、姿勢も良くなって体が軽くなりました。"
+        },
+        {
+          "@type": "Review",
+          "reviewRating": { "@type": "Rating", "ratingValue": "5", "bestRating": "5" },
+          "author": { "@type": "Person", "name": "30代・女性会員" },
+          "reviewBody": "ボディラインが綺麗になり、周りにも褒められて自己肯定感も上がりました。"
+        }
+      ]
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://tokowaka-gym.com/#website",
+      "url": "https://tokowaka-gym.com/",
+      "name": "パーソナルジム TOKOWAKA 吉祥寺",
+      "publisher": { "@id": "https://tokowaka-gym.com/#gym" },
+      "inLanguage": "ja"
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://tokowaka-gym.com/#faq",
+      "isPartOf": { "@id": "https://tokowaka-gym.com/#website" },
+      "about": { "@id": "https://tokowaka-gym.com/#gym" },
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "運動が苦手・初心者でも通えますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "はい。お客様の多くが運動初心者・運動嫌いの方です。フォームの基礎から丁寧にお伝えし、その日の体調に合わせて無理のないメニューをご用意します。" }
+        },
+        {
+          "@type": "Question",
+          "name": "どのくらいの頻度で通えばよいですか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "目的により異なりますが、週1回から成果を出されている方が多くいらっしゃいます。ライフスタイルに合わせて最適な頻度をご提案します。" }
+        },
+        {
+          "@type": "Question",
+          "name": "厳しい食事制限はありますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "極端な制限は行いません。生活に合わせて続けられる範囲で、抑えるべきポイントを一緒に考えます。「甘いものは食べてよいか」といったご相談にも丁寧にお応えします。" }
+        },
+        {
+          "@type": "Question",
+          "name": "持ち物は必要ですか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "手ぶらでOKです。シューズ・ウェアのレンタルをご用意しています。お仕事帰りにも気軽にお越しいただけます。" }
+        },
+        {
+          "@type": "Question",
+          "name": "しつこい勧誘はありませんか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "無理な勧誘は一切いたしません。体験で実際の指導を受けていただき、ご納得の上でご検討ください。" }
+        },
+        {
+          "@type": "Question",
+          "name": "整体・ストレッチもお願いできますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "はい。トレーニングにストレッチ整体を組み合わせ、身体を整えながら鍛えるのがTOKOWAKAの特徴です。肩こり・腰痛などの不調ケアにも対応します。" }
+        },
+        {
+          "@type": "Question",
+          "name": "支払い方法は何がありますか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "各種お支払い方法に対応しております。詳細はカウンセリング時にご案内します。" }
+        },
+        {
+          "@type": "Question",
+          "name": "体験当日に入会しなくても大丈夫ですか？",
+          "acceptedAnswer": { "@type": "Answer", "text": "もちろんです。ご自宅でじっくりご検討いただけます。なお、当日のご入会でキャンペーンが適用となります。" }
+        }
+      ]
+    }
+  ]
 }
 </script>
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -621,7 +788,7 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
 <section id="trust">
   <div class="si" style="padding-top:38px;padding-bottom:0">
     <div class="trust-bar rv">
-      <div class="trust-item"><div class="trust-num"><span class="star">★</span>4.9</div><div class="trust-lbl">Googleクチコミ評価</div></div>
+      <div class="trust-item"><div class="trust-num"><span class="star">★</span>5.0</div><div class="trust-lbl">Googleクチコミ評価（35件）</div></div>
       <div class="trust-item"><div class="trust-num">-8<small>kg</small></div><div class="trust-lbl">平均減量／3ヶ月</div></div>
       <div class="trust-item"><div class="trust-num">全員</div><div class="trust-lbl">コンテスト入賞トレーナー</div></div>
       <div class="trust-item"><div class="trust-num">3,000<small>回+</small></div><div class="trust-lbl">年間セッション数</div></div>
