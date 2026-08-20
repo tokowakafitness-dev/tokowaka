@@ -499,7 +499,9 @@ header.sc{box-shadow:0 2px 18px rgba(27,42,71,.08);border-bottom:1px solid var(-
 .tr-name{font-family:'Shippori Mincho',serif;font-weight:600;font-size:18px;color:var(--navy);line-height:1.2}
 .tr-name-en{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12px;color:var(--gold);letter-spacing:.1em;display:block;margin:2px 0 2px}
 .tr-exp{font-family:'Noto Sans JP',sans-serif;font-size:10px;color:var(--soft);letter-spacing:.1em;margin-bottom:12px}
-.tr-bio{font-family:'Noto Sans JP',sans-serif;font-size:12.5px;color:var(--soft);line-height:1.85;margin-bottom:14px}
+.tr-bio{font-family:'Noto Sans JP',sans-serif;font-size:12.5px;color:var(--soft);line-height:1.85;margin-bottom:12px;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;line-clamp:4;overflow:hidden}
+.tr-bio strong{color:var(--navy);font-weight:700}
+.tr-info .tr-more{margin-top:2px;margin-bottom:16px}
 .tr-tags{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto}
 .tr-tag{font-family:'Noto Sans JP',sans-serif;font-size:9px;color:var(--gold);border:1px solid rgba(184,150,90,.35);padding:3px 9px;border-radius:100px}
 .tr-ig{margin-top:12px;padding-top:12px;border-top:1px solid var(--bd)}
@@ -813,6 +815,54 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
   .sticky-cta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:900;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);box-shadow:0 -4px 18px rgba(27,42,71,.15);padding:5px 12px calc(5px + env(safe-area-inset-bottom));transition:transform .3s ease}
   .sticky-cta a{display:flex;align-items:center;justify-content:center;background:linear-gradient(120deg,var(--gold),var(--gold-l));color:#fff;font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:13px;letter-spacing:.02em;padding:10px;border-radius:var(--r);text-decoration:none;box-shadow:0 4px 12px rgba(184,150,90,.32)}
 }
+/* ===== TRAINER MODAL（プロフィール全画面）===== */
+.tr-more{margin-top:16px;align-self:flex-start;display:inline-flex;align-items:center;gap:7px;background:var(--navy);border:none;color:#fff;font-family:'Noto Sans JP',sans-serif;font-size:13px;font-weight:600;letter-spacing:.04em;padding:11px 22px;border-radius:30px;cursor:pointer;transition:.2s}
+.tr-more:hover{background:var(--gold)}
+.tr-more::after{content:"→";font-size:14px}
+body.tm-lock{overflow:hidden}
+.tm-overlay{position:fixed;inset:0;z-index:3000;background:rgba(15,23,40,.75);opacity:0;visibility:hidden;transition:opacity .28s;overflow-y:auto;-webkit-overflow-scrolling:touch}
+.tm-overlay.open{opacity:1;visibility:visible}
+.tm-panel{background:var(--warm);width:100%;max-width:640px;margin:0 auto;min-height:100vh;transform:translateY(24px);transition:transform .32s;position:relative}
+.tm-overlay.open .tm-panel{transform:none}
+.tm-bar{position:sticky;top:0;z-index:6;display:flex;justify-content:flex-end;padding:10px 12px;background:linear-gradient(to bottom,rgba(250,245,235,.96),rgba(250,245,235,.55))}
+.tm-x{background:rgba(27,42,71,.07);border:none;width:40px;height:40px;border-radius:50%;font-size:24px;line-height:1;color:var(--navy);cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.2s}
+.tm-x:hover{background:rgba(27,42,71,.14)}
+.tm-hero-img{width:100%;aspect-ratio:4/5;position:relative;overflow:hidden;background:var(--navy-d);margin-top:-60px}
+.tm-hero-img img{width:100%;height:100%;object-fit:cover;object-position:top center;position:relative;z-index:1}
+.tm-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(27,42,71,.45);font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:.12em;background:linear-gradient(135deg,#e6ddcd,#d6cbb6);text-align:center;padding:20px}
+.tm-body{padding:26px 24px 44px}
+.tm-badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
+.tm-badge{font-size:11px;letter-spacing:.03em;color:#8a6d3a;border:1px solid rgba(184,150,90,.5);border-radius:20px;padding:3px 11px}
+.tm-name{font-family:'Shippori Mincho',serif;font-size:24px;color:var(--navy);font-weight:600}
+.tm-name-en{font-size:12px;letter-spacing:.14em;color:#a89f8d;margin-left:8px}
+.tm-target{font-size:12.5px;color:#8a6d3a;margin:7px 0 0;font-weight:600}
+.tm-hook{font-family:'Shippori Mincho',serif;font-size:21px;line-height:1.6;color:var(--navy);font-weight:600;margin:18px 0 12px}
+.tm-sub{font-size:14px;line-height:1.95;color:var(--soft)}
+.tm-sub strong,.tm-hook strong{color:var(--navy);font-weight:700}
+.tm-sec{margin-top:32px}
+.tm-sec-img{width:100%;max-width:400px;margin:0 auto 16px;aspect-ratio:3/4;position:relative;overflow:hidden;border-radius:12px;background:var(--navy-d)}
+.tm-sec-img img{width:100%;height:100%;object-fit:cover;position:relative;z-index:1}
+/* Before/After：常に横並び2枚（比較のため）縦長素材前提 */
+.tm-ba{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:16px}
+.tm-ba-img{aspect-ratio:3/4;position:relative;overflow:hidden;border-radius:10px;background:var(--navy-d)}
+.tm-ba-img img{width:100%;height:100%;object-fit:cover;position:relative;z-index:1}
+.tm-ba-lbl{position:absolute;top:8px;left:8px;z-index:3;background:rgba(19,32,58,.82);color:#fff;font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:.08em;padding:3px 10px;border-radius:4px}
+.tm-sec-label{display:inline-block;font-size:11px;letter-spacing:.12em;color:#a07d3c;font-weight:700;margin-bottom:9px}
+.tm-sec p{font-size:14.5px;line-height:2.05;color:var(--ink)}
+.tm-sec strong{color:var(--navy);font-weight:700}
+.tm-sec-note{background:rgba(184,150,90,.08);border-left:3px solid var(--gold);border-radius:0 12px 12px 0;padding:20px 22px}
+.tm-sec-note .tm-sec-label{color:var(--navy)}
+.tm-voice{margin-top:16px;padding:16px 18px;background:rgba(184,150,90,.09);border:1px solid rgba(184,150,90,.22);border-radius:12px}
+.tm-voice-label{display:inline-block;font-size:10.5px;letter-spacing:.14em;color:#a07d3c;font-weight:700;margin-bottom:7px}
+.tm-voice p{font-family:'Shippori Mincho',serif;font-size:15px;line-height:1.85;color:var(--navy);margin:0}
+.tm-voice .tm-voice-who{display:block;margin-top:8px;font-family:'Noto Sans JP',sans-serif;font-size:11.5px;color:var(--soft);letter-spacing:.02em}
+.tm-tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:28px}
+.tm-tag{font-size:12px;background:rgba(27,42,71,.05);color:var(--navy);border-radius:6px;padding:5px 11px}
+.tm-cta{margin-top:30px;text-align:center}
+.tm-ig{margin-top:16px;text-align:center}
+.tm-ig a{font-size:13px;color:var(--navy);text-decoration:none;display:inline-flex;align-items:center;gap:6px;opacity:.8}
+.tm-ig a:hover{opacity:1}
+@media(max-width:520px){.tm-hook{font-size:19px}.tm-name{font-size:21px}.tm-body{padding:22px 18px 38px}}
 </style>
 </head>
 <body>
@@ -1012,13 +1062,14 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
         <div class="tr-photo">
           <img src="https://tokowaka-gym.com/images/trainer02.jpg" alt="鈴木 神海感留" onerror="this.style.display='none';this.parentNode.querySelector('.tr-photo-ph').style.display='flex'">
           <div class="tr-photo-ph" style="display:none">Trainer Photo</div>
-          <div class="tr-catch">「身体のせいで運動できない」<br>を解決します。</div>
+          <div class="tr-catch">「何歳からでも、<br>今が1番の身体へ」</div>
         </div>
         <div class="tr-info">
           <h3 class="tr-name">鈴木 神海感留</h3>
           <span class="tr-name-en">Kamiyaru Suzuki</span>
           <span class="tr-exp">指導歴 7年</span>
-          <p class="tr-bio">自身の腰の持病と20kgの激太りを、正しいトレーニングで克服しコンテスト優勝。不調を抱えたまま諦めていた方へ、「動ける身体」と「理想の造形」を同時に実現する指導で、根本から変えます。</p>
+          <p class="tr-bio">骨格や歪みを整えてから鍛えるから、狙った部位に勝手に刺激が入り、怪我なく最短で変わる。整体要らずの不調改善 × 1年中脱げる本質的なボディメイク。「一生続く、魅せれる×動ける身体」を今から作りませんか？</p>
+          <button type="button" class="tr-more" onclick="openTrainerModal('suzuki')">続きを読む</button>
           <div class="tr-tags">
             <span class="tr-tag">大幅ダイエット</span><span class="tr-tag">バルクアップ</span><span class="tr-tag">不調・機能改善</span><span class="tr-tag">APF Japan Classic 優勝</span>
           </div>
@@ -1030,13 +1081,14 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
         <div class="tr-photo">
           <img src="https://tokowaka-gym.com/images/trainer03.jpg" alt="沖 孟" onerror="this.style.display='none';this.parentNode.querySelector('.tr-photo-ph').style.display='flex'">
           <div class="tr-photo-ph" style="display:none">Trainer Photo</div>
-          <div class="tr-catch">「キツすぎないのに体が整う」<br>姿勢・体型を同時に変えます。</div>
+          <div class="tr-catch">「頑張らないのに、<br>気づけば身体が変わってる。」</div>
         </div>
         <div class="tr-info">
           <h3 class="tr-name">沖 孟</h3>
           <span class="tr-name-en">Takeru Oki</span>
           <span class="tr-exp">指導歴 5年</span>
-          <p class="tr-bio">痩せ型がコンプレックスだった私が、骨格を整えて狙った筋肉へ正しく効かせることでBBJファイナルへ。ミリ単位のフォーム調整で、見た目と身体の機能を同時に変えます。</p>
+          <p class="tr-bio">重要なのは体重より“見た目”。姿勢から整えることで、あなたの骨格のポテンシャルを最大限引き出し、理想のボディラインに近づけます。年間2,000件以上、多くの女性のボディラインを指導する中で確信したのは——</p>
+          <button type="button" class="tr-more" onclick="openTrainerModal('oki')">続きを読む</button>
           <div class="tr-tags">
             <span class="tr-tag">女性のボディメイク</span><span class="tr-tag">姿勢・骨盤矯正</span><span class="tr-tag">BBJファイナル</span><span class="tr-tag">一般体操指導員</span>
           </div>
@@ -1048,13 +1100,14 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
         <div class="tr-photo">
           <img src="https://tokowaka-gym.com/images/trainer01.jpg" alt="中野 龍之介" onerror="this.style.display='none';this.parentNode.querySelector('.tr-photo-ph').style.display='flex'">
           <div class="tr-photo-ph" style="display:none">Trainer Photo</div>
-          <div class="tr-catch">「理想はあるのに、自分は無理」<br>そう思っているあなたへ。</div>
+          <div class="tr-catch">「理想はある、けど自分には無理。」<br>そう思っているあなたへ。</div>
         </div>
         <div class="tr-info">
           <h3 class="tr-name">中野 龍之介</h3>
           <span class="tr-name-en">Ryunosuke Nakano</span>
           <span class="tr-exp">指導歴 6年</span>
-          <p class="tr-bio">週1のトレーニングから4ヶ月で大会日本8位。忙しい中でも結果を出す、時間効率の高い設計が強みです。ゴールから逆算した緻密なプログラムで、あなたの理想を最短で追求します。</p>
+          <p class="tr-bio">どんな状態からでも、あなたの身体は必ず変わります。「スタイルは、生まれつきで決まっている」——そう思い込んでいませんか？違います。身体は、デザインできる。骨格という土台を活かし、狙った場所へ筋肉を足していけば——</p>
+          <button type="button" class="tr-more" onclick="openTrainerModal('nakano')">続きを読む</button>
           <div class="tr-tags">
             <span class="tr-tag">モデル・アスリート指導</span><span class="tr-tag">ヒップ育成</span><span class="tr-tag">大会日本8位</span><span class="tr-tag">英語対応</span>
           </div>
@@ -1067,6 +1120,9 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
     </div>
   </div>
 </section>
+
+<!-- ===== TRAINER PROFILE MODAL（JSで中身を描画）===== -->
+<div class="tm-overlay" id="trModal" aria-hidden="true" role="dialog" aria-modal="true"><div class="tm-panel"></div></div>
 
 <!-- ===== INSTAGRAM 社会的証明 ===== -->
 <section id="instagram">
@@ -1809,7 +1865,7 @@ document.querySelectorAll('.mob-link').forEach(a=>a.addEventListener('click',()=
 const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');obs.unobserve(e.target)}}),{threshold:.08});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 document.querySelectorAll('a[href^="#"]').forEach(a=>a.addEventListener('click',e=>{e.preventDefault();const t=document.querySelector(a.getAttribute('href'));if(t)scrollTo({top:t.offsetTop-66,behavior:'smooth'})}));
-function goToReservation(el,diagId){if(!sessionStorage.getItem('mcv_tracked')){sessionStorage.setItem('mcv_tracked','1');window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'mCV_form_click'});}if(window.dataLayer)dataLayer.push({event:'cta_reservation_click',cta_location:(el&&el.getAttribute&&el.getAttribute('data-cta'))||'unknown'});var url='https://reservation.tokowaka-gym.com/'+location.search;if(diagId){url+=(location.search?'&':'?')+'dg='+encodeURIComponent(diagId);}window.open(url,'_blank')}
+function goToReservation(el,diagId,trainer){if(!sessionStorage.getItem('mcv_tracked')){sessionStorage.setItem('mcv_tracked','1');window.dataLayer=window.dataLayer||[];window.dataLayer.push({event:'mCV_form_click'});}if(window.dataLayer)dataLayer.push({event:'cta_reservation_click',cta_location:(el&&el.getAttribute&&el.getAttribute('data-cta'))||'unknown',trainer:trainer||''});var TR={nakano:'nakano.html',suzuki:'suzuki.html',oki:'oki.html'};var url='https://reservation.tokowaka-gym.com/'+((trainer&&TR[trainer])?TR[trainer]:'')+location.search;if(diagId){url+=(location.search?'&':'?')+'dg='+encodeURIComponent(diagId);}window.open(url,'_blank')}
 (function(){var s=document.querySelectorAll('.hero-slide');if(s.length<2)return;var i=0;setInterval(function(){s[i].classList.remove('active');i=(i+1)%s.length;s[i].classList.add('active')},4000)})();
 (function(){var wrap=document.querySelector('.gal-track-wrap'),t=document.getElementById('galTrack');if(!wrap||!t)return;Array.prototype.slice.call(t.children).forEach(function(c){t.appendChild(c.cloneNode(true))});var paused=false,half=0;function measure(){half=t.scrollWidth/2}measure();window.addEventListener('resize',measure);function tick(){if(!paused&&half){wrap.scrollLeft+=0.5;if(wrap.scrollLeft>=half)wrap.scrollLeft-=half}requestAnimationFrame(tick)}tick();var rt;function pause(){paused=true;clearTimeout(rt)}function resumeSoon(){clearTimeout(rt);rt=setTimeout(function(){paused=false},1500)}wrap.addEventListener('mouseenter',pause);wrap.addEventListener('mouseleave',function(){paused=false});wrap.addEventListener('touchstart',pause,{passive:true});wrap.addEventListener('touchend',resumeSoon);wrap.addEventListener('scroll',function(){if(half){if(wrap.scrollLeft>=half)wrap.scrollLeft-=half;else if(wrap.scrollLeft<=0)wrap.scrollLeft+=half}},{passive:true})})();function openLB(f){var lb=document.getElementById('lightbox');document.getElementById('lbImg').src='https://tokowaka-gym.com/images/'+f;lb.classList.add('open')}
 function closeLB(){document.getElementById('lightbox').classList.remove('open')}
@@ -1841,6 +1897,90 @@ if(b&&c.badge)b.innerHTML="<i></i>"+c.badge;if(t&&c.title)t.innerHTML=c.title;if
 if(window.dataLayer)dataLayer.push({event:"persona_view",persona:key})}catch(e){}})();
 /* セクション計測：画面中央帯に入ったら section_view（初回のみ）、離れたら滞在秒数を section_dwell で送出 */
 (function(){if(!('IntersectionObserver' in window))return;var secs=document.querySelectorAll('section[id]');var seen={},enter={};var io=new IntersectionObserver(function(es){es.forEach(function(e){var id=e.target.id;if(e.isIntersecting){if(!seen[id]){seen[id]=1;if(window.dataLayer)dataLayer.push({event:'section_view',section_id:id})}if(!enter[id])enter[id]=Date.now()}else if(enter[id]){var s=Math.round((Date.now()-enter[id])/1000);enter[id]=0;if(s>=1&&s<=1800&&window.dataLayer)dataLayer.push({event:'section_dwell',section_id:id,dwell_seconds:s})}})},{rootMargin:'-35% 0px -35% 0px',threshold:0});secs.forEach(function(s){io.observe(s)})})();
+</script>
+<script>
+/* ===== トレーナープロフィール・モーダル ===== */
+/* 原稿の正はリポジトリの trainer-profiles.md。文言変更はこの TRAINER_PROFILES を編集。*/
+/* 画像：hero=既存プロフィール写真。secs の img が空文字ならプレースホルダー枠を表示（素材が届き次第 img にURLを入れる）。*/
+var TRAINER_PROFILES={
+ suzuki:{name:'鈴木 神海感留',en:'Kamiyaru Suzuki',short:'鈴木',ig:'https://www.instagram.com/kamiyaru_fit/',
+  img:'https://tokowaka-gym.com/images/trainer02.jpg',
+  badges:['APF Japan Classic 1位','指導歴7年','月150セッション以上'],
+  target:'不調・怪我・大幅ダイエットで諦めていた方へ',
+  hook:'「何歳からでも、今が1番の身体へ」',
+  sub:'骨格や歪みを整えてから鍛えるから、狙った部位に勝手に刺激が入り、怪我なく最短で変わる。<br>整体要らずの不調改善 × 1年中脱げる本質的なボディメイク。<strong>「一生続く、魅せれる×動ける身体」</strong>を今から作りませんか？',
+  secs:[
+   {label:'CONCEPT｜身体の仕組み',ba:true,imgBefore:'trainer-baf/suzuki-before.jpg',imgAfter:'trainer-baf/suzuki-after.jpg',body:'私が大切にしているのは、気合いや根性論ではなく<strong>「身体の仕組み」</strong>です。<br>肩こりや腰痛などの不調も、ボディメイクで効かせたい部位に効かないのも、原因はすべて「骨格の位置」と「身体の使い方」にあります。<br>土台となる仕組みを整えてから正しく鍛えることで、効かせたい筋肉へ自然と刺激が入り、無駄な怪我をせずに最短距離で体型が変わっていきます。<br>解剖学に基づいたアプローチで、慢性的な不調をリセットしながら、1年中自信を持って脱げる理想の身体へ導きます。'},
+   {label:'STORY｜私自身の物語',noimg:true,body:'実は私自身、かつて大幅な体重増加と、持病である腰椎分離症の痛みに悩まされていました。「身体が思うように動かない」「痛みのせいで思い通りに鍛えられない」——そのもどかしさと辛さは、痛いほど分かります。<br>しかし、根性論を捨てて「身体の仕組み」を根本から立て直したことで、不調を克服し、<strong>−19kgの減量とコンテスト優勝</strong>まで果たすことができました。<br>身体が整えば、パフォーマンスも体型も劇的に変わります。不調や怪我で諦めかけている人にこそ、その可能性を実感してほしいと思っています。'},
+   {label:'SESSION｜あなたへ',img:'trainer-baf/suzuki-session.jpg',ph:'セッション風景',body:'「長年の不調が消えた」「今までで一番トレーニングが効いている」——そんな声を多くいただいています。<br>まずはあなたのフォームの癖や骨格の歪みを見極め、身体が本来持つポテンシャルを最大化。不調を根本から整えた上で鍛えるからこそ、一生モノの<strong>「魅せる身体」と「動ける身体」</strong>が手に入ります。<br>怪我なく最短で身体を変えたい方、1年中自信の持てる体型を作りたい方へ。月150セッション以上の豊富な指導実績をもとに、あなたの身体の可能性を最大限に引き出します。'}],
+  tags:['大幅ダイエット','バルクアップ','不調・機能改善','APF Japan Classic 1位','英語対応']},
+ oki:{name:'沖 孟',en:'Takeru Oki',short:'沖',ig:'https://www.instagram.com/takeru_fitness_/',
+  img:'https://tokowaka-gym.com/images/trainer03.jpg',
+  badges:['BBJファイナリスト','一般体操指導員','指導歴5年'],
+  target:'見た目・ラインを気にする女性へ',
+  hook:'「頑張らないのに、気づけば身体が変わってる。」',
+  sub:'重要なのは体重より<strong>“見た目”</strong>。姿勢から整えることで、あなたの骨格のポテンシャルを最大限引き出し、理想のボディラインに近づけます。',
+  secs:[
+   {label:'CONCEPT｜骨格矯正トレーニング',ba:true,imgBefore:'trainer-baf/oki-before.jpg',imgAfter:'trainer-baf/oki-after.jpg',body:'年間2,000件以上、たくさんの女性のボディラインを指導する中で、<strong>『女性のボディメイクこそ、高度な技術が必要』</strong>と確信しました。<br>トレーニングは筋肉を大きく成長させる行為です。だからこそやみくもにトレーニングをしてしまうと、ボディバランスを崩し、女性らしい綺麗なボディラインをつくることはできません。<br>そこで私があみだしたメソッドが、<strong>骨格矯正トレーニング</strong>です。まずは根本の歪みを整え、全体のシルエットから逆算して筋肉をつけていくことで、女性らしい健康的な美ボディを作ります。'},
+   {label:'STORY｜私自身の物語',noimg:true,body:'かつての私は、<strong>自己流でどれだけ努力しても、思うように筋肉がつきませんでした。</strong>頑張っているのに体が変わらない——その悔しさは、痛いほど分かります。<br>変わったのは、自己流をやめて「骨格から整えて、狙った筋肉へ正しく効かせる」ことにたどり着いてから。自分の体が驚くほど変わり、最終的には<strong>ベストボディジャパンのファイナル</strong>の舞台へ立てました。<br>やり方さえ正しければ、体は必ず応えてくれる。変われない人なんて、いません。'},
+   {label:'SESSION｜あなたへ',img:'trainer-baf/oki-session.jpg',ph:'セッション風景',body:'「たった一回のトレーニングで、見た目がスッキリした」「無理してないのに、いい姿勢が自然ととれる」——お客様から、そんな声をよくいただきます。<br>秘密は、歪みを整えて、あなたが本来持っている正しい姿勢に戻してあげること。それだけで、体は驚くほど引き締まって見えます。<br>だから、運動が苦手な初心者さんでも大丈夫。<strong>最初から苦しいトレーニングはしません。</strong>歪みを整えて、体の正しい使い方を覚えていくのが第一歩です。<br>まずはお気軽に、姿勢診断でご自身の現在地を知りに来てください。'}],
+  tags:['女性のボディメイク','姿勢・骨盤矯正','不調改善（肩こり・腰痛）','BBJファイナル','一般体操指導員']},
+ nakano:{name:'中野 龍之介',en:'Ryunosuke Nakano',short:'中野',ig:'https://www.instagram.com/fit_ryunosuke/',
+  img:'https://tokowaka-gym.com/images/trainer01.jpg',
+  badges:['大会日本8位','オーナートレーナー','指導歴6年','英語対応'],
+  target:'「理想はあるのに無理」と思う方・忙しい方へ',
+  hook:'「理想はある、けど自分には無理。」そう思っているあなたへ。',
+  sub:'どんな状態からでも、あなたの身体は必ず変わります。',
+  secs:[
+   {label:'CONCEPT｜身体はデザインできる',ba:true,imgBefore:'trainer-baf/nakano-before.jpg',imgAfter:'trainer-baf/nakano-after.jpg',body:'「スタイルは、生まれつきで決まっている」——そう思い込んでいませんか？違います。<strong>身体は、デザインできる。</strong><br>骨格という土台を活かし、狙った場所へ筋肉を足していけば、あなたの身体は思い通りに変わります。<br>「運動が苦手だから」と、諦める必要もありません。難しく見える動きも、<strong>やり方を知らないだけ</strong>。段階的なステップを踏めば、誰でもできるようになります。'},
+   {label:'STORY｜私自身の物語',noimg:true,body:'私はかつて、海外モデルやミスコンファイナリスト、日本代表アスリートを指導していました。でもある時期、<strong>トレーニングを完全に手放した</strong>んです。<br>飛び込んだITベンチャーでの長時間労働。運動も食事もケアも後回しになり、気づけば「常に調子が悪い」「疲れが取れない」「自分の身体が好きになれない」——それが当たり前になっていました。<br>その経験から、私は忙しくても続けられる、時間効率の高いトレーニングを徹底的に研究しました。そして週1回だった頻度を段階的に増やし、<strong>たった4ヶ月で予選2位・大会日本8位</strong>を獲得。最短で成果を出す技術は、自分自身で証明しています。あなたも、必ず変われます。'},
+   {label:'SESSION｜私の強み',img:'trainer-baf/nakano-session.jpg',ph:'セッション風景',body:'<strong>「身体はデザインできる」——それを、どんなに忙しいあなたでも実現する。</strong>それが私の強みです。<br>あなたの骨格や身体の使い方を見極め、ゴールから逆算して、今のあなたに必要なことだけを最短で。実際に「3ヶ月でウエスト−13cm、体重−12kg」といった声もいただいています。<br>ヒップ育成・筋肥大・バルクアップから体型改善まで、「こんな身体になりたい」という理想があるなら、それを一緒に設計するのが私の仕事です。'},
+   {label:'なぜTOKOWAKAをつくったのか',noimg:true,note:true,body:'正しい運動・食事・休息は、人によって最適解がまるで違います。これだけ情報が溢れた時代でも、“自分に合う方法”にたどり着くのは本当に難しい。<br>だからこそ我々は、パーソナルトレーニングという形で、一人ひとりに向き合うことにしました。少しずつ身体が整い、毎日が豊かになっていく人を増やしたい。<strong>その想いから、TOKOWAKAを作っています。</strong><br>「理想はあるけど、自分には無理かもしれない」という気持ちごと、持ってきてください。あなたの理想を、一緒に本気で設計します。'}],
+  tags:['大会日本8位','ヒップ育成','筋肥大・バルクアップ','時間効率設計','モデル・アスリート指導','英語対応']}};
+function renderTrainerModal(k){
+ var t=TRAINER_PROFILES[k];if(!t)return'';
+ var h='<div class="tm-bar"><button class="tm-x" type="button" onclick="closeTrainerModal()" aria-label="閉じる">×</button></div>';
+ h+='<div class="tm-hero-img">'+(t.img?'<img src="'+t.img+'" alt="'+t.name+'">':'')+'<div class="tm-ph">プロフィール写真</div></div>';
+ h+='<div class="tm-body">';
+ h+='<div class="tm-badges">'+t.badges.map(function(b){return'<span class="tm-badge">'+b+'</span>'}).join('')+'</div>';
+ h+='<div><span class="tm-name">'+t.name+'</span><span class="tm-name-en">'+t.en+'</span></div>';
+ if(t.target)h+='<p class="tm-target">'+t.target+'</p>';
+ h+='<p class="tm-hook">'+t.hook+'</p><p class="tm-sub">'+t.sub+'</p>';
+ t.secs.forEach(function(s){
+  h+='<div class="tm-sec'+(s.note?' tm-sec-note':'')+'">';
+  if(s.label)h+='<span class="tm-sec-label">'+s.label+'</span>';
+  if(s.ba){
+   h+='<div class="tm-ba">'
+    +'<div class="tm-ba-img">'+(s.imgBefore?'<img src="'+s.imgBefore+'" alt="Before">':'')+'<span class="tm-ba-lbl">Before</span><div class="tm-ph">Before 写真</div></div>'
+    +'<div class="tm-ba-img">'+(s.imgAfter?'<img src="'+s.imgAfter+'" alt="After">':'')+'<span class="tm-ba-lbl">After</span><div class="tm-ph">After 写真</div></div></div>';
+  }else if(!s.noimg){
+   h+='<div class="tm-sec-img">'+(s.img?'<img src="'+s.img+'" alt="">':'')+'<div class="tm-ph">'+(s.ph||'写真')+'</div></div>';
+  }
+  h+='<p>'+s.body+'</p>';
+  if(s.voice)h+='<div class="tm-voice"><span class="tm-voice-label">お客様の声</span><p>'+s.voice+(s.voiceWho?'<span class="tm-voice-who">'+s.voiceWho+'</span>':'')+'</p></div>';
+  h+='</div>';
+ });
+ h+='<div class="tm-tags">'+t.tags.map(function(x){return'<span class="tm-tag">'+x+'</span>'}).join('')+'</div>';
+ h+='<div class="tm-cta"><a href="javascript:void(0)" class="btn-gold" data-cta="trainer_modal_'+k+'" onclick="goToReservation(this,\'\',\''+k+'\')">'+t.short+'トレーナーに相談する（無料体験）</a></div>';
+ if(t.ig)h+='<div class="tm-ig"><a href="'+t.ig+'" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="currentColor" stroke="none"/></svg>Instagram を見る</a></div>';
+ h+='</div>';
+ return h;
+}
+function openTrainerModal(k){
+ var ov=document.getElementById('trModal');if(!ov)return;
+ var panel=ov.querySelector('.tm-panel');
+ panel.innerHTML=renderTrainerModal(k);
+ panel.querySelectorAll('.tm-hero-img img,.tm-sec-img img,.tm-ba-img img').forEach(function(im){im.addEventListener('error',function(){im.style.display='none'})});
+ ov.classList.add('open');document.body.classList.add('tm-lock');ov.setAttribute('aria-hidden','false');ov.scrollTop=0;
+ if(window.dataLayer)dataLayer.push({event:'trainer_modal_open',trainer:k});
+}
+function closeTrainerModal(){
+ var ov=document.getElementById('trModal');if(!ov)return;
+ ov.classList.remove('open');document.body.classList.remove('tm-lock');ov.setAttribute('aria-hidden','true');
+}
+(function(){var ov=document.getElementById('trModal');if(!ov)return;
+ ov.addEventListener('click',function(e){if(e.target===ov)closeTrainerModal()});
+ document.addEventListener('keydown',function(e){if((e.key==='Escape'||e.keyCode===27)&&ov.classList.contains('open'))closeTrainerModal()});})();
 </script>
 </body>
 </html>
