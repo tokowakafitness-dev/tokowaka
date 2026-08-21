@@ -817,6 +817,18 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
   .sticky-cta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:900;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);box-shadow:0 -4px 18px rgba(27,42,71,.15);padding:5px 12px calc(5px + env(safe-area-inset-bottom));transition:transform .3s ease}
   .sticky-cta a{display:flex;align-items:center;justify-content:center;background:linear-gradient(120deg,var(--gold),var(--gold-l));color:#fff;font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:13px;letter-spacing:.02em;padding:10px;border-radius:var(--r);text-decoration:none;box-shadow:0 4px 12px rgba(184,150,90,.32)}
 }
+/* ===== 料金グループ見出し ===== */
+.plan-group-label{font-family:'Shippori Mincho',serif;font-weight:600;font-size:16px;color:var(--navy);letter-spacing:.04em;margin:30px 0 14px;padding-bottom:9px;border-bottom:1px solid var(--bd)}
+.plan-group-label small{font-family:'Noto Sans JP',sans-serif;font-weight:400;font-size:11.5px;color:var(--soft);margin-left:10px;letter-spacing:.02em}
+/* お試し（上位・入口）＋料金タブ */
+.plan-trial-lead{text-align:center;font-family:'Shippori Mincho',serif;font-weight:600;font-size:clamp(17px,2.4vw,21px);color:var(--navy);margin:4px 0 16px;line-height:1.55}
+.plan-trial-badge{display:inline-block;font-family:'Noto Sans JP',sans-serif;font-size:11px;font-weight:600;letter-spacing:.06em;color:#fff;background:var(--gold);border-radius:20px;padding:4px 15px;margin-bottom:12px}
+.plan-tabs{display:flex;gap:6px;max-width:560px;margin:36px auto 0}
+.plan-tab{flex:1;text-align:center;padding:14px 10px;font-family:'Noto Sans JP',sans-serif;font-weight:700;font-size:14px;color:var(--soft);background:rgba(27,42,71,.06);border:1px solid var(--bd);border-bottom:none;border-radius:10px 10px 0 0;cursor:pointer;transition:.2s;letter-spacing:.03em}
+.plan-tab.active{color:#fff;background:var(--navy);border-color:var(--navy)}
+.plan-panel{display:none;border-top:2px solid var(--navy);padding-top:24px;margin-bottom:8px}
+.plan-panel.active{display:block;animation:planFade .35s ease}
+@keyframes planFade{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
 /* ===== TRAINER MODAL（プロフィール全画面）===== */
 .tr-more{margin-top:16px;align-self:flex-start;display:inline-flex;align-items:center;gap:7px;background:var(--navy);border:none;color:#fff;font-family:'Noto Sans JP',sans-serif;font-size:13px;font-weight:600;letter-spacing:.04em;padding:11px 22px;border-radius:30px;cursor:pointer;transition:.2s}
 .tr-more:hover{background:var(--gold)}
@@ -1623,11 +1635,9 @@ renderQ()})();
       <h2 class="sh-ja">料金プラン</h2>
       <p class="sh-sub">まずはお試しから、本格コースまで。目的とペースに合わせて選べます。</p>
     </div>
-    <div class="plan-enroll rv">
-      <div class="plan-enroll-box"><span class="l">入会金</span><span class="v"><s>¥33,000</s><small>通常</small></span><span class="s">体験当日ご入会で <strong>50%OFF（¥16,500）</strong>／フルサポート・他社から乗り換えの方は <strong>0円</strong></span></div>
-    </div>
-    <!-- ① お試し3回（入口）-->
-    <div class="cc rv" id="cc0">
+    <!-- お試し3回（上位・入口）-->
+    <p class="plan-trial-lead rv"><span class="plan-trial-badge">入会金なし・まずは気軽に</span><br>3回で、効果を実感してみる。</p>
+    <div class="cc rv open" id="cc0">
       <div class="cc-head" onclick="toggleCC('cc0')">
         <div class="cc-left">
           <span class="cc-tag">まず試す</span>
@@ -1635,7 +1645,7 @@ renderQ()})();
           <p class="cc-meta">55分 / マンツーマン・完全個室</p>
           <p class="cc-desc">「続けられるか不安」な方へ。まずは3回、じっくり体験できる入口プランです。</p>
         </div>
-        <div class="cc-toggle"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg><span>料金を見る</span></div>
+        <div class="cc-toggle"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg><span>閉じる</span></div>
       </div>
       <div class="cc-body"><div class="cc-inner">
         <table class="ct"><thead><tr><th>回数</th><th>1回あたり</th><th>一括料金</th></tr></thead><tbody>
@@ -1644,82 +1654,95 @@ renderQ()})();
         <p class="cc-note">※ 税込。最終日までにご入会いただくと、入会キャンペーンを適用します。</p>
       </div></div>
     </div>
-    <!-- ② フルサポート -->
-    <div class="cc gold-bd rv" id="cc2">
-      <div class="cc-offer">体験当日ご入会で 最初の3ヶ月 30%OFF ＋ 入会金 0円<small>フルサポートコース限定・毎月先着5名様</small></div>
-      <div class="cc-head" onclick="toggleCC('cc2')">
-        <div class="cc-left">
-          <span class="cc-tag premium">プレミアム</span>
-          <h3 class="cc-title">フルサポートコース</h3>
-          <p class="cc-meta">55分 / マンツーマン・完全個室</p>
-          <p class="cc-desc">身体も食事も、すべてを任せる最高水準のプログラム。</p>
-          <div class="cc-inc">
-            <div class="cc-inc-i"><span class="cc-inc-l">トレーニング</span><span class="cc-inc-v">マンツーマン<br>完全個室</span></div>
-            <div class="cc-inc-i"><span class="cc-inc-l">食事管理</span><span class="cc-inc-v">毎日記録<br>個別FB</span></div>
-            <div class="cc-inc-i"><span class="cc-inc-l">進捗管理</span><span class="cc-inc-v">週次報告<br>目標修正</span></div>
+    <!-- タブ：月額 / ペア -->
+    <div class="plan-tabs rv">
+      <button type="button" class="plan-tab active" data-ptab="0" onclick="switchPlanTab(0)">月額コース</button>
+      <button type="button" class="plan-tab" data-ptab="1" onclick="switchPlanTab(1)">ペア割プラン</button>
+    </div>
+    <!-- パネル0：月額コース -->
+    <div class="plan-panel active" id="planPanel0">
+      <div class="plan-enroll">
+        <div class="plan-enroll-box"><span class="l">入会金</span><span class="v"><s>¥33,000</s><small>通常</small></span><span class="s">体験当日ご入会で <strong>50%OFF（¥16,500）</strong>／フルサポート・他社から乗り換えの方は <strong>0円</strong></span></div>
+      </div>
+      <!-- フルサポート -->
+      <div class="cc gold-bd open" id="cc2">
+        <div class="cc-offer">体験当日ご入会で 最初の3ヶ月 30%OFF ＋ 入会金 0円<small>フルサポートコース限定・毎月先着5名様</small></div>
+        <div class="cc-head" onclick="toggleCC('cc2')">
+          <div class="cc-left">
+            <span class="cc-tag premium">プレミアム</span>
+            <h3 class="cc-title">フルサポートコース</h3>
+            <p class="cc-meta">55分 / マンツーマン・完全個室</p>
+            <p class="cc-desc">身体も食事も、すべてを任せる最高水準のプログラム。</p>
+            <div class="cc-inc">
+              <div class="cc-inc-i"><span class="cc-inc-l">トレーニング</span><span class="cc-inc-v">マンツーマン<br>完全個室</span></div>
+              <div class="cc-inc-i"><span class="cc-inc-l">食事管理</span><span class="cc-inc-v">毎日記録<br>個別FB</span></div>
+              <div class="cc-inc-i"><span class="cc-inc-l">進捗管理</span><span class="cc-inc-v">週次報告<br>目標修正</span></div>
+            </div>
           </div>
+          <div class="cc-toggle"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg><span>閉じる</span></div>
         </div>
-        <div class="cc-toggle"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg><span>料金を見る</span></div>
+        <div class="cc-body"><div class="cc-inner">
+          <p class="ct-plan-label">3ヶ月プラン<small>4ヶ月目からプラン変更可能</small></p>
+          <table class="ct"><thead><tr><th>回数</th><th>1回あたり</th><th>月額</th></tr></thead><tbody>
+            <tr><td>月4回</td><td class="ps">¥18,000</td><td class="pm">¥72,000</td></tr>
+            <tr><td>月6回</td><td class="ps">¥17,500</td><td class="pm">¥105,000</td></tr>
+            <tr class="hl"><td>月8回<span class="pop">人気</span></td><td class="ps">¥17,000</td><td class="pm">¥136,000</td></tr>
+          </tbody></table>
+          <p class="ct-plan-label">6ヶ月プラン<small>フルサポ継続割・1回¥500お得</small></p>
+          <table class="ct"><thead><tr><th>回数</th><th>1回あたり</th><th>月額</th><th>お得</th></tr></thead><tbody>
+            <tr><td>月4回</td><td class="ps">¥17,500</td><td class="pm">¥70,000</td><td class="disc">¥12,000</td></tr>
+            <tr class="hl"><td>月6回<span class="pop">人気</span></td><td class="ps">¥17,000</td><td class="pm">¥102,000</td><td class="disc">¥18,000</td></tr>
+            <tr><td>月8回</td><td class="ps">¥16,500</td><td class="pm">¥132,000</td><td class="disc">¥24,000</td></tr>
+          </tbody></table>
+          <p class="cc-note">※ 税込。カウンセリング後にご案内。先着制。「お得」は6ヶ月間の割引総額（1回¥500 × 回数 × 6ヶ月）。</p>
+        </div></div>
       </div>
-      <div class="cc-body"><div class="cc-inner">
-        <p class="ct-plan-label">3ヶ月プラン<small>4ヶ月目からプラン変更可能</small></p>
-        <table class="ct"><thead><tr><th>回数</th><th>1回あたり</th><th>月額</th></tr></thead><tbody>
-          <tr><td>月4回</td><td class="ps">¥18,000</td><td class="pm">¥72,000</td></tr>
-          <tr><td>月6回</td><td class="ps">¥17,500</td><td class="pm">¥105,000</td></tr>
-          <tr class="hl"><td>月8回<span class="pop">人気</span></td><td class="ps">¥17,000</td><td class="pm">¥136,000</td></tr>
-        </tbody></table>
-        <p class="ct-plan-label">6ヶ月プラン<small>フルサポ継続割・1回¥500お得</small></p>
-        <table class="ct"><thead><tr><th>回数</th><th>1回あたり</th><th>月額</th><th>お得</th></tr></thead><tbody>
-          <tr><td>月4回</td><td class="ps">¥17,500</td><td class="pm">¥70,000</td><td class="disc">¥12,000</td></tr>
-          <tr class="hl"><td>月6回<span class="pop">人気</span></td><td class="ps">¥17,000</td><td class="pm">¥102,000</td><td class="disc">¥18,000</td></tr>
-          <tr><td>月8回</td><td class="ps">¥16,500</td><td class="pm">¥132,000</td><td class="disc">¥24,000</td></tr>
-        </tbody></table>
-        <p class="cc-note">※ 税込。カウンセリング後にご案内。先着制。「お得」は6ヶ月間の割引総額（1回¥500 × 回数 × 6ヶ月）。</p>
-      </div></div>
+      <!-- トレーニング -->
+      <div class="cc open" id="cc3">
+        <div class="cc-head" onclick="toggleCC('cc3')">
+          <div class="cc-left">
+            <span class="cc-tag">月額制</span>
+            <h3 class="cc-title">トレーニングコース</h3>
+            <p class="cc-meta">55分 / マンツーマン・完全個室</p>
+            <p class="cc-desc">短時間で集中的に。続けやすい、マンツーマンのスタンダードコース。</p>
+          </div>
+          <div class="cc-toggle"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg><span>閉じる</span></div>
+        </div>
+        <div class="cc-body"><div class="cc-inner">
+          <table class="ct"><thead><tr><th>回数</th><th>1回あたり</th><th>月額</th></tr></thead><tbody>
+            <tr><td>月2回</td><td class="ps">¥11,000</td><td class="pm">¥22,000</td></tr>
+            <tr><td>月4回</td><td class="ps">¥9,750</td><td class="pm">¥39,000</td></tr>
+            <tr><td>月6回</td><td class="ps">¥9,500</td><td class="pm">¥57,000</td></tr>
+            <tr class="hl"><td>月8回<span class="pop">人気</span></td><td class="ps">¥9,250</td><td class="pm">¥74,000</td></tr>
+            <tr><td>月12回</td><td class="ps">¥9,000</td><td class="pm">¥108,000</td></tr>
+          </tbody></table>
+          <p class="cc-note">※ 税込。回数は翌月1/3まで繰り越しOK。</p>
+        </div></div>
+      </div>
     </div>
-    <!-- ③ トレーニング（通常コース）-->
-    <div class="cc rv" id="cc3">
-      <div class="cc-head" onclick="toggleCC('cc3')">
-        <div class="cc-left">
-          <span class="cc-tag">月額制</span>
-          <h3 class="cc-title">トレーニングコース</h3>
-          <p class="cc-meta">55分 / マンツーマン・完全個室</p>
-          <p class="cc-desc">短時間で集中的に。続けやすい、マンツーマンのスタンダードコース。</p>
+    <!-- パネル1：ペア割 -->
+    <div class="plan-panel" id="planPanel1">
+      <div class="cc open" id="cc4">
+        <div class="cc-head" onclick="toggleCC('cc4')">
+          <div class="cc-left">
+            <span class="cc-tag">2名</span>
+            <h3 class="cc-title">ペアチケット</h3>
+            <p class="cc-meta">55分 / 2名・完全個室</p>
+            <p class="cc-desc">友人・パートナーと2人で。1人あたり¥6,000〜の回数券。</p>
+          </div>
+          <div class="cc-toggle"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg><span>閉じる</span></div>
         </div>
-        <div class="cc-toggle"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg><span>料金を見る</span></div>
+        <div class="cc-body"><div class="cc-inner">
+          <table class="ct"><thead><tr><th>回数</th><th>1人1回あたり</th><th>一括料金</th></tr></thead><tbody>
+            <tr><td>4回</td><td class="ps">¥8,000</td><td class="pm">¥32,000</td></tr>
+            <tr><td>8回</td><td class="ps">¥6,750</td><td class="pm">¥54,000</td></tr>
+            <tr class="hl"><td>12回<span class="pop">人気</span></td><td class="ps">¥6,500</td><td class="pm">¥78,000</td></tr>
+            <tr><td>18回</td><td class="ps">¥6,250</td><td class="pm">¥112,500</td></tr>
+            <tr><td>24回</td><td class="ps">¥6,000</td><td class="pm">¥144,000</td></tr>
+          </tbody></table>
+          <p class="cc-note">※ 税込。お一人での消化や、お連れ様のチケット利用など、詳しい条件はカウンセリングでご案内します。</p>
+        </div></div>
       </div>
-      <div class="cc-body"><div class="cc-inner">
-        <table class="ct"><thead><tr><th>回数</th><th>1回あたり</th><th>月額</th></tr></thead><tbody>
-          <tr><td>月2回</td><td class="ps">¥11,000</td><td class="pm">¥22,000</td></tr>
-          <tr><td>月4回</td><td class="ps">¥9,750</td><td class="pm">¥39,000</td></tr>
-          <tr><td>月6回</td><td class="ps">¥9,500</td><td class="pm">¥57,000</td></tr>
-          <tr class="hl"><td>月8回<span class="pop">人気</span></td><td class="ps">¥9,250</td><td class="pm">¥74,000</td></tr>
-          <tr><td>月12回</td><td class="ps">¥9,000</td><td class="pm">¥108,000</td></tr>
-        </tbody></table>
-        <p class="cc-note">※ 税込。回数は翌月1/3まで繰り越しOK。</p>
-      </div></div>
-    </div>
-    <!-- ④ ペアチケット -->
-    <div class="cc rv" id="cc4">
-      <div class="cc-head" onclick="toggleCC('cc4')">
-        <div class="cc-left">
-          <span class="cc-tag">2名</span>
-          <h3 class="cc-title">ペアチケット</h3>
-          <p class="cc-meta">55分 / 2名・完全個室</p>
-          <p class="cc-desc">友人・パートナーと2人で。1人あたり¥6,000〜の回数券。</p>
-        </div>
-        <div class="cc-toggle"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg><span>料金を見る</span></div>
-      </div>
-      <div class="cc-body"><div class="cc-inner">
-        <table class="ct"><thead><tr><th>回数</th><th>1人1回あたり</th><th>一括料金</th></tr></thead><tbody>
-          <tr><td>4回</td><td class="ps">¥8,000</td><td class="pm">¥32,000</td></tr>
-          <tr><td>8回</td><td class="ps">¥6,750</td><td class="pm">¥54,000</td></tr>
-          <tr class="hl"><td>12回<span class="pop">人気</span></td><td class="ps">¥6,500</td><td class="pm">¥78,000</td></tr>
-          <tr><td>18回</td><td class="ps">¥6,250</td><td class="pm">¥112,500</td></tr>
-          <tr><td>24回</td><td class="ps">¥6,000</td><td class="pm">¥144,000</td></tr>
-        </tbody></table>
-        <p class="cc-note">※ 税込。お一人での消化や、お連れ様のチケット利用など、詳しい条件はカウンセリングでご案内します。</p>
-      </div></div>
     </div>
     <p class="plan-foot">※ 表示時間はカウンセリング・お着替えを含むセッション全体の時間です。<br>※ 入会金割引・最初の3ヶ月30%OFF等のキャンペーンは、毎月先着5名様まで（体験当日のご入会が条件）。</p>
   </div>
@@ -1880,7 +1903,8 @@ function closeLB(){document.getElementById('lightbox').classList.remove('open')}
 </script>
 <script>
 (function(){document.querySelectorAll('.gr-card').forEach(function(card){var txt=card.querySelector('.gr-text');if(!txt)return;if(txt.scrollHeight>txt.clientHeight+4){var m=document.createElement('span');m.className='gr-more';m.textContent='続きを読む';m.addEventListener('click',function(){card.classList.toggle('open');m.textContent=card.classList.contains('open')?'閉じる':'続きを読む'});card.appendChild(m)}})})();
-function toggleCC(id){var e=document.getElementById(id);e.classList.toggle('open');if(e.classList.contains('open')&&window.dataLayer)dataLayer.push({event:'plan_expand',plan_id:id})}
+function toggleCC(id){var e=document.getElementById(id);e.classList.toggle('open');var o=e.classList.contains('open');var s=e.querySelector('.cc-toggle span');if(s)s.textContent=o?'閉じる':'料金を見る';if(o&&window.dataLayer)dataLayer.push({event:'plan_expand',plan_id:id})}
+function switchPlanTab(i){var tabs=document.querySelectorAll('.plan-tab');for(var t=0;t<tabs.length;t++){tabs[t].classList.toggle('active',tabs[t].getAttribute('data-ptab')===String(i))}var ps=document.querySelectorAll('.plan-panel');for(var p=0;p<ps.length;p++){ps[p].classList.toggle('active',ps[p].id==='planPanel'+i)}if(window.dataLayer)dataLayer.push({event:'plan_tab_switch',plan_tab:i})}
 function toggleFaq(el){el.classList.toggle('open');if(el.classList.contains('open')&&window.dataLayer)dataLayer.push({event:'faq_open'})}
 /* Instagramリール：指定秒から再生（data-start）・ループ時も同位置へ */
 (function(){document.querySelectorAll('.ig-reel video[data-start]').forEach(function(v){var s=parseFloat(v.dataset.start)||0;function seek(){try{v.currentTime=s}catch(e){}}if(v.readyState>=1)seek();else v.addEventListener('loadedmetadata',seek);v.addEventListener('timeupdate',function(){if(v.currentTime<s-0.3)seek()})})})();
