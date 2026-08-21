@@ -1432,7 +1432,7 @@ flow:{
  health:["goal","health_habit","concern","gender","age"]},
 plans:{
  training:{name:"月額制 トレーニングコース",price:"¥22,000〜",unit:"/ 月（税込・月2回の場合）",offer:"体験当日ご入会で入会金50%OFF（¥33,000 → ¥16,500）"},
- bc:{name:"月額制 ボディケアコース",price:"¥48,000〜",unit:"/ 月（税込・月4回の場合）",offer:"体験当日ご入会で入会金50%OFF（¥33,000 → ¥16,500）"},
+ bc:{name:"月額制 トレーニングコース",price:"¥22,000〜",unit:"/ 月（税込・月2回の場合）",offer:"体験当日ご入会で入会金50%OFF（¥33,000 → ¥16,500）"},
  full:{name:"プレミアム フルサポートコース",price:"¥72,000〜",unit:"/ 月（税込・月4回の場合）",offer:"入会金0円 ＋ 最初の3ヶ月30%OFF（体験当日ご入会・毎月先着5名限定）"},
  consult:{name:"体験カウンセリングで無料設計",price:"",unit:"",offer:"体験トレーニングは無料。トレーナーが現実的な計画を一緒に設計します"}},
 goalCopy:{
@@ -1621,29 +1621,27 @@ renderQ()})();
       <span class="ey">Plan &amp; Price</span>
       <div class="gl"></div>
       <h2 class="sh-ja">料金プラン</h2>
-      <p class="sh-sub">目的とペースに合わせて選べる、4つのコース</p>
+      <p class="sh-sub">まずはお試しから、本格コースまで。目的とペースに合わせて選べます。</p>
     </div>
     <div class="plan-enroll rv">
-      <div class="plan-enroll-box"><span class="l">入会金</span><span class="v"><s>¥33,000</s><small>通常</small></span><span class="s">体験当日ご入会で <strong>50%OFF（¥16,500）</strong>／フルサポートコースは <strong>0円</strong></span></div>
+      <div class="plan-enroll-box"><span class="l">入会金</span><span class="v"><s>¥33,000</s><small>通常</small></span><span class="s">体験当日ご入会で <strong>50%OFF（¥16,500）</strong>／フルサポート・他社から乗り換えの方は <strong>0円</strong></span></div>
     </div>
-    <!-- ① ボディケア -->
-    <div class="cc rv" id="cc1">
-      <div class="cc-head" onclick="toggleCC('cc1')">
+    <!-- ① お試し3回（入口）-->
+    <div class="cc rv" id="cc0">
+      <div class="cc-head" onclick="toggleCC('cc0')">
         <div class="cc-left">
-          <span class="cc-tag">月額制</span>
-          <h3 class="cc-title">ボディケアコース</h3>
+          <span class="cc-tag">まず試す</span>
+          <h3 class="cc-title">お試し3回チケット</h3>
           <p class="cc-meta">55分 / マンツーマン・完全個室</p>
-          <p class="cc-desc">継続的なケアとトレーニングで、身体を根本から整える月額コース。</p>
+          <p class="cc-desc">「続けられるか不安」な方へ。まずは3回、じっくり体験できる入口プランです。</p>
         </div>
         <div class="cc-toggle"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg><span>料金を見る</span></div>
       </div>
       <div class="cc-body"><div class="cc-inner">
-        <table class="ct"><thead><tr><th>回数</th><th>1回あたり</th><th>月額</th></tr></thead><tbody>
-          <tr><td>月4回</td><td class="ps">¥12,000</td><td class="pm">¥48,000</td></tr>
-          <tr class="hl"><td>月8回<span class="pop">人気</span></td><td class="ps">¥11,500</td><td class="pm">¥92,000</td></tr>
-          <tr><td>月12回</td><td class="ps">¥11,000</td><td class="pm">¥132,000</td></tr>
+        <table class="ct"><thead><tr><th>回数</th><th>1回あたり</th><th>一括料金</th></tr></thead><tbody>
+          <tr class="hl"><td>3回</td><td class="ps">¥9,000</td><td class="pm">¥27,000</td></tr>
         </tbody></table>
-        <p class="cc-note">※ 税込。回数は翌月1/3まで繰り越しOK。</p>
+        <p class="cc-note">※ 税込。最終日までにご入会いただくと、入会キャンペーンを適用します。</p>
       </div></div>
     </div>
     <!-- ② フルサポート -->
@@ -1701,26 +1699,26 @@ renderQ()})();
         <p class="cc-note">※ 税込。回数は翌月1/3まで繰り越しOK。</p>
       </div></div>
     </div>
-    <!-- ④ ペアトレ -->
+    <!-- ④ ペアチケット -->
     <div class="cc rv" id="cc4">
       <div class="cc-head" onclick="toggleCC('cc4')">
         <div class="cc-left">
-          <span class="cc-tag">2名・月額制</span>
-          <h3 class="cc-title">ペアトレーニングコース</h3>
+          <span class="cc-tag">2名</span>
+          <h3 class="cc-title">ペアチケット</h3>
           <p class="cc-meta">55分 / 2名・完全個室</p>
-          <p class="cc-desc">友人・パートナーと2人で。1人あたり¥6,000〜の、続けやすいコース。</p>
+          <p class="cc-desc">友人・パートナーと2人で。1人あたり¥6,000〜の回数券。</p>
         </div>
         <div class="cc-toggle"><svg viewBox="0 0 24 24"><path d="M6 9l6 6 6-6"/></svg><span>料金を見る</span></div>
       </div>
       <div class="cc-body"><div class="cc-inner">
-        <table class="ct"><thead><tr><th>回数</th><th>1人1回あたり</th><th>月額（2名）</th></tr></thead><tbody>
-          <tr><td>月2回</td><td class="ps">¥8,000</td><td class="pm">¥32,000</td></tr>
-          <tr><td>月4回</td><td class="ps">¥6,750</td><td class="pm">¥54,000</td></tr>
-          <tr><td>月6回</td><td class="ps">¥6,500</td><td class="pm">¥78,000</td></tr>
-          <tr class="hl"><td>月8回<span class="pop">人気</span></td><td class="ps">¥6,250</td><td class="pm">¥100,000</td></tr>
-          <tr><td>月12回</td><td class="ps">¥6,000</td><td class="pm">¥144,000</td></tr>
+        <table class="ct"><thead><tr><th>回数</th><th>1人1回あたり</th><th>一括料金</th></tr></thead><tbody>
+          <tr><td>4回</td><td class="ps">¥8,000</td><td class="pm">¥32,000</td></tr>
+          <tr><td>8回</td><td class="ps">¥6,750</td><td class="pm">¥54,000</td></tr>
+          <tr class="hl"><td>12回<span class="pop">人気</span></td><td class="ps">¥6,500</td><td class="pm">¥78,000</td></tr>
+          <tr><td>18回</td><td class="ps">¥6,250</td><td class="pm">¥112,500</td></tr>
+          <tr><td>24回</td><td class="ps">¥6,000</td><td class="pm">¥144,000</td></tr>
         </tbody></table>
-        <p class="cc-note">※ 税込。2名で同日利用が条件。回数は翌月1/3まで繰り越しOK。</p>
+        <p class="cc-note">※ 税込。お一人での消化や、お連れ様のチケット利用など、詳しい条件はカウンセリングでご案内します。</p>
       </div></div>
     </div>
     <p class="plan-foot">※ 表示時間はカウンセリング・お着替えを含むセッション全体の時間です。<br>※ 入会金割引・最初の3ヶ月30%OFF等のキャンペーンは、毎月先着5名様まで（体験当日のご入会が条件）。</p>
