@@ -496,7 +496,15 @@ header.sc{box-shadow:0 2px 18px rgba(27,42,71,.08);border-bottom:1px solid var(-
 .tr-photo{aspect-ratio:4/5;position:relative;overflow:hidden;background:var(--navy-d)}
 .tr-photo img{width:100%;height:100%;object-fit:cover;object-position:top center}
 .tr-photo-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(27,42,71,.42);font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:.1em;background:linear-gradient(135deg,#e6ddcd,#d6cbb6)}
-.tr-catch{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(to top,rgba(19,32,58,.94),rgba(19,32,58,0));color:#fff;font-family:'Shippori Mincho',serif;font-weight:500;font-size:14px;padding:34px 18px 14px;line-height:1.55}
+.tr-catch{position:absolute;left:0;right:0;bottom:0;background:linear-gradient(to top,rgba(19,32,58,.94),rgba(19,32,58,0));color:#fff;font-family:'Shippori Mincho',serif;font-weight:500;font-size:14px;padding:34px 18px 14px;line-height:1.55;z-index:3}
+/* カードのプロフ写真をbefore/after 2枚に */
+.tr-photo-ba{display:grid;grid-template-columns:1fr 1fr;gap:2px}
+.tr-photo-ba .tr-ba-cell{position:relative;overflow:hidden;background:var(--navy-d)}
+.tr-photo-ba .tr-ba-cell img{width:100%;height:100%;object-fit:cover;object-position:top center}
+.tr-photo-ba .tr-ba-lbl{position:absolute;top:7px;left:7px;z-index:2;background:rgba(19,32,58,.82);color:#fff;font-family:'Noto Sans JP',sans-serif;font-size:10px;letter-spacing:.06em;padding:2px 8px;border-radius:4px}
+/* 鈴木ビフォー：表示位置を左に15%寄せる（左側を見せる）*/
+.tr-photo-ba .tr-ba-cell img[src*="suzuki-before"]{object-position:35% top}
+.tm-ba-img img[src*="suzuki-before"]{object-position:35% 50%}
 .tr-info{padding:18px 20px 22px;flex:1;display:flex;flex-direction:column}
 .tr-name{font-family:'Shippori Mincho',serif;font-weight:600;font-size:18px;color:var(--navy);line-height:1.2}
 .tr-name-en{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:12px;color:var(--gold);letter-spacing:.1em;display:block;margin:2px 0 2px}
@@ -843,6 +851,10 @@ body.tm-lock{overflow:hidden}
 .tm-x:hover{background:rgba(27,42,71,.14)}
 .tm-hero-img{width:100%;aspect-ratio:4/5;position:relative;overflow:hidden;background:var(--navy-d);margin-top:-60px}
 .tm-hero-img img{width:100%;height:100%;object-fit:cover;object-position:top center;position:relative;z-index:1}
+/* ヒーローをbefore/after 2枚に */
+.tm-hero-ba{display:grid;grid-template-columns:1fr 1fr;gap:2px;margin-top:-60px;background:var(--navy-d)}
+.tm-hero-ba-cell{aspect-ratio:3/4;position:relative;overflow:hidden;background:var(--navy-d)}
+.tm-hero-ba-cell img{width:100%;height:100%;object-fit:cover;object-position:top center;position:relative;z-index:1}
 .tm-ph{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:rgba(27,42,71,.45);font-family:'Noto Sans JP',sans-serif;font-size:11px;letter-spacing:.12em;background:linear-gradient(135deg,#e6ddcd,#d6cbb6);text-align:center;padding:20px}
 .tm-body{padding:26px 24px 44px}
 .tm-badges{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px}
@@ -1064,18 +1076,18 @@ body.tm-lock{overflow:hidden}
     <div class="sh rv">
       <span class="ey">Trainer</span>
       <div class="gl"></div>
-      <h2 class="sh-ja">我々が、あなたの理想へ伴走します。</h2>
+      <h2 class="sh-ja">あなたの「理想の身体」へ導きます</h2>
     </div>
     <div class="tr-banner rv">
-      <h3>確かな経験と知識で、<br class="br-sp"><em>全員がコンテスト入賞者</em></h3>
+      <h3>確かな経験と知識。<br class="br-sp"><em>全員がコンテスト入賞者</em></h3>
       <p>あなたの目的に合わせて、選べる3名のトレーナー。</p>
     </div>
     <div class="tr-grid">
       <!-- 鈴木 -->
       <div class="tr-card rv d1">
-        <div class="tr-photo">
-          <img src="https://tokowaka-gym.com/images/trainer02.jpg" alt="鈴木 神海感留" onerror="this.style.display='none';this.parentNode.querySelector('.tr-photo-ph').style.display='flex'">
-          <div class="tr-photo-ph" style="display:none">Trainer Photo</div>
+        <div class="tr-photo tr-photo-ba">
+          <div class="tr-ba-cell"><img src="trainer-baf/suzuki-before.jpg" alt="Before"><span class="tr-ba-lbl">Before</span></div>
+          <div class="tr-ba-cell"><img src="trainer-baf/suzuki-after.jpg" alt="After"><span class="tr-ba-lbl">After</span></div>
           <div class="tr-catch">「何歳からでも、<br>今が1番の身体へ」</div>
         </div>
         <div class="tr-info">
@@ -1092,9 +1104,9 @@ body.tm-lock{overflow:hidden}
       </div>
       <!-- 沖 -->
       <div class="tr-card rv d2">
-        <div class="tr-photo">
-          <img src="https://tokowaka-gym.com/images/trainer03.jpg" alt="沖 孟" onerror="this.style.display='none';this.parentNode.querySelector('.tr-photo-ph').style.display='flex'">
-          <div class="tr-photo-ph" style="display:none">Trainer Photo</div>
+        <div class="tr-photo tr-photo-ba">
+          <div class="tr-ba-cell"><img src="trainer-baf/oki-before.jpg" alt="Before"><span class="tr-ba-lbl">Before</span></div>
+          <div class="tr-ba-cell"><img src="trainer-baf/oki-after.jpg" alt="After"><span class="tr-ba-lbl">After</span></div>
           <div class="tr-catch">「頑張らないのに、<br>気づけば身体が変わってる。」</div>
         </div>
         <div class="tr-info">
@@ -1111,9 +1123,9 @@ body.tm-lock{overflow:hidden}
       </div>
       <!-- 中野 -->
       <div class="tr-card rv d3">
-        <div class="tr-photo">
-          <img src="https://tokowaka-gym.com/images/trainer01.jpg" alt="中野 龍之介" onerror="this.style.display='none';this.parentNode.querySelector('.tr-photo-ph').style.display='flex'">
-          <div class="tr-photo-ph" style="display:none">Trainer Photo</div>
+        <div class="tr-photo tr-photo-ba">
+          <div class="tr-ba-cell"><img src="trainer-baf/nakano-before.jpg" alt="Before"><span class="tr-ba-lbl">Before</span></div>
+          <div class="tr-ba-cell"><img src="trainer-baf/nakano-after.jpg" alt="After"><span class="tr-ba-lbl">After</span></div>
           <div class="tr-catch">「理想はある、けど自分には無理。」<br>そう思っているあなたへ。</div>
         </div>
         <div class="tr-info">
@@ -1130,7 +1142,7 @@ body.tm-lock{overflow:hidden}
       </div>
     </div>
     <div class="cta-center rv">
-      <a href="javascript:void(0)" onclick="goToReservation()" class="btn-gold">このトレーナーに相談する</a>
+      <a href="javascript:void(0)" onclick="goToReservation()" class="btn-gold">体験トレーニングを申し込む</a>
     </div>
   </div>
 </section>
@@ -1934,8 +1946,8 @@ var TRAINER_PROFILES={
   hook:'「何歳からでも、今が1番の身体へ」',
   sub:'骨格や歪みを整えてから鍛えるから、狙った部位に勝手に刺激が入り、怪我なく最短で変わる。<br>整体要らずの不調改善 × 1年中脱げる本質的なボディメイク。<strong>「一生続く、魅せれる×動ける身体」</strong>を今から作りませんか？',
   secs:[
-   {label:'CONCEPT｜身体の仕組み',ba:true,imgBefore:'trainer-baf/suzuki-before.jpg',imgAfter:'trainer-baf/suzuki-after.jpg',body:'私が大切にしているのは、気合いや根性論ではなく<strong>「身体の仕組み」</strong>です。<br>肩こりや腰痛などの不調も、ボディメイクで効かせたい部位に効かないのも、原因はすべて「骨格の位置」と「身体の使い方」にあります。<br>土台となる仕組みを整えてから正しく鍛えることで、効かせたい筋肉へ自然と刺激が入り、無駄な怪我をせずに最短距離で体型が変わっていきます。<br>解剖学に基づいたアプローチで、慢性的な不調をリセットしながら、1年中自信を持って脱げる理想の身体へ導きます。'},
-   {label:'STORY｜私自身の物語',noimg:true,body:'実は私自身、かつて大幅な体重増加と、持病である腰椎分離症の痛みに悩まされていました。「身体が思うように動かない」「痛みのせいで思い通りに鍛えられない」——そのもどかしさと辛さは、痛いほど分かります。<br>しかし、根性論を捨てて「身体の仕組み」を根本から立て直したことで、不調を克服し、<strong>−19kgの減量とコンテスト優勝</strong>まで果たすことができました。<br>身体が整えば、パフォーマンスも体型も劇的に変わります。不調や怪我で諦めかけている人にこそ、その可能性を実感してほしいと思っています。'},
+   {label:'CONCEPT｜身体の仕組み',img:'trainer-baf/suzuki-ideal.jpg',ph:'超理想像写真',body:'私が大切にしているのは、気合いや根性論ではなく<strong>「身体の仕組み」</strong>です。<br>肩こりや腰痛などの不調も、ボディメイクで効かせたい部位に効かないのも、原因はすべて「骨格の位置」と「身体の使い方」にあります。<br>土台となる仕組みを整えてから正しく鍛えることで、効かせたい筋肉へ自然と刺激が入り、無駄な怪我をせずに最短距離で体型が変わっていきます。<br>解剖学に基づいたアプローチで、慢性的な不調をリセットしながら、1年中自信を持って脱げる理想の身体へ導きます。'},
+   {label:'STORY｜私自身の物語',ba:true,imgBefore:'trainer-baf/suzuki-before.jpg',imgAfter:'trainer-baf/suzuki-after.jpg',body:'実は私自身、かつて大幅な体重増加と、持病である腰椎分離症の痛みに悩まされていました。「身体が思うように動かない」「痛みのせいで思い通りに鍛えられない」——そのもどかしさと辛さは、痛いほど分かります。<br>しかし、根性論を捨てて「身体の仕組み」を根本から立て直したことで、不調を克服し、<strong>−19kgの減量とコンテスト優勝</strong>まで果たすことができました。<br>身体が整えば、パフォーマンスも体型も劇的に変わります。不調や怪我で諦めかけている人にこそ、その可能性を実感してほしいと思っています。'},
    {label:'SESSION｜あなたへ',img:'trainer-baf/suzuki-session.jpg',ph:'セッション風景',body:'「長年の不調が消えた」「今までで一番トレーニングが効いている」——そんな声を多くいただいています。<br>まずはあなたのフォームの癖や骨格の歪みを見極め、身体が本来持つポテンシャルを最大化。不調を根本から整えた上で鍛えるからこそ、一生モノの<strong>「魅せる身体」と「動ける身体」</strong>が手に入ります。<br>怪我なく最短で身体を変えたい方、1年中自信の持てる体型を作りたい方へ。月150セッション以上の豊富な指導実績をもとに、あなたの身体の可能性を最大限に引き出します。'}],
   tags:['大幅ダイエット','バルクアップ','不調・機能改善','APF Japan Classic 1位','英語対応']},
  oki:{name:'沖 孟',en:'Takeru Oki',short:'沖',ig:'https://www.instagram.com/takeru_fitness_/',
@@ -1945,8 +1957,8 @@ var TRAINER_PROFILES={
   hook:'「頑張らないのに、気づけば身体が変わってる。」',
   sub:'重要なのは体重より<strong>“見た目”</strong>。姿勢から整えることで、あなたの骨格のポテンシャルを最大限引き出し、理想のボディラインに近づけます。',
   secs:[
-   {label:'CONCEPT｜骨格矯正トレーニング',ba:true,imgBefore:'trainer-baf/oki-before.jpg',imgAfter:'trainer-baf/oki-after.jpg',body:'年間2,000件以上、たくさんの女性のボディラインを指導する中で、<strong>『女性のボディメイクこそ、高度な技術が必要』</strong>と確信しました。<br>トレーニングは筋肉を大きく成長させる行為です。だからこそやみくもにトレーニングをしてしまうと、ボディバランスを崩し、女性らしい綺麗なボディラインをつくることはできません。<br>そこで私があみだしたメソッドが、<strong>骨格矯正トレーニング</strong>です。まずは根本の歪みを整え、全体のシルエットから逆算して筋肉をつけていくことで、女性らしい健康的な美ボディを作ります。'},
-   {label:'STORY｜私自身の物語',noimg:true,body:'かつての私は、<strong>自己流でどれだけ努力しても、思うように筋肉がつきませんでした。</strong>頑張っているのに体が変わらない——その悔しさは、痛いほど分かります。<br>変わったのは、自己流をやめて「骨格から整えて、狙った筋肉へ正しく効かせる」ことにたどり着いてから。自分の体が驚くほど変わり、最終的には<strong>ベストボディジャパンのファイナル</strong>の舞台へ立てました。<br>やり方さえ正しければ、体は必ず応えてくれる。変われない人なんて、いません。'},
+   {label:'CONCEPT｜骨格矯正トレーニング',img:'trainer-baf/oki-ideal.jpg',ph:'超理想像写真',body:'年間2,000件以上、たくさんの女性のボディラインを指導する中で、<strong>『女性のボディメイクこそ、高度な技術が必要』</strong>と確信しました。<br>トレーニングは筋肉を大きく成長させる行為です。だからこそやみくもにトレーニングをしてしまうと、ボディバランスを崩し、女性らしい綺麗なボディラインをつくることはできません。<br>そこで私があみだしたメソッドが、<strong>骨格矯正トレーニング</strong>です。まずは根本の歪みを整え、全体のシルエットから逆算して筋肉をつけていくことで、女性らしい健康的な美ボディを作ります。'},
+   {label:'STORY｜私自身の物語',ba:true,imgBefore:'trainer-baf/oki-before.jpg',imgAfter:'trainer-baf/oki-after.jpg',body:'かつての私は、<strong>自己流でどれだけ努力しても、思うように筋肉がつきませんでした。</strong>頑張っているのに体が変わらない——その悔しさは、痛いほど分かります。<br>変わったのは、自己流をやめて「骨格から整えて、狙った筋肉へ正しく効かせる」ことにたどり着いてから。自分の体が驚くほど変わり、最終的には<strong>ベストボディジャパンのファイナル</strong>の舞台へ立てました。<br>やり方さえ正しければ、体は必ず応えてくれる。変われない人なんて、いません。'},
    {label:'SESSION｜あなたへ',img:'trainer-baf/oki-session.jpg',ph:'セッション風景',body:'「たった一回のトレーニングで、見た目がスッキリした」「無理してないのに、いい姿勢が自然ととれる」——お客様から、そんな声をよくいただきます。<br>秘密は、歪みを整えて、あなたが本来持っている正しい姿勢に戻してあげること。それだけで、体は驚くほど引き締まって見えます。<br>だから、運動が苦手な初心者さんでも大丈夫。<strong>最初から苦しいトレーニングはしません。</strong>歪みを整えて、体の正しい使い方を覚えていくのが第一歩です。<br>まずはお気軽に、姿勢診断でご自身の現在地を知りに来てください。'}],
   tags:['女性のボディメイク','姿勢・骨盤矯正','不調改善（肩こり・腰痛）','BBJファイナル','一般体操指導員']},
  nakano:{name:'中野 龍之介',en:'Ryunosuke Nakano',short:'中野',ig:'https://www.instagram.com/fit_ryunosuke/',
@@ -1956,8 +1968,8 @@ var TRAINER_PROFILES={
   hook:'「理想はある、けど自分には無理。」そう思っているあなたへ。',
   sub:'どんな状態からでも、あなたの身体は必ず変わります。',
   secs:[
-   {label:'CONCEPT｜身体はデザインできる',ba:true,imgBefore:'trainer-baf/nakano-before.jpg',imgAfter:'trainer-baf/nakano-after.jpg',body:'「スタイルは、生まれつきで決まっている」——そう思い込んでいませんか？違います。<strong>身体は、デザインできる。</strong><br>骨格という土台を活かし、狙った場所へ筋肉を足していけば、あなたの身体は思い通りに変わります。<br>「運動が苦手だから」と、諦める必要もありません。難しく見える動きも、<strong>やり方を知らないだけ</strong>。段階的なステップを踏めば、誰でもできるようになります。'},
-   {label:'STORY｜私自身の物語',noimg:true,body:'私はかつて、海外モデルやミスコンファイナリスト、日本代表アスリートを指導していました。でもある時期、<strong>トレーニングを完全に手放した</strong>んです。<br>飛び込んだITベンチャーでの長時間労働。運動も食事もケアも後回しになり、気づけば「常に調子が悪い」「疲れが取れない」「自分の身体が好きになれない」——それが当たり前になっていました。<br>その経験から、私は忙しくても続けられる、時間効率の高いトレーニングを徹底的に研究しました。そして週1回だった頻度を段階的に増やし、<strong>たった4ヶ月で予選2位・大会日本8位</strong>を獲得。最短で成果を出す技術は、自分自身で証明しています。あなたも、必ず変われます。'},
+   {label:'CONCEPT｜身体はデザインできる',img:'trainer-baf/nakano-ideal.jpg',ph:'超理想像写真',body:'「スタイルは、生まれつきで決まっている」——そう思い込んでいませんか？違います。<strong>身体は、デザインできる。</strong><br>骨格という土台を活かし、狙った場所へ筋肉を足していけば、あなたの身体は思い通りに変わります。<br>「運動が苦手だから」と、諦める必要もありません。難しく見える動きも、<strong>やり方を知らないだけ</strong>。段階的なステップを踏めば、誰でもできるようになります。'},
+   {label:'STORY｜私自身の物語',ba:true,imgBefore:'trainer-baf/nakano-before.jpg',imgAfter:'trainer-baf/nakano-after.jpg',body:'私はかつて、海外モデルやミスコンファイナリスト、日本代表アスリートを指導していました。でもある時期、<strong>トレーニングを完全に手放した</strong>んです。<br>飛び込んだITベンチャーでの長時間労働。運動も食事もケアも後回しになり、気づけば「常に調子が悪い」「疲れが取れない」「自分の身体が好きになれない」——それが当たり前になっていました。<br>その経験から、私は忙しくても続けられる、時間効率の高いトレーニングを徹底的に研究しました。そして週1回だった頻度を段階的に増やし、<strong>たった4ヶ月で予選2位・大会日本8位</strong>を獲得。最短で成果を出す技術は、自分自身で証明しています。あなたも、必ず変われます。'},
    {label:'SESSION｜私の強み',img:'trainer-baf/nakano-session.jpg',ph:'セッション風景',body:'<strong>「身体はデザインできる」——それを、どんなに忙しいあなたでも実現する。</strong>それが私の強みです。<br>あなたの骨格や身体の使い方を見極め、ゴールから逆算して、今のあなたに必要なことだけを最短で。実際に「3ヶ月でウエスト−13cm、体重−12kg」といった声もいただいています。<br>ヒップ育成・筋肥大・バルクアップから体型改善まで、「こんな身体になりたい」という理想があるなら、それを一緒に設計するのが私の仕事です。'},
    {label:'なぜTOKOWAKAをつくったのか',noimg:true,note:true,body:'正しい運動・食事・休息は、人によって最適解がまるで違います。これだけ情報が溢れた時代でも、“自分に合う方法”にたどり着くのは本当に難しい。<br>だからこそ我々は、パーソナルトレーニングという形で、一人ひとりに向き合うことにしました。少しずつ身体が整い、毎日が豊かになっていく人を増やしたい。<strong>その想いから、TOKOWAKAを作っています。</strong><br>「理想はあるけど、自分には無理かもしれない」という気持ちごと、持ってきてください。あなたの理想を、一緒に本気で設計します。'}],
   tags:['大会日本8位','ヒップ育成','筋肥大・バルクアップ','時間効率設計','モデル・アスリート指導','英語対応']}};
@@ -1994,7 +2006,7 @@ function openTrainerModal(k){
  var ov=document.getElementById('trModal');if(!ov)return;
  var panel=ov.querySelector('.tm-panel');
  panel.innerHTML=renderTrainerModal(k);
- panel.querySelectorAll('.tm-hero-img img,.tm-sec-img img,.tm-ba-img img').forEach(function(im){im.addEventListener('error',function(){im.style.display='none'})});
+ panel.querySelectorAll('.tm-hero-img img,.tm-hero-ba-cell img,.tm-sec-img img,.tm-ba-img img').forEach(function(im){im.addEventListener('error',function(){im.style.display='none'})});
  ov.classList.add('open');document.body.classList.add('tm-lock');ov.setAttribute('aria-hidden','false');ov.scrollTop=0;
  if(window.dataLayer)dataLayer.push({event:'trainer_modal_open',trainer:k});
 }
