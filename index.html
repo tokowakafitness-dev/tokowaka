@@ -820,12 +820,74 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
   .plan-enroll-box{flex-wrap:wrap;gap:4px 8px}
   .gr-grid{columns:1}
 }
-/* スマホ固定CTA（常時表示）*/
+/* ===== キャンペーンバナー移植（上部バナー＋下部固定CTA）2026-09 ===== */
+.hero-promo{display:none} /* 上部バナーは公開版では非表示（スマホ・PC両方）。下部固定CTAのみ */
+.hero-promo *{box-sizing:border-box}
+.promo-headline{background:linear-gradient(90deg,#b28f54 0%,#cfb37a 50%,#b28f54 100%);color:#fff;text-align:center;font-family:'Shippori Mincho','Noto Serif JP',serif;font-size:clamp(10px,2.8vw,12px);font-weight:700;letter-spacing:.02em;white-space:nowrap;display:flex;align-items:center;justify-content:center;gap:8px;padding:5px 14px}
+.promo-headline b{color:#fff;font-size:1.3em;line-height:1;font-weight:700}
+.promo-headline .sl{color:#fff;font-weight:400;opacity:.85;font-size:1.15em}
+.promo-body{display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,.85fr);gap:8px;align-items:stretch;max-width:var(--max);margin:9px auto 0;padding:0 14px}
+.promo-camp{display:flex;flex-direction:column;gap:5px;min-width:0}
+.pc-box{border:1.5px solid rgba(27,42,71,.2);background:#fff;padding:6px 9px;min-width:0}
+.pc-now{font-family:'Shippori Mincho','Noto Serif JP',serif;font-size:clamp(12.5px,3.6vw,16px);font-weight:700;color:#a8781f;line-height:1.28;padding-bottom:4px;border-bottom:1px solid rgba(184,150,90,.4)}
+.pc-amt{font-family:'Shippori Mincho','Noto Serif JP',serif;font-weight:700;color:#a8781f;margin-top:4px;padding-bottom:4px;border-bottom:1px solid rgba(184,150,90,.4);line-height:1;display:flex;align-items:baseline;gap:3px;white-space:nowrap;min-width:0}
+.pc-amt .lbl{font-size:clamp(9px,2.5vw,11px);font-weight:600;color:var(--soft)}
+.pc-amt b{color:#a8781f;font-size:clamp(21px,6.6vw,30px);letter-spacing:0;font-weight:700}
+.pc-amt .yen{font-size:clamp(9px,2.5vw,11px);font-weight:600;color:var(--soft)}
+.pc-fine{font-size:7px;color:var(--soft);line-height:1.3;margin:4px 0 0}
+.pc-btn{display:block;text-align:center;background:var(--gold);color:#fff;font-family:'Shippori Mincho','Noto Serif JP',serif;font-size:clamp(12.5px,3.4vw,15px);font-weight:700;letter-spacing:.03em;padding:8px 10px;border-radius:2px;text-decoration:none;box-shadow:0 4px 14px rgba(184,150,90,.35);white-space:nowrap}
+.promo-photo{min-width:0;background:rgba(27,42,71,.07);border:1px solid rgba(27,42,71,.16);border-radius:2px}
+.promo-photo img{width:100%;height:100%;object-fit:cover;border-radius:2px;display:block}
 .sticky-cta{display:none}
+.sc-detail{display:none}
+.sc-head{display:none}
 @media(max-width:860px){
-  body{padding-bottom:74px}
-  .sticky-cta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:900;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);box-shadow:0 -4px 18px rgba(27,42,71,.15);padding:5px 12px calc(5px + env(safe-area-inset-bottom));transition:transform .3s ease}
-  .sticky-cta a{display:flex;align-items:center;justify-content:center;background:linear-gradient(120deg,var(--gold),var(--gold-l));color:#fff;font-family:'Noto Sans JP',sans-serif;font-weight:600;font-size:13px;letter-spacing:.02em;padding:10px;border-radius:var(--r);text-decoration:none;box-shadow:0 4px 12px rgba(184,150,90,.32)}
+  body{padding-bottom:80px}
+  .sticky-cta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:900;box-shadow:0 -4px 18px rgba(27,42,71,.18);transform:none;transition:transform .35s ease}
+  .sticky-cta *{box-sizing:border-box}
+  .sc-inner{display:grid;grid-template-columns:1fr 1fr;max-width:var(--max);margin:0 auto}
+  .sc-camp{background:var(--cream);border-top:2px solid var(--gold);padding:5px 10px calc(5px + env(safe-area-inset-bottom))}
+  .sc-now{display:inline-block;font-family:'Shippori Mincho','Noto Serif JP',serif;font-size:9.5px;font-weight:700;color:var(--navy);padding:2px 8px;letter-spacing:.02em;line-height:1.2;background:linear-gradient(100deg,#b58f4e 0%,#dcc084 40%,#f5e8c4 50%,#dcc084 60%,#b58f4e 100%);border:1px solid rgba(255,255,255,.5);border-radius:2px;box-shadow:0 1px 7px rgba(184,150,90,.55)}
+  .sc-amt{font-family:'Shippori Mincho','Noto Serif JP',serif;font-weight:700;margin-top:2px;line-height:1;display:flex;align-items:baseline;gap:3px;white-space:nowrap}
+  .sc-amt .l{font-size:9px;color:var(--soft);font-weight:600}
+  .sc-amt .was{font-size:11px;color:var(--soft);font-weight:600;text-decoration:line-through;text-decoration-color:rgba(93,87,78,.6)}
+  .sc-amt .ar2{font-size:12px;color:var(--gold);font-weight:700}
+  .sc-amt b{font-size:clamp(16px,4.6vw,21px);color:#a8781f}
+  .sc-amt-wrap{min-width:0}
+  .sc-fine{font-size:6.5px;color:var(--soft);line-height:1.25;margin:2px 0 0}
+  .sc-cta{background:var(--warm);border-top:2px solid var(--gold);border-left:1px solid rgba(27,42,71,.1);padding:5px 10px calc(5px + env(safe-area-inset-bottom));display:flex;flex-direction:column;justify-content:center;gap:4px}
+  .sc-slash{text-align:center;font-family:'Shippori Mincho','Noto Serif JP',serif;font-size:9.5px;font-weight:700;color:var(--navy);letter-spacing:.01em;white-space:nowrap}
+  .sc-btn{display:flex;align-items:center;justify-content:center;gap:5px;background:#fff;border:1.5px solid var(--navy);color:var(--navy);font-family:'Shippori Mincho','Noto Serif JP',serif;font-weight:700;font-size:clamp(12.5px,3.5vw,15px);letter-spacing:.01em;padding:6px 6px;border-radius:3px;text-decoration:none;box-shadow:0 2px 8px rgba(27,42,71,.14);white-space:nowrap}
+  .sc-btn .ar{color:var(--gold);font-size:.85em}
+}
+@media(min-width:861px){
+  .hero-promo{display:none}
+  .sc-head{display:block;background:linear-gradient(90deg,#b28f54 0%,#cfb37a 50%,#b28f54 100%);color:#fff;text-align:center;font-family:'Shippori Mincho','Noto Serif JP',serif;font-size:15.5px;font-weight:700;letter-spacing:.04em;padding:8px 14px}
+  .sc-head b{font-size:1.3em}
+  body{padding-bottom:106px}
+  .sticky-cta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:900;box-shadow:0 -4px 20px rgba(27,42,71,.2);transform:none!important;transition:none}
+  .sticky-cta *{box-sizing:border-box}
+  .sc-inner{display:grid;grid-template-columns:1fr 1fr;max-width:none;margin:0}
+  .sc-camp{background:var(--cream);padding:9px 2.5vw;display:flex;flex-direction:row;justify-content:center;align-items:center;gap:16px}
+  .sc-amt-wrap{display:flex;flex-direction:column;align-items:flex-start;text-align:left}
+  .sc-now{align-self:center;font-family:'Shippori Mincho','Noto Serif JP',serif;font-size:14px;font-weight:700;color:var(--navy);padding:4px 14px;letter-spacing:.02em;line-height:1.3;background:linear-gradient(100deg,#b58f4e,#dcc084 40%,#f5e8c4 50%,#dcc084 60%,#b58f4e);border:1px solid rgba(255,255,255,.5);border-radius:2px;box-shadow:0 1px 7px rgba(184,150,90,.55)}
+  .sc-amt{font-family:'Shippori Mincho','Noto Serif JP',serif;font-weight:700;margin-top:0;line-height:1;display:flex;align-items:baseline;gap:7px}
+  .sc-amt .l{font-size:14px;color:var(--soft);font-weight:600}
+  .sc-amt .was{font-size:19px;color:var(--soft);font-weight:600;text-decoration:line-through;text-decoration-color:rgba(93,87,78,.6)}
+  .sc-amt .ar2{font-size:22px;color:var(--gold);font-weight:700}
+  .sc-amt b{font-size:37px;color:#a8781f}
+  .sc-fine{font-size:9.5px;color:var(--soft);line-height:1.3;margin:3px 0 0}
+  .sc-cta{background:var(--warm);border-left:1px solid rgba(27,42,71,.1);padding:9px 4vw;display:flex;flex-direction:column;justify-content:center;gap:7px}
+  .sc-slash{text-align:center;font-family:'Shippori Mincho','Noto Serif JP',serif;font-size:15px;font-weight:700;color:var(--navy)}
+  .sc-btn{display:flex;align-items:center;justify-content:center;gap:9px;background:#fff;border:1.5px solid var(--navy);color:var(--navy);font-family:'Shippori Mincho','Noto Serif JP',serif;font-weight:700;font-size:21px;letter-spacing:.02em;padding:13px;border-radius:4px;text-decoration:none;box-shadow:0 2px 10px rgba(27,42,71,.15)}
+  .sc-btn .ar{color:var(--gold)}
+}
+@media(hover:hover){
+  .sc-btn{transition:background .2s,color .2s,border-color .2s}
+  .sc-btn:hover{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .sc-btn:hover .ar{color:var(--gold-l)}
+  .btn-gold:hover{background:var(--gold-l);transform:translateY(-1px)}
+  .pc-btn:hover{background:var(--gold-l)}
 }
 /* ===== 料金グループ見出し ===== */
 .plan-group-label{font-family:'Shippori Mincho',serif;font-weight:600;font-size:16px;color:var(--navy);letter-spacing:.04em;margin:30px 0 14px;padding-bottom:9px;border-bottom:1px solid var(--bd)}
@@ -929,6 +991,21 @@ body.tm-lock{overflow:hidden}
 </nav>
 
 <!-- ===== HERO（フック：ターゲット＋ベネフィット＋共感）===== -->
+<!-- 上部プロモバナー（移植・初心者9割＋キャンペーン）-->
+<div class="hero-promo">
+  <div class="promo-headline"><span class="sl" aria-hidden="true">＼</span>お客様の<b>9割</b>が、トレーニング初心者です<span class="sl" aria-hidden="true">／</span></div>
+  <div class="promo-body">
+    <div class="promo-camp">
+      <div class="pc-box">
+        <div class="pc-now">ただいま<br>キャンペーン実施中</div>
+        <div class="pc-amt"><span class="lbl">最大</span><b>&yen;136,200</b><span class="yen">お得に</span></div>
+        <p class="pc-fine">※プレミアムフルサポート6ヶ月・月8回時の優待合計。※先着3名様〜9/30。</p>
+      </div>
+      <a href="#campaign" class="pc-btn">詳細はこちらをタップ</a>
+    </div>
+    <div class="promo-photo"><img src="trainer-baf/hero-left.jpg" alt="TOKOWAKA トレーニング風景" style="object-position:center 35%" onerror="this.closest('.promo-photo').style.display='none'"></div>
+  </div>
+</div>
 <section id="hero">
   <div class="hero-visual">
     <div class="hero-slide active" style="background-image:url('trainer-baf/hero-left.jpg');background-position:center 45%"></div>
@@ -1891,7 +1968,22 @@ renderQ()})();
   <p class="f-info">東京都武蔵野市吉祥寺東町2丁目17-7 VILLA BUONAMICO 103　｜　TEL 070-3549-8168　｜　営業時間 8:00〜23:00　完全予約制</p>
   <p class="f-copy">© 2026 TOKOWAKA 吉祥寺. All rights reserved.</p>
 </footer>
-<div class="sticky-cta"><a href="javascript:void(0)" onclick="goToReservation(this)" data-cta="sticky_mobile">無料体験を申し込む（0円）</a></div>
+<div class="sticky-cta">
+  <div class="sc-head">＼ お客様の<b>9割</b>が、トレーニング初心者です ／</div>
+  <div class="sc-inner">
+    <div class="sc-camp">
+      <div class="sc-now">ただいま<br>キャンペーン実施中</div>
+      <div class="sc-amt-wrap">
+        <div class="sc-amt"><span class="l">今なら最大</span><s class="was">&yen;136,200</s><span class="ar2">＞</span><b>0円</b></div>
+        <p class="sc-fine">※フルサポート6ヶ月・月8回時。先着3名様〜9/30。</p>
+      </div>
+    </div>
+    <div class="sc-cta">
+      <div class="sc-slash">＼ 入力30秒で予約完了 ／</div>
+      <a href="javascript:void(0)" onclick="goToReservation(this)" data-cta="sticky_mobile" class="sc-btn">空き状況をチェック<span class="ar">▶</span></a>
+    </div>
+  </div>
+</div>
 
 <script>
 const hd=document.getElementById('hd');
@@ -1907,7 +1999,7 @@ function goToReservation(el,diagId,trainer){if(!sessionStorage.getItem('mcv_trac
 (function(){var wrap=document.querySelector('.gal-track-wrap'),t=document.getElementById('galTrack');if(!wrap||!t)return;Array.prototype.slice.call(t.children).forEach(function(c){t.appendChild(c.cloneNode(true))});var paused=false,half=0;function measure(){half=t.scrollWidth/2}measure();window.addEventListener('resize',measure);function tick(){if(!paused&&half){wrap.scrollLeft+=0.5;if(wrap.scrollLeft>=half)wrap.scrollLeft-=half}requestAnimationFrame(tick)}tick();var rt;function pause(){paused=true;clearTimeout(rt)}function resumeSoon(){clearTimeout(rt);rt=setTimeout(function(){paused=false},1500)}wrap.addEventListener('mouseenter',pause);wrap.addEventListener('mouseleave',function(){paused=false});wrap.addEventListener('touchstart',pause,{passive:true});wrap.addEventListener('touchend',resumeSoon);wrap.addEventListener('scroll',function(){if(half){if(wrap.scrollLeft>=half)wrap.scrollLeft-=half;else if(wrap.scrollLeft<=0)wrap.scrollLeft+=half}},{passive:true})})();function openLB(f){var lb=document.getElementById('lightbox');document.getElementById('lbImg').src='https://tokowaka-gym.com/images/'+f;lb.classList.add('open')}
 function closeLB(){document.getElementById('lightbox').classList.remove('open')}
 /* 固定CTA：ヒーロー表示中は隠す（二重表示回避）*/
-(function(){var s=document.querySelector('.sticky-cta'),h=document.getElementById('hero');if(!s||!h||!window.IntersectionObserver)return;new IntersectionObserver(function(e){s.style.transform=e[0].isIntersecting?'translateY(130%)':'none'},{threshold:0.15}).observe(h)})();
+/* 下部固定CTA：スマホ・PCとも常時表示（スクロール連動なし・2026-09）*/
 /* MCV：電話・LINEクリック */
 (function(){document.addEventListener('click',function(e){var a=e.target.closest?e.target.closest('a'):null;if(!a||!window.dataLayer)return;var hf=a.getAttribute('href')||'';if(hf.indexOf('tel:')===0)dataLayer.push({event:'tel_click'});else if(hf.indexOf('lin.ee')>-1||hf.indexOf('line.me')>-1)dataLayer.push({event:'line_click'})})})();
 /* MCV：スクロール深度 25/50/75/100% */
