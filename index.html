@@ -9,8 +9,6 @@
 <title>TOKOWAKA 吉祥寺 | パーソナルトレーニングジム</title>
 <meta name="description" content="吉祥寺の完全個室・完全マンツーマンのパーソナルジム。全部報われなかった人へ。運動×整体で、何歳からでも身体は変えられる。初回体験0円。">
 <link rel="canonical" href="https://tokowaka-gym.com/">
-<!-- Metaドメイン認証（Meta広告のiOS計測に必須。削除禁止） -->
-<meta name="facebook-domain-verification" content="fjnmzo3tlg15us7nvqgbcu0qu0tzg2" />
 <!-- Favicon（ブランドマーク：ゴールド3本ライン・SVG。オーナー提供ロゴのシンボル部分を再現） -->
 <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='18' fill='%231b2a47'/%3E%3Crect x='20' y='39' width='60' height='5' rx='2.5' fill='%23cda86c'/%3E%3Crect x='25' y='50' width='50' height='5' rx='2.5' fill='%23cda86c'/%3E%3Crect x='30' y='61' width='40' height='5' rx='2.5' fill='%23cda86c'/%3E%3C/svg%3E">
 <!-- OGP / Open Graph（SNS・LINE共有時のプレビュー）-->
@@ -841,6 +839,10 @@ footer{background:#101b2e;padding:24px 40px;text-align:center}
 .sticky-cta{display:none}
 .sc-detail{display:none}
 .sc-head{display:none}
+/* 「ただいまキャンペーン実施中」バッジの輝き */
+.sc-now{position:relative;overflow:hidden}
+.sc-now::after{content:"";position:absolute;top:0;left:-70%;width:45%;height:100%;background:linear-gradient(100deg,transparent,rgba(255,255,255,.65),transparent);transform:skewX(-20deg);animation:scShine 3.6s ease-in-out infinite;pointer-events:none}
+@keyframes scShine{0%{left:-70%}40%{left:130%}100%{left:130%}}
 @media(max-width:860px){
   body{padding-bottom:80px}
   .sticky-cta{display:block;position:fixed;left:0;right:0;bottom:0;z-index:900;box-shadow:0 -4px 18px rgba(27,42,71,.18);transform:none;transition:transform .35s ease}
