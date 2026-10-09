@@ -79,6 +79,12 @@ textarea{min-height:112px;resize:vertical}
 .done .h{font-family:'Shippori Mincho',serif;font-size:22px;font-weight:600;color:var(--navy);
   line-height:1.6;margin-bottom:16px}
 .done p{font-size:13.5px;line-height:2.0;color:var(--soft)}
+.dots{display:flex;gap:7px;justify-content:center;margin-top:20px}
+.dots span{width:7px;height:7px;border-radius:50%;background:var(--gold);opacity:.3;animation:bl 1.2s infinite}
+.dots span:nth-child(2){animation-delay:.2s}.dots span:nth-child(3){animation-delay:.4s}
+@keyframes bl{0%,80%,100%{opacity:.25}40%{opacity:1}}
+.done .retry{display:none;max-width:280px;margin:22px auto 4px}
+.done.err .h{color:#a4453a}
 footer{text-align:center;font-size:11.5px;color:var(--soft);line-height:2.0;
   padding:54px 17px 46px;margin-top:54px;border-top:1px solid var(--bd)}
 footer a{color:var(--soft)}
@@ -154,8 +160,10 @@ footer a{color:var(--soft)}
 
 <div id="done" style="display:none">
   <div class="card done">
-    <p class="h">ご応募ありがとうございます</p>
-    <p id="doneTxt"></p>
+    <p class="h" id="doneH">送信しています</p>
+    <p id="doneTxt">そのままお待ちください。<br>回線の状況により、30秒ほどかかる場合があります。</p>
+    <div class="dots" id="dots"><span></span><span></span><span></span></div>
+    <button type="button" class="btn retry" id="retry" onclick="resend()">もう一度送信する</button>
   </div>
 </div>
 
@@ -185,52 +193,96 @@ fetch(ENDPOINT + '?action=slots')
   })
   .catch(function(){ /* 取得できなくてもフォームは出す。満了判定はサーバー側でも行う */ });
 
-document.getElementById('f').addEventListener('submit', function(ev){
-  ev.preventDefault();
-  var btn = document.getElementById('btn'), msg = document.getElementById('msg');
-  msg.className = 'msg';
+var LAST = null;
 
+function show(screen){
+  document.getElementById('f').style.display    = screen==='form' ? '' : 'none';
+  document.getElementById('head').style.display = screen==='form' ? '' : 'none';
+  document.getElementById('done').style.display = screen==='form' ? 'none' : 'block';
+}
+function setDone(state, title, text){
+  var d = document.getElementById('done').firstElementChild;
+  d.className = 'card done' + (state==='err' ? ' err' : '');
+  document.getElementById('doneH').textContent   = title;
+  document.getElementById('doneTxt').innerHTML   = text;
+  document.getElementById('dots').style.display  = state==='wait' ? 'flex' : 'none';
+  document.getElementById('retry').style.display = state==='err'  ? 'block' : 'none';
+}
+
+function collect(){
   function v(id){ return (document.getElementById(id).value || '').trim(); }
-
-  var data = {
+  return {
     name:v('name'), email:v('email'), phone:v('phone'),
     age:v('age'), height:v('height'), weight:v('weight'), fat:v('fat'),
-    goal:v('goal'), motive:v('motive'),
-    company:v('company'),
+    goal:v('goal'), motive:v('motive'), company:v('company'),
     utm_source:utm('utm_source'), utm_medium:utm('utm_medium'),
     utm_campaign:utm('utm_campaign'), utm_content:utm('utm_content')
   };
+}
 
-  btn.disabled = true; btn.textContent = '送信しています…';
+/* 入力の不足はブラウザ側で先に弾く。送信後に戻されるのを避けるため */
+function clientCheck(d){
+  var need=[['name','お名前'],['email','メールアドレス'],['phone','電話番号'],
+            ['age','年齢'],['height','身長'],['weight','体重'],
+            ['goal','目標'],['motive','意気込み']];
+  for (var i=0;i<need.length;i++){
+    if (!d[need[i][0]]) return need[i][1]+'をご入力ください。';
+  }
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(d.email)) return 'メールアドレスの形式をご確認ください。';
+  return null;
+}
 
-  /* Content-Type を text/plain にして単純リクエストにする。
-     GAS は OPTIONS を処理できないため、プリフライトを起こさせない。 */
+function send(data){
+  /* 待たせている間も「受け付けられた」ことが見えるようにする。
+     GASは混み具合で数秒〜20秒かかることがあり、ボタンの文字だけでは伝わらない。 */
+  show('done');
+  setDone('wait','送信しています',
+    'そのままお待ちください。<br>回線の状況により、30秒ほどかかる場合があります。');
+  window.scrollTo(0,0);
+
+  var slow = setTimeout(function(){
+    setDone('wait','送信しています',
+      'もう少しお待ちください。<br>このページを閉じずにお待ちいただくようお願いします。');
+  }, 7000);
+
   fetch(ENDPOINT, {
-    method: 'POST',
-    headers: { 'Content-Type': 'text/plain;charset=utf-8' },
-    body: JSON.stringify(data),
-    redirect: 'follow'
+    method:'POST',
+    headers:{ 'Content-Type':'text/plain;charset=utf-8' },
+    body:JSON.stringify(data),
+    redirect:'follow'
   })
   .then(function(r){ return r.json(); })
   .then(function(res){
+    clearTimeout(slow);
     if (res && res.ok) {
       try { if (window.dataLayer) dataLayer.push({ event:'monitor_apply_submit', lp:'monitor_bulkup' }); } catch(e){}
-      document.getElementById('f').style.display = 'none';
-      document.getElementById('head').style.display = 'none';
-      document.getElementById('doneTxt').textContent = res.message;
-      document.getElementById('done').style.display = 'block';
-      window.scrollTo(0,0);
+      setDone('ok','ご応募ありがとうございます', res.message);
     } else {
-      msg.className = 'msg err';
-      msg.textContent = (res && res.message) || '送信に失敗しました。';
-      btn.disabled = false; btn.textContent = '応募する';
+      setDone('err','お申し込みを受け付けられませんでした',
+        (res && res.message) || '送信に失敗しました。');
     }
   })
   .catch(function(){
-    msg.className = 'msg err';
-    msg.textContent = '通信に失敗しました。電波の良い場所で、もう一度お試しください。';
-    btn.disabled = false; btn.textContent = '応募する';
+    clearTimeout(slow);
+    /* 通信が切れても、サーバー側では成立していることがある。
+       「失敗した」と断定すると二重送信を招くため、確認をうながす。 */
+    setDone('err','送信の結果を確認できませんでした',
+      'ご入力の控えが届いているかもしれません。<br>' +
+      '<b>メールをご確認いただき、届いていない場合のみ</b>もう一度お試しください。');
   });
+}
+
+function resend(){ if (LAST) send(LAST); }
+
+document.getElementById('f').addEventListener('submit', function(ev){
+  ev.preventDefault();
+  var msg = document.getElementById('msg');
+  msg.className = 'msg';
+  var data = collect();
+  var err = clientCheck(data);
+  if (err) { msg.className='msg err'; msg.textContent=err; return; }
+  LAST = data;
+  send(data);
 });
 </script>
 </body>
