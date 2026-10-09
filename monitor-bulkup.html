@@ -462,6 +462,8 @@ body.tm-lock{overflow:hidden}
 .rc-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .rc-ph img[src=""],.rc-ph.ph img{display:none}
 .rc-d{font-size:var(--fs);line-height:2.05;margin:20px 26px 26px}
+/* プログラム紹介の写真は、理由カードより縦長にして見せ場を作る */
+.rc-w.tall .rc-ph{aspect-ratio:4/3}
 
 .rc-d b{font-weight:500;color:var(--navy)}
 @media(max-width:600px){
@@ -1085,7 +1087,7 @@ footer a{color:rgba(255,255,255,.7)}
   <p class="rb-n">Re-Comp</p>
   <p class="rb-d">脂肪を落としながら、筋肉を増やす。<br>同時に進めるから、見た目が変わります。</p>
   <p class="s-lead">3つを同時に設計します。どれか一つでも欠けると、身体は変わりません。<br>一人ひとりの骨格・レベル・生活に合わせて組み立てます。</p>
-  <div class="rc-w">
+  <div class="rc-w tall">
     <div class="rc">
       <div class="rc-h">
         <div class="rc-n">01</div>
