@@ -74,7 +74,7 @@ img{display:block;max-width:100%}
   background:rgba(19,32,58,.42);flex:none}
 .h-band-ttl{color:var(--navy-d);font-size:clamp(21px,5.4vw,32px);font-weight:600;letter-spacing:.07em;
   line-height:1.4;margin-top:9px;text-wrap:balance}
-.hero{background:var(--navy-d) url('trainer-baf/hero-contest.jpg') center 18%/cover no-repeat;
+.hero{background:var(--navy-d) url('trainer-baf/hero-contest.jpg') center 26%/cover no-repeat;
   color:#fff;padding:60px 0 74px;text-align:center;position:relative;overflow:hidden}
 .hero::before{content:"";position:absolute;inset:0;
   /* 暗幕B（オーナー決定 2026-10-09）。これ以上薄くすると、最も小さく薄い説明文から読めなくなる */
@@ -291,10 +291,14 @@ tbody tr.hl td:first-child::after{content:"人気";font-size:9.5px;color:#fff;ba
   border-bottom:1px solid var(--bd);position:relative}
 .tg-ph::after{content:attr(data-ph);font-size:11px;letter-spacing:.16em;color:rgba(93,87,78,.55);
   font-family:'Noto Sans JP',sans-serif}
+.tg-ph::before{content:"※イメージ";position:absolute;right:8px;bottom:8px;z-index:2;
+  font-size:9.5px;letter-spacing:.06em;color:#fff;background:rgba(19,32,58,.5);
+  padding:2px 8px;border-radius:2px}
+.tg-ph.ph::before{display:none}
 .tg-ph img{position:absolute;inset:0}
 .tg-ph:has(img[src=""])::after{display:block}
 .tg-ph img{width:100%;height:100%;object-fit:cover;display:block}
-.tg-ph img[src=""]{display:none}
+.tg-ph img[src=""],.tg-ph.ph img{display:none}
 .tg-ph.on{display:block}
 .tg-b{padding:22px 22px 24px}
 .tg-k{font-family:'Noto Sans JP',sans-serif;font-size:12px;color:var(--gold);letter-spacing:.12em}
@@ -429,11 +433,19 @@ body.tm-lock{overflow:hidden}
 .cg-pane{flex:0 0 100%;scroll-snap-align:start;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--bd)}
 .cg-s{aspect-ratio:3/4;background:var(--stone);position:relative;overflow:hidden}
 .cg-s img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cg-s.ph img{display:none}
 .cg-l{position:absolute;top:9px;left:9px;z-index:2;font-size:10.5px;font-weight:500;letter-spacing:.08em;
   color:#fff;background:rgba(19,32,58,.62);padding:3px 10px;border-radius:2px}
 .cg-l-a{background:rgba(184,150,90,.92)}
 .cg-hint{font-size:10.5px;letter-spacing:.06em;color:var(--soft);text-align:center;padding:9px 10px 11px;
   border-top:1px solid var(--bd)}
+.cg-meta{display:flex;align-items:baseline;justify-content:space-between;gap:12px;
+  padding:14px 18px 15px;border-top:1px solid var(--bd)}
+.cg-term{font-size:12px;letter-spacing:.06em;color:var(--soft);line-height:1.6}
+.cg-term i{font-style:normal;margin:0 7px;color:var(--bd);color:rgba(27,42,71,.28)}
+.cg-num{font-family:'Shippori Mincho',serif;font-size:27px;font-weight:600;color:var(--gold);
+  line-height:1;letter-spacing:.02em;white-space:nowrap}
+.cg-num small{font-size:13px;margin-left:2px;font-weight:500}
 @media(min-width:620px){.cgw{grid-template-columns:1fr 1fr}}
 
 /* 浮き出しカード：トレーナーカードと同じ質感を各セクションの項目へ */
@@ -448,8 +460,9 @@ body.tm-lock{overflow:hidden}
   display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden}
 .rc-ph::after{content:attr(data-ph);font-size:11px;letter-spacing:.1em;color:rgba(93,87,78,.5);text-align:center;padding:0 12px;line-height:1.7}
 .rc-ph img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.rc-ph img[src=""]{display:none}
+.rc-ph img[src=""],.rc-ph.ph img{display:none}
 .rc-d{font-size:var(--fs);line-height:2.05;margin:20px 26px 26px}
+
 .rc-d b{font-weight:500;color:var(--navy)}
 @media(max-width:600px){
   .rc-w{gap:26px}
@@ -476,7 +489,9 @@ body.tm-lock{overflow:hidden}
 .goal::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(184,150,90,.22),transparent 68%)}
 .goal>*{position:relative}
 .goal-l{font-size:11.5px;letter-spacing:.18em;color:var(--gold-l)}
-.goal-t{font-family:'Shippori Mincho',serif;font-size:clamp(22px,5.4vw,30px);font-weight:600;
+.goal-t{font-family:'Shippori Mincho',serif;font-size:clamp(15px,5.1vw,28px);font-weight:600;
+  /* 2行に収めるため折り返させない。字の大きさを画面幅に追従させる */
+  white-space:nowrap;letter-spacing:.01em;
   line-height:1.6;margin:12px 0 20px;text-wrap:balance}
 .goal-t em{font-style:normal;color:var(--gold-hero)}
 .goal-d{font-size:var(--fs);line-height:2.1;color:rgba(255,255,255,.84);padding-top:20px;border-top:1px solid rgba(255,255,255,.16)}
@@ -887,7 +902,7 @@ footer a{color:rgba(255,255,255,.7)}
         <div class="tg-b" style="padding-bottom:0">
           <div class="tg-n" style="margin-bottom:16px">痩せ型タイプ</div>
         </div>
-        <div class="tg-ph" data-ph="痩せ型タイプのイメージ写真／イラスト"><img src="" alt="" loading="lazy"></div>
+        <div class="tg-ph" data-ph="痩せ型タイプのイメージ写真／イラスト"><img src="images/monitor/type-slim.jpg" alt="痩せ型タイプのイメージ" loading="lazy"></div>
         <div class="tg-b">
           <ul class="tg-l">
             <li>食べているつもりなのに、<b>体重が増えない</b></li>
@@ -902,7 +917,7 @@ footer a{color:rgba(255,255,255,.7)}
         <div class="tg-b" style="padding-bottom:0">
           <div class="tg-n" style="margin-bottom:16px">中肉中背タイプ</div>
         </div>
-        <div class="tg-ph" data-ph="中肉中背タイプのイメージ写真／イラスト"><img src="" alt="" loading="lazy"></div>
+        <div class="tg-ph" data-ph="中肉中背タイプのイメージ写真／イラスト"><img src="images/monitor/type-average.jpg" alt="中肉中背タイプのイメージ" loading="lazy"></div>
         <div class="tg-b">
           <ul class="tg-l">
             <li>トレーニングも食事も<b>頑張っている</b>。続けている自信はある</li>
@@ -963,7 +978,7 @@ footer a{color:rgba(255,255,255,.7)}
 <div class="wrap">
 
 <section class="si">
-  <h2 class="s-ttl">「これ以上変われないのでは」<br>そう思った方でも、<br>ここまで変わっています</h2>
+  <h2 class="s-ttl">実際に、<br>ここまで変わっています</h2>
   
 
   <p class="s-lead">実際に通われた方の記録です。<br>角度のある方は、<b>横にスワイプ</b>すると切り替わります。</p>
@@ -975,6 +990,7 @@ footer a{color:rgba(255,255,255,.7)}
         <div class="cg-pane"><div class="cg-s"><img src="images/monitor/p1-side-before.jpg" alt="Before" loading="lazy"><span class="cg-l">Before</span></div><div class="cg-s"><img src="images/monitor/p1-side-after.jpg" alt="After" loading="lazy"><span class="cg-l cg-l-a">After</span></div></div>
         <div class="cg-pane"><div class="cg-s"><img src="images/monitor/p1-back-before.jpg" alt="Before" loading="lazy"><span class="cg-l">Before</span></div><div class="cg-s"><img src="images/monitor/p1-back-after.jpg" alt="After" loading="lazy"><span class="cg-l cg-l-a">After</span></div></div>
       </div>
+      <div class="cg-meta"><span class="cg-term">4ヶ月<i>／</i>週1回</span><span class="cg-num">−5<small>kg</small></span></div>
       <p class="cg-hint">← 横にスワイプで角度を切り替え →</p>
     </div>
     <div class="cg">
@@ -984,17 +1000,20 @@ footer a{color:rgba(255,255,255,.7)}
         <div class="cg-pane"><div class="cg-s"><img src="images/monitor/p2-side-before.jpg" alt="Before" loading="lazy"><span class="cg-l">Before</span></div><div class="cg-s"><img src="images/monitor/p2-side-after.jpg" alt="After" loading="lazy"><span class="cg-l cg-l-a">After</span></div></div>
         <div class="cg-pane"><div class="cg-s"><img src="images/monitor/p2-back-before.jpg" alt="Before" loading="lazy"><span class="cg-l">Before</span></div><div class="cg-s"><img src="images/monitor/p2-back-after.jpg" alt="After" loading="lazy"><span class="cg-l cg-l-a">After</span></div></div>
       </div>
+      <div class="cg-meta"><span class="cg-term">3ヶ月<i>／</i>週2回</span><span class="cg-num">−6<small>kg</small></span></div>
       <p class="cg-hint">← 横にスワイプで角度を切り替え →</p>
     </div>
     <div class="cg">
       <div class="cg-track" onscroll="cgSync(this)">
         <div class="cg-pane"><div class="cg-s"><img src="images/monitor/p3-front-before.jpg" alt="Before" loading="lazy"><span class="cg-l">Before</span></div><div class="cg-s"><img src="images/monitor/p3-front-after.jpg" alt="After" loading="lazy"><span class="cg-l cg-l-a">After</span></div></div>
       </div>
+      <div class="cg-meta"><span class="cg-term">半年<i>／</i>週1〜2回</span><span class="cg-num">−10<small>kg</small></span></div>
     </div>
     <div class="cg">
       <div class="cg-track" onscroll="cgSync(this)">
         <div class="cg-pane"><div class="cg-s"><img src="images/monitor/p4-front-before.jpg" alt="Before" loading="lazy"><span class="cg-l">Before</span></div><div class="cg-s"><img src="images/monitor/p4-front-after.jpg" alt="After" loading="lazy"><span class="cg-l cg-l-a">After</span></div></div>
       </div>
+      <div class="cg-meta"><span class="cg-term">3ヶ月<i>／</i>月3回</span><span class="cg-num">−12<small>kg</small></span></div>
     </div>
   </div>
   <p class="vo-note">※ ご本人の許諾を得て掲載しています。個人の感想であり、効果を保証するものではありません。</p>
@@ -1038,7 +1057,7 @@ footer a{color:rgba(255,255,255,.7)}
         <div class="rc-n">01</div>
         <div class="rc-t">「食べている」の基準が足りていない</div>
       </div>
-      <div class="rc-ph" data-ph="食事量のイメージ写真"><img src="" alt="" loading="lazy"></div>
+      <div class="rc-ph" data-ph="食事量のイメージ写真"><img src="images/monitor/reason1-meal.jpg" alt="必要量に届いていない食事のイメージ" loading="lazy"></div>
       <p class="rc-d">筋肥大に必要な量は、ほとんどの方の体感より多いものです。記録を取ると、目標に数百kcal届いていないケースが大半。<b>感覚ではなく数字で管理しない限り、増えません。</b></p>
     </div>
     <div class="rc">
@@ -1046,7 +1065,7 @@ footer a{color:rgba(255,255,255,.7)}
         <div class="rc-n">02</div>
         <div class="rc-t">狙った筋肉に効いていない</div>
       </div>
-      <div class="rc-ph" data-ph="フォームの違いを示す写真"><img src="" alt="" loading="lazy"></div>
+      <div class="rc-ph" data-ph="フォームの違いを示す写真"><img src="images/monitor/reason2-form.jpg" alt="フォームの違いを示す指導の様子" loading="lazy"></div>
       <p class="rc-d">フォームが数センチずれるだけで、力の入る場所は別の筋肉に変わります。重量を追っても<b>目的の部位に入っていなければ、そこは育ちません。</b>停滞の多くはここが原因です。</p>
     </div>
     <div class="rc">
@@ -1054,7 +1073,7 @@ footer a{color:rgba(255,255,255,.7)}
         <div class="rc-n">03</div>
         <div class="rc-t">積み上げる順序が設計されていない</div>
       </div>
-      <div class="rc-ph" data-ph="トレーニングの推移イメージ"><img src="" alt="" loading="lazy"></div>
+      <div class="rc-ph" data-ph="設計をもとに指導する様子"><img src="images/monitor/reason3-plan.jpg" alt="設計をもとに指導するトレーナー" loading="lazy"></div>
       <p class="rc-d">ただ食べて鍛えれば、脂肪が先につきます。<b>どの時期に何を優先し、どこで切り替えるか。</b>この順序が無いまま進めると「太っただけ」で終わります。</p>
     </div>
   </div>
@@ -1080,7 +1099,7 @@ footer a{color:rgba(255,255,255,.7)}
         <div class="rc-n">02</div>
         <div class="rc-t">毎日の食事に、個別フィードバック</div>
       </div>
-      <div class="rc-ph" data-ph="食事フィードバックの画面"><img src="" alt="" loading="lazy"></div>
+      <div class="rc-ph" data-ph="食事フィードバックの画面"><img src="images/monitor/rebuild-meal-fb.jpg" alt="毎日の食事記録へのフィードバック画面" loading="lazy"></div>
       <p class="rc-d">週1回の指導では、7日のうち6日が野放しになります。本プログラムは<b>毎日の食事記録に対して個別にお返し</b>します。目標カロリーとPFCを設計し、「あと何をどれだけ足すか」を日々調整。食べられない方には、無理なく量を増やす方法からお伝えします。</p>
     </div>
     <div class="rc">
@@ -1447,6 +1466,15 @@ function goRsv(el){
 }
 /* トレーナーのプロフィールから申し込む導線。移植元で定義が欠けていたため補う */
 function goToReservation(el){ return goRsv(el); }
+/* 画像がまだ無い枠は、壊れたアイコンを出さず説明文だけを見せる。
+   素材が揃うまでの間も、ページの体裁を崩さないため */
+document.addEventListener('DOMContentLoaded',function(){
+  document.querySelectorAll('.tg-ph img,.rc-ph img,.cg-s img').forEach(function(im){
+    function hide(){ if(im.parentNode) im.parentNode.classList.add('ph'); }
+    im.addEventListener('error',hide);
+    if(im.complete && im.naturalWidth===0) hide();
+  });
+});
 /* 変化の記録：タブとスワイプを同期させる */
 function cgGo(btn,i){
   var tr=btn.closest('.cg').querySelector('.cg-track');
