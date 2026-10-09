@@ -333,6 +333,35 @@ tbody tr.hl td:first-child::after{content:"人気";font-size:9.5px;color:#fff;ba
 .tr-banner h3{font-family:'Shippori Mincho',serif;font-weight:600;font-size:clamp(18px,2.4vw,26px);color:var(--navy);line-height:1.5}
 .tr-banner h3 em{font-style:normal;color:var(--gold)}
 .tr-banner p{font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--soft);margin-top:10px}
+.tr-rec{list-style:none;max-width:580px;margin:24px auto 0;border-top:1px solid var(--bd)}
+.tr-rec li{display:grid;grid-template-columns:48px 1fr auto;gap:12px;align-items:center;
+  padding:11px 2px;border-bottom:1px solid var(--bd);text-align:left}
+.tr-rec-n{font-family:'Shippori Mincho',serif;font-size:13.5px;color:var(--navy);font-weight:600}
+.tr-rec-c{font-size:12.5px;line-height:1.55;color:var(--navy)}
+.tr-rec-c i{display:block;font-style:normal;font-size:10.5px;color:var(--soft);margin-top:2px}
+.tr-rec-r{font-family:'Shippori Mincho',serif;font-size:15px;color:var(--gold);font-weight:600;white-space:nowrap}
+.tr-banner .tr-rec-f{font-size:12.5px;line-height:1.95;color:var(--soft);margin-top:16px}
+.tr-banner .tr-rec-f b{color:var(--navy);font-weight:500}
+
+/* 応募後の流れ */
+.fl{max-width:640px;margin:0 auto;list-style:none;counter-reset:fl;padding:0}
+.fl>li{position:relative;padding:0 0 28px 58px;counter-increment:fl}
+.fl>li::before{content:counter(fl);position:absolute;left:0;top:0;width:36px;height:36px;
+  border-radius:50%;background:var(--navy);color:#fff;font-family:'Shippori Mincho',serif;
+  font-size:15px;line-height:36px;text-align:center}
+.fl>li::after{content:"";position:absolute;left:18px;top:44px;bottom:4px;width:1px;background:var(--bd)}
+.fl>li:last-child{padding-bottom:0}
+.fl>li:last-child::after{display:none}
+.fl>li b{display:block;font-family:'Shippori Mincho',serif;font-size:16px;font-weight:600;
+  color:var(--navy);line-height:1.6;padding-top:6px}
+.fl-m{display:inline-block;font-size:10.5px;letter-spacing:.06em;color:var(--gold);
+  border:1px solid rgba(184,150,90,.5);border-radius:2px;padding:2px 9px;margin-top:8px}
+.fl>li p{font-size:13.5px;line-height:1.95;color:var(--soft);margin-top:9px}
+.fl-f{max-width:640px;margin:30px auto 0;padding:19px 21px;background:#faf7f1;
+  border-left:3px solid var(--gold);border-radius:var(--r);font-size:13.5px;line-height:1.95;color:var(--soft)}
+.fl-f b{color:var(--navy);font-weight:500}
+@media(max-width:600px){.tr-rec li{grid-template-columns:42px 1fr auto;gap:8px}
+  .fl>li{padding-left:50px}}
 .tr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:720px;margin:0 auto}
 .tr-card{border-radius:var(--r);overflow:hidden;box-shadow:0 4px 20px rgba(27,42,71,.08);display:flex;flex-direction:column;background:#fff}
 .tr-photo{aspect-ratio:4/5;position:relative;overflow:hidden;background:var(--navy-d)}
@@ -441,6 +470,7 @@ body.tm-lock{overflow:hidden}
 .cg-l{position:absolute;top:9px;left:9px;z-index:2;font-size:10.5px;font-weight:500;letter-spacing:.08em;
   color:#fff;background:rgba(19,32,58,.62);padding:3px 10px;border-radius:2px}
 .cg-l-a{background:rgba(184,150,90,.92)}
+.cg-num .u{display:block;font-family:'Noto Sans JP',sans-serif;font-style:normal;font-size:10px;letter-spacing:.1em;color:var(--soft);font-weight:400;margin-bottom:1px}
 .cg-hint{font-size:10.5px;letter-spacing:.06em;color:var(--soft);text-align:center;padding:9px 10px 11px;
   border-top:1px solid var(--bd)}
 .cg-meta{display:flex;align-items:baseline;justify-content:space-between;gap:12px;
@@ -881,6 +911,67 @@ footer a{color:rgba(255,255,255,.7)}
 .pc-per{font-size:12px;color:var(--ink);margin-top:10px;padding-top:12px;border-top:1px solid var(--bd)}
 .pc-per b{font-family:'Shippori Mincho',serif;font-size:17px;color:var(--navy);font-weight:600}
 
+/* ═══ 症状チェック（読むだけの症状リストを、自分で選ぶものに変える） ═══ */
+.tg-ask{max-width:840px;margin:0 auto 20px;text-align:center;font-size:12.5px;
+  letter-spacing:.06em;color:var(--soft);line-height:1.9}
+.tg-ask b{font-weight:500;color:var(--navy)}
+.tg-chk li{padding-left:0}
+.tg-chk li::before{display:none}
+.tgq{display:flex;gap:11px;align-items:flex-start;width:100%;
+  font:inherit;font-size:13.5px;line-height:1.85;letter-spacing:inherit;
+  color:var(--ink);background:none;border:0;padding:9px 2px;margin:-2px 0;
+  text-align:left;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.tgq-x{flex:none;position:relative;width:17px;height:17px;margin-top:5px;
+  border:1px solid rgba(27,42,71,.3);border-radius:2px;background:#fff;
+  transition:background .2s,border-color .2s}
+.tgq-x::after{content:"";position:absolute;left:4px;top:3px;width:8px;height:4px;
+  border-left:1.6px solid #fff;border-bottom:1.6px solid #fff;
+  transform:rotate(-45deg) scale(.4);opacity:0;transition:opacity .18s,transform .18s}
+.tgq[aria-pressed="true"] .tgq-x{background:var(--gold);border-color:var(--gold)}
+.tgq[aria-pressed="true"] .tgq-x::after{opacity:1;transform:rotate(-45deg) scale(1)}
+.tgq[aria-pressed="true"] .tgq-t{color:var(--navy)}
+.tgq:focus-visible{outline:2px solid var(--gold);outline-offset:1px}
+.tgr{max-width:560px;margin:30px auto 0;background:var(--warm);
+  border:1px solid rgba(184,150,90,.45);border-top:2px solid var(--gold);
+  border-radius:var(--r);padding:22px 24px;text-align:center}
+.tgr[hidden]{display:none}
+.tgr-n{font-family:'Shippori Mincho',serif;font-size:17px;font-weight:600;
+  color:var(--navy);line-height:1.6}
+.tgr-n b{font-size:34px;font-weight:600;color:var(--gold);margin:0 3px;line-height:1}
+.tgr-d{font-size:13px;line-height:1.95;color:var(--soft);margin-top:12px;
+  padding-top:12px;border-top:1px solid rgba(184,150,90,.35)}
+.tgr-d b{font-weight:500;color:var(--navy)}
+
+/* ═══ FAQ：開閉式（最終CTAまでのスクロール量を減らし、自分の疑問だけ開かせる） ═══ */
+.fq-i{padding:0}
+summary.fq-q{padding:21px 25px;cursor:pointer;list-style:none;align-items:flex-start;
+  -webkit-tap-highlight-color:transparent}
+summary.fq-q::-webkit-details-marker{display:none}
+summary.fq-q::after{content:"";flex:none;width:8px;height:8px;margin:6px 0 0 auto;
+  border-right:1.4px solid var(--gold);border-bottom:1.4px solid var(--gold);
+  transform:rotate(45deg);transition:transform .24s}
+.fq-i[open] summary.fq-q::after{transform:rotate(-135deg);margin-top:10px}
+summary.fq-q:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
+.fq-i .fq-a{margin-top:0;padding:0 25px 22px 52px}
+
+/* 固定バーは帯ごと押せる。スマホでは文字の面積がボタンより広いため */
+.sticky,.sticky-l{cursor:pointer}
+
+@media(max-width:600px){
+  .tg-ask{font-size:12px;margin-bottom:16px}
+  .tgq{font-size:13px}
+  .tgr{padding:19px 18px;margin-top:24px}
+  .tgr-n{font-size:15.5px}
+  .tgr-n b{font-size:29px}
+  .tgr-d{font-size:12.5px}
+  summary.fq-q{padding:18px 18px}
+  /* 左は「Q」の字幅＋gap ぶん下げ、答えを問いの文頭に揃える（18+16+11） */
+  .fq-i .fq-a{padding:0 18px 19px 45px}
+  /* 章の途中のCTAは、指で押せる幅まで広げる（既存の小さな金ボタンを含む） */
+  .cta-center .btn-gold{display:block;max-width:330px;margin:0 auto;
+    padding:16px 20px;font-size:14px;letter-spacing:.06em}
+}
+
 </style>
 </head>
 <body>
@@ -899,13 +990,14 @@ footer a{color:rgba(255,255,255,.7)}
       <p class="h-key"><span>体質を理由に諦める前に、我々にお任せください。</span></p>
       <p class="h-lead">あなたの骨格と現在のレベルに合わせて、<br><b>全員がコンテスト入賞者のトレーナー</b>が<br>サポートします。</p>
     </div>
-    <a class="hero-cta" href="https://reservation.tokowaka-gym.com/" data-cta="hero" onclick="return goRsv(this)">モニターに申し込む</a>
+    <a class="hero-cta" href="monitor-apply.html" data-cta="hero" onclick="return goRsv(this)">モニターに申し込む</a>
   </div>
 </div>
 
 <section class="si">
   <div class="wrap">
     <p class="tg-lead">頑張っても筋肉が成長しない。<br>そんなお悩みはありませんか。</p>
+    <p class="tg-ask">当てはまるものを<b>タップ</b>してみてください。</p>
     <div class="tg">
       <div class="tg-c">
         <div class="tg-b" style="padding-bottom:0">
@@ -913,12 +1005,12 @@ footer a{color:rgba(255,255,255,.7)}
         </div>
         <div class="tg-ph" data-ph="痩せ型タイプのイメージ写真／イラスト"><img src="images/monitor/type-slim.jpg" alt="痩せ型タイプのイメージ" loading="lazy"></div>
         <div class="tg-b">
-          <ul class="tg-l">
-            <li>食べているつもりなのに、<b>体重が増えない</b></li>
-            <li>「細いね」と言われるたびに、<b>うまく返せない</b></li>
-            <li>増やそうとしたら、<b>お腹まわりだけ</b>が先についた</li>
-            <li>体が細すぎることが、<b>ずっと悩みだった</b></li>
-            <li>プロテインもBIG3も試した。<b>何が足りないのか分からない</b></li>
+          <ul class="tg-l tg-chk">
+            <li><button type="button" class="tgq" aria-pressed="false" data-k="s1"><span class="tgq-x" aria-hidden="true"></span><span class="tgq-t">食べているつもりなのに、<b>体重が増えない</b></span></button></li>
+            <li><button type="button" class="tgq" aria-pressed="false" data-k="s2"><span class="tgq-x" aria-hidden="true"></span><span class="tgq-t">「細いね」と言われるたびに、<b>うまく返せない</b></span></button></li>
+            <li><button type="button" class="tgq" aria-pressed="false" data-k="s3"><span class="tgq-x" aria-hidden="true"></span><span class="tgq-t">増やそうとしたら、<b>お腹まわりだけ</b>が先についた</span></button></li>
+            <li><button type="button" class="tgq" aria-pressed="false" data-k="s4"><span class="tgq-x" aria-hidden="true"></span><span class="tgq-t">体が細すぎることが、<b>ずっと悩みだった</b></span></button></li>
+            <li><button type="button" class="tgq" aria-pressed="false" data-k="s5"><span class="tgq-x" aria-hidden="true"></span><span class="tgq-t">プロテインもBIG3も試した。<b>何が足りないのか分からない</b></span></button></li>
           </ul>
         </div>
       </div>
@@ -928,15 +1020,19 @@ footer a{color:rgba(255,255,255,.7)}
         </div>
         <div class="tg-ph" data-ph="中肉中背タイプのイメージ写真／イラスト"><img src="images/monitor/type-average.jpg" alt="中肉中背タイプのイメージ" loading="lazy"></div>
         <div class="tg-b">
-          <ul class="tg-l">
-            <li>トレーニングも食事も<b>頑張っている</b>。続けている自信はある</li>
-            <li>体重は増えた。でも<b>筋肉が増えた実感がない</b></li>
-            <li><b>脂肪だけついているのでは</b>ないか、と不安になる</li>
-            <li>鏡を見ても、<b>1年前と変わった気がしない</b></li>
-            <li>重量は少し伸びた。<b>でも身体に反映されていない</b></li>
+          <ul class="tg-l tg-chk">
+            <li><button type="button" class="tgq" aria-pressed="false" data-k="m1"><span class="tgq-x" aria-hidden="true"></span><span class="tgq-t">トレーニングも食事も<b>頑張っている</b>。続けている自信はある</span></button></li>
+            <li><button type="button" class="tgq" aria-pressed="false" data-k="m2"><span class="tgq-x" aria-hidden="true"></span><span class="tgq-t">体重は増えた。でも<b>筋肉が増えた実感がない</b></span></button></li>
+            <li><button type="button" class="tgq" aria-pressed="false" data-k="m3"><span class="tgq-x" aria-hidden="true"></span><span class="tgq-t"><b>脂肪だけついているのでは</b>ないか、と不安になる</span></button></li>
+            <li><button type="button" class="tgq" aria-pressed="false" data-k="m4"><span class="tgq-x" aria-hidden="true"></span><span class="tgq-t">鏡を見ても、<b>1年前と変わった気がしない</b></span></button></li>
+            <li><button type="button" class="tgq" aria-pressed="false" data-k="m5"><span class="tgq-x" aria-hidden="true"></span><span class="tgq-t">重量は少し伸びた。<b>でも身体に反映されていない</b></span></button></li>
           </ul>
         </div>
       </div>
+    </div>
+    <div class="tgr" id="tgr" hidden>
+      <p class="tgr-n">当てはまったのは<b id="tgrN">0</b>項目</p>
+      <p class="tgr-d">原因は、このあとお伝えする<b>3つ</b>に整理できます。</p>
     </div>
   </div>
 </section>
@@ -981,6 +1077,7 @@ footer a{color:rgba(255,255,255,.7)}
       <b>いずれも、自分に合った正しいやり方がわかれば、変わります。</b><br>
       あなたに最適なアプローチを設計し、続けられるところまで伴走します。
     </p>
+    <div class="cta-center"><a class="btn-gold" href="monitor-apply.html" data-cta="hope" onclick="return goRsv(this)">モニターに申し込む</a></div>
   </div>
 </div>
 
@@ -990,7 +1087,7 @@ footer a{color:rgba(255,255,255,.7)}
   <h2 class="s-ttl">実際に短期間で<br>ここまで変わっています</h2>
   
 
-  <p class="s-lead">実際に通われた方の記録と、Googleクチコミに寄せられたお声です。</p>
+  <p class="s-lead">実際に通われた方の記録と、Googleクチコミに寄せられたお声です。<br>いずれも、<b>脂肪を落としながら筋肉を増やす</b>進め方に取り組まれた記録です。<br>体重の増減だけでは、中身の変化までは伝わりません。写真でご確認ください。</p>
   <div class="mix">
     <div class="cg"><div class="cg-kind">変化の記録</div>
       <div class="cg-tabs"><button type="button" class="on" onclick="cgGo(this,0)">正面</button><button type="button" class="" onclick="cgGo(this,1)">横から</button><button type="button" class="" onclick="cgGo(this,2)">背面</button></div>
@@ -999,7 +1096,7 @@ footer a{color:rgba(255,255,255,.7)}
         <div class="cg-pane"><div class="cg-s"><img src="images/monitor/p1-side-before.jpg" alt="Before" loading="lazy"><span class="cg-l">Before</span></div><div class="cg-s"><img src="images/monitor/p1-side-after.jpg" alt="After" loading="lazy"><span class="cg-l cg-l-a">After</span></div></div>
         <div class="cg-pane"><div class="cg-s"><img src="images/monitor/p1-back-before.jpg" alt="Before" loading="lazy"><span class="cg-l">Before</span></div><div class="cg-s"><img src="images/monitor/p1-back-after.jpg" alt="After" loading="lazy"><span class="cg-l cg-l-a">After</span></div></div>
       </div>
-      <div class="cg-meta"><span class="cg-term">4ヶ月<i>／</i>週1回</span><span class="cg-num">−5<small>kg</small></span></div>
+      <div class="cg-meta"><span class="cg-term">4ヶ月<i>／</i>週1回</span><span class="cg-num"><i class="u">体重</i>−5<small>kg</small></span></div>
       <p class="cg-hint">← 横にスワイプで角度を切り替え →</p>
     </div>
     <div class="vo-c">
@@ -1017,7 +1114,7 @@ footer a{color:rgba(255,255,255,.7)}
         <div class="cg-pane"><div class="cg-s"><img src="images/monitor/p2-side-before.jpg" alt="Before" loading="lazy"><span class="cg-l">Before</span></div><div class="cg-s"><img src="images/monitor/p2-side-after.jpg" alt="After" loading="lazy"><span class="cg-l cg-l-a">After</span></div></div>
         <div class="cg-pane"><div class="cg-s"><img src="images/monitor/p2-back-before.jpg" alt="Before" loading="lazy"><span class="cg-l">Before</span></div><div class="cg-s"><img src="images/monitor/p2-back-after.jpg" alt="After" loading="lazy"><span class="cg-l cg-l-a">After</span></div></div>
       </div>
-      <div class="cg-meta"><span class="cg-term">3ヶ月<i>／</i>週2回</span><span class="cg-num">−6<small>kg</small></span></div>
+      <div class="cg-meta"><span class="cg-term">3ヶ月<i>／</i>週2回</span><span class="cg-num"><i class="u">体重</i>−6<small>kg</small></span></div>
       <p class="cg-hint">← 横にスワイプで角度を切り替え →</p>
     </div>
     <div class="vo-c">
@@ -1032,7 +1129,7 @@ footer a{color:rgba(255,255,255,.7)}
       <div class="cg-track" onscroll="cgSync(this)">
         <div class="cg-pane"><div class="cg-s"><img src="images/monitor/p3-front-before.jpg" alt="Before" loading="lazy"><span class="cg-l">Before</span></div><div class="cg-s"><img src="images/monitor/p3-front-after.jpg" alt="After" loading="lazy"><span class="cg-l cg-l-a">After</span></div></div>
       </div>
-      <div class="cg-meta"><span class="cg-term">半年<i>／</i>週1〜2回</span><span class="cg-num">−10<small>kg</small></span></div>
+      <div class="cg-meta"><span class="cg-term">半年<i>／</i>週1〜2回</span><span class="cg-num"><i class="u">体重</i>−10<small>kg</small></span></div>
     </div>
     <div class="vo-c">
       <div class="vo-h">
@@ -1046,7 +1143,7 @@ footer a{color:rgba(255,255,255,.7)}
       <div class="cg-track" onscroll="cgSync(this)">
         <div class="cg-pane"><div class="cg-s"><img src="images/monitor/p4-front-before.jpg" alt="Before" loading="lazy"><span class="cg-l">Before</span></div><div class="cg-s"><img src="images/monitor/p4-front-after.jpg" alt="After" loading="lazy"><span class="cg-l cg-l-a">After</span></div></div>
       </div>
-      <div class="cg-meta"><span class="cg-term">3ヶ月<i>／</i>月3回</span><span class="cg-num">−12<small>kg</small></span></div>
+      <div class="cg-meta"><span class="cg-term">3ヶ月<i>／</i>月3回</span><span class="cg-num"><i class="u">体重</i>−12<small>kg</small></span></div>
     </div>
   </div>
   <p class="vo-note">※ 写真とクチコミは、それぞれ別の方のものです。いずれもご本人の許諾を得て、または Googleクチコミより引用して掲載しています。個人の感想であり、効果を保証するものではありません。</p>
@@ -1127,6 +1224,13 @@ footer a{color:rgba(255,255,255,.7)}
     <div class="tr-banner">
       <h3>確かな知識と経験。<br class="br-sp"><em>全員が大会入賞者</em></h3>
       <p>あなたの目的に合わせて、選べる3名のトレーナー。</p>
+      <ul class="tr-rec">
+        <li><span class="tr-rec-n">鈴木</span><span class="tr-rec-c">APF JAPAN CLASSIC 2025<br class="br-sp"><i>2025年11月16日／八潮メセナ（埼玉）</i></span><span class="tr-rec-r">1位</span></li>
+        <li><span class="tr-rec-n">中野</span><span class="tr-rec-c">APF JAPAN CLASSIC 2025<br class="br-sp"><i>2025年11月16日／八潮メセナ（埼玉）</i></span><span class="tr-rec-r">予選2位</span></li>
+        <li><span class="tr-rec-n">中野</span><span class="tr-rec-c">APF GRAND CHAMPIONSHIPS 2025<br class="br-sp"><i>2025年11月24日／東京国際フォーラム ホールB</i></span><span class="tr-rec-r">日本8位</span></li>
+        <li><span class="tr-rec-n">沖</span><span class="tr-rec-c">ベストボディ・ジャパン2025<br class="br-sp"><i>神奈川・横浜大会</i></span><span class="tr-rec-r">入賞</span></li>
+      </ul>
+      <p class="tr-rec-f"><b>同じ大会の1位と2位を、当ジムのトレーナー2名が占めています。</b><br>二人は大学の同期です。</p>
     </div>
     <div class="tr-grid">
       <!-- 鈴木 -->
@@ -1145,7 +1249,7 @@ footer a{color:rgba(255,255,255,.7)}
           <div class="tr-tags">
             <span class="tr-tag">大幅ダイエット</span><span class="tr-tag">バルクアップ</span><span class="tr-tag">不調・機能改善</span><span class="tr-tag">APF Japan Classic 優勝</span>
           </div>
-          <div class="tr-ig"><a href="https://www.instagram.com/kamiyaru_fit/" target="_blank"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="var(--gold)" stroke="none"/></svg></a></div>
+          <div class="tr-ig"><a href="https://www.instagram.com/kamiyaru_fit/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="var(--gold)" stroke="none"/></svg></a></div>
         </div>
       </div>
       <!-- 沖 -->
@@ -1164,7 +1268,7 @@ footer a{color:rgba(255,255,255,.7)}
           <div class="tr-tags">
             <span class="tr-tag">ボディメイク</span><span class="tr-tag">姿勢・骨盤矯正</span><span class="tr-tag">BBJファイナル</span><span class="tr-tag">一般体操指導員</span>
           </div>
-          <div class="tr-ig"><a href="https://www.instagram.com/takeru_fitness_/" target="_blank"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="var(--gold)" stroke="none"/></svg></a></div>
+          <div class="tr-ig"><a href="https://www.instagram.com/takeru_fitness_/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="var(--gold)" stroke="none"/></svg></a></div>
         </div>
       </div>
       <!-- 中野 -->
@@ -1183,12 +1287,12 @@ footer a{color:rgba(255,255,255,.7)}
           <div class="tr-tags">
             <span class="tr-tag">モデル・アスリート指導</span><span class="tr-tag">肩・背中の育成</span><span class="tr-tag">大会日本8位</span><span class="tr-tag">英語対応</span>
           </div>
-          <div class="tr-ig"><a href="https://www.instagram.com/fit_ryunosuke/" target="_blank"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="var(--gold)" stroke="none"/></svg></a></div>
+          <div class="tr-ig"><a href="https://www.instagram.com/fit_ryunosuke/" target="_blank" rel="noopener"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="var(--gold)" stroke="none"/></svg></a></div>
         </div>
       </div>
     </div>
     <div class="cta-center">
-      <a href="javascript:void(0)" onclick="goRsv()" class="btn-gold">モニターに申し込む</a>
+      <a class="btn-gold" href="monitor-apply.html" data-cta="trainer" onclick="return goRsv(this)">モニターに申し込む</a>
     </div>
   </div>
 </section>
@@ -1281,41 +1385,71 @@ footer a{color:rgba(255,255,255,.7)}
 </section>
 
 <section class="si">
+  <h2 class="s-ttl">ご応募から、<br>体験までの流れ</h2>
+  <p class="s-lead">お申し込みのあと何が起きるかを、先にお伝えします。</p>
+  <ol class="fl">
+    <li>
+      <b>応募フォームのご記入</b><span class="fl-m">約2分・9項目</span>
+      <p>お名前とご連絡先、いまのお悩みと目標をお聞かせください。</p>
+    </li>
+    <li>
+      <b>受付のご連絡</b><span class="fl-m">すぐにメール</span>
+      <p>ご応募を確かに受け取った旨を、自動でお送りします。</p>
+    </li>
+    <li>
+      <b>結果のご連絡</b><span class="fl-m">3時間ほどでメール</span>
+      <p>いただいた内容を確認のうえ、結果をお送りします。<br>21時以降にいただいたご応募は、翌朝9時ごろのご連絡になります。</p>
+    </li>
+    <li>
+      <b>体験トレーニングのご予約</b><span class="fl-m">通過された方のみ</span>
+      <p>ご案内するページから、ご都合のよい日時をお選びください。</p>
+    </li>
+    <li>
+      <b>体験当日</b>
+      <p>現状を数字で確認し、3ヶ月の進め方を具体的にご提案します。<br>モニター特別価格の金額とお支払い方法は、この日に書面でご案内します。</p>
+    </li>
+  </ol>
+  <p class="fl-f"><b>体験の場で、ご契約はお願いしません。</b>書面をお持ち帰りいただき、ご自宅でご検討ください。無理な勧誘は一切いたしません。</p>
+  <div class="cta-center"><a class="btn-gold" href="monitor-apply.html" data-cta="flow" onclick="return goRsv(this)">モニターに申し込む</a></div>
+</section>
+
+<section class="si">
   <h2 class="s-ttl">よくあるご質問</h2>
   <div class="fq">
-    <div class="fq-i">
-      <div class="fq-q"><span>Q</span>自分は体質的に、筋肉がつかないのではないでしょうか。</div>
+    <details class="fq-i" open>
+      <summary class="fq-q"><span>Q</span>自分は体質的に、筋肉がつかないのではないでしょうか。</summary>
       <p class="fq-a">そう感じている方は少なくありません。ただ、<b>記録を取ってみると別の原因が見つかることがほとんどです。</b>「必要量に数百kcal届いていなかった」「フォームが数センチずれて狙った筋肉に入っていなかった」——どちらも、測らなければ気づけません。体験では現状を数字で確認したうえで、<b>何をどう変えればいいかを具体的にご提案します。</b>トレーニングの組み方から食事の増やし方まで、続けられる形に落とし込んでお渡しします。</p>
-    </div>
-    <div class="fq-i">
-      <div class="fq-q"><span>Q</span>体重は増えているのに、筋肉が増えた実感がありません。</div>
+    </details>
+    <details class="fq-i">
+      <summary class="fq-q"><span>Q</span>体重は増えているのに、筋肉が増えた実感がありません。</summary>
       <p class="fq-a">筋肥大を狙うとき、筋肉と脂肪は同時に増えます。問題はその<b>比率</b>です。体重の増え方が速すぎると脂肪の割合が大きくなり、遅すぎると筋肉も伸びません。本プログラムでは<b>毎週の体重推移を見ながら食事量を調整</b>し、その比率を管理します。今の増え方が適正かどうかは、体験時に現状の数字から判断できます。</p>
-    </div>
-    <div class="fq-i">
-      <div class="fq-q"><span>Q</span>トレーニング経験がなくても大丈夫ですか？</div>
+    </details>
+    <details class="fq-i">
+      <summary class="fq-q"><span>Q</span>トレーニング経験がなくても大丈夫ですか？</summary>
       <p class="fq-a">問題ありません。<b>フォームの基礎からお伝えします。</b>むしろ自己流の癖がない方のほうが、正しい動きを早く身につけられることも多くあります。その日の体調に合わせて強度を調整しますので、いきなり追い込むことはありません。</p>
-    </div>
-    <div class="fq-i">
-      <div class="fq-q"><span>Q</span>食が細くて、たくさん食べられません。</div>
+    </details>
+    <details class="fq-i">
+      <summary class="fq-q"><span>Q</span>食が細くて、たくさん食べられません。</summary>
       <p class="fq-a">筋肥大でいちばん多いご相談です。一度に量を増やすのではなく、<b>食事の回数・タイミング・消化の負担が少ない食材</b>から調整していきます。無理に詰め込む方法はお伝えしません。続かないからです。</p>
-    </div>
-    <div class="fq-i">
-      <div class="fq-q"><span>Q</span>3ヶ月で、どのくらい変わりますか？</div>
+    </details>
+    <details class="fq-i">
+      <summary class="fq-q"><span>Q</span>3ヶ月で、どのくらい変わりますか？</summary>
       <p class="fq-a">現在の体組成・トレーニング歴・食事の状況によって大きく異なるため、<b>数値をお約束することはいたしません。</b>体験時に現状を確認したうえで、達成可能な目標をご提案します。</p>
-    </div>
-    <div class="fq-i">
-      <div class="fq-q"><span>Q</span>他のコースとの違いは何ですか？</div>
+    </details>
+    <details class="fq-i">
+      <summary class="fq-q"><span>Q</span>他のコースとの違いは何ですか？</summary>
       <p class="fq-a">バルクアッププログラムは、<b>毎日の食事記録への個別フィードバックと週次の進捗管理</b>が含まれる点が最大の違いです。通常のトレーニングコースはセッション中の指導が中心ですが、筋肥大は食事が半分を占めるため、本プログラムではそこまで管理します。</p>
-    </div>
-    <div class="fq-i">
-      <div class="fq-q"><span>Q</span>3ヶ月が終わったら、どうなりますか？</div>
+    </details>
+    <details class="fq-i">
+      <summary class="fq-q"><span>Q</span>3ヶ月が終わったら、どうなりますか？</summary>
       <p class="fq-a">モニター価格は3ヶ月間の適用です。4ヶ月目以降も続けられる場合は通常価格となりますが、<b>コースや回数の変更も可能</b>です。終了時に改めてご相談ください。</p>
-    </div>
-    <div class="fq-i">
-      <div class="fq-q"><span>Q</span>体験を受けたら、必ず申し込まないといけませんか？</div>
+    </details>
+    <details class="fq-i">
+      <summary class="fq-q"><span>Q</span>体験を受けたら、必ず申し込まないといけませんか？</summary>
       <p class="fq-a">いいえ。<b>無理な勧誘は一切いたしません。</b>実際の指導を受けていただき、ご納得の場合のみお申し込みください。ご自宅でじっくりご検討いただいても構いません。</p>
-    </div>
+    </details>
   </div>
+  <div class="cta-center"><a class="btn-gold" href="monitor-apply.html" data-cta="faq" onclick="return goRsv(this)">モニターに申し込む</a></div>
 </section>
 
 <section class="si">
@@ -1335,8 +1469,8 @@ footer a{color:rgba(255,255,255,.7)}
 <div class="cta">
   <div class="cta-t">まずは、最適なやり方を<br>知ることから始めませんか。</div>
   <p class="cta-s">まずはトレーナーに、気軽にご相談ください。<br>あなたの骨格と目標をうかがったうえで、<br>具体的な進め方をその場でご案内します。</p>
-  <a class="cta-b" href="https://reservation.tokowaka-gym.com/" data-cta="footer" onclick="return goRsv(this)">モニターに申し込む</a>
-  <p class="cta-note">モニター特別価格でのご案内です<br><b>10月31日（金）応募締切</b>／選考のうえ5名様をお迎えします</p>
+  <a class="cta-b" href="monitor-apply.html" data-cta="footer" onclick="return goRsv(this)">モニターに申し込む</a>
+  <p class="cta-note">モニター特別価格でのご案内です<br><b>10月31日（土）応募締切</b>／選考のうえ5名様をお迎えします</p>
 </div>
 
 <footer>
@@ -1348,9 +1482,9 @@ footer a{color:rgba(255,255,255,.7)}
 <div class="sticky">
   <div class="sticky-l">
     <span class="t">バルクアップ モニター募集</span>
-    <span class="s"><b>10月31日まで</b>／選考のうえ5名様</span>
+    <span class="s"><b id="sdl">10月31日まで</b>／選考のうえ5名様</span>
   </div>
-  <a class="sticky-b" href="https://reservation.tokowaka-gym.com/" data-cta="sticky" onclick="return goRsv(this)">モニターに申し込む</a>
+  <a class="sticky-b" href="monitor-apply.html" data-cta="sticky" onclick="return goRsv(this)">モニターに申し込む</a>
 </div>
 
 <!-- TRAINER PROFILE MODAL（JSで中身を描画）-->
@@ -1449,6 +1583,8 @@ function goRsv(el){
         event:'cta_reservation_click',
         cta_location:(el&&el.getAttribute&&el.getAttribute('data-cta'))||'monitor_lp',
         cta_target:'monitor_apply',
+        /* 症状チェックを何個つけた人が応募しているかを、CTAごとに見られるようにする */
+        chk_count:(window.TW_CHK&&window.TW_CHK.length)||0,
         lp:'monitor_bulkup'
       });
     }
@@ -1462,6 +1598,14 @@ function goRsv(el){
       if(r.hostname && r.hostname.indexOf('tokowaka-gym.com')<0){
         url += (url.indexOf('?')>-1?'&':'?')+'ref='+encodeURIComponent(r.hostname);
       }
+    }
+  }catch(e){}
+  /* 選んだ症状を応募フォームへ引き継ぐ。トレーナーが初回から課題を把握できるようにする。
+     ※ 受け取り側（monitor-apply.html）が chk を読む実装を入れるまでは、URLに乗るだけで害はない */
+  try{
+    var ck = window.TW_CHK;
+    if (ck && ck.length) {
+      url += (url.indexOf('?')>-1?'&':'?')+'chk='+encodeURIComponent(ck.join('.'));
     }
   }catch(e){}
   /* 同一ドメインなので新規タブにしない。計測と入力の流れを切らないため */
@@ -1507,6 +1651,77 @@ document.addEventListener('click',function(e){
   if(!a||!window.dataLayer)return;
   if((a.getAttribute('href')||'').indexOf('tel:')===0)dataLayer.push({event:'tel_click',lp:'monitor_bulkup'});
 });
+
+/* ── 症状チェック ──
+   症状リストは読むだけだった。自分で選べるようにして、
+   「他人の話」から「自分の話」へ変える。選んだ内容は goRsv が応募フォームへ引き継ぐ。 */
+(function(){
+  var KEY='tw_chk';
+  var btns=document.querySelectorAll('.tgq');
+  if(!btns.length)return;
+  var box=document.getElementById('tgr'), num=document.getElementById('tgrN');
+  var saved={};
+  try{ saved=JSON.parse(sessionStorage.getItem(KEY)||'{}')||{}; }catch(e){ saved={}; }
+  function picked(){
+    var a=[];
+    for(var i=0;i<btns.length;i++){
+      if(btns[i].getAttribute('aria-pressed')==='true') a.push(btns[i].getAttribute('data-k'));
+    }
+    return a;
+  }
+  function paint(){
+    var a=picked();
+    window.TW_CHK=a;
+    if(num) num.textContent=a.length;
+    if(box) box.hidden=(a.length===0);
+    try{
+      var o={};
+      for(var i=0;i<a.length;i++) o[a[i]]=1;
+      sessionStorage.setItem(KEY,JSON.stringify(o));
+    }catch(e){}
+  }
+  for(var i=0;i<btns.length;i++){
+    (function(b){
+      if(saved[b.getAttribute('data-k')]) b.setAttribute('aria-pressed','true');
+      b.addEventListener('click',function(){
+        var on=(b.getAttribute('aria-pressed')==='true');
+        b.setAttribute('aria-pressed',on?'false':'true');
+        paint();
+        try{
+          if(window.dataLayer)dataLayer.push({event:'self_check_tap',
+            item:b.getAttribute('data-k'),selected:!on,
+            count:window.TW_CHK.length,lp:'monitor_bulkup'});
+        }catch(e){}
+      });
+    })(btns[i]);
+  }
+  paint();
+})();
+
+/* ── 固定バーは帯ごと押せる ──
+   375px ではボタンの横幅が約140pxしかない。文字の面積のほうが広いので、そこも入口にする。 */
+(function(){
+  var bar=document.querySelector('.sticky');
+  if(!bar)return;
+  bar.addEventListener('click',function(e){
+    if(e.target.closest && e.target.closest('a'))return;  /* ボタン自身のクリックは二重に処理しない */
+    goRsv({getAttribute:function(){return 'sticky_bar';}});
+  });
+})();
+
+/* ── 締切の残り日数 ──
+   「10月31日まで」を、同じ事実のまま「あと◯日」として見せる。
+   期間外（過ぎた／まだ1ヶ月半以上ある）ときは、元の日付表記をそのまま残す。 */
+(function(){
+  var el=document.getElementById('sdl');
+  if(!el)return;
+  var now=new Date();
+  var t0=new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  var t1=new Date(now.getFullYear(),9,31);   /* 当年の10月31日 */
+  var d=Math.round((t1-t0)/86400000);
+  if(d>0&&d<=45) el.textContent='あと'+d+'日';
+  else if(d===0) el.textContent='本日締切';
+})();
 </script>
 </body>
 </html>
