@@ -421,6 +421,10 @@ body.tm-lock{overflow:hidden}
 /* ═══ 理由カード：タイトル→写真→詳細 ═══ */
 /* ═══ 変化の記録：角度を横スワイプで切り替える ═══ */
 .cgw{display:grid;gap:22px;max-width:720px;margin:0 auto}
+/* 記録とクチコミを交互に置く。1列で読ませ、種別の見出しで取り違えを防ぐ */
+.mix{display:grid;gap:20px;max-width:620px;margin:0 auto}
+.cg-kind{font-family:'Shippori Mincho',serif;font-size:11px;letter-spacing:.14em;color:var(--gold);
+  padding:11px 18px 0}
 .cg{background:#fff;border-radius:var(--r);box-shadow:0 4px 20px rgba(27,42,71,.08);overflow:hidden}
 .cg-tabs{display:flex;border-bottom:1px solid var(--bd);background:#fff}
 .cg-tabs button{flex:1;border:0;background:none;font-family:'Shippori Mincho',serif;font-size:12.5px;
@@ -464,6 +468,8 @@ body.tm-lock{overflow:hidden}
 .rc-d{font-size:var(--fs);line-height:2.05;margin:20px 26px 26px}
 /* プログラム紹介の写真は、理由カードより縦長にして見せ場を作る */
 .rc-w.tall .rc-ph{aspect-ratio:4/3}
+/* チャット画面は縦長なので、枠を正方形にして大きく見せる */
+.rc-w.tall .rc-ph.sq{aspect-ratio:1/1}
 
 .rc-d b{font-weight:500;color:var(--navy)}
 @media(max-width:600px){
@@ -980,12 +986,13 @@ footer a{color:rgba(255,255,255,.7)}
 <div class="wrap">
 
 <section class="si">
-  <h2 class="s-ttl">実際に、<br>ここまで変わっています</h2>
+  <h2 class="s-ttl">実際に短期間で<br>ここまで変わっています</h2>
   
 
-  <p class="s-lead">実際に通われた方の記録です。<br>角度のある方は、<b>横にスワイプ</b>すると切り替わります。</p>
-  <div class="cgw">
-    <div class="cg">
+  <p class="s-lead">実際に通われた方の記録と、Googleクチコミに寄せられたお声です。<br>
+角度のある方は、<b>横にスワイプ</b>すると切り替わります。</p>
+  <div class="mix">
+    <div class="cg"><div class="cg-kind">変化の記録</div>
       <div class="cg-tabs"><button type="button" class="on" onclick="cgGo(this,0)">正面</button><button type="button" class="" onclick="cgGo(this,1)">横から</button><button type="button" class="" onclick="cgGo(this,2)">背面</button></div>
       <div class="cg-track" onscroll="cgSync(this)">
         <div class="cg-pane"><div class="cg-s"><img src="images/monitor/p1-front-before.jpg" alt="Before" loading="lazy"><span class="cg-l">Before</span></div><div class="cg-s"><img src="images/monitor/p1-front-after.jpg" alt="After" loading="lazy"><span class="cg-l cg-l-a">After</span></div></div>
@@ -995,7 +1002,15 @@ footer a{color:rgba(255,255,255,.7)}
       <div class="cg-meta"><span class="cg-term">4ヶ月<i>／</i>週1回</span><span class="cg-num">−5<small>kg</small></span></div>
       <p class="cg-hint">← 横にスワイプで角度を切り替え →</p>
     </div>
-    <div class="cg">
+    <div class="vo-c">
+      <div class="vo-h">
+        <div class="vo-av">M</div>
+        <div class="vo-m"><div class="vo-st">★★★★★</div><div class="vo-nm">Google クチコミ</div></div>
+        <span class="vo-tag">筋肥大</span>
+      </div>
+      <p class="vo-t">過去他のパーソナルにも通っていましたが、ガンガン盛り上げる雰囲気や担当がちょくちょく変わるのに違和感が…。その点カミさんはとても落ち着いていて頼れる存在です。<b>1年以上見ていただき、増量も目標通り、記録も伸び続けています。</b>トレーニングが好きになり、習慣づくりができたのが何よりありがたかったです。</p>
+    </div>
+    <div class="cg"><div class="cg-kind">変化の記録</div>
       <div class="cg-tabs"><button type="button" class="on" onclick="cgGo(this,0)">正面</button><button type="button" class="" onclick="cgGo(this,1)">横から</button><button type="button" class="" onclick="cgGo(this,2)">背面</button></div>
       <div class="cg-track" onscroll="cgSync(this)">
         <div class="cg-pane"><div class="cg-s"><img src="images/monitor/p2-front-before.jpg" alt="Before" loading="lazy"><span class="cg-l">Before</span></div><div class="cg-s"><img src="images/monitor/p2-front-after.jpg" alt="After" loading="lazy"><span class="cg-l cg-l-a">After</span></div></div>
@@ -1005,39 +1020,19 @@ footer a{color:rgba(255,255,255,.7)}
       <div class="cg-meta"><span class="cg-term">3ヶ月<i>／</i>週2回</span><span class="cg-num">−6<small>kg</small></span></div>
       <p class="cg-hint">← 横にスワイプで角度を切り替え →</p>
     </div>
-    <div class="cg">
-      <div class="cg-track" onscroll="cgSync(this)">
-        <div class="cg-pane"><div class="cg-s"><img src="images/monitor/p3-front-before.jpg" alt="Before" loading="lazy"><span class="cg-l">Before</span></div><div class="cg-s"><img src="images/monitor/p3-front-after.jpg" alt="After" loading="lazy"><span class="cg-l cg-l-a">After</span></div></div>
-      </div>
-      <div class="cg-meta"><span class="cg-term">半年<i>／</i>週1〜2回</span><span class="cg-num">−10<small>kg</small></span></div>
-    </div>
-    <div class="cg">
-      <div class="cg-track" onscroll="cgSync(this)">
-        <div class="cg-pane"><div class="cg-s"><img src="images/monitor/p4-front-before.jpg" alt="Before" loading="lazy"><span class="cg-l">Before</span></div><div class="cg-s"><img src="images/monitor/p4-front-after.jpg" alt="After" loading="lazy"><span class="cg-l cg-l-a">After</span></div></div>
-      </div>
-      <div class="cg-meta"><span class="cg-term">3ヶ月<i>／</i>月3回</span><span class="cg-num">−12<small>kg</small></span></div>
-    </div>
-  </div>
-  <p class="vo-note">※ ご本人の許諾を得て掲載しています。個人の感想であり、効果を保証するものではありません。</p>
-
-  <h2 class="s-ttl" style="margin-top:var(--sec)">お客様の声</h2>
-  <p class="s-lead">Googleクチコミに寄せられた実際のお声です。</p>
-  <div class="vo">
-    <div class="vo-c">
-      <div class="vo-h">
-        <div class="vo-av">M</div>
-        <div class="vo-m"><div class="vo-st">★★★★★</div><div class="vo-nm">Google クチコミ</div></div>
-        <span class="vo-tag">筋肥大</span>
-      </div>
-      <p class="vo-t">過去他のパーソナルにも通っていましたが、ガンガン盛り上げる雰囲気や担当がちょくちょく変わるのに違和感が…。その点カミさんはとても落ち着いていて頼れる存在です。<b>1年以上見ていただき、増量も目標通り、記録も伸び続けています。</b>トレーニングが好きになり、習慣づくりができたのが何よりありがたかったです。</p>
-    </div>
     <div class="vo-c">
       <div class="vo-h">
         <div class="vo-av">T</div>
         <div class="vo-m"><div class="vo-st">★★★★★</div><div class="vo-nm">Google クチコミ</div></div>
         <span class="vo-tag">フォーム</span>
       </div>
-      <p class="vo-t">初パーソナル。オシャレなアパートの中に、筋トレ器具がしっかり揃ったジムでした。<b>沖さんに教わって、筋トレの質がめちゃくちゃ上がりました。フォームや力の入れ方のアドバイスが的確です。</b>閑静な住宅街にあって、女性でも安心して通えます。</p>
+      <p class="vo-t">初パーソナル。オシャレなアパートの中に、筋トレ器具がしっかり揃ったジムでした。<b>沖さんに教わって、筋トレの質がめちゃくちゃ上がりました。フォームや力の入れ方のアドバイスが的確です。</b></p>
+    </div>
+    <div class="cg"><div class="cg-kind">変化の記録</div>
+      <div class="cg-track" onscroll="cgSync(this)">
+        <div class="cg-pane"><div class="cg-s"><img src="images/monitor/p3-front-before.jpg" alt="Before" loading="lazy"><span class="cg-l">Before</span></div><div class="cg-s"><img src="images/monitor/p3-front-after.jpg" alt="After" loading="lazy"><span class="cg-l cg-l-a">After</span></div></div>
+      </div>
+      <div class="cg-meta"><span class="cg-term">半年<i>／</i>週1〜2回</span><span class="cg-num">−10<small>kg</small></span></div>
     </div>
     <div class="vo-c">
       <div class="vo-h">
@@ -1047,7 +1042,14 @@ footer a{color:rgba(255,255,255,.7)}
       </div>
       <p class="vo-t">体験時に丁寧に教えていただき、入会を決めました。<b>トレーニングだけでなく姿勢や食事、呼吸の仕方など細かく教えていただき</b>、まだ始めたばかりですが成長を感じており満足しています。</p>
     </div>
+    <div class="cg"><div class="cg-kind">変化の記録</div>
+      <div class="cg-track" onscroll="cgSync(this)">
+        <div class="cg-pane"><div class="cg-s"><img src="images/monitor/p4-front-before.jpg" alt="Before" loading="lazy"><span class="cg-l">Before</span></div><div class="cg-s"><img src="images/monitor/p4-front-after.jpg" alt="After" loading="lazy"><span class="cg-l cg-l-a">After</span></div></div>
+      </div>
+      <div class="cg-meta"><span class="cg-term">3ヶ月<i>／</i>月3回</span><span class="cg-num">−12<small>kg</small></span></div>
+    </div>
   </div>
+  <p class="vo-note">※ 写真とクチコミは、それぞれ別の方のものです。いずれもご本人の許諾を得て、または Googleクチコミより引用して掲載しています。個人の感想であり、効果を保証するものではありません。</p>
   <p class="vo-note">※ Googleクチコミより引用（★5.0・多数掲載）。個人の感想であり、効果を保証するものではありません。</p>
 </section>
 
@@ -1101,7 +1103,7 @@ footer a{color:rgba(255,255,255,.7)}
         <div class="rc-n">02</div>
         <div class="rc-t">毎日の食事に、個別フィードバック</div>
       </div>
-      <div class="rc-ph" data-ph="食事フィードバックの画面"><img src="images/monitor/rebuild-meal-fb.jpg" alt="毎日の食事記録へのフィードバック画面" loading="lazy"></div>
+      <div class="rc-ph sq" data-ph="食事フィードバックの画面"><img src="images/monitor/rebuild-meal-fb.jpg" alt="毎日の食事記録へのフィードバック画面" loading="lazy"></div>
       <p class="rc-d">週1回の指導では、7日のうち6日が野放しになります。本プログラムは<b>毎日の食事記録に対して個別にお返し</b>します。目標カロリーとPFCを設計し、「あと何をどれだけ足すか」を日々調整。食べられない方には、無理なく量を増やす方法からお伝えします。</p>
     </div>
     <div class="rc">
@@ -1157,10 +1159,10 @@ footer a{color:rgba(255,255,255,.7)}
           <h3 class="tr-name">沖 孟</h3>
           <span class="tr-name-en">Takeru Oki</span>
           <span class="tr-exp">指導歴 5年</span>
-          <p class="tr-bio">重要なのは体重より“見た目”。姿勢から整えることで、あなたの骨格のポテンシャルを最大限引き出し、理想のボディラインに近づけます。年間2,000件以上、多くの女性のボディラインを指導する中で確信したのは——</p>
+          <p class="tr-bio">重要なのは体重より“見た目”。姿勢から整えることで、あなたの骨格のポテンシャルを最大限引き出し、理想のボディラインに近づけます。年間2,000件以上の指導を重ねる中で確信したのは——</p>
           <button type="button" class="tr-more" onclick="openTrainerModal('oki')">続きを読む</button>
           <div class="tr-tags">
-            <span class="tr-tag">女性のボディメイク</span><span class="tr-tag">姿勢・骨盤矯正</span><span class="tr-tag">BBJファイナル</span><span class="tr-tag">一般体操指導員</span>
+            <span class="tr-tag">ボディメイク</span><span class="tr-tag">姿勢・骨盤矯正</span><span class="tr-tag">BBJファイナル</span><span class="tr-tag">一般体操指導員</span>
           </div>
           <div class="tr-ig"><a href="https://www.instagram.com/takeru_fitness_/" target="_blank"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="var(--gold)" stroke="none"/></svg></a></div>
         </div>
@@ -1179,7 +1181,7 @@ footer a{color:rgba(255,255,255,.7)}
           <p class="tr-bio">どんな状態からでも、あなたの身体は必ず変わります。「スタイルは、生まれつきで決まっている」——そう思い込んでいませんか？違います。身体は、デザインできる。骨格という土台を活かし、狙った場所へ筋肉を足していけば——</p>
           <button type="button" class="tr-more" onclick="openTrainerModal('nakano')">続きを読む</button>
           <div class="tr-tags">
-            <span class="tr-tag">モデル・アスリート指導</span><span class="tr-tag">ヒップ育成</span><span class="tr-tag">大会日本8位</span><span class="tr-tag">英語対応</span>
+            <span class="tr-tag">モデル・アスリート指導</span><span class="tr-tag">肩・背中の育成</span><span class="tr-tag">大会日本8位</span><span class="tr-tag">英語対応</span>
           </div>
           <div class="tr-ig"><a href="https://www.instagram.com/fit_ryunosuke/" target="_blank"><svg viewBox="0 0 24 24"><rect x="3.5" y="3.5" width="17" height="17" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.2" cy="6.8" r="1" fill="var(--gold)" stroke="none"/></svg></a></div>
         </div>
@@ -1259,7 +1261,7 @@ footer a{color:rgba(255,255,255,.7)}
         <span class="sub">必須ではありません。顔を伏せてのご掲載も承ります。ご協力いただける範囲によって、モニター特別価格が変わります。</span></li>
     </ul>
     <p class="rq-f">これらにご協力いただける方のなかから、<br>選考のうえ5名様をお迎えします。</p>
-    <p class="rq-note">本プログラムは<b>モニター特別価格でのご提供</b>です（無償提供ではありません）。<br>金額・お支払い方法は、体験時に書面でご案内します。</p>
+    <p class="rq-note">本プログラムは<b>モニター特別価格でのご提供</b>です。<br>金額・お支払い方法は、体験時に書面でご案内します。</p>
   </div>
 </section>
 
@@ -1334,7 +1336,7 @@ footer a{color:rgba(255,255,255,.7)}
   <div class="cta-t">まずは、最適なやり方を<br>知ることから始めませんか。</div>
   <p class="cta-s">まずはトレーナーに、気軽にご相談ください。<br>あなたの骨格と目標をうかがったうえで、<br>具体的な進め方をその場でご案内します。</p>
   <a class="cta-b" href="https://reservation.tokowaka-gym.com/" data-cta="footer" onclick="return goRsv(this)">モニターに申し込む</a>
-  <p class="cta-note">モニター特別価格でのご案内です（無償提供ではありません）<br><b>10月31日（金）応募締切</b>／選考のうえ5名様をお迎えします</p>
+  <p class="cta-note">モニター特別価格でのご案内です<br><b>10月31日（金）応募締切</b>／選考のうえ5名様をお迎えします</p>
 </div>
 
 <footer>
@@ -1369,14 +1371,14 @@ var TRAINER_PROFILES={
  oki:{name:'沖 孟',en:'Takeru Oki',short:'沖',ig:'https://www.instagram.com/takeru_fitness_/',
   img:'https://tokowaka-gym.com/images/trainer03.jpg',
   badges:['BBJファイナリスト','一般体操指導員','指導歴5年'],
-  target:'見た目・ラインを気にする女性へ',
+  target:'体重より見た目を変えたい方へ',
   hook:'「頑張らないのに、気づけば身体が変わってる。」',
   sub:'重要なのは体重より<strong>“見た目”</strong>。姿勢から整えることで、あなたの骨格のポテンシャルを最大限引き出し、理想のボディラインに近づけます。',
   secs:[
-   {label:'CONCEPT｜骨格矯正トレーニング',img:'trainer-baf/oki-ideal.jpg',ph:'超理想像写真',body:'年間2,000件以上、たくさんの女性のボディラインを指導する中で、<strong>『女性のボディメイクこそ、高度な技術が必要』</strong>と確信しました。<br>トレーニングは筋肉を大きく成長させる行為です。だからこそやみくもにトレーニングをしてしまうと、ボディバランスを崩し、女性らしい綺麗なボディラインをつくることはできません。<br>そこで私があみだしたメソッドが、<strong>骨格矯正トレーニング</strong>です。まずは根本の歪みを整え、全体のシルエットから逆算して筋肉をつけていくことで、女性らしい健康的な美ボディを作ります。'},
+   {label:'CONCEPT｜骨格矯正トレーニング',img:'trainer-baf/oki-ideal.jpg',ph:'超理想像写真',body:'年間2,000件以上の指導を重ねる中で、<strong>『ボディメイクこそ、高度な技術が必要』</strong>と確信しました。<br>トレーニングは筋肉を大きく成長させる行為です。だからこそやみくもにトレーニングをしてしまうと、ボディバランスを崩し、狙った形に仕上げることはできません。<br>そこで私があみだしたメソッドが、<strong>骨格矯正トレーニング</strong>です。まずは根本の歪みを整え、全体のシルエットから逆算して筋肉をつけていくことで、バランスの取れた身体を作ります。'},
    {label:'STORY｜私自身の物語',ba:true,imgBefore:'trainer-baf/oki-before.jpg',imgAfter:'trainer-baf/oki-after.jpg',body:'かつての私は、<strong>自己流でどれだけ努力しても、思うように筋肉がつきませんでした。</strong>頑張っているのに体が変わらない——その悔しさは、痛いほど分かります。<br>変わったのは、自己流をやめて「骨格から整えて、狙った筋肉へ正しく効かせる」ことにたどり着いてから。自分の体が驚くほど変わり、最終的には<strong>ベストボディジャパンのファイナル</strong>の舞台へ立てました。<br>やり方さえ正しければ、体は必ず応えてくれる。変われない人なんて、いません。'},
    {label:'SESSION｜あなたへ',img:'trainer-baf/oki-session.jpg',ph:'セッション風景',body:'「たった一回のトレーニングで、見た目がスッキリした」「無理してないのに、いい姿勢が自然ととれる」——お客様から、そんな声をよくいただきます。<br>秘密は、歪みを整えて、あなたが本来持っている正しい姿勢に戻してあげること。それだけで、体は驚くほど引き締まって見えます。<br>だから、運動が苦手な初心者さんでも大丈夫。<strong>最初から苦しいトレーニングはしません。</strong>歪みを整えて、体の正しい使い方を覚えていくのが第一歩です。<br>まずはお気軽に、姿勢診断でご自身の現在地を知りに来てください。'}],
-  tags:['女性のボディメイク','姿勢・骨盤矯正','不調改善（肩こり・腰痛）','BBJファイナル','一般体操指導員']},
+  tags:['ボディメイク','姿勢・骨盤矯正','不調改善（肩こり・腰痛）','BBJファイナル','一般体操指導員']},
  nakano:{name:'中野 龍之介',en:'Ryunosuke Nakano',short:'中野',ig:'https://www.instagram.com/fit_ryunosuke/',
   img:'https://tokowaka-gym.com/images/trainer01.jpg',
   badges:['大会日本8位','オーナートレーナー','指導歴6年','英語対応'],
@@ -1385,10 +1387,10 @@ var TRAINER_PROFILES={
   sub:'どんな状態からでも、あなたの身体は必ず変わります。',
   secs:[
    {label:'CONCEPT｜身体はデザインできる',img:'trainer-baf/nakano-ideal.jpg',ph:'超理想像写真',body:'「スタイルは、生まれつきで決まっている」——そう思い込んでいませんか？違います。<strong>身体は、デザインできる。</strong><br>骨格という土台を活かし、狙った場所へ筋肉を足していけば、あなたの身体は思い通りに変わります。<br>「運動が苦手だから」と、諦める必要もありません。難しく見える動きも、<strong>やり方を知らないだけ</strong>。段階的なステップを踏めば、誰でもできるようになります。'},
-   {label:'STORY｜私自身の物語',ba:true,imgBefore:'trainer-baf/nakano-before.jpg',imgAfter:'trainer-baf/nakano-after.jpg',body:'私はかつて、海外モデルやミスコンファイナリスト、日本代表アスリートを指導していました。でもある時期、<strong>トレーニングを完全に手放した</strong>んです。<br>飛び込んだITベンチャーでの長時間労働。運動も食事もケアも後回しになり、気づけば「常に調子が悪い」「疲れが取れない」「自分の身体が好きになれない」——それが当たり前になっていました。<br>その経験から、私は忙しくても続けられる、時間効率の高いトレーニングを徹底的に研究しました。そして週1回だった頻度を段階的に増やし、<strong>たった4ヶ月で予選2位・大会日本8位</strong>を獲得。最短で成果を出す技術は、自分自身で証明しています。あなたも、必ず変われます。'},
-   {label:'SESSION｜私の強み',img:'trainer-baf/nakano-session.jpg',ph:'セッション風景',body:'<strong>「身体はデザインできる」——それを、どんなに忙しいあなたでも実現する。</strong>それが私の強みです。<br>あなたの骨格や身体の使い方を見極め、ゴールから逆算して、今のあなたに必要なことだけを最短で。実際に「3ヶ月でウエスト−13cm、体重−12kg」といった声もいただいています。<br>ヒップ育成・筋肥大・バルクアップから体型改善まで、「こんな身体になりたい」という理想があるなら、それを一緒に設計するのが私の仕事です。'},
+   {label:'STORY｜私自身の物語',ba:true,imgBefore:'trainer-baf/nakano-before.jpg',imgAfter:'trainer-baf/nakano-after.jpg',body:'私はかつて、海外モデルや日本代表アスリートを指導していました。でもある時期、<strong>トレーニングを完全に手放した</strong>んです。<br>飛び込んだITベンチャーでの長時間労働。運動も食事もケアも後回しになり、気づけば「常に調子が悪い」「疲れが取れない」「自分の身体が好きになれない」——それが当たり前になっていました。<br>その経験から、私は忙しくても続けられる、時間効率の高いトレーニングを徹底的に研究しました。そして週1回だった頻度を段階的に増やし、<strong>たった4ヶ月で予選2位・大会日本8位</strong>を獲得。最短で成果を出す技術は、自分自身で証明しています。あなたも、必ず変われます。'},
+   {label:'SESSION｜私の強み',img:'trainer-baf/nakano-session.jpg',ph:'セッション風景',body:'<strong>「身体はデザインできる」——それを、どんなに忙しいあなたでも実現する。</strong>それが私の強みです。<br>あなたの骨格や身体の使い方を見極め、ゴールから逆算して、今のあなたに必要なことだけを最短で。実際に「3ヶ月で体重−12kg、ウエスト−13cm」といった声もいただいています。<br>筋肥大・バルクアップから体型改善まで、「こんな身体になりたい」という理想があるなら、それを一緒に設計するのが私の仕事です。'},
    {label:'なぜTOKOWAKAをつくったのか',noimg:true,note:true,body:'正しい運動・食事・休息は、人によって最適解がまるで違います。これだけ情報が溢れた時代でも、“自分に合う方法”にたどり着くのは本当に難しい。<br>だからこそ我々は、パーソナルトレーニングという形で、一人ひとりに向き合うことにしました。少しずつ身体が整い、毎日が豊かになっていく人を増やしたい。<strong>その想いから、TOKOWAKAを作っています。</strong><br>「理想はあるけど、自分には無理かもしれない」という気持ちごと、持ってきてください。あなたの理想を、一緒に本気で設計します。'}],
-  tags:['大会日本8位','ヒップ育成','筋肥大・バルクアップ','時間効率設計','モデル・アスリート指導','英語対応']}};
+  tags:['大会日本8位','肩・背中の育成','筋肥大・バルクアップ','時間効率設計','モデル・アスリート指導','英語対応']}};
 function renderTrainerModal(k){
  var t=TRAINER_PROFILES[k];if(!t)return'';
  var h='<div class="tm-bar"><button class="tm-x" type="button" onclick="closeTrainerModal()" aria-label="閉じる">×</button></div>';
