@@ -181,17 +181,17 @@ var ENDPOINT = 'https://script.google.com/macros/s/AKfycbw7WxW7s5Vb84l3uEhOq5d_m
 var P = new URLSearchParams(location.search);
 function utm(k){ return (P.get(k) || '').slice(0,80); }
 
-/* 残枠を見て、埋まっていたらフォームを閉じる */
+/* 締切を過ぎていたらフォームを閉じる（応募に人数の上限は無い） */
 fetch(ENDPOINT + '?action=slots')
   .then(function(r){ return r.json(); })
   .then(function(d){
-    if (d && d.ok && d.remaining <= 0) {
+    if (d && d.ok && d.open === false) {
       document.getElementById('f').style.display = 'none';
       document.getElementById('head').style.display = 'none';
       document.getElementById('closed').style.display = 'block';
     }
   })
-  .catch(function(){ /* 取得できなくてもフォームは出す。満了判定はサーバー側でも行う */ });
+  .catch(function(){ /* 取得できなくてもフォームは出す。締切の判定はサーバー側でも行う */ });
 
 var LAST = null;
 

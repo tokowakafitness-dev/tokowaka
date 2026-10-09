@@ -333,15 +333,6 @@ tbody tr.hl td:first-child::after{content:"人気";font-size:9.5px;color:#fff;ba
 .tr-banner h3{font-family:'Shippori Mincho',serif;font-weight:600;font-size:clamp(18px,2.4vw,26px);color:var(--navy);line-height:1.5}
 .tr-banner h3 em{font-style:normal;color:var(--gold)}
 .tr-banner p{font-family:'Noto Sans JP',sans-serif;font-size:13px;color:var(--soft);margin-top:10px}
-.tr-rec{list-style:none;max-width:580px;margin:24px auto 0;border-top:1px solid var(--bd)}
-.tr-rec li{display:grid;grid-template-columns:48px 1fr auto;gap:12px;align-items:center;
-  padding:11px 2px;border-bottom:1px solid var(--bd);text-align:left}
-.tr-rec-n{font-family:'Shippori Mincho',serif;font-size:13.5px;color:var(--navy);font-weight:600}
-.tr-rec-c{font-size:12.5px;line-height:1.55;color:var(--navy)}
-.tr-rec-c i{display:block;font-style:normal;font-size:10.5px;color:var(--soft);margin-top:2px}
-.tr-rec-r{font-family:'Shippori Mincho',serif;font-size:15px;color:var(--gold);font-weight:600;white-space:nowrap}
-.tr-banner .tr-rec-f{font-size:12.5px;line-height:1.95;color:var(--soft);margin-top:16px}
-.tr-banner .tr-rec-f b{color:var(--navy);font-weight:500}
 
 /* 応募後の流れ */
 .fl{max-width:640px;margin:0 auto;list-style:none;counter-reset:fl;padding:0}
@@ -360,8 +351,7 @@ tbody tr.hl td:first-child::after{content:"人気";font-size:9.5px;color:#fff;ba
 .fl-f{max-width:640px;margin:30px auto 0;padding:19px 21px;background:#faf7f1;
   border-left:3px solid var(--gold);border-radius:var(--r);font-size:13.5px;line-height:1.95;color:var(--soft)}
 .fl-f b{color:var(--navy);font-weight:500}
-@media(max-width:600px){.tr-rec li{grid-template-columns:42px 1fr auto;gap:8px}
-  .fl>li{padding-left:50px}}
+@media(max-width:600px){.fl>li{padding-left:50px}}
 .tr-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;max-width:720px;margin:0 auto}
 .tr-card{border-radius:var(--r);overflow:hidden;box-shadow:0 4px 20px rgba(27,42,71,.08);display:flex;flex-direction:column;background:#fff}
 .tr-photo{aspect-ratio:4/5;position:relative;overflow:hidden;background:var(--navy-d)}
@@ -777,7 +767,7 @@ body{padding-bottom:78px}
   .hero{padding:46px 0 60px}
   .h-band{padding:14px 14px 17px}
   .h-band-lead{gap:9px;letter-spacing:.02em;font-size:13px}
-  .h-band-ttl{font-size:22px;letter-spacing:.03em;margin-top:8px}
+  .h-band-ttl{font-size:min(22px,5.4vw);letter-spacing:.02em;white-space:nowrap;margin-top:8px}
   .h-ttl{font-size:clamp(25px,6.6vw,31px);line-height:1.6;margin-top:24px}
   .h-body{margin-top:30px}
   .h-body>p+p{margin-top:28px;padding-top:28px}
@@ -1224,13 +1214,6 @@ summary.fq-q:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
     <div class="tr-banner">
       <h3>確かな知識と経験。<br class="br-sp"><em>全員が大会入賞者</em></h3>
       <p>あなたの目的に合わせて、選べる3名のトレーナー。</p>
-      <ul class="tr-rec">
-        <li><span class="tr-rec-n">鈴木</span><span class="tr-rec-c">APF JAPAN CLASSIC 2025<br class="br-sp"><i>2025年11月16日／八潮メセナ（埼玉）</i></span><span class="tr-rec-r">1位</span></li>
-        <li><span class="tr-rec-n">中野</span><span class="tr-rec-c">APF JAPAN CLASSIC 2025<br class="br-sp"><i>2025年11月16日／八潮メセナ（埼玉）</i></span><span class="tr-rec-r">予選2位</span></li>
-        <li><span class="tr-rec-n">中野</span><span class="tr-rec-c">APF GRAND CHAMPIONSHIPS 2025<br class="br-sp"><i>2025年11月24日／東京国際フォーラム ホールB</i></span><span class="tr-rec-r">日本8位</span></li>
-        <li><span class="tr-rec-n">沖</span><span class="tr-rec-c">ベストボディ・ジャパン2025<br class="br-sp"><i>神奈川・横浜大会</i></span><span class="tr-rec-r">入賞</span></li>
-      </ul>
-      <p class="tr-rec-f"><b>同じ大会の1位と2位を、当ジムのトレーナー2名が占めています。</b><br>二人は大学の同期です。</p>
     </div>
     <div class="tr-grid">
       <!-- 鈴木 -->
@@ -1397,19 +1380,19 @@ summary.fq-q:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
       <p>ご応募を確かに受け取った旨を、自動でお送りします。</p>
     </li>
     <li>
-      <b>結果のご連絡</b><span class="fl-m">3時間ほどでメール</span>
+      <b>一次選考の結果</b><span class="fl-m">3時間ほどでメール</span>
       <p>いただいた内容を確認のうえ、結果をお送りします。<br>21時以降にいただいたご応募は、翌朝9時ごろのご連絡になります。</p>
     </li>
     <li>
-      <b>体験トレーニングのご予約</b><span class="fl-m">通過された方のみ</span>
+      <b>最終選考へのご予約</b><span class="fl-m">一次選考を通過された方のみ</span>
       <p>ご案内するページから、ご都合のよい日時をお選びください。</p>
     </li>
     <li>
-      <b>体験当日</b>
-      <p>現状を数字で確認し、3ヶ月の進め方を具体的にご提案します。<br>モニター特別価格の金額とお支払い方法は、この日に書面でご案内します。</p>
+      <b>面談と体験トレーニング</b>
+      <p>現状を数字で確認し、3ヶ月の進め方を具体的にご提案します。</p>
     </li>
   </ol>
-  <p class="fl-f"><b>体験の場で、ご契約はお願いしません。</b>書面をお持ち帰りいただき、ご自宅でご検討ください。無理な勧誘は一切いたしません。</p>
+  <p class="fl-f"><b>無理な勧誘は一切いたしません。</b>ご納得いただけた場合のみ、お進みください。</p>
   <div class="cta-center"><a class="btn-gold" href="monitor-apply.html" data-cta="flow" onclick="return goRsv(this)">モニターに申し込む</a></div>
 </section>
 
