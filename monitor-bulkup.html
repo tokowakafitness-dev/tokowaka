@@ -74,10 +74,11 @@ img{display:block;max-width:100%}
   background:rgba(19,32,58,.42);flex:none}
 .h-band-ttl{color:var(--navy-d);font-size:clamp(21px,5.4vw,32px);font-weight:600;letter-spacing:.07em;
   line-height:1.4;margin-top:9px;text-wrap:balance}
-.hero{background:var(--navy-d) url('trainer-baf/suzuki-ideal.jpg') center 22%/cover no-repeat;
+.hero{background:var(--navy-d) url('trainer-baf/hero-contest.jpg') center 18%/cover no-repeat;
   color:#fff;padding:60px 0 74px;text-align:center;position:relative;overflow:hidden}
 .hero::before{content:"";position:absolute;inset:0;
-  background:linear-gradient(180deg,rgba(19,32,58,.86) 0%,rgba(19,32,58,.80) 45%,rgba(19,32,58,.90) 100%),
+  /* 暗幕B（オーナー決定 2026-10-09）。これ以上薄くすると、最も小さく薄い説明文から読めなくなる */
+  background:linear-gradient(180deg,rgba(19,32,58,.74) 0%,rgba(19,32,58,.66) 45%,rgba(19,32,58,.82) 100%),
              radial-gradient(ellipse 70% 60% at 50% 0%,rgba(184,150,90,.22),transparent 65%)}
 .hero>*{position:relative}
 .h-logo{font-family:'Shippori Mincho',serif;font-size:19px;letter-spacing:.2em;font-weight:500;
@@ -404,7 +405,7 @@ body.tm-lock{overflow:hidden}
 @media(max-width:600px){#trainer .si{padding-left:17px;padding-right:17px}
   .tr-banner{margin-bottom:30px}}
 
-/* ═══ Re-Build プログラム名 ═══ */
+/* ═══ Re-Comp プログラム名 ═══ */
 .rb-n{font-family:'Shippori Mincho',serif;font-size:clamp(38px,9.5vw,58px);font-weight:500;
   letter-spacing:.06em;line-height:1.1;margin:4px 0 0;color:var(--navy);text-align:center}
 .rb-d{text-align:center;font-family:'Shippori Mincho',serif;font-size:clamp(16px,3.4vw,19px);
@@ -414,6 +415,27 @@ body.tm-lock{overflow:hidden}
   .rb-d{font-size:16px;line-height:1.9;margin:17px 0 14px}}
 
 /* ═══ 理由カード：タイトル→写真→詳細 ═══ */
+/* ═══ 変化の記録：角度を横スワイプで切り替える ═══ */
+.cgw{display:grid;gap:22px;max-width:720px;margin:0 auto}
+.cg{background:#fff;border-radius:var(--r);box-shadow:0 4px 20px rgba(27,42,71,.08);overflow:hidden}
+.cg-tabs{display:flex;border-bottom:1px solid var(--bd);background:#fff}
+.cg-tabs button{flex:1;border:0;background:none;font-family:'Shippori Mincho',serif;font-size:12.5px;
+  letter-spacing:.08em;color:var(--soft);padding:12px 4px;cursor:pointer;border-bottom:2px solid transparent;
+  transition:color .2s,border-color .2s}
+.cg-tabs button.on{color:var(--navy);font-weight:600;border-bottom-color:var(--gold)}
+.cg-track{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
+  -webkit-overflow-scrolling:touch;scrollbar-width:none}
+.cg-track::-webkit-scrollbar{display:none}
+.cg-pane{flex:0 0 100%;scroll-snap-align:start;display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--bd)}
+.cg-s{aspect-ratio:3/4;background:var(--stone);position:relative;overflow:hidden}
+.cg-s img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.cg-l{position:absolute;top:9px;left:9px;z-index:2;font-size:10.5px;font-weight:500;letter-spacing:.08em;
+  color:#fff;background:rgba(19,32,58,.62);padding:3px 10px;border-radius:2px}
+.cg-l-a{background:rgba(184,150,90,.92)}
+.cg-hint{font-size:10.5px;letter-spacing:.06em;color:var(--soft);text-align:center;padding:9px 10px 11px;
+  border-top:1px solid var(--bd)}
+@media(min-width:620px){.cgw{grid-template-columns:1fr 1fr}}
+
 /* 浮き出しカード：トレーナーカードと同じ質感を各セクションの項目へ */
 .rc,.tg-c,.vo-c,.jn-i,.fq-i,.rq,.ng,.inf{background:#fff;border-radius:var(--r);
   box-shadow:0 4px 20px rgba(27,42,71,.08);overflow:hidden}
@@ -571,12 +593,6 @@ body.tm-lock{overflow:hidden}
 .pb-ph img[src=""]{display:none}
 
 /* ═══ 口コミ内のビフォーアフター写真枠 ═══ */
-.vo-ba{display:grid;grid-template-columns:1fr 1fr;gap:1px;background:var(--bd);margin:0;border-bottom:1px solid var(--bd)}
-.vo-s{aspect-ratio:3/4;background:var(--stone);display:flex;align-items:center;justify-content:center;position:relative}
-.vo-s::after{content:attr(data-ph);font-family:'Noto Sans JP',sans-serif;
-  font-size:14px;letter-spacing:.12em;color:rgba(93,87,78,.62)}
-.vo-s img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.vo-s img[src=""]{display:none}
 
 /* ═══ ビフォーアフター事例 ═══ */
 .ba{display:grid;gap:20px;max-width:760px;margin:0 auto 34px}
@@ -950,13 +966,43 @@ footer a{color:rgba(255,255,255,.7)}
   <h2 class="s-ttl">「これ以上変われないのでは」<br>そう思った方でも、<br>ここまで変わっています</h2>
   
 
-  <p class="s-lead">Googleクチコミに寄せられた実際のお声と、変化の記録です。</p>
+  <p class="s-lead">実際に通われた方の記録です。<br>角度のある方は、<b>横にスワイプ</b>すると切り替わります。</p>
+  <div class="cgw">
+    <div class="cg">
+      <div class="cg-tabs"><button type="button" class="on" onclick="cgGo(this,0)">正面</button><button type="button" class="" onclick="cgGo(this,1)">横から</button><button type="button" class="" onclick="cgGo(this,2)">背面</button></div>
+      <div class="cg-track" onscroll="cgSync(this)">
+        <div class="cg-pane"><div class="cg-s"><img src="images/monitor/p1-front-before.jpg" alt="Before" loading="lazy"><span class="cg-l">Before</span></div><div class="cg-s"><img src="images/monitor/p1-front-after.jpg" alt="After" loading="lazy"><span class="cg-l cg-l-a">After</span></div></div>
+        <div class="cg-pane"><div class="cg-s"><img src="images/monitor/p1-side-before.jpg" alt="Before" loading="lazy"><span class="cg-l">Before</span></div><div class="cg-s"><img src="images/monitor/p1-side-after.jpg" alt="After" loading="lazy"><span class="cg-l cg-l-a">After</span></div></div>
+        <div class="cg-pane"><div class="cg-s"><img src="images/monitor/p1-back-before.jpg" alt="Before" loading="lazy"><span class="cg-l">Before</span></div><div class="cg-s"><img src="images/monitor/p1-back-after.jpg" alt="After" loading="lazy"><span class="cg-l cg-l-a">After</span></div></div>
+      </div>
+      <p class="cg-hint">← 横にスワイプで角度を切り替え →</p>
+    </div>
+    <div class="cg">
+      <div class="cg-tabs"><button type="button" class="on" onclick="cgGo(this,0)">正面</button><button type="button" class="" onclick="cgGo(this,1)">横から</button><button type="button" class="" onclick="cgGo(this,2)">背面</button></div>
+      <div class="cg-track" onscroll="cgSync(this)">
+        <div class="cg-pane"><div class="cg-s"><img src="images/monitor/p2-front-before.jpg" alt="Before" loading="lazy"><span class="cg-l">Before</span></div><div class="cg-s"><img src="images/monitor/p2-front-after.jpg" alt="After" loading="lazy"><span class="cg-l cg-l-a">After</span></div></div>
+        <div class="cg-pane"><div class="cg-s"><img src="images/monitor/p2-side-before.jpg" alt="Before" loading="lazy"><span class="cg-l">Before</span></div><div class="cg-s"><img src="images/monitor/p2-side-after.jpg" alt="After" loading="lazy"><span class="cg-l cg-l-a">After</span></div></div>
+        <div class="cg-pane"><div class="cg-s"><img src="images/monitor/p2-back-before.jpg" alt="Before" loading="lazy"><span class="cg-l">Before</span></div><div class="cg-s"><img src="images/monitor/p2-back-after.jpg" alt="After" loading="lazy"><span class="cg-l cg-l-a">After</span></div></div>
+      </div>
+      <p class="cg-hint">← 横にスワイプで角度を切り替え →</p>
+    </div>
+    <div class="cg">
+      <div class="cg-track" onscroll="cgSync(this)">
+        <div class="cg-pane"><div class="cg-s"><img src="images/monitor/p3-front-before.jpg" alt="Before" loading="lazy"><span class="cg-l">Before</span></div><div class="cg-s"><img src="images/monitor/p3-front-after.jpg" alt="After" loading="lazy"><span class="cg-l cg-l-a">After</span></div></div>
+      </div>
+    </div>
+    <div class="cg">
+      <div class="cg-track" onscroll="cgSync(this)">
+        <div class="cg-pane"><div class="cg-s"><img src="images/monitor/p4-front-before.jpg" alt="Before" loading="lazy"><span class="cg-l">Before</span></div><div class="cg-s"><img src="images/monitor/p4-front-after.jpg" alt="After" loading="lazy"><span class="cg-l cg-l-a">After</span></div></div>
+      </div>
+    </div>
+  </div>
+  <p class="vo-note">※ ご本人の許諾を得て掲載しています。個人の感想であり、効果を保証するものではありません。</p>
+
+  <h2 class="s-ttl" style="margin-top:var(--sec)">お客様の声</h2>
+  <p class="s-lead">Googleクチコミに寄せられた実際のお声です。</p>
   <div class="vo">
     <div class="vo-c">
-      <div class="vo-ba">
-        <div class="vo-s" data-ph="Before"><img src="" alt="" loading="lazy"></div>
-        <div class="vo-s" data-ph="After"><img src="" alt="" loading="lazy"></div>
-      </div>
       <div class="vo-h">
         <div class="vo-av">M</div>
         <div class="vo-m"><div class="vo-st">★★★★★</div><div class="vo-nm">Google クチコミ</div></div>
@@ -965,10 +1011,6 @@ footer a{color:rgba(255,255,255,.7)}
       <p class="vo-t">過去他のパーソナルにも通っていましたが、ガンガン盛り上げる雰囲気や担当がちょくちょく変わるのに違和感が…。その点カミさんはとても落ち着いていて頼れる存在です。<b>1年以上見ていただき、増量も目標通り、記録も伸び続けています。</b>トレーニングが好きになり、習慣づくりができたのが何よりありがたかったです。</p>
     </div>
     <div class="vo-c">
-      <div class="vo-ba">
-        <div class="vo-s" data-ph="Before"><img src="" alt="" loading="lazy"></div>
-        <div class="vo-s" data-ph="After"><img src="" alt="" loading="lazy"></div>
-      </div>
       <div class="vo-h">
         <div class="vo-av">T</div>
         <div class="vo-m"><div class="vo-st">★★★★★</div><div class="vo-nm">Google クチコミ</div></div>
@@ -977,10 +1019,6 @@ footer a{color:rgba(255,255,255,.7)}
       <p class="vo-t">初パーソナル。オシャレなアパートの中に、筋トレ器具がしっかり揃ったジムでした。<b>沖さんに教わって、筋トレの質がめちゃくちゃ上がりました。フォームや力の入れ方のアドバイスが的確です。</b>閑静な住宅街にあって、女性でも安心して通えます。</p>
     </div>
     <div class="vo-c">
-      <div class="vo-ba">
-        <div class="vo-s" data-ph="Before"><img src="" alt="" loading="lazy"></div>
-        <div class="vo-s" data-ph="After"><img src="" alt="" loading="lazy"></div>
-      </div>
       <div class="vo-h">
         <div class="vo-av">S</div>
         <div class="vo-m"><div class="vo-st">★★★★★</div><div class="vo-nm">Google クチコミ</div></div>
@@ -1025,8 +1063,8 @@ footer a{color:rgba(255,255,255,.7)}
 <div class="wrap">
 <section class="si">
   <h2 class="s-ttl">TOKOWAKAがご提案する<br>バルクアッププログラム</h2>
-  <p class="rb-n">Re-Build</p>
-  <p class="rb-d">今ある身体を土台から組み立て直し、<br>狙った形へ積み上げていきます。</p>
+  <p class="rb-n">Re-Comp</p>
+  <p class="rb-d">脂肪を落としながら、筋肉を増やす。<br>同時に進めるから、見た目が変わります。</p>
   <p class="s-lead">3つを同時に設計します。どれか一つでも欠けると、身体は変わりません。<br>一人ひとりの骨格・レベル・生活に合わせて組み立てます。</p>
   <div class="rc-w">
     <div class="rc">
@@ -1409,6 +1447,17 @@ function goRsv(el){
 }
 /* トレーナーのプロフィールから申し込む導線。移植元で定義が欠けていたため補う */
 function goToReservation(el){ return goRsv(el); }
+/* 変化の記録：タブとスワイプを同期させる */
+function cgGo(btn,i){
+  var tr=btn.closest('.cg').querySelector('.cg-track');
+  tr.scrollTo({left:tr.clientWidth*i,behavior:'smooth'});
+}
+function cgSync(tr){
+  var tabs=tr.closest('.cg').querySelectorAll('.cg-tabs button');
+  if(!tabs.length)return;
+  var i=Math.round(tr.scrollLeft/tr.clientWidth);
+  for(var k=0;k<tabs.length;k++)tabs[k].className=(k===i?'on':'');
+}
 /* タイプ切替（A/B） */
 function selType(t){
   ['A','B'].forEach(function(k){
