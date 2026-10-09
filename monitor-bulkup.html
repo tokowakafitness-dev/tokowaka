@@ -467,9 +467,8 @@ body.tm-lock{overflow:hidden}
 .rc-ph img[src=""],.rc-ph.ph img{display:none}
 .rc-d{font-size:var(--fs);line-height:2.05;margin:20px 26px 26px}
 /* プログラム紹介の写真は、理由カードより縦長にして見せ場を作る */
-.rc-w.tall .rc-ph{aspect-ratio:4/3}
-/* チャット画面は縦長なので、枠を正方形にして大きく見せる */
-.rc-w.tall .rc-ph.sq{aspect-ratio:1/1}
+/* プログラム紹介は、チャット画面がそのまま収まる正方形に揃える */
+.rc-w.tall .rc-ph{aspect-ratio:1/1}
 
 .rc-d b{font-weight:500;color:var(--navy)}
 @media(max-width:600px){
@@ -1103,7 +1102,7 @@ footer a{color:rgba(255,255,255,.7)}
         <div class="rc-n">02</div>
         <div class="rc-t">毎日の食事に、個別フィードバック</div>
       </div>
-      <div class="rc-ph sq" data-ph="食事フィードバックの画面"><img src="images/monitor/rebuild-meal-fb.jpg" alt="毎日の食事記録へのフィードバック画面" loading="lazy"></div>
+      <div class="rc-ph" data-ph="食事フィードバックの画面"><img src="images/monitor/rebuild-meal-fb.jpg" alt="毎日の食事記録へのフィードバック画面" loading="lazy"></div>
       <p class="rc-d">週1回の指導では、7日のうち6日が野放しになります。本プログラムは<b>毎日の食事記録に対して個別にお返し</b>します。目標カロリーとPFCを設計し、「あと何をどれだけ足すか」を日々調整。食べられない方には、無理なく量を増やす方法からお伝えします。</p>
     </div>
     <div class="rc">
