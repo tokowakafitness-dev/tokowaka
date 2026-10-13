@@ -1562,6 +1562,11 @@ function goRsv(el){
         sessionStorage.setItem('mcv_tracked','1');
         dataLayer.push({event:'mCV_form_click'});
       }
+      /* CTAは7箇所あり、固定バーは帯ごと押せる。同じ人が何度押しても
+         1回だけ数える。のべ回数だと、フォーム到達と母数の意味が変わって
+         歩留まりが読めなくなる。2回目以降も遷移はする（計測しないだけ）。 */
+      if(sessionStorage.getItem('cta_tracked')) throw 0;
+      sessionStorage.setItem('cta_tracked','1');
       dataLayer.push({
         event:'cta_reservation_click',
         cta_location:(el&&el.getAttribute&&el.getAttribute('data-cta'))||'monitor_lp',
