@@ -116,7 +116,10 @@ footer a{color:var(--soft)}
 <form id="f" autocomplete="on">
   <div class="card">
     <div class="fd"><label>お名前<span class="req">必須</span></label>
-      <input type="text" id="name" autocomplete="name"></div>
+      <div class="fd2">
+        <input type="text" id="lastName" placeholder="姓" autocomplete="family-name">
+        <input type="text" id="firstName" placeholder="名" autocomplete="given-name">
+      </div></div>
     <div class="fd"><label>メールアドレス<span class="req">必須</span></label>
       <input type="email" id="email" inputmode="email" autocomplete="email">
       <p class="hint">選考結果をこちらにお送りします。</p></div>
@@ -212,7 +215,7 @@ function setDone(state, title, text){
 function collect(){
   function v(id){ return (document.getElementById(id).value || '').trim(); }
   return {
-    name:v('name'), email:v('email'), phone:v('phone'),
+    name:(v('lastName') + ' ' + v('firstName')).trim(), email:v('email'), phone:v('phone'),
     age:v('age'), height:v('height'), weight:v('weight'), fat:v('fat'),
     goal:v('goal'), motive:v('motive'), company:v('company'),
     utm_source:utm('utm_source'), utm_medium:utm('utm_medium'),
@@ -222,7 +225,7 @@ function collect(){
 
 /* 入力の不足はブラウザ側で先に弾く。送信後に戻されるのを避けるため */
 function clientCheck(d){
-  var need=[['name','お名前'],['email','メールアドレス'],['phone','電話番号'],
+  var need=[['lastName','姓'],['firstName','名'],['email','メールアドレス'],['phone','電話番号'],
             ['age','年齢'],['height','身長'],['weight','体重'],
             ['goal','目標'],['motive','意気込み']];
   for (var i=0;i<need.length;i++){
