@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>バルクアップ モニター 料金</title>
+<style>
+:root{
+  --navy:#1b2a47;--navy-d:#13203a;
+  --gold:#b8965a;--gold-l:#cda86c;--gold-p:#f3ecdc;--gold-hero:#eed7a0;
+  --warm:#faf5eb;--white:#fff;--stone:#e6ddcd;
+  --ink:#22201c;--soft:#5d574e;
+  --bd:rgba(27,42,71,.10);--r:3px;--max:960px;
+  --mincho:"Hiragino Mincho ProN","HiraMinProN-W3","Yu Mincho",YuMincho,"Noto Serif JP","Source Han Serif JP","MS PMincho",serif;
+  --gothic:"Hiragino Sans","Hiragino Kaku Gothic ProN","Yu Gothic",YuGothic,"Noto Sans JP",Meiryo,"MS PGothic",sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:var(--gothic);background:var(--white);color:var(--ink);
+  font-size:14.5px;line-height:1.9;font-weight:400;letter-spacing:.035em;-webkit-text-size-adjust:100%}
+.wrap{max-width:var(--max);margin:0 auto;padding:0 30px}
+
+/* ───── 内部メモ（面談前に非表示にする） ───── */
+.im{background:#2d2a24;color:#f0e6d2;font-size:12px;line-height:1.85;padding:14px 0;border-bottom:2px solid var(--gold)}
+.im .wrap{display:flex;gap:16px;align-items:flex-start;flex-wrap:wrap}
+.im-b{flex:1;min-width:200px}
+.im-h{font-family:var(--mincho);font-size:13.5px;font-weight:700;color:var(--gold-hero);letter-spacing:.08em;margin-bottom:5px}
+.im ul{list-style:none;font-size:11.5px;line-height:1.85}
+.im li{padding-left:14px;position:relative;margin-bottom:3px}
+.im li::before{content:"";position:absolute;left:0;top:10px;width:5px;height:1px;background:var(--gold)}
+.im-btn{flex:none;background:none;border:1px solid rgba(240,230,210,.45);color:#f0e6d2;
+  font-family:inherit;font-size:11.5px;letter-spacing:.08em;padding:9px 16px;border-radius:var(--r);cursor:pointer}
+.im-btn:hover{background:rgba(240,230,210,.1)}
+.tbd{display:inline-block;font-size:9.5px;font-weight:400;letter-spacing:.06em;
+  color:#8a6d2f;background:#f5e7c4;border:1px solid #ddc48a;border-radius:var(--r);
+  padding:1px 6px;margin-left:6px;vertical-align:middle;white-space:nowrap;font-family:var(--gothic)}
+body.hide-internal .im,body.hide-internal .tbd{display:none}
+
+/* ───── HERO ───── */
+.hero{background:var(--navy);color:#fff;padding:48px 0 42px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(184,150,90,.18),transparent 62%)}
+.hero>*{position:relative}
+.h-logo{font-family:var(--mincho);font-size:19px;letter-spacing:.2em;font-weight:600;color:rgba(255,255,255,.88)}
+.h-logo small{display:block;font-family:var(--gothic);font-size:7.5px;letter-spacing:.28em;color:var(--gold-l);margin-top:5px;text-transform:uppercase;font-weight:400}
+.h-badge{display:block;color:var(--gold-hero);font-size:11.5px;letter-spacing:.17em;margin-top:26px}
+.h-ttl{font-family:var(--mincho);font-size:clamp(23px,6vw,33px);font-weight:600;letter-spacing:.06em;margin-top:8px;line-height:1.5}
+.h-sub{font-size:13px;color:rgba(255,255,255,.72);margin-top:14px;line-height:1.95}
+.h-lim{display:inline-flex;align-items:center;gap:11px;border:1px solid var(--gold);color:var(--gold-hero);
+  font-size:11.5px;letter-spacing:.13em;padding:8px 20px;border-radius:var(--r);margin-top:20px}
+
+/* ───── SECTION ───── */
+.si{padding:44px 0 6px}
+.s-en{font-size:11.5px;color:var(--gold);letter-spacing:.16em;text-align:center}
+.s-ttl{font-family:var(--mincho);font-size:clamp(19px,4.8vw,23px);font-weight:600;color:var(--navy);letter-spacing:.05em;margin:4px 0 8px;text-align:center;line-height:1.5}
+.s-lead{text-align:center;font-size:13px;color:var(--soft);margin-bottom:24px;line-height:1.95}
+
+/* ───── セレクター ───── */
+.sel{border:1px solid var(--bd);border-top:2px solid var(--gold);background:var(--warm);padding:22px}
+.sel-q{font-family:var(--mincho);font-size:15px;font-weight:600;color:var(--navy);margin-bottom:3px}
+.sel-n{font-size:11.5px;color:var(--soft);margin-bottom:13px;line-height:1.8}
+.sel-o{display:grid;gap:9px;grid-template-columns:repeat(3,1fr)}
+.sel-o.c2{grid-template-columns:repeat(2,1fr)}
+.opt{background:var(--white);border:1px solid var(--bd);border-radius:var(--r);padding:13px 8px;
+  text-align:center;cursor:pointer;font-family:inherit;font-size:13px;color:var(--ink);
+  letter-spacing:.03em;line-height:1.6;transition:border-color .2s,background .2s,box-shadow .2s;min-height:58px}
+.opt b{display:block;font-family:var(--mincho);font-size:15.5px;font-weight:600;color:var(--navy)}
+.opt span{display:block;font-size:10.5px;color:var(--soft);margin-top:3px;line-height:1.55}
+.opt:hover{border-color:var(--gold-l)}
+.opt[aria-pressed="true"]{background:var(--navy);border-color:var(--navy);box-shadow:0 4px 14px rgba(27,42,71,.2)}
+.opt[aria-pressed="true"] b{color:#fff}
+.opt[aria-pressed="true"] span{color:var(--gold-hero)}
+
+/* ───── お見積りカード ───── */
+.qt{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:4px}
+.qt-c{border:1px solid var(--bd);border-top:2px solid var(--gold);background:var(--white);
+  box-shadow:0 6px 22px rgba(27,42,71,.07);padding:24px 20px 22px;position:relative}
+.qt-c.rec{border-top-color:var(--navy);background:var(--warm)}
+.qt-tag{position:absolute;top:-1px;right:16px;background:var(--gold);color:#fff;font-size:9.5px;
+  letter-spacing:.1em;padding:3px 10px;border-radius:0 0 var(--r) var(--r)}
+.qt-h{font-family:var(--mincho);font-size:17px;font-weight:600;color:var(--navy);letter-spacing:.05em;text-align:center}
+.qt-h em{display:block;font-style:normal;font-family:var(--gothic);font-size:11px;font-weight:400;color:var(--soft);letter-spacing:.04em;margin-top:3px;line-height:1.7}
+.qt-pl{font-size:10.5px;letter-spacing:.08em;color:var(--gold);text-align:center;margin-top:16px}
+.qt-was{display:block;text-align:center;font-size:12px;color:var(--soft);text-decoration:line-through;
+  text-decoration-color:rgba(93,87,78,.5);margin-top:4px}
+.qt-v{font-family:var(--mincho);font-size:clamp(26px,7vw,33px);font-weight:600;color:var(--gold);
+  text-align:center;line-height:1.2;margin-top:1px}
+.qt-u{text-align:center;font-size:11.5px;color:var(--soft);margin-top:4px}
+.qt-u b{font-weight:600;color:var(--navy)}
+.qt-cut{text-align:center;margin-top:9px}
+.qt-cut span{display:inline-block;background:var(--gold-p);color:#8a6d2f;font-size:11px;letter-spacing:.05em;padding:3px 11px;border-radius:var(--r)}
+.qt-f{text-align:center;font-size:11.5px;color:var(--soft);margin-top:15px;padding-top:13px;border-top:1px solid var(--bd);line-height:1.8}
+.qt-f b{font-weight:600;color:var(--navy)}
+
+/* ───── 表 ───── */
+.tw{margin-top:8px}
+caption{text-align:left;font-family:var(--mincho);font-size:16px;font-weight:600;color:var(--navy);
+  padding:22px 0 6px;letter-spacing:.05em}
+caption em{display:block;font-family:var(--gothic);font-size:11.5px;font-weight:400;font-style:normal;color:var(--soft);margin-top:3px;letter-spacing:.03em;line-height:1.75}
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+thead th{background:var(--navy);color:#fff;font-size:10.5px;font-weight:400;letter-spacing:.07em;padding:11px 7px;text-align:right;white-space:nowrap}
+thead th:first-child{text-align:left}
+tbody td{padding:13px 7px;text-align:right;border-bottom:1px solid var(--bd);white-space:nowrap}
+tbody td:first-child{text-align:left;font-family:var(--mincho);font-size:15px;font-weight:600;color:var(--navy)}
+tbody tr.on{background:var(--gold-p);box-shadow:inset 3px 0 0 var(--gold)}
+.was{color:var(--soft);font-size:12.5px;text-decoration:line-through;text-decoration-color:rgba(93,87,78,.5)}
+.now{font-family:var(--mincho);font-size:16.5px;font-weight:600;color:var(--gold)}
+.pct{display:block;font-family:var(--gothic);font-size:10.5px;font-weight:400;color:var(--gold);letter-spacing:.06em;margin-top:2px}
+.nm{font-family:var(--mincho);font-size:14px;color:var(--ink)}
+.cut{font-family:var(--mincho);font-size:14.5px;font-weight:600;color:var(--navy)}
+.per{display:block;font-size:10.5px;color:var(--soft);font-weight:400;font-family:var(--gothic)}
+.tn{font-size:11.5px;color:var(--soft);line-height:1.85;margin-top:10px}
+.flag{display:none;background:var(--gold-p);border:1px solid #ddc48a;border-left:3px solid var(--gold);
+  font-size:11.5px;color:#7a5f28;padding:8px 13px;margin-top:10px;line-height:1.75}
+body.face-on .flag{display:block}
+
+/* ───── 特典カード ───── */
+.of{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.of-c{border:1px solid var(--bd);border-top:2px solid var(--gold);padding:22px 16px;text-align:center;background:var(--warm)}
+.of-n{font-size:10.5px;color:var(--gold);letter-spacing:.12em}
+.of-t{font-family:var(--mincho);font-size:14.5px;font-weight:600;color:var(--navy);margin:7px 0 9px}
+.of-v{font-family:var(--mincho);font-size:30px;font-weight:600;color:var(--gold);line-height:1.15}
+.of-v small{font-size:14px;margin-left:2px}
+.of-w{font-size:10.5px;color:var(--soft);margin-top:8px;line-height:1.7}
+
+/* ───── 比較／条件 ───── */
+.cp{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.cp-c{border:1px solid var(--bd);background:var(--white);padding:22px 22px 20px}
+.cp-h{font-family:var(--mincho);font-size:16px;font-weight:600;color:var(--navy);
+  display:flex;align-items:center;gap:9px;padding-bottom:10px;margin-bottom:11px;border-bottom:1px solid var(--bd)}
+.cp-h svg{flex:none}
+.cp-c ul,.cd ul{list-style:none;font-size:12.5px;line-height:1.95}
+.cp-c li,.cd li{padding-left:16px;position:relative;margin-bottom:8px}
+.cp-c li::before,.cd li::before{content:"";position:absolute;left:0;top:11px;width:6px;height:1px;background:var(--gold)}
+.cp-c li:last-child,.cd li:last-child{margin-bottom:0}
+.cp-c li b,.cd li b{font-weight:600;color:var(--navy)}
+.cd{background:var(--warm);border:1px solid var(--bd);padding:24px 26px;margin-top:10px}
+.cd-h{font-family:var(--mincho);font-size:15.5px;font-weight:600;color:var(--navy);margin-bottom:13px;padding-bottom:9px;border-bottom:1px solid var(--bd)}
+.cd li span.sub{display:block;font-size:11.5px;color:var(--soft);line-height:1.8;margin-top:2px}
+
+/* ───── 裏メニュー（既定で非表示・トレーナーが開く） ───── */
+.more{margin-top:52px;border-top:1px solid var(--bd);padding-top:18px}
+.more-l{font-size:10.5px;color:#a79e8f;letter-spacing:.12em;text-align:center;margin-bottom:11px}
+.more-b{display:flex;gap:8px;justify-content:center;flex-wrap:wrap}
+.more-btn{background:var(--white);border:1px solid var(--stone);color:var(--soft);font-family:inherit;
+  font-size:11.5px;letter-spacing:.04em;padding:8px 15px;border-radius:var(--r);cursor:pointer;line-height:1.5}
+.more-btn:hover{border-color:var(--gold-l);color:var(--navy)}
+.more-btn[aria-expanded="true"]{background:var(--navy);border-color:var(--navy);color:#fff}
+/* 開いている間は選択の列を消す。お客様には「いま見ているもの」だけが残る */
+.more.on .more-l,.more.on .more-b{display:none}
+.more-x{display:none}
+.more.on .more-x{display:block;margin:0 0 0 auto;background:none;border:0;padding:4px 2px;
+  font-family:inherit;font-size:11px;color:#bdb5a7;letter-spacing:.1em;cursor:pointer;line-height:1}
+.more.on .more-x:hover{color:var(--soft)}
+.panel{display:none}
+.panel.open{display:block}
+.pn{border:1px solid var(--bd);border-top:2px solid var(--navy);background:var(--white);padding:26px 24px;margin-top:20px}
+.pn-h{font-family:var(--mincho);font-size:18px;font-weight:600;color:var(--navy);letter-spacing:.05em;line-height:1.5}
+.pn-l{font-size:12.5px;color:var(--soft);line-height:1.95;margin-top:8px}
+.pn-l b{font-weight:600;color:var(--navy)}
+.pn .sel-o{margin-top:14px}
+
+.cta{background:var(--navy);color:#fff;text-align:center;padding:36px 30px;margin-top:44px}
+.cta-t{font-family:var(--mincho);font-size:clamp(17px,4.6vw,21px);font-weight:600;letter-spacing:.05em;line-height:1.65}
+.cta-s{font-size:12.5px;color:rgba(255,255,255,.72);margin-top:11px;line-height:1.95}
+footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;padding:22px 0;font-size:10.5px;letter-spacing:.08em;line-height:2}
+
+/* ───── 狭い画面：表をカードに畳む ───── */
+@media(max-width:760px){
+  .wrap{padding:0 16px}
+  .qt,.cp,.of{grid-template-columns:1fr}
+  .sel,.pn{padding:20px 16px}
+  .sel-o{gap:7px}
+  .opt{padding:11px 4px;font-size:12px}
+  .opt b{font-size:14px}
+  .opt span{font-size:9.5px;letter-spacing:0}
+  table,thead,tbody,tr,td{display:block;width:100%}
+  thead{display:none}
+  caption{display:block;padding:20px 0 8px}
+  tbody tr{border:1px solid var(--bd);border-left:3px solid var(--stone);margin-bottom:11px;padding:4px 14px 10px;background:var(--white)}
+  tbody tr.on{background:var(--gold-p);border-left-color:var(--gold);box-shadow:none}
+  tbody td{display:flex;justify-content:space-between;align-items:baseline;gap:12px;
+    text-align:right;padding:8px 0;white-space:normal;border-bottom:1px dashed var(--bd)}
+  tbody td:first-child{display:block;text-align:left;border-bottom:1px solid var(--bd);padding:9px 0 7px;font-size:16px}
+  tbody td:last-child{border-bottom:none}
+  tbody td::before{content:attr(data-l);flex:none;font-size:10.5px;color:var(--soft);letter-spacing:.05em;
+    font-weight:400;font-family:var(--gothic);text-align:left}
+  tbody td:first-child::before{display:none}
+  .per{display:inline;margin-left:6px}
+}
+@media(max-width:380px){
+  .wrap{padding:0 13px}
+  .opt{padding:10px 2px}
+  .opt b{font-size:13px}
+  .more-btn{font-size:11px;padding:8px 11px}
+}
+@media print{
+  body{font-size:11px}
+  .im,.more{display:none}
+  .hero{padding:24px 0 20px}
+  .si{padding:20px 0 4px;page-break-inside:avoid}
+  .cta{margin-top:20px;padding:20px}
+  *{-webkit-print-color-adjust:exact !important;print-color-adjust:exact !important}
+  @page{margin:12mm}
+}
+</style>
+</head>
+<body>
+
+<!-- ══ 内部メモ：お客様にお見せする前に「内部メモを隠す」を押す ══ -->
+<div class="im" id="im">
+  <div class="wrap">
+    <div class="im-b">
+      <div class="im-h">社内メモ ── お客様にお見せする前に非表示にしてください</div>
+      <ul>
+        <li><b>ご提案の手順</b>（この順でお願いします）
+          <span class="sub">
+          <b>1．まず①（表の価格）をご提案する。</b>最初から裏を開かないこと。<br>
+          <b>2．ご予算が難しいご様子でも、すぐに値段を下げない。</b>「ご無理のない金額はどのくらいでしょうか」と、まず<b>許容できる金額をうかがう</b><br>
+          <b>3．うかがった金額に合う段へ進む。</b>上から1段ずつ下ろしていくのではありません。聞いた金額で行き先を決めてください<br>
+          <b>4．②（掲載へのご協力）は値引きの段ではありません。</b>「ご予算が厳しいから②」ではなく、<b>「お顔出しにご協力いただけるから②」</b>です。ご協力のお話が出ないうちは開かないこと<br>
+          <b>5．③以降（トレーニング特化）は別のコースです。</b>食事管理と進捗管理が付きません。安いほうをお勧めする、という出し方はしないでください
+          </span></li>
+        <li><b>段の中身</b>：① 表の価格 ／ ② 掲載へのご協力（25/30/35%）／ ③ トレーニング特化（半年・モニター対象外）／ ④ トレーニング特化モニタ①（3ヶ月・入会金半額）／ ⑤ トレーニング特化モニタ②（3ヶ月・入会金0円）。<b>裏は自分で開くまで出ません。</b></li>
+        <li><b>ボタンの名前に期間と金額は書いていません。</b>「3ヶ月」「0円」とボタンに出ていると、開く前にお客様へ「もっと安いものがある」と伝わってしまうためです。中身は内部メモのとおり</li>
+        <li><b>モニタ①は値引きではありません。</b>通常6ヶ月の契約を3ヶ月の区切りにする、という提案です。単価は下げません。モニタ②（入会金0円）が最後の一手です</li>
+        <li><b>未確定</b>：掲載協力による追加のご優待（1回¥12,500）と6ヶ月コースは<b>オーナー承認待ち</b>です</li>
+        <li><b>出してよい金額</b>：この資料に載っている金額が<b>すべて</b>です。ここに無い金額・端数の調整・「今日決めていただけたら」の上乗せは出さないでください。トレーナー紹介でお越しの方は、表の価格でのご案内を基本にしてください</li>
+        <li><b>採算・報酬・総支払額は、この資料のどこにも載せていません。</b>どの段がお店にとって得か・損かは、この手順には関係しません。<b>口頭でも出さないこと。</b>「この値段だと赤字で」のような言い方もしないでください</li>
+      </ul>
+    </div>
+    <button class="im-btn" id="imBtn" type="button">内部メモを隠す</button>
+  </div>
+</div>
+
+<div class="hero">
+  <div class="wrap">
+    <div class="h-logo">TOKOWAKA<small>Kichijoji</small></div>
+    <span class="h-badge">BULK-UP PROGRAM</span>
+    <h1 class="h-ttl">バルクアッププログラム<br>料金のご案内</h1>
+    <p class="h-sub">ご一緒に、無理なく続けられるプランを決めましょう。<br>モニター特別価格でのご提供です（無償のご提供ではありません）。</p>
+    <div class="h-lim">選考 5 名様</div>
+  </div>
+</div>
+
+<div class="wrap">
+
+<!-- ══ ご優待 ══ -->
+<section class="si">
+  <div class="s-en">Monitor Offer</div>
+  <h2 class="s-ttl">モニターの方へのご優待</h2>
+  <p class="s-lead">撮影・掲載へのご協力をいただく対価として、次の3つをご用意しています。</p>
+  <div class="of">
+    <div class="of-c">
+      <div class="of-n">Offer 01</div>
+      <div class="of-t">入会金</div>
+      <div class="of-v" id="ofEn"></div>
+      <div class="of-w" id="ofEnW"></div>
+    </div>
+    <div class="of-c">
+      <div class="of-n">Offer 02</div>
+      <div class="of-t">体験トレーニング</div>
+      <div class="of-v">0<small>円</small></div>
+      <div class="of-w">本日の体験が、そのまま0円です</div>
+    </div>
+    <div class="of-c">
+      <div class="of-n">Offer 03</div>
+      <div class="of-t">月額</div>
+      <div class="of-v" id="ofPct"></div>
+      <div class="of-w" id="ofPctW"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ どちらのコースか ══ -->
+<section class="si">
+  <div class="s-en">Which Course</div>
+  <h2 class="s-ttl">どちらのコースにするか</h2>
+  <div class="cp">
+    <div class="cp-c">
+      <div class="cp-h">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b8965a" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg>
+        3ヶ月コース
+      </div>
+      <ul>
+        <li>まず<b>増やしきる</b>ところまで。バルクアップの成果が見えるのに必要な、最短の期間です</li>
+        <li>モニターとしてのお約束も<b>3ヶ月</b>で完了します</li>
+        <li>4ヶ月目以降の継続は、終了時に改めてご相談いただけます</li>
+        <li>はじめての方、まず結果を確かめたい方に</li>
+      </ul>
+    </div>
+    <div class="cp-c">
+      <div class="cp-h">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#b8965a" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l5-5 4 3 6-7"/><path d="M14 8h5v5"/></svg>
+        6ヶ月コース<span class="tbd">※要確定</span>
+      </div>
+      <ul>
+        <li>増やした筋肉を<b>定着させる</b>ところまで。増量後の体づくりまで設計できます</li>
+        <li id="cmpLi"><b>1回あたりの金額が、3ヶ月コースより安く</b>なります<span class="per" id="cmpDiff"></span></li>
+        <li>途中で止めずにやり切りたい方、目標が大きい方に</li>
+        <li>回数を増やすご変更は、期間中いつでも承ります</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ══ Step 1 ══ -->
+<section class="si">
+  <div class="s-en">Step 1</div>
+  <h2 class="s-ttl">月に何回、通えそうですか</h2>
+  <p class="s-lead">お選びいただくと、下のお見積りがその場で切り替わります。</p>
+  <div class="sel">
+    <div class="sel-q">通えるペース</div>
+    <p class="sel-n">週1回なら月4回、週2回なら月8回が目安です。<b>通う回数が多いほど、割引も大きくなります。</b><br>モニターの条件として、週1回以上のご来店をお願いしています。</p>
+    <div class="sel-o" id="selN">
+      <button class="opt" type="button" data-n="4" aria-pressed="false"><b>月4回</b><span>週1回ペース</span></button>
+      <button class="opt" type="button" data-n="6" aria-pressed="false"><b>月6回</b><span>週1〜2回</span></button>
+      <button class="opt" type="button" data-n="8" aria-pressed="true"><b>月8回</b><span>週2回ペース</span></button>
+    </div>
+  </div>
+</section>
+
+<!-- ══ 料金表 ══ -->
+<section class="si">
+  <div class="s-en">Step 2</div>
+  <h2 class="s-ttl">回数ごとの料金</h2>
+  <p class="s-lead">1回60分・完全個室・完全マンツーマン。回数は翌月1/3までお繰り越しいただけます。</p>
+
+  <div class="tw">
+    <table id="t3" data-term="3">
+      <caption>3ヶ月コース<em>ご契約期間の3ヶ月すべてに、モニター特別価格が適用されます。</em></caption>
+      <thead><tr><th>回数</th><th>通常月額</th><th>モニター月額</th><th>1回あたり</th><th data-cuth>お値引き</th><th>入会金</th><th>ご優待の合計</th></tr></thead>
+      <tbody>
+        <tr data-n="4"><td>月4回</td><td data-l="通常月額" class="was" data-was></td><td data-l="モニター月額"><span class="now" data-now></span><span class="pct" data-pct></span></td><td data-l="1回あたり" class="nm" data-per></td><td data-l="お値引き" class="cut" data-cut></td><td data-l="入会金" class="nm" data-en></td><td data-l="ご優待の合計" class="cut" data-tot></td></tr>
+        <tr data-n="6"><td>月6回</td><td data-l="通常月額" class="was" data-was></td><td data-l="モニター月額"><span class="now" data-now></span><span class="pct" data-pct></span></td><td data-l="1回あたり" class="nm" data-per></td><td data-l="お値引き" class="cut" data-cut></td><td data-l="入会金" class="nm" data-en></td><td data-l="ご優待の合計" class="cut" data-tot></td></tr>
+        <tr data-n="8"><td>月8回</td><td data-l="通常月額" class="was" data-was></td><td data-l="モニター月額"><span class="now" data-now></span><span class="pct" data-pct></span></td><td data-l="1回あたり" class="nm" data-per></td><td data-l="お値引き" class="cut" data-cut></td><td data-l="入会金" class="nm" data-en></td><td data-l="ご優待の合計" class="cut" data-tot></td></tr>
+      </tbody>
+    </table>
+    <p class="flag">お顔が見える掲載にご協力いただく場合の価格を表示しています（25／30／35%OFF）。</p>
+  </div>
+
+  <div class="tw">
+    <table id="t6" data-term="6">
+      <caption>6ヶ月コース<span class="tbd">※要確定</span><em>ご契約期間の6ヶ月すべてが対象です。1回あたりの金額も、3ヶ月コースよりお安くなります。</em></caption>
+      <thead><tr><th>回数</th><th>通常月額</th><th>モニター月額</th><th>1回あたり</th><th data-cuth>お値引き</th><th>入会金</th><th>ご優待の合計</th></tr></thead>
+      <tbody>
+        <tr data-n="4"><td>月4回</td><td data-l="通常月額" class="was" data-was></td><td data-l="モニター月額"><span class="now" data-now></span><span class="pct" data-pct></span></td><td data-l="1回あたり" class="nm" data-per></td><td data-l="お値引き" class="cut" data-cut></td><td data-l="入会金" class="nm" data-en></td><td data-l="ご優待の合計" class="cut" data-tot></td></tr>
+        <tr data-n="6"><td>月6回</td><td data-l="通常月額" class="was" data-was></td><td data-l="モニター月額"><span class="now" data-now></span><span class="pct" data-pct></span></td><td data-l="1回あたり" class="nm" data-per></td><td data-l="お値引き" class="cut" data-cut></td><td data-l="入会金" class="nm" data-en></td><td data-l="ご優待の合計" class="cut" data-tot></td></tr>
+        <tr data-n="8"><td>月8回</td><td data-l="通常月額" class="was" data-was></td><td data-l="モニター月額"><span class="now" data-now></span><span class="pct" data-pct></span></td><td data-l="1回あたり" class="nm" data-per></td><td data-l="お値引き" class="cut" data-cut></td><td data-l="入会金" class="nm" data-en></td><td data-l="ご優待の合計" class="cut" data-tot></td></tr>
+      </tbody>
+    </table>
+    <p class="flag">お顔が見える掲載にご協力いただく場合の価格を表示しています（25／30／35%OFF）。</p>
+  </div>
+  <p class="tn">※ 表示価格はすべて税込です。<br>※ 6ヶ月コースは、3ヶ月コースより1回あたり¥500お安い価格を基準としています。<br>※ 入会金は、月6回以上のプランで0円となります。<br>※ 「◯ヶ月のお値引き」は、月額のお値引きをご契約期間ぶん合計した金額です。「ご優待の合計」は、それに入会金のご優待を加えた金額です（6ヶ月コースは3ヶ月コースの単価を基準に算出しています）。<br>※ 回数を増やすご変更は、期間中いつでも承ります。</p>
+</section>
+
+<!-- ══ Step 2：お見積り ══ -->
+<section class="si">
+  <div class="s-en">Step 3</div>
+  <h2 class="s-ttl">お客様のお見積り</h2>
+  <p class="s-lead" id="qtLead">月8回の場合</p>
+
+  <div class="qt">
+    <div class="qt-c">
+      <div class="qt-h">3ヶ月コース<em>バルクアップの成果が見えるまでの、標準の期間</em></div>
+      <div class="qt-pl">月額</div>
+      <span class="qt-was" id="q3was"></span>
+      <div class="qt-v" id="q3now"></div>
+      <div class="qt-u">1回あたり <b id="q3per"></b></div>
+      <div class="qt-cut"><span id="q3cut"></span></div>
+      <p class="qt-f">入会金 <b id="q3en"></b>　／　体験トレーニング <b>0円</b><br>全<b id="q3tot"></b>回のプログラム　／　ご優待の合計 <b id="q3sum"></b></p>
+    </div>
+
+    <div class="qt-c rec">
+      <span class="qt-tag" id="qtTag">1回あたり最安</span>
+      <div class="qt-h">6ヶ月コース<span class="tbd">※要確定</span><em>増えた筋肉を、定着させるところまで</em></div>
+      <div class="qt-pl">月額</div>
+      <span class="qt-was" id="q6was"></span>
+      <div class="qt-v" id="q6now"></div>
+      <div class="qt-u">1回あたり <b id="q6per"></b></div>
+      <div class="qt-cut"><span id="q6cut"></span></div>
+      <p class="qt-f">入会金 <b id="q6en"></b>　／　体験トレーニング <b>0円</b><br>全<b id="q6tot"></b>回のプログラム　／　ご優待の合計 <b id="q6sum"></b></p>
+    </div>
+  </div>
+  <p class="tn">※ 表示価格はすべて税込です。<br>※ 消し線の金額は、当ジムが通常価格として販売している「プレミアム フルサポートコース」の月額です。<br>※ バルクアッププログラムは、プレミアム フルサポートコース（毎日の食事記録への個別フィードバック＋週次の進捗管理）を、増量・筋肥大の目的に合わせて設計したものです。</p>
+</section>
+
+<!-- ══ モニターの条件 ══ -->
+<section class="si">
+  <div class="s-en">Requirements</div>
+  <h2 class="s-ttl">モニターとしてお願いすること</h2>
+  <p class="s-lead">この特別価格は、以下へのご協力の対価としてご提供するものです。</p>
+  <div class="cd">
+    <div class="cd-h">4つのお願い</div>
+    <ul>
+      <li><b>ビフォー・アフターの撮影</b>
+        <span class="sub">開始時・期間中・終了時に、身体の記録写真を撮影させていただきます。</span></li>
+      <li><b>各種メディアへの掲載許諾</b>
+        <span class="sub">公式サイト・SNS・広告等での掲載となります。掲載範囲・期間は、ご契約時に書面でご確認いただきます。</span></li>
+      <li><b>インタビュー動画へのご出演</b>
+        <span class="sub">終了時に、取り組みについてお話を伺います。</span></li>
+      <li><b>週1回以上のご来店と、毎日の食事記録</b>
+        <span class="sub">記録いただいた食事に、トレーナーが毎日お返しします。</span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- ══ ご利用の条件 ══ -->
+<section class="si">
+  <div class="s-en">Terms</div>
+  <h2 class="s-ttl">お申し込みの前に</h2>
+  <div class="cd">
+    <div class="cd-h">必ずご確認ください</div>
+    <ul>
+      <li>本プログラムは<b>モニター特別価格での有償のご提供</b>です。無償のご提供ではありません。</li>
+      <li>募集は<b>選考5名様</b>です。定員に達し次第、受付を終了いたします。</li>
+      <li><b>本価格は、ご契約期間を継続してご利用いただくことを条件とした特別価格です。</b>ご契約期間の満了前に解約される場合の取り扱いは、ご契約時に書面でご案内いたします。</li>
+      <li>撮影・掲載に関する許諾の範囲と期間は、<b>ご契約時に別途書面</b>で取り交わします。</li>
+      <li>トレーニングの成果には個人差があります。<b>体重・体脂肪率などの数値をお約束するものではありません。</b></li>
+      <li>表示価格はすべて税込です。</li>
+    </ul>
+  </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- ══ 裏メニュー（既定で非表示） ══ -->
+<div class="more">
+  <div class="more-l">TRAINER ── 上から順にご提案ください</div>
+  <div class="more-b">
+    <button class="more-btn" type="button" data-panel="pFace" aria-expanded="false">2　掲載へのご協力</button>
+    <button class="more-btn" type="button" data-panel="pStd" aria-expanded="false">3　トレーニング特化</button>
+    <button class="more-btn" type="button" data-panel="pShort" aria-expanded="false">4　トレーニング特化モニタ①</button>
+    <button class="more-btn" type="button" data-panel="pShort" data-free="1" aria-expanded="false">5　トレーニング特化モニタ②</button>
+  </div>
+  <button class="more-x" type="button" id="moreX" aria-label="閉じる">閉じる</button>
+
+  <!-- 裏①：顔出し協力による追加のご優待 -->
+  <div class="panel" id="pFace">
+    <div class="pn">
+      <div class="pn-h">掲載へのご協力の範囲によって、<br>ご優待の幅が変わります</div>
+      <p class="pn-l">お顔を出してのご掲載は、<b>必須ではありません。</b>首から下やモザイクでのご掲載も承っており、その場合が先ほどの価格です。<br>
+      ただ、お顔が見えるご掲載は、これからお越しになる方にとっての<b>説得力がまったく違います。</b>私たちにとっては広告の素材としての価値が大きく変わるため、<b>その対価として、ご優待の幅を広げてご提供しています。</b>お値引きのご相談ではなく、いただくご協力に対してお返しする、という考え方です。</p>
+      <p class="pn-l"><b>お顔が見える掲載にご協力いただける場合、割引率をさらに5ポイント広げます。</b>月4回なら25%、月6回なら30%、月8回なら<b>最大35%OFF</b>です。</p>
+      <div class="sel-o c2" id="selF">
+        <button class="opt" type="button" data-f="0" aria-pressed="true"><b>顔を伏せて掲載</b><span>首から下・モザイク等</span></button>
+        <button class="opt" type="button" data-f="1" aria-pressed="false"><b>顔出しで掲載可</b><span>公式サイト・SNS・広告</span></button>
+      </div>
+      <p class="pn-l" id="faceNote" style="margin-top:14px"></p>
+      <div id="faceTables"></div>
+    </div>
+  </div>
+
+  <!-- 3段目：通常のトレーニングコース -->
+  <div class="panel" id="pStd">
+    <div class="pn">
+      <div class="pn-h">月額制 トレーニングコース</div>
+      <p class="pn-l">食事管理と進捗管理を含まない、<b>トレーニングに特化したコース</b>です。バルクアッププログラム（モニター）とは別のコースで、<b>撮影・掲載のご協力は必要ありません。</b><br>
+      ご契約は6ヶ月から。<b>3ヶ月目以降に1回、回数プランを減らすご変更</b>ができます（解約にはあたりません）。</p>
+      <div class="tw">
+        <table>
+          <caption>6ヶ月契約<em>ご入会キャンペーンの割引は初月の1ヶ月に適用されます。</em></caption>
+          <thead><tr><th>回数</th><th>1回あたり</th><th>初月</th><th>2ヶ月目以降</th><th>入会金</th></tr></thead>
+          <tbody>
+            <tr><td>月2回</td><td data-l="1回あたり" class="nm">¥11,000</td><td data-l="初月" class="nm">¥22,000</td><td data-l="2ヶ月目以降" class="nm">¥22,000</td><td data-l="入会金" class="nm">¥33,000</td></tr>
+            <tr><td>月4回</td><td data-l="1回あたり" class="nm">¥9,750</td><td data-l="初月"><span class="was">¥39,000</span> <span class="now">¥37,050</span></td><td data-l="2ヶ月目以降" class="nm">¥39,000</td><td data-l="入会金" class="nm">¥33,000</td></tr>
+            <tr><td>月6回</td><td data-l="1回あたり" class="nm">¥9,500</td><td data-l="初月"><span class="was">¥57,000</span> <span class="now">¥51,300</span></td><td data-l="2ヶ月目以降" class="nm">¥57,000</td><td data-l="入会金" class="cut">半額 ¥16,500</td></tr>
+            <tr><td>月8回</td><td data-l="1回あたり" class="nm">¥9,250</td><td data-l="初月"><span class="was">¥74,000</span> <span class="now">¥62,900</span></td><td data-l="2ヶ月目以降" class="nm">¥74,000</td><td data-l="入会金" class="cut">半額 ¥16,500</td></tr>
+            <tr><td>月12回</td><td data-l="1回あたり" class="nm">¥9,000</td><td data-l="初月"><span class="was">¥108,000</span> <span class="now">¥86,400</span></td><td data-l="2ヶ月目以降" class="nm">¥108,000</td><td data-l="入会金" class="cut">半額 ¥16,500</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="tn">※ 表示価格はすべて税込です。<br>※ 月2回のプランは、月額割引・入会金優待の対象外です。<br>※ 回数は翌月1/3までお繰り越しいただけます。<br>※ 本コースはモニター企画の対象外です（撮影・掲載のご協力はいただきません）。</p>
+    </div>
+  </div>
+
+  <!-- 4段目・5段目：トレーニング特化を3ヶ月で。割引ではなく期間と入会金で応える -->
+  <div class="panel" id="pShort">
+    <div class="pn">
+      <div class="pn-h">3ヶ月からお始めいただけます</div>
+      <p class="pn-l">トレーニング特化コースは、通常<b>6ヶ月からのご契約</b>です。<br>
+      撮影・掲載にご協力いただける場合に限り、<b>3ヶ月の区切り</b>でお始めいただけます。<br>
+      <b>月額のお値引きはありません。</b>お値引きの代わりに、期間の区切りを短くしてご案内するものです。</p>
+      <p class="pn-l" id="enNote" style="margin-top:14px"></p>
+      <div class="tw">
+        <table id="tShort">
+          <caption>3ヶ月契約<em>月額のお値引きはありません。撮影・掲載へのご協力が条件です。</em></caption>
+          <thead><tr><th>回数</th><th>1回あたり</th><th>月額</th><th>入会金</th><th>3ヶ月の合計</th></tr></thead>
+          <tbody>
+            <tr data-t="2"><td>月2回</td><td data-l="1回あたり" class="nm">¥11,000</td><td data-l="月額" class="nm">¥22,000</td><td data-l="入会金" class="nm" data-se></td><td data-l="3ヶ月の合計" class="cut" data-ss></td></tr>
+            <tr data-t="4"><td>月4回</td><td data-l="1回あたり" class="nm">¥9,750</td><td data-l="月額" class="nm">¥39,000</td><td data-l="入会金" class="nm" data-se></td><td data-l="3ヶ月の合計" class="cut" data-ss></td></tr>
+            <tr data-t="6"><td>月6回</td><td data-l="1回あたり" class="nm">¥9,500</td><td data-l="月額" class="nm">¥57,000</td><td data-l="入会金" class="nm" data-se></td><td data-l="3ヶ月の合計" class="cut" data-ss></td></tr>
+            <tr data-t="8"><td>月8回</td><td data-l="1回あたり" class="nm">¥9,250</td><td data-l="月額" class="nm">¥74,000</td><td data-l="入会金" class="nm" data-se></td><td data-l="3ヶ月の合計" class="cut" data-ss></td></tr>
+            <tr data-t="12"><td>月12回</td><td data-l="1回あたり" class="nm">¥9,000</td><td data-l="月額" class="nm">¥108,000</td><td data-l="入会金" class="nm" data-se></td><td data-l="3ヶ月の合計" class="cut" data-ss></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="tn">※ 表示価格はすべて税込です。<br>
+      ※ 撮影・掲載へのご協力は、バルクアッププログラムのモニターと同じ内容です。<br>
+      ※ 回数は翌月1/3までお繰り越しいただけます。<br>
+      ※ 4ヶ月目以降の継続は、終了時に改めてご相談いただけます。</p>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<div class="cta">
+  <div class="cta-t">増やしきるところまで、一緒に。</div>
+  <p class="cta-s">ご不明な点は、この場で遠慮なくお聞かせください。<br>お支払い方法・開始日についても、ご一緒に決めてまいります。</p>
+</div>
+
+<footer>
+  TOKOWAKA 吉祥寺　完全個室・完全マンツーマンのパーソナルジム<br>
+  バルクアッププログラム 料金のご案内（面談時ご提示用・非公開）
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var YEN = function(v){ return "¥" + v.toLocaleString("ja-JP"); };
+
+  /* 通常セッション単価（税込）。brand-facts.md §4 ／ 2026-09・10キャンペーン資料と同一。 */
+  var U = { 3:{4:18000, 6:17500, 8:17000}, 6:{4:17500, 6:17000, 8:16500} };
+  /* モニター基本割引（回数で段差。3ヶ月・6ヶ月とも同率・契約期間の全月に適用） */
+  var OFF  = {4:20, 6:25, 8:30};
+  /* 顔出し掲載にご協力いただく場合：基本より5ポイント深い */
+  var FACE = {4:25, 6:30, 8:35};
+  /* 入会金（月6回以上は0円）。通常は ¥33,000 */
+  var EN   = {4:16500, 6:0, 8:0};
+  var ENROLL_NORMAL = 33000;
+
+  var state = {n:8, face:false, freeEn:false};
+
+  function offPct(n){ return state.face ? FACE[n] : OFF[n]; }
+  function unit(term, n){
+    return Math.round(U[term][n] * (100 - offPct(n)) / 100);
+  }
+  /* ご優待の合計：月額の割引×契約月数 ＋ 入会金の割引 ＋ 6ヶ月の継続割 */
+  function total(term, n){
+    var base = U[term][n] * n, now = unit(term, n) * n;
+    var keizoku = (term === 6) ? (U[3][n] - U[6][n]) * n * term : 0;
+    return (base - now) * term + (ENROLL_NORMAL - EN[n]) + keizoku;
+  }
+  function enroll(n){ return EN[n] === 0 ? "0円" : YEN(EN[n]); }
+
+  function setPressed(group, attr, val){
+    var b = group.querySelectorAll(".opt");
+    for (var i=0;i<b.length;i++){
+      b[i].setAttribute("aria-pressed", b[i].getAttribute(attr) === String(val) ? "true" : "false");
+    }
+  }
+
+  function paint(tbl){
+    var term = parseInt(tbl.getAttribute("data-term"), 10);
+    var th = tbl.querySelector("[data-cuth]");
+    if (th) th.textContent = term + "ヶ月のお値引き";
+    var tds = tbl.querySelectorAll("[data-cut]");
+    for (var k = 0; k < tds.length; k++) tds[k].setAttribute("data-l", term + "ヶ月のお値引き");
+    var rows = tbl.querySelectorAll("tbody tr");
+    for (var i=0;i<rows.length;i++){
+      var r = rows[i], n = parseInt(r.getAttribute("data-n"), 10);
+      var base = U[term][n], u = unit(term, n);
+      r.querySelector("[data-was]").textContent = YEN(base * n);
+      r.querySelector("[data-now]").textContent = YEN(u * n);
+      r.querySelector("[data-pct]").textContent = offPct(n) + "%OFF";
+      r.querySelector("[data-per]").textContent = YEN(u);
+      r.querySelector("[data-cut]").textContent = "▲" + YEN((base - u) * n * term);
+      r.querySelector("[data-en]").textContent  = enroll(n);
+      r.querySelector("[data-tot]").textContent = "▲" + YEN(total(term, n));
+      if (n === state.n) r.classList.add("on"); else r.classList.remove("on");
+    }
+  }
+
+  function render(){
+    var n = state.n;
+    var b3 = U[3][n], b6 = U[6][n], u3 = unit(3, n), u6 = unit(6, n);
+
+    document.getElementById("q3was").textContent = YEN(b3 * n);
+    document.getElementById("q3now").textContent = YEN(u3 * n);
+    document.getElementById("q3per").textContent = YEN(u3);
+    document.getElementById("q3cut").textContent = "3ヶ月で ▲" + YEN((b3 - u3) * n * 3) + " のお値引き";
+    document.getElementById("q3en").textContent  = enroll(n);
+    document.getElementById("q3tot").textContent = n * 3;
+    document.getElementById("q3sum").textContent = "▲" + YEN(total(3, n));
+
+    document.getElementById("q6was").textContent = YEN(b6 * n);
+    document.getElementById("q6now").textContent = YEN(u6 * n);
+    document.getElementById("q6per").textContent = YEN(u6);
+    document.getElementById("q6cut").textContent = "6ヶ月で ▲" + YEN((b6 - u6) * n * 6) + " のお値引き";
+    document.getElementById("q6en").textContent  = enroll(n);
+    document.getElementById("q6tot").textContent = n * 6;
+    document.getElementById("q6sum").textContent = "▲" + YEN(total(6, n));
+
+    document.getElementById("qtLead").textContent = "月" + n + "回の場合";
+
+    document.getElementById("ofEn").innerHTML = (EN[n] === 0)
+      ? "0<small>円</small>"
+      : "16,500<small>円</small>";
+    document.getElementById("ofEnW").textContent = (EN[n] === 0)
+      ? "月６回以上のプランは0円です"
+      : "月６回以上のプランなら 0円 になります";
+
+    document.getElementById("ofPct").innerHTML = offPct(n) + "<small>%OFF</small>";
+    document.getElementById("ofPctW").textContent = state.face
+      ? "お顔が見える掲載にご協力いただく場合の割引率です"
+      : "ご契約期間を通して、毎月この割引が続きます";
+
+    document.getElementById("qtTag").style.display = (u3 - u6 > 0) ? "" : "none";
+
+    var cmp = document.getElementById("cmpDiff"), li = document.getElementById("cmpLi");
+    if (u3 - u6 > 0){
+      li.style.display = "";
+      cmp.textContent = "（月" + n + "回で 1回あたり " + YEN(u3 - u6) + " お得）";
+    } else {
+      li.style.display = "none";
+    }
+
+    var note = document.getElementById("faceNote");
+    if (note){
+      note.innerHTML = state.face
+        ? "現在は、<b>お顔が見える掲載にご協力いただく場合</b>の価格を表示しています。月" + n +
+          "回なら <b>" + FACE[n] + "%OFF</b>、毎月のお支払いは <b>" + YEN(unit(3, n) * n) + "</b> です（3ヶ月コース）。"
+        : "現在は、顔を伏せてのご掲載（首から下・モザイク等）の価格を表示しています。";
+    }
+    document.body.classList.toggle("face-on", state.face);
+
+    var ts = document.querySelectorAll("table[data-term]");
+    for (var i=0;i<ts.length;i++) paint(ts[i]);
+  }
+
+  var gN = document.getElementById("selN");
+  gN.addEventListener("click", function(e){
+    var b = e.target.closest(".opt"); if (!b) return;
+    state.n = parseInt(b.getAttribute("data-n"), 10);
+    setPressed(gN, "data-n", state.n); render();
+  });
+
+  /* 4段目・5段目：3ヶ月のトレーニング特化。割引は付けず、入会金だけで応える */
+  var SHORT = {2:22000, 4:39000, 6:57000, 8:74000, 12:108000};
+  function paintShort(){
+    var en = state.freeEn ? 0 : 16500;
+    var rows = document.querySelectorAll("#tShort tbody tr");
+    for (var i=0;i<rows.length;i++){
+      var t = parseInt(rows[i].getAttribute("data-t"), 10);
+      rows[i].querySelector("[data-se]").textContent = en === 0 ? "0円" : YEN(en);
+      rows[i].querySelector("[data-ss]").textContent = YEN(SHORT[t] * 3 + en);
+    }
+    /* 入会金は、開いたボタン（4段目か5段目か）で決まる。
+       半額と0円を同じ画面に並べると、0円が見えている前で半額は通らない。 */
+    var nt = document.getElementById("enNote");
+    if (nt) nt.innerHTML = state.freeEn
+      ? "入会金は <b>0円</b> でご案内しています。"
+      : "入会金は <b>半額の¥16,500</b> でご案内しています。";
+    var cp = document.querySelector("#tShort caption em");
+    if (cp) cp.textContent = state.freeEn
+      ? "月額のお値引きはありません。撮影・掲載へのご協力が条件です。入会金は0円です。"
+      : "月額のお値引きはありません。撮影・掲載へのご協力が条件です。入会金は半額です。";
+  }
+
+  var gF = document.getElementById("selF");
+  gF.addEventListener("click", function(e){
+    var b = e.target.closest(".opt"); if (!b) return;
+    state.face = b.getAttribute("data-f") === "1";
+    setPressed(gF, "data-f", state.face ? 1 : 0); render();
+  });
+
+  var mb = document.querySelectorAll(".more-btn");
+
+  /* ボタンはタブとして振る舞う。開くのは常に一つだけ。
+     トレーニング特化の3ヶ月と半年、入会金の半額と0円が
+     同じ画面に並ぶと、お客様の前で安いほうしか見られなくなる。 */
+  var moreBox = document.querySelector(".more");
+  /* 開いている間は選択の列を隠す。閉じれば戻る。
+     表示の切り替えを一箇所に集め、開く経路が増えても漏れないようにする。 */
+  function syncMore(){
+    moreBox.classList.toggle("on", !!document.querySelector(".more .panel.open"));
+  }
+
+  function closeOthers(keep){
+    var ps = document.querySelectorAll(".more .panel");
+    for (var i = 0; i < ps.length; i++) if (ps[i] !== keep) ps[i].classList.remove("open");
+    for (var j = 0; j < mb.length; j++){
+      if (document.getElementById(mb[j].getAttribute("data-panel")) !== keep){
+        mb[j].setAttribute("aria-expanded", "false");
+      }
+    }
+  }
+
+  for (var i=0;i<mb.length;i++){
+    mb[i].addEventListener("click", function(){
+      var p = document.getElementById(this.getAttribute("data-panel"));
+      /* 4段目と5段目は同じ表。入会金だけ差し替えて開く */
+      if (p.id === "pShort"){
+        var free = this.getAttribute("data-free") === "1";
+        var same = p.classList.contains("open") && (!!state.freeEn === free);
+        for (var k = 0; k < mb.length; k++){
+          if (mb[k].getAttribute("data-panel") === "pShort") mb[k].setAttribute("aria-expanded", "false");
+        }
+        if (same){ closeOthers(null); syncMore(); return; }
+        closeOthers(p);
+        state.freeEn = free; paintShort();
+        p.classList.add("open");
+        this.setAttribute("aria-expanded", "true");
+        syncMore();
+        p.scrollIntoView({behavior:"smooth", block:"start"});
+        return;
+      }
+      var open = !p.classList.contains("open");
+      closeOthers(open ? p : null);
+      if (open){ p.classList.add("open"); } else { p.classList.remove("open"); }
+      this.setAttribute("aria-expanded", open ? "true" : "false");
+      syncMore();
+      if (open) p.scrollIntoView({behavior:"smooth", block:"start"});
+    });
+  }
+
+  document.getElementById("moreX").addEventListener("click", function(){
+    closeOthers(null); syncMore();
+    moreBox.scrollIntoView({behavior:"smooth", block:"start"});
+  });
+
+  document.getElementById("imBtn").addEventListener("click", function(){
+    document.body.classList.add("hide-internal");
+  });
+
+  /* 2段目：顔出しご協力の価格を、その場で表にしてお見せする。
+     表は本体（#t3 / #t6）から複製する。金額の計算も列の作りも一箇所のままなので、
+     片方だけ直して食い違う事故が起きない。paint() は table[data-term] を全部塗る。 */
+  var fw = document.getElementById("faceTables");
+  if (fw){
+    var srcT = [["t3", "3ヶ月コース", ""], ["t6", "6ヶ月コース", '<span class="tbd">※要確定</span>']];
+    for (var si = 0; si < srcT.length; si++){
+      var w = document.getElementById(srcT[si][0]).closest(".tw").cloneNode(true);
+      var t = w.querySelector("table");
+      t.removeAttribute("id");
+      t.querySelector("caption").innerHTML = srcT[si][1] + srcT[si][2]
+        + "<em>お顔が見える掲載にご協力いただく場合は、上の「顔出しで掲載可」をお選びください。</em>";
+      fw.appendChild(w);
+    }
+  }
+
+  paintShort();
+  render();
+})();
+</script>
+
+</body>
+</html>
