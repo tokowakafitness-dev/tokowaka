@@ -151,6 +151,15 @@ body.face-on .flag{display:block}
 .more.on .more-x{display:block;margin:0 0 0 auto;background:none;border:0;padding:4px 2px;
   font-family:inherit;font-size:11px;color:#bdb5a7;letter-spacing:.1em;cursor:pointer;line-height:1}
 .more.on .more-x:hover{color:var(--soft)}
+/* 回数の選択とお見積りは、トレーナーが出すまで隠しておく。
+   隠している間は Step の番号も、料金表の行の強調も意味を失うので一緒に消す。 */
+body.pick-off #secPick,body.pick-off #secQuote,body.pick-off #secPrice .s-en{display:none}
+body.pick-off tbody tr.on{background:none;box-shadow:none}
+.more-t{text-align:center;margin-top:11px}
+.more.on .more-t{display:none}
+.more-tb{background:none;border:0;padding:4px 2px;font-family:inherit;font-size:10.5px;
+  color:#bdb5a7;letter-spacing:.1em;cursor:pointer;line-height:1}
+.more-tb:hover{color:var(--soft)}
 .panel{display:none}
 .panel.open{display:block}
 .pn{border:1px solid var(--bd);border-top:2px solid var(--navy);background:var(--white);padding:26px 24px;margin-top:20px}
@@ -304,7 +313,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
 </section>
 
 <!-- ══ Step 1 ══ -->
-<section class="si">
+<section class="si" id="secPick">
   <div class="s-en">Step 1</div>
   <h2 class="s-ttl">月に何回、通えそうですか</h2>
   <div class="sel">
@@ -319,7 +328,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
 </section>
 
 <!-- ══ 料金表 ══ -->
-<section class="si">
+<section class="si" id="secPrice">
   <div class="s-en">Step 2</div>
   <h2 class="s-ttl">回数ごとの料金</h2>
   <p class="s-lead">1回60分・完全個室・完全マンツーマン。回数は翌月1/3までお繰り越しいただけます。</p>
@@ -353,7 +362,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
 </section>
 
 <!-- ══ Step 2：お見積り ══ -->
-<section class="si">
+<section class="si" id="secQuote">
   <div class="s-en">Step 3</div>
   <h2 class="s-ttl">お客様のお見積り</h2>
   <p class="s-lead" id="qtLead">月8回の場合</p>
@@ -441,6 +450,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
     <button class="more-btn" type="button" data-panel="pShort" aria-expanded="false">4　トレーニング特化モニタ①</button>
     <button class="more-btn" type="button" data-panel="pShort" data-free="1" aria-expanded="false">5　トレーニング特化モニタ②</button>
   </div>
+  <div class="more-t"><button class="more-tb" type="button" id="pickBtn" aria-pressed="false">回数の選択とお見積りを出す</button></div>
   <button class="more-x" type="button" id="moreX" aria-label="閉じる">閉じる</button>
 
   <!-- 裏①：顔出し協力による追加のご優待 -->
@@ -602,17 +612,15 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
 
     document.getElementById("qtLead").textContent = "月" + n + "回の場合";
 
-    document.getElementById("ofEn").innerHTML = (EN[n] === 0)
-      ? "0<small>円</small>"
-      : "16,500<small>円</small>";
-    document.getElementById("ofEnW").textContent = (EN[n] === 0)
-      ? "月６回以上のプランは0円です"
-      : "月６回以上のプランなら 0円 になります";
+    /* ご優待は「いちばん良いときの値」を出す。回数の選択に連動させない。
+       条件は同じカードの中に書く（別の画面に置くと打消しにならない）。 */
+    document.getElementById("ofEn").innerHTML = "最大0<small>円</small>";
+    document.getElementById("ofEnW").textContent = "月6回以上のプランなら 0円 になります";
 
-    document.getElementById("ofPct").innerHTML = offPct(n) + "<small>%OFF</small>";
+    document.getElementById("ofPct").innerHTML = "最大" + (state.face ? 35 : 30) + "<small>%OFF</small>";
     document.getElementById("ofPctW").textContent = state.face
-      ? "お顔が見える掲載にご協力いただく場合の割引率です"
-      : "ご契約期間を通して、毎月この割引が続きます";
+      ? "お顔が見える掲載にご協力いただく場合、月8回で35%OFFです"
+      : "月8回のプランで30%OFF。ご契約期間を通して毎月続きます";
 
     document.getElementById("qtTag").style.display = (u3 - u6 > 0) ? "" : "none";
 
@@ -722,6 +730,17 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
       if (open) p.scrollIntoView({behavior:"smooth", block:"start"});
     });
   }
+
+  /* 既定は非表示。戻したくなったらこのボタンで出す。
+     節を消したのではなく隠しているだけなので、出せば計算もそのまま動く。 */
+  document.body.classList.add("pick-off");
+  var pb = document.getElementById("pickBtn");
+  pb.addEventListener("click", function(){
+    var off = document.body.classList.toggle("pick-off");
+    this.setAttribute("aria-pressed", off ? "false" : "true");
+    this.textContent = off ? "回数の選択とお見積りを出す" : "回数の選択とお見積りを隠す";
+    if (!off) document.getElementById("secPick").scrollIntoView({behavior:"smooth", block:"start"});
+  });
 
   document.getElementById("moreX").addEventListener("click", function(){
     closeOthers(null); syncMore();
