@@ -237,7 +237,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
     <div class="h-logo">TOKOWAKA<small>Kichijoji</small></div>
     <span class="h-badge">BULK-UP PROGRAM</span>
     <h1 class="h-ttl">バルクアッププログラム<br>料金のご案内</h1>
-    <p class="h-sub">ご一緒に、無理なく続けられるプランを決めましょう。<br>モニター特別価格でのご提供です（無償のご提供ではありません）。</p>
+    <p class="h-sub">ご一緒に、無理なく続けられるプランを決めましょう。</p>
     <div class="h-lim">選考 5 名様</div>
   </div>
 </div>
@@ -307,7 +307,6 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
 <section class="si">
   <div class="s-en">Step 1</div>
   <h2 class="s-ttl">月に何回、通えそうですか</h2>
-  <p class="s-lead">お選びいただくと、下のお見積りがその場で切り替わります。</p>
   <div class="sel">
     <div class="sel-q">通えるペース</div>
     <p class="sel-n">週1回なら月4回、週2回なら月8回が目安です。<b>通う回数が多いほど、割引も大きくなります。</b><br>モニターの条件として、週1回以上のご来店をお願いしています。</p>
@@ -738,13 +737,10 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
      片方だけ直して食い違う事故が起きない。paint() は table[data-term] を全部塗る。 */
   var fw = document.getElementById("faceTables");
   if (fw){
-    var srcT = [["t3", "3ヶ月コース", ""], ["t6", "6ヶ月コース", '<span class="tbd">※要確定</span>']];
+    var srcT = ["t3", "t6"];
     for (var si = 0; si < srcT.length; si++){
-      var w = document.getElementById(srcT[si][0]).closest(".tw").cloneNode(true);
-      var t = w.querySelector("table");
-      t.removeAttribute("id");
-      t.querySelector("caption").innerHTML = srcT[si][1] + srcT[si][2]
-        + "<em>お顔が見える掲載にご協力いただく場合は、上の「顔出しで掲載可」をお選びください。</em>";
+      var w = document.getElementById(srcT[si]).closest(".tw").cloneNode(true);
+      w.querySelector("table").removeAttribute("id");
       fw.appendChild(w);
     }
   }
