@@ -41,6 +41,10 @@ body{background:var(--white);color:var(--ink);font-family:'Noto Sans JP',sans-se
 .ntc-x{position:absolute;top:9px;right:10px;background:none;border:0;cursor:pointer;
   font-size:19px;line-height:1;color:#a79274;padding:3px 7px;font-family:inherit}
 .ntc-x:hover{color:var(--navy)}
+.tmode{display:none;position:sticky;top:0;z-index:9999;background:#7a2f2f;color:#ffe9e9;
+  font-size:12px;line-height:1.7;letter-spacing:.04em;text-align:center;padding:9px 14px}
+.tmode.on{display:block}
+.tmode b{color:#fff}
 .band{background:linear-gradient(180deg,#d9b87f 0%,var(--gold-l) 58%,var(--gold) 100%);
   text-align:center;font-family:'Shippori Mincho',serif;padding:16px 16px 19px;
   border-bottom:1px solid rgba(19,32,58,.22)}
@@ -106,6 +110,10 @@ footer a{color:var(--soft)}
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WRJSW496" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div class="tmode" id="tmode">
+  <b>テストモード</b>　この画面は動作確認用です。計測には記録されません。
+</div>
 
 <div class="ntc" id="ntc" role="status">
   <button class="ntc-x" id="ntcX" type="button" aria-label="閉じる">×</button>
@@ -217,6 +225,10 @@ var ENDPOINT = 'https://script.google.com/macros/s/AKfycbw7WxW7s5Vb84l3uEhOq5d_m
 
 /* 流入元を引き継ぐ（広告 → LP → このページ） */
 var P = new URLSearchParams(location.search);
+/* ?test=1 は本番と同じページのまま動作確認するための印。
+   計測には送らず、台帳には「テスト」として残す。 */
+var TW_TEST = P.get('test') === '1';
+if (TW_TEST) { var _tb = document.getElementById('tmode'); if (_tb) _tb.classList.add('on'); }
 function utm(k){ return (P.get(k) || '').slice(0,80); }
 
 /* 締切を過ぎていたらフォームを閉じる（応募に人数の上限は無い） */
@@ -253,6 +265,7 @@ function collect(){
     /* lastName / firstName は入力チェック用。name はサーバーへ送る連結済みの値。
        検査が参照するキーと、collect が返すキーが食い違うと、
        全部入力していても「姓をご入力ください」で止まる（2026-10-14に発生）。 */
+    test: TW_TEST ? '1' : '',
     lastName:v('lastName'), firstName:v('firstName'),
     name:(v('lastName') + ' ' + v('firstName')).trim(), email:v('email'), phone:v('phone'),
     age:v('age'), height:v('height'), weight:v('weight'), fat:v('fat'),
@@ -297,7 +310,7 @@ function send(data){
   .then(function(res){
     clearTimeout(slow);
     if (res && res.ok) {
-      try { if (window.dataLayer) dataLayer.push({ event:'monitor_apply_submit', lp:'monitor_bulkup' }); } catch(e){}
+      try { if (window.dataLayer && !TW_TEST) dataLayer.push({ event:'monitor_apply_submit', lp:'monitor_bulkup' }); } catch(e){}
       setDone('ok','ご応募ありがとうございます', res.message);
     } else {
       setDone('err','お申し込みを受け付けられませんでした',

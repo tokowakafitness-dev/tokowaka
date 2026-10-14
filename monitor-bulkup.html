@@ -723,6 +723,10 @@ body.tm-lock{overflow:hidden}
 }
 
 /* ═══════════ 固定CTAバー（スマホ最優先） ═══════════ */
+.tmode{display:none;position:sticky;top:0;z-index:9999;background:#7a2f2f;color:#ffe9e9;
+  font-size:12px;line-height:1.7;letter-spacing:.04em;text-align:center;padding:9px 14px}
+.tmode.on{display:block}
+.tmode b{color:#fff}
 .sticky{position:fixed;left:0;right:0;bottom:0;z-index:900;display:flex;align-items:center;gap:10px;
   background:rgba(255,255,255,.97);backdrop-filter:blur(10px);
   border-top:2px solid var(--gold);box-shadow:0 -3px 16px rgba(27,42,71,.16);
@@ -962,6 +966,10 @@ summary.fq-q:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
 </style>
 </head>
 <body>
+<div class="tmode" id="tmode">
+  <b>テストモード</b>　この画面は動作確認用です。計測には記録されません。
+</div>
+
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WRJSW496" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
 <div class="h-band">
   <p class="h-band-lead">吉祥寺に通える方、おめでとうございます。</p>
@@ -1551,9 +1559,12 @@ function closeTrainerModal(){
 </script>
 <script>
 /* 予約サイトへUTMを引き継ぎつつGTMへイベントを送る（既存LPの goRsv と同方式） */
+var TW_TEST = /(^|[?&])test=1(&|$)/.test(location.search);
+if (TW_TEST) { var _tb = document.getElementById('tmode'); if (_tb) _tb.classList.add('on'); }
+
 function goRsv(el){
   try{
-    if(window.dataLayer){
+    if(window.dataLayer && !TW_TEST){
       if(!sessionStorage.getItem('mcv_tracked')){
         sessionStorage.setItem('mcv_tracked','1');
         dataLayer.push({event:'mCV_form_click'});
