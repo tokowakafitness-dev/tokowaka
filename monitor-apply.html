@@ -215,6 +215,10 @@ function setDone(state, title, text){
 function collect(){
   function v(id){ return (document.getElementById(id).value || '').trim(); }
   return {
+    /* lastName / firstName は入力チェック用。name はサーバーへ送る連結済みの値。
+       検査が参照するキーと、collect が返すキーが食い違うと、
+       全部入力していても「姓をご入力ください」で止まる（2026-10-14に発生）。 */
+    lastName:v('lastName'), firstName:v('firstName'),
     name:(v('lastName') + ' ' + v('firstName')).trim(), email:v('email'), phone:v('phone'),
     age:v('age'), height:v('height'), weight:v('weight'), fat:v('fat'),
     goal:v('goal'), motive:v('motive'), company:v('company'),
