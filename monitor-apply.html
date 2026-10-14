@@ -28,6 +28,19 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--white);color:var(--ink);font-family:'Noto Sans JP',sans-serif;
   font-size:var(--fs);line-height:1.95;-webkit-font-smoothing:antialiased}
+/* ── 不具合のお詫び（期限付き・閉じられる） ──
+   2026-10-14 の日中、collect と clientCheck のキーの食い違いで
+   「姓をご入力ください」から進めない状態だった。復旧済み。
+   当日に諦めた方が戻ってきたときに気づけるよう出す。
+   NOTICE_UNTIL を過ぎたら自動で消える。消し忘れても残らない。 */
+.ntc{display:none;background:#fdf6e8;border-bottom:1px solid #e3cf9f;
+  border-left:4px solid var(--gold);padding:14px 16px;position:relative}
+.ntc.on{display:block}
+.ntc-h{font-weight:600;color:var(--navy);font-size:13.5px;letter-spacing:.03em;margin-bottom:5px}
+.ntc-b{font-size:12.5px;line-height:1.9;color:#5d574e}
+.ntc-x{position:absolute;top:9px;right:10px;background:none;border:0;cursor:pointer;
+  font-size:19px;line-height:1;color:#a79274;padding:3px 7px;font-family:inherit}
+.ntc-x:hover{color:var(--navy)}
 .band{background:linear-gradient(180deg,#d9b87f 0%,var(--gold-l) 58%,var(--gold) 100%);
   text-align:center;font-family:'Shippori Mincho',serif;padding:16px 16px 19px;
   border-bottom:1px solid rgba(19,32,58,.22)}
@@ -93,6 +106,14 @@ footer a{color:var(--soft)}
 </head>
 <body>
 <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-WRJSW496" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+
+<div class="ntc" id="ntc" role="status">
+  <button class="ntc-x" id="ntcX" type="button" aria-label="閉じる">×</button>
+  <div class="ntc-h">お詫びとお知らせ</div>
+  <p class="ntc-b">10月14日の日中、お申し込みが完了できない不具合が発生しておりました。<br>
+  現在は復旧しております。ご迷惑をおかけし、申し訳ございませんでした。<br>
+  <b>お手数ですが、改めてお申し込みいただけますと幸いです。</b></p>
+</div>
 
 <div class="band">
   <p class="band-lead">吉祥寺に通える方、おめでとうございます。</p>
@@ -177,6 +198,20 @@ footer a{color:var(--soft)}
 </div>
 
 <script>
+/* 不具合のお詫び。期限を過ぎたら出さない。閉じたら同じ端末では出さない。
+   ページを開いた時点で判定するので、読み込み直しは要らない。 */
+(function(){
+  var NOTICE_UNTIL = new Date("2026-10-21T23:59:59+09:00");
+  var el = document.getElementById("ntc");
+  if (!el || new Date() > NOTICE_UNTIL) return;
+  try { if (localStorage.getItem("ntc_1014") === "1") return; } catch(e){}
+  el.classList.add("on");
+  document.getElementById("ntcX").addEventListener("click", function(){
+    el.classList.remove("on");
+    try { localStorage.setItem("ntc_1014", "1"); } catch(e){}
+  });
+})();
+
 /* 応募の受け口（GAS Web App の /exec）。デプロイ後にここを差し替える */
 var ENDPOINT = 'https://script.google.com/macros/s/AKfycbw7WxW7s5Vb84l3uEhOq5d_mDhwcgcHnThmR5hXJE5QALpxcR-6yumWF1Si9KwkESBg/exec';
 
