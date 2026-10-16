@@ -450,10 +450,6 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
       <p class="pn-l">お顔を出してのご掲載は、<b>必須ではありません。</b>首から下やモザイクでのご掲載も承っており、その場合が先ほどの価格です。<br>
       ただ、お顔が見えるご掲載は、これからお越しになる方にとっての<b>説得力がまったく違います。</b>私たちにとっては広告の素材としての価値が大きく変わるため、<b>その対価として、ご優待の幅を広げてご提供しています。</b>お値引きのご相談ではなく、いただくご協力に対してお返しする、という考え方です。</p>
       <p class="pn-l"><b>お顔が見える掲載にご協力いただける場合、割引率をさらに5ポイント広げます。</b>月4回なら25%、月6回なら30%、月8回なら<b>最大35%OFF</b>です。</p>
-      <div class="sel-o c2" id="selF">
-        <button class="opt" type="button" data-f="0" aria-pressed="true"><b>顔を伏せて掲載</b><span>首から下・モザイク等</span></button>
-        <button class="opt" type="button" data-f="1" aria-pressed="false"><b>顔出しで掲載可</b><span>公式サイト・SNS・広告</span></button>
-      </div>
       <p class="pn-l" id="faceNote" style="margin-top:14px"></p>
       <div id="faceTables"></div>
     </div>
@@ -463,7 +459,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
   <div class="panel" id="pStd">
     <div class="pn">
       <div class="pn-h">月額制 トレーニングコース</div>
-      <p class="pn-l">食事管理と進捗管理を含まない、<b>トレーニングに特化したコース</b>です。バルクアッププログラム（モニター）とは別のコースで、<b>撮影・掲載のご協力は必要ありません。</b><br>
+      <p class="pn-l">食事管理と進捗管理を含まない、<b>トレーニングに特化したコース</b>です。バルクアッププログラム（モニター）とは別のコースです。<br>
       ご契約は6ヶ月から。<b>3ヶ月目以降に1回、回数プランを減らすご変更</b>ができます（解約にはあたりません）。</p>
       <div class="tw">
         <table>
@@ -478,7 +474,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
           </tbody>
         </table>
       </div>
-      <p class="tn">※ 表示価格はすべて税込です。<br>※ 月2回のプランは、月額割引・入会金優待の対象外です。<br>※ 回数は翌月1/3までお繰り越しいただけます。<br>※ 本コースはモニター企画の対象外です（撮影・掲載のご協力はいただきません）。</p>
+      <p class="tn">※ 表示価格はすべて税込です。<br>※ 月2回のプランは、月額割引・入会金優待の対象外です。<br>※ 回数は翌月1/3までお繰り越しいただけます。</p>
     </div>
   </div>
 
@@ -627,7 +623,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
       note.innerHTML = state.face
         ? "現在は、<b>お顔が見える掲載にご協力いただく場合</b>の価格を表示しています。月" + n +
           "回なら <b>" + FACE[n] + "%OFF</b>、毎月のお支払いは <b>" + YEN(unit(3, n) * n) + "</b> です（3ヶ月コース）。"
-        : "現在は、顔を伏せてのご掲載（首から下・モザイク等）の価格を表示しています。";
+        : "";
     }
     document.body.classList.toggle("face-on", state.face);
 
@@ -664,13 +660,6 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
       : "月額のお値引きはありません。撮影・掲載へのご協力が条件です。入会金は半額です。";
   }
 
-  var gF = document.getElementById("selF");
-  gF.addEventListener("click", function(e){
-    var b = e.target.closest(".opt"); if (!b) return;
-    state.face = b.getAttribute("data-f") === "1";
-    setPressed(gF, "data-f", state.face ? 1 : 0); render();
-  });
-
   var mb = document.querySelectorAll(".more-btn");
 
   /* ボタンはタブとして振る舞う。開くのは常に一つだけ。
@@ -697,6 +686,11 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
     mb[i].addEventListener("click", function(){
       var p = document.getElementById(this.getAttribute("data-panel"));
       /* 4段目と5段目は同じ表。入会金だけ差し替えて開く */
+      /* 2段目は「顔出しでご掲載いただく場合」の提案そのもの。
+         開いている間だけ、その価格を出す。閉じれば元の価格に戻る。 */
+      state.face = (p.id === "pFace") && !p.classList.contains("open");
+      render();                       // 価格の表を塗り直す（選択ボタンが無くなったため）
+
       if (p.id === "pShort"){
         var free = this.getAttribute("data-free") === "1";
         var same = p.classList.contains("open") && (!!state.freeEn === free);
