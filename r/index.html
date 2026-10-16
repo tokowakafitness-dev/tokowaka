@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>ご予約ページへ移動しています</title>
+<!--
+  メールのリンクの中継ページ（2026-10-16）
+
+  ★いちばん大事な決まり：**記録のために予約を止めない。**
+    記録は送りっぱなし（sendBeacon）で、応答を待たずに予約サイトへ進む。
+    記録が失敗しても、通信が遮られても、お客様は必ず予約ページへ着く。
+
+  なぜ自社ドメインに置くか：
+    記録用のサーバー（workers.dev）のURLをメールに直接書くと、
+    受信者に見慣れないドメインが見え、迷惑メール判定の材料にもなる。
+    踏ませたいリンクなので、見慣れたドメインのまま通す。
+
+  ?t= は意味を持たない乱数。氏名・メールアドレス・応募IDは載せない。
+-->
+<style>
+  html,body{height:100%;margin:0}
+  body{display:flex;align-items:center;justify-content:center;
+    font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;
+    background:#fbf9f4;color:#5f594f;font-size:13px;letter-spacing:.04em;padding:0 18px;text-align:center}
+  a{color:#1b2a47}
+</style>
+<script>
+(function(){
+  var DEST   = 'https://reservation.tokowaka-gym.com/';
+  var UTM    = 'utm_source=mail&utm_medium=monitor&utm_campaign=monitor_bulkup';
+  var RECORD = 'https://tokowaka-api.tokowaka-fitness.workers.dev/r';
+
+  var t = '';
+  try {
+    t = (new URLSearchParams(location.search).get('t') || '').toLowerCase();
+  } catch (e) {}
+  if (!/^[0-9a-f]{8,32}$/.test(t)) t = '';   // 形が違えば印なしで通す。止めない
+
+  /* 記録。失敗しても何もしない。sendBeacon は画面が遷移しても送り切る */
+  if (t) {
+    try {
+      var body = JSON.stringify({ t: t, k: 'monitor_pass' });
+      if (navigator.sendBeacon) {
+        navigator.sendBeacon(RECORD, new Blob([body], { type: 'text/plain;charset=UTF-8' }));
+      } else {
+        fetch(RECORD, { method:'POST', body:body, keepalive:true,
+                        headers:{ 'Content-Type':'text/plain;charset=UTF-8' } }).catch(function(){});
+      }
+    } catch (e) {}
+  }
+
+  var url = DEST + '?' + UTM + (t ? '&utm_content=' + t : '');
+  /* replace にして、戻るボタンでここへ戻らないようにする */
+  location.replace(url);
+})();
+</script>
+<!--
+  JavaScript が動かない場合の受け皿。noscript だけでは足りない：
+  CSP などで「スクリプトは有効だが実行が拒否される」場合、noscript は作動しない。
+  そこで noscript の外にも置く。JSが動けば location.replace が先に走るので、
+  この2秒が顧客に見えることはない（関門② 指摘4）。
+-->
+<meta http-equiv="refresh" content="2;url=https://reservation.tokowaka-gym.com/?utm_source=mail&amp;utm_medium=monitor&amp;utm_campaign=monitor_bulkup">
+</head>
+<body>
+  <p>
+    ご予約ページへ移動しています…<br>
+    <a href="https://reservation.tokowaka-gym.com/?utm_source=mail&amp;utm_medium=monitor&amp;utm_campaign=monitor_bulkup">移動しない場合はこちら</a>
+  </p>
+</body>
+</html>
