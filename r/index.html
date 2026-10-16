@@ -28,7 +28,7 @@
 </style>
 <script>
 (function(){
-  var DEST   = 'https://reservation.tokowaka-gym.com/';
+  var DEST   = 'https://reservation.tokowaka-gym.com/monitor/';
   var UTM    = 'utm_source=mail&utm_medium=monitor&utm_campaign=monitor_bulkup';
   var RECORD = 'https://tokowaka-api.tokowaka-fitness.workers.dev/r';
 
@@ -62,12 +62,12 @@
   そこで noscript の外にも置く。JSが動けば location.replace が先に走るので、
   この2秒が顧客に見えることはない（関門② 指摘4）。
 -->
-<meta http-equiv="refresh" content="2;url=https://reservation.tokowaka-gym.com/?utm_source=mail&amp;utm_medium=monitor&amp;utm_campaign=monitor_bulkup">
+<meta http-equiv="refresh" content="2;url=https://reservation.tokowaka-gym.com/monitor/?utm_source=mail&amp;utm_medium=monitor&amp;utm_campaign=monitor_bulkup">
 </head>
 <body>
   <p>
     ご予約ページへ移動しています…<br>
-    <a href="https://reservation.tokowaka-gym.com/?utm_source=mail&amp;utm_medium=monitor&amp;utm_campaign=monitor_bulkup">移動しない場合はこちら</a>
+    <a href="https://reservation.tokowaka-gym.com/monitor/?utm_source=mail&amp;utm_medium=monitor&amp;utm_campaign=monitor_bulkup">移動しない場合はこちら</a>
   </p>
 </body>
 </html>
