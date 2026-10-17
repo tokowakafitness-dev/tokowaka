@@ -348,6 +348,33 @@ function send(data){
 
 function resend(){ if (LAST) send(LAST); }
 
+/* どの入力欄まで進んだかを1人1回ずつ記録する。
+   フォームに13人来て応募が1件、という日があっても、いまは「どこで止まったか」が
+   分からない。欄ごとに最初に触れた瞬間だけ送る（連打しても増えない）。
+   ★計測は入力の邪魔をしない。例外は握りつぶし、送信処理には一切触れない。 */
+(function(){
+  try{
+    var FIELDS = ['lastName','firstName','email','phone','age','height','weight','fat','goal','motive'];
+    var seen = {}, started = false;
+    function mark(name){
+      if (TW_TEST || seen[name]) return;
+      seen[name] = 1;
+      try{
+        if (!started){ started = true; if (window.dataLayer) dataLayer.push({ event:'form_start' }); }
+        if (window.dataLayer) dataLayer.push({ event:'form_reach', field:name });
+      }catch(e){}
+    }
+    for (var i=0;i<FIELDS.length;i++){
+      (function(id){
+        var el = document.getElementById(id);
+        if (!el) return;
+        el.addEventListener('focus', function(){ mark(id); });
+        el.addEventListener('input', function(){ mark(id); });
+      })(FIELDS[i]);
+    }
+  }catch(e){}
+})();
+
 document.getElementById('f').addEventListener('submit', function(ev){
   ev.preventDefault();
   var msg = document.getElementById('msg');

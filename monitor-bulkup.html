@@ -1718,5 +1718,37 @@ document.addEventListener('click',function(e){
   else if(d===0) el.textContent='本日締切';
 })();
 </script>
+<script>
+/* どこまで読まれたかを取る（2026-10-16）。
+   いまはCTAを押した人しか分からず、「読まずに離れた」のか
+   「読んだが押さなかった」のかを区別できない。
+   ★25/50/75/90/100% を1人1回ずつ。テストモードでは送らない。 */
+(function(){
+  try{
+    var MARKS = [25,50,75,90,100], hit = {}, ticking = false;
+    function check(){
+      ticking = false;
+      try{
+        var h = document.documentElement;
+        var total = (document.body.scrollHeight || h.scrollHeight) - window.innerHeight;
+        if (total <= 0) return;
+        var pct = Math.round((window.pageYOffset || h.scrollTop) / total * 100);
+        for (var i=0;i<MARKS.length;i++){
+          var m = MARKS[i];
+          if (pct >= m && !hit[m]){
+            hit[m] = 1;
+            if (window.dataLayer && !window.TW_TEST) dataLayer.push({ event:'scroll_depth', percent:m, lp:'monitor_bulkup' });
+          }
+        }
+      }catch(e){}
+    }
+    window.addEventListener('scroll', function(){
+      if (ticking) return;
+      ticking = true;
+      window.requestAnimationFrame ? requestAnimationFrame(check) : setTimeout(check, 200);
+    }, { passive:true });
+  }catch(e){}
+})();
+</script>
 </body>
 </html>
