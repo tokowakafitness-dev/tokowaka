@@ -1385,16 +1385,16 @@ summary.fq-q:focus-visible{outline:2px solid var(--gold);outline-offset:-2px}
       <p>ご応募を確かに受け取った旨を、自動でお送りします。</p>
     </li>
     <li>
-      <b>一次選考の結果</b><span class="fl-m">3時間ほどでメール</span>
-      <p>いただいた内容を確認のうえ、結果をお送りします。<br>21時以降にいただいたご応募は、翌朝9時ごろのご連絡になります。</p>
+      <b>選考のご連絡</b><span class="fl-m">当日中にメール</span>
+      <p>いただいた内容を担当が確認のうえ、ご連絡します。<br>21時以降にいただいたご応募は、翌日のご連絡になります。</p>
     </li>
     <li>
-      <b>最終選考へのご予約</b><span class="fl-m">一次選考を通過された方のみ</span>
+      <b>体験のご予約</b><span class="fl-m">ご案内のメールから</span>
       <p>ご案内するページから、ご都合のよい日時をお選びください。</p>
     </li>
     <li>
-      <b>面談と体験トレーニング</b>
-      <p>現状を数字で確認し、3ヶ月の進め方を具体的にご提案します。</p>
+      <b>カウンセリングと体験トレーニング</b><span class="fl-m">60分・費用はかかりません</span>
+      <p>モニターとしての適正・条件が合うかを確認し、3ヶ月の進め方を具体的にご提案します。</p>
     </li>
   </ol>
   <div class="cta-center"><a class="btn-gold" href="monitor-apply.html" data-cta="flow" onclick="return goRsv(this)">モニターに申し込む</a></div>
@@ -1722,7 +1722,9 @@ document.addEventListener('click',function(e){
 /* どこまで読まれたかを取る（2026-10-16）。
    いまはCTAを押した人しか分からず、「読まずに離れた」のか
    「読んだが押さなかった」のかを区別できない。
-   ★25/50/75/90/100% を1人1回ずつ。テストモードでは送らない。 */
+   ★25/50/75/90/100% を**ページを開くごとに**1回ずつ。
+     同じ人が読み込み直すと、もう一度送られる。
+     GA4では「イベント数」ではなく「ユーザー数」で見ること。 */
 (function(){
   try{
     var MARKS = [25,50,75,90,100], hit = {}, ticking = false;
@@ -1730,14 +1732,20 @@ document.addEventListener('click',function(e){
       ticking = false;
       try{
         var h = document.documentElement;
-        var total = (document.body.scrollHeight || h.scrollHeight) - window.innerHeight;
+        /* ★片方だけ見ると、実際のページ高より小さい値を分母にしてしまい、
+           末尾より手前で100%を送る（関門② 2026-10-17）。大きいほうを使う。 */
+        var total = Math.max(document.body.scrollHeight || 0, h.scrollHeight || 0) - window.innerHeight;
         if (total <= 0) return;
         var pct = Math.round((window.pageYOffset || h.scrollTop) / total * 100);
         for (var i=0;i<MARKS.length;i++){
           var m = MARKS[i];
           if (pct >= m && !hit[m]){
+            /* 送れてから印を立てる。先に立てると、dataLayer がまだ無い瞬間に
+               当たった深さが永久に送られない（関門② 2026-10-17）。 */
+            if (window.TW_TEST) { hit[m] = 1; continue; }
+            if (!window.dataLayer) continue;
+            dataLayer.push({ event:'scroll_depth', percent:m, lp:'monitor_bulkup' });
             hit[m] = 1;
-            if (window.dataLayer && !window.TW_TEST) dataLayer.push({ event:'scroll_depth', percent:m, lp:'monitor_bulkup' });
           }
         }
       }catch(e){}

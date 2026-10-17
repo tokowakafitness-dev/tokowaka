@@ -351,6 +351,8 @@ function resend(){ if (LAST) send(LAST); }
 /* どの入力欄まで進んだかを1人1回ずつ記録する。
    フォームに13人来て応募が1件、という日があっても、いまは「どこで止まったか」が
    分からない。欄ごとに最初に触れた瞬間だけ送る（連打しても増えない）。
+   ★数えるのは**ページを開くごとに1回**。読み込み直すと、もう一度送られる。
+     GA4では「イベント数」ではなく「ユーザー数」で見ること。
    ★計測は入力の邪魔をしない。例外は握りつぶし、送信処理には一切触れない。 */
 (function(){
   try{
@@ -358,10 +360,13 @@ function resend(){ if (LAST) send(LAST); }
     var seen = {}, started = false;
     function mark(name){
       if (TW_TEST || seen[name]) return;
-      seen[name] = 1;
       try{
-        if (!started){ started = true; if (window.dataLayer) dataLayer.push({ event:'form_start' }); }
-        if (window.dataLayer) dataLayer.push({ event:'form_reach', field:name });
+        /* 送れてから印を立てる。先に立てると、dataLayer がまだ無い瞬間に
+           触れた欄が永久に送られない（関門② 2026-10-17）。 */
+        if (!window.dataLayer) return;
+        if (!started){ dataLayer.push({ event:'form_start' }); started = true; }
+        dataLayer.push({ event:'form_reach', field:name });
+        seen[name] = 1;
       }catch(e){}
     }
     for (var i=0;i<FIELDS.length;i++){
