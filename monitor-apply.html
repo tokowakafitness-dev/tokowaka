@@ -28,28 +28,6 @@
 *{box-sizing:border-box;margin:0;padding:0}
 body{background:var(--white);color:var(--ink);font-family:'Noto Sans JP',sans-serif;
   font-size:var(--fs);line-height:1.95;-webkit-font-smoothing:antialiased}
-/* ── 不具合のお詫び（ポップアップ・期限付き・閉じられる） ──
-   2026-10-14 の日中、collect と clientCheck のキーの食い違いで
-   「姓をご入力ください」から進めない状態だった。復旧済み。
-   当日に諦めた方が戻ってきたときに、必ず目に入るよう中央に出す。
-   NOTICE_UNTIL を過ぎたら自動で消える。消し忘れても残らない。 */
-.ntc{display:none;position:fixed;inset:0;z-index:10000;
-  background:rgba(19,32,58,.55);align-items:center;justify-content:center;padding:20px}
-.ntc.on{display:flex}
-.ntc-c{background:#fff;border-top:3px solid var(--gold);border-radius:4px;
-  max-width:420px;width:100%;padding:28px 26px 24px;position:relative;
-  box-shadow:0 18px 50px rgba(19,32,58,.3)}
-.ntc-h{font-family:'Shippori Mincho',serif;font-weight:600;color:var(--navy);
-  font-size:17px;letter-spacing:.05em;margin-bottom:12px;line-height:1.5}
-.ntc-b{font-size:13px;line-height:2;color:#5d574e}
-.ntc-b b{color:var(--navy);font-weight:600}
-.ntc-btn{display:block;width:100%;margin-top:20px;background:var(--navy);color:#fff;
-  border:0;border-radius:3px;font-family:inherit;font-size:13.5px;letter-spacing:.08em;
-  padding:13px;cursor:pointer}
-.ntc-btn:hover{background:var(--navy-d)}
-.ntc-x{position:absolute;top:8px;right:10px;background:none;border:0;cursor:pointer;
-  font-size:21px;line-height:1;color:#b0a694;padding:4px 8px;font-family:inherit}
-.ntc-x:hover{color:var(--navy)}
 .tmode{display:none;position:sticky;top:0;z-index:9999;background:#7a2f2f;color:#ffe9e9;
   font-size:12px;line-height:1.7;letter-spacing:.04em;text-align:center;padding:9px 14px}
 .tmode.on{display:block}
@@ -122,17 +100,6 @@ footer a{color:var(--soft)}
 
 <div class="tmode" id="tmode">
   <b>テストモード</b>　この画面は動作確認用です。計測には記録されません。
-</div>
-
-<div class="ntc" id="ntc" role="dialog" aria-modal="true" aria-labelledby="ntcH">
-  <div class="ntc-c">
-    <button class="ntc-x" id="ntcX" type="button" aria-label="閉じる">×</button>
-    <div class="ntc-h" id="ntcH">お詫びとお知らせ</div>
-    <p class="ntc-b">10月14日の日中、お申し込みが完了できない不具合が発生しておりました。
-    現在は復旧しております。ご迷惑をおかけし、申し訳ございませんでした。<br><br>
-    <b>お手数ですが、改めてお申し込みいただけますと幸いです。</b></p>
-    <button class="ntc-btn" id="ntcOk" type="button">応募フォームへ進む</button>
-  </div>
 </div>
 
 <div class="band">
@@ -218,26 +185,6 @@ footer a{color:var(--soft)}
 </div>
 
 <script>
-/* 不具合のお詫び。期限を過ぎたら出さない。閉じたら同じ端末では出さない。
-   ページを開いた時点で判定するので、読み込み直しは要らない。 */
-(function(){
-  var NOTICE_UNTIL = new Date("2026-10-21T23:59:59+09:00");
-  var el = document.getElementById("ntc");
-  if (!el || new Date() > NOTICE_UNTIL) return;
-  try { if (localStorage.getItem("ntc_1014") === "1") return; } catch(e){}
-  el.classList.add("on");
-  function close(){
-    el.classList.remove("on");
-    try { localStorage.setItem("ntc_1014", "1"); } catch(e){}
-  }
-  document.getElementById("ntcX").addEventListener("click", close);
-  document.getElementById("ntcOk").addEventListener("click", close);
-  /* 背景を押しても閉じる。中身を押したときは閉じない */
-  el.addEventListener("click", function(e){ if (e.target === el) close(); });
-  document.addEventListener("keydown", function(e){
-    if ((e.key === "Escape" || e.keyCode === 27) && el.classList.contains("on")) close();
-  });
-})();
 
 /* 応募の受け口（GAS Web App の /exec）。デプロイ後にここを差し替える */
 var ENDPOINT = 'https://script.google.com/macros/s/AKfycbw7WxW7s5Vb84l3uEhOq5d_mDhwcgcHnThmR5hXJE5QALpxcR-6yumWF1Si9KwkESBg/exec';
