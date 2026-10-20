@@ -1719,6 +1719,21 @@ document.addEventListener('click',function(e){
 })();
 </script>
 <script>
+/* LPを初めて開いた時刻を覚える（2026-10-20）。
+   「昼に広告を見て、夜に申し込む」人がいるかを自分たちで測るため。
+   Metaの時間別がどの時刻に紐づくかに依存しない数字を持つ。
+   ★localStorage。同じ端末なら日をまたいでも残る。
+   ★失敗しても何もしない。閲覧も応募も止めない。 */
+(function(){
+  try{
+    if (window.TW_TEST) return;
+    var K = 'tw_lp_first', V = 'tw_lp_visits';
+    if (!localStorage.getItem(K)) localStorage.setItem(K, new Date().toISOString());
+    var n = parseInt(localStorage.getItem(V) || '0', 10);
+    localStorage.setItem(V, String((isNaN(n) ? 0 : n) + 1));
+  }catch(e){}
+})();
+
 /* どこまで読まれたかを取る（2026-10-16）。
    いまはCTAを押した人しか分からず、「読まずに離れた」のか
    「読んだが押さなかった」のかを区別できない。

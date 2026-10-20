@@ -285,6 +285,9 @@ function collect(){
        検査が参照するキーと、collect が返すキーが食い違うと、
        全部入力していても「姓をご入力ください」で止まる（2026-10-14に発生）。 */
     test: TW_TEST ? '1' : '',
+    /* LPを初めて開いた時刻と回数。無ければ空で送る（直接フォームに来た方） */
+    lpFirst: (function(){ try{ return localStorage.getItem('tw_lp_first') || ''; }catch(e){ return ''; } })(),
+    lpVisits: (function(){ try{ return localStorage.getItem('tw_lp_visits') || ''; }catch(e){ return ''; } })(),
     lastName:v('lastName'), firstName:v('firstName'),
     name:(v('lastName') + ' ' + v('firstName')).trim(), email:v('email'), phone:v('phone'),
     age:v('age'), height:v('height'), weight:v('weight'), fat:v('fat'),
