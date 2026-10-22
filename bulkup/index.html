@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>バルクアップモニターのご案内へ移動しています</title>
+<!--
+  公式Instagramのプロフィール用の短い入口（2026-10-21）
+
+  なぜ短い入口を作るか：
+    ① プロフィールに貼るURLは**そのまま表示される**。UTMを直に貼ると
+       長い記号の列になり、広告っぽく見えて踏まれにくい。
+    ② 企画が終わったとき、**Instagramのプロフィールを触らずに行き先を変えられる。**
+       貼り替えを人にお願いしなくてよくなる。
+    ③ UTMをこちら側で固定できる。人が貼るときに消えない・間違わない。
+
+  貼るURL：  https://tokowaka-gym.com/bulkup
+  Instagram以外の媒体には使わない（utm_source=instagram を固定しているため）。
+
+  ?from= で出どころを分けられる（既定はプロフィール）：
+    /bulkup            → utm_content=profile
+    /bulkup/?from=story→ utm_content=story
+    /bulkup/?from=post → utm_content=post
+
+  ★記録のために顧客を止めない。遷移はJSで即座に行い、
+    JSが動かない場合もmeta refreshと見えるリンクで必ず着く（/r/ と同じ作法）。
+-->
+<style>
+  html,body{height:100%;margin:0}
+  body{display:flex;align-items:center;justify-content:center;
+    font-family:-apple-system,BlinkMacSystemFont,"Hiragino Sans","Noto Sans JP",sans-serif;
+    background:#fbf9f4;color:#5f594f;font-size:13px;letter-spacing:.04em;padding:0 18px;text-align:center}
+  a{color:#1b2a47}
+</style>
+<script>
+(function(){
+  var LP  = 'https://tokowaka-gym.com/monitor-bulkup.html';
+  /* 命名規約：Instagram公式 = instagram / organic_social（utm-generator/Config.gs） */
+  var UTM = 'utm_source=instagram&utm_medium=organic_social&utm_campaign=monitor_bulkup';
+
+  var from = 'profile';
+  try {
+    var v = (new URLSearchParams(location.search).get('from') || '').toLowerCase();
+    if (/^[a-z0-9_]{1,20}$/.test(v)) from = v;   // 形が違えば既定に倒す。止めない
+  } catch (e) {}
+
+  location.replace(LP + '?' + UTM + '&utm_content=' + from);
+})();
+</script>
+<!--
+  JavaScriptが動かない場合の受け皿。noscript だけでは足りない
+  （スクリプトは有効だが実行が拒否される場合、noscript は作動しない）。
+  JSが動けば location.replace が先に走るので、この2秒が顧客に見えることはない。
+-->
+<meta http-equiv="refresh" content="2;url=https://tokowaka-gym.com/monitor-bulkup.html?utm_source=instagram&amp;utm_medium=organic_social&amp;utm_campaign=monitor_bulkup&amp;utm_content=profile">
+</head>
+<body>
+  <p>
+    ご案内のページへ移動しています…<br>
+    <a href="https://tokowaka-gym.com/monitor-bulkup.html?utm_source=instagram&amp;utm_medium=organic_social&amp;utm_campaign=monitor_bulkup&amp;utm_content=profile">移動しない場合はこちら</a>
+  </p>
+</body>
+</html>
