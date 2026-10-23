@@ -160,7 +160,12 @@ body.pick-off tbody tr.on{background:none;box-shadow:none}
 .more-tb{background:none;border:0;padding:4px 2px;font-family:inherit;font-size:10.5px;
   color:#bdb5a7;letter-spacing:.1em;cursor:pointer;line-height:1}
 .more-tb:hover{color:var(--soft)}
-/* 通常料金の表は比較の土台。主役はモニター価格なので、彩度を落として控えめに置く */
+/* 通常料金の表。2026-10-23、オーナー判断でいったん隠している。
+   ★消していない。出したくなったら下の display:none を外すだけで戻る。
+     金額はモニター表と同じ定数から描いているので、隠している間に古くなることもない
+     （一致は検査で固定している）。 */
+.tw-std{display:none}
+.tw-std.on{display:block}
 .tw-std{margin-bottom:10px}
 .tw-std table{opacity:.92}
 .tw-std caption em{font-weight:400}
