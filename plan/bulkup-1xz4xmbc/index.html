@@ -727,7 +727,15 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
   });
 
   document.getElementById("moreX").addEventListener("click", function(){
-    closeOthers(null); syncMore();
+    closeOthers(null);
+    /* ★価格を元に戻す（2026-10-23）。
+       これが無いと、顔出しの段を開いて「閉じる」を押したあとも
+       表紙が「最大35%OFF」のまま、表も顔出し価格のまま残る。
+       顔出しにご協力いただけない方へ、出せない価格を見せたままになる。
+       他の段のボタンで閉じた場合は render() を通るので戻っていた。ここだけ抜けていた。 */
+    state.face = false;
+    render();
+    syncMore();
     moreBox.scrollIntoView({behavior:"smooth", block:"start"});
   });
 
