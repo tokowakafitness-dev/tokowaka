@@ -29,12 +29,19 @@
 <script>
 (function(){
   var DEST   = 'https://reservation.tokowaka-gym.com/monitor/';
-  var UTM    = 'utm_source=mail&utm_medium=monitor&utm_campaign=monitor_bulkup';
+  /* ★utm_source は、その方の「獲得元」を ?s= で受け取って載せる（2026-10-23）。
+     これが無いと、紹介や広告で来た方が予約の時点で全員 mail に化け、
+     予約台帳から「どこから獲得したか」が分からなくなる。
+     utm_medium は monitor のまま（前日リマインドの切り替えがこれを見ている）。 */
+  var UTM_TAIL = '&utm_medium=monitor&utm_campaign=monitor_bulkup';
   var RECORD = 'https://tokowaka-api.tokowaka-fitness.workers.dev/r';
 
-  var t = '';
+  var t = '', src = 'mail';
   try {
-    t = (new URLSearchParams(location.search).get('t') || '').toLowerCase();
+    var q = new URLSearchParams(location.search);
+    t = (q.get('t') || '').toLowerCase();
+    var sv = (q.get('s') || '').trim().toLowerCase();
+    if (/^[a-z0-9_.\-]{1,24}$/.test(sv)) src = sv;      // 形が違えば mail に倒す
   } catch (e) {}
   if (!/^[0-9a-f]{8,32}$/.test(t)) t = '';   // 形が違えば印なしで通す。止めない
 
@@ -51,7 +58,11 @@
     } catch (e) {}
   }
 
-  var url = DEST + '?' + UTM + (t ? '&utm_content=' + t : '');
+  var url = DEST + '?utm_source=' + encodeURIComponent(src) + UTM_TAIL
+          + (t ? '&utm_content=' + t : '');
+  /* ※JSが動かない場合の受け皿（meta refresh と下のリンク）は静的なので、
+     　獲得元は載らず utm_source=mail になる。
+     　JSが動けばここで遷移するので、通常その経路は使われない。 */
   /* replace にして、戻るボタンでここへ戻らないようにする */
   location.replace(url);
 })();
@@ -67,7 +78,7 @@
 <body>
   <p>
     ご予約ページへ移動しています…<br>
-    <a href="https://reservation.tokowaka-gym.com/monitor/?utm_source=mail&amp;utm_medium=monitor&amp;utm_campaign=monitor_bulkup">移動しない場合はこちら</a>
+    <a id="go" href="https://reservation.tokowaka-gym.com/monitor/?utm_source=mail&amp;utm_medium=monitor&amp;utm_campaign=monitor_bulkup">移動しない場合はこちら</a>
   </p>
 </body>
 </html>
