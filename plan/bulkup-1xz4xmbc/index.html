@@ -111,7 +111,7 @@ tbody tr.on{background:var(--gold-p);box-shadow:inset 3px 0 0 var(--gold)}
 .tn{font-size:11.5px;color:var(--soft);line-height:1.85;margin-top:10px}
 .flag{display:none;background:var(--gold-p);border:1px solid #ddc48a;border-left:3px solid var(--gold);
   font-size:11.5px;color:#7a5f28;padding:8px 13px;margin-top:10px;line-height:1.75}
-body.face-on .flag{display:block}
+.tw-face .flag{display:block}
 
 /* ───── 特典カード ───── */
 .of{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
@@ -559,15 +559,21 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
   var EN   = {4:16500, 6:0, 8:0};
   var ENROLL_NORMAL = 33000;
 
-  var state = {n:8, face:false, freeEn:false};
+  /* face は持たない（2026-10-23）。顔出し価格は表ごとに決まる */
+  var state = {n:8, freeEn:false};
 
-  function offPct(n){ return state.face ? FACE[n] : OFF[n]; }
-  function unit(term, n){
-    return Math.round(U[term][n] * (100 - offPct(n)) / 100);
+  /* ★割引率は「どの表か」で決まる。画面全体の状態にしない（2026-10-23）。
+     以前は state.face を見ていたため、顔出しの段を開くと**一番上の料金表まで
+     35%OFFに変わり**、閉じても戻らなかった。顔出しにご協力いただけない方へ、
+     出せない価格を見せたままになる。
+     いまは顔出し価格はパネルの中の表にしか存在しない。上の表は動かない。 */
+  function offPct(n, face){ return face ? FACE[n] : OFF[n]; }
+  function unit(term, n, face){
+    return Math.round(U[term][n] * (100 - offPct(n, face)) / 100);
   }
   /* ご優待の合計：月額の割引×契約月数 ＋ 入会金の割引 ＋ 6ヶ月の継続割 */
-  function total(term, n){
-    var base = U[term][n] * n, now = unit(term, n) * n;
+  function total(term, n, face){
+    var base = U[term][n] * n, now = unit(term, n, face) * n;
     var keizoku = (term === 6) ? (U[3][n] - U[6][n]) * n * term : 0;
     return (base - now) * term + (ENROLL_NORMAL - EN[n]) + keizoku;
   }
@@ -582,6 +588,8 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
 
   function paint(tbl){
     var term = parseInt(tbl.getAttribute("data-term"), 10);
+    /* 顔出しパネルの中に複製された表だけが顔出し価格。上の表は常に通常のモニター価格 */
+    var face = !!(tbl.closest && tbl.closest(".tw-face"));
     var th = tbl.querySelector("[data-cuth]");
     if (th) th.textContent = term + "ヶ月のお値引き";
     var tds = tbl.querySelectorAll("[data-cut]");
@@ -589,14 +597,14 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
     var rows = tbl.querySelectorAll("tbody tr");
     for (var i=0;i<rows.length;i++){
       var r = rows[i], n = parseInt(r.getAttribute("data-n"), 10);
-      var base = U[term][n], u = unit(term, n);
+      var base = U[term][n], u = unit(term, n, face);
       r.querySelector("[data-was]").textContent = YEN(base * n);
       r.querySelector("[data-now]").textContent = YEN(u * n);
-      r.querySelector("[data-pct]").textContent = offPct(n) + "%OFF";
+      r.querySelector("[data-pct]").textContent = offPct(n, face) + "%OFF";
       r.querySelector("[data-per]").textContent = YEN(u);
       r.querySelector("[data-cut]").textContent = "▲" + YEN((base - u) * n * term);
       r.querySelector("[data-en]").textContent  = enroll(n);
-      r.querySelector("[data-tot]").textContent = "▲" + YEN(total(term, n));
+      r.querySelector("[data-tot]").textContent = "▲" + YEN(total(term, n, face));
       if (n === state.n) r.classList.add("on"); else r.classList.remove("on");
     }
   }
@@ -614,7 +622,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
 
   function render(){
     var n = state.n;
-    var b3 = U[3][n], b6 = U[6][n], u3 = unit(3, n), u6 = unit(6, n);
+    var b3 = U[3][n], b6 = U[6][n], u3 = unit(3, n, false), u6 = unit(6, n, false);
 
     document.getElementById("q3was").textContent = YEN(b3 * n);
     document.getElementById("q3now").textContent = YEN(u3 * n);
@@ -622,7 +630,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
     document.getElementById("q3cut").textContent = "3ヶ月で ▲" + YEN((b3 - u3) * n * 3) + " のお値引き";
     document.getElementById("q3en").textContent  = enroll(n);
     document.getElementById("q3tot").textContent = n * 3;
-    document.getElementById("q3sum").textContent = "▲" + YEN(total(3, n));
+    document.getElementById("q3sum").textContent = "▲" + YEN(total(3, n, false));
 
     document.getElementById("q6was").textContent = YEN(b6 * n);
     document.getElementById("q6now").textContent = YEN(u6 * n);
@@ -630,7 +638,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
     document.getElementById("q6cut").textContent = "6ヶ月で ▲" + YEN((b6 - u6) * n * 6) + " のお値引き";
     document.getElementById("q6en").textContent  = enroll(n);
     document.getElementById("q6tot").textContent = n * 6;
-    document.getElementById("q6sum").textContent = "▲" + YEN(total(6, n));
+    document.getElementById("q6sum").textContent = "▲" + YEN(total(6, n, false));
 
     document.getElementById("qtLead").textContent = "月" + n + "回の場合";
 
@@ -639,10 +647,9 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
     document.getElementById("ofEn").innerHTML = "最大0<small>円</small>";
     document.getElementById("ofEnW").textContent = "月6回以上のプランなら 0円 になります";
 
-    document.getElementById("ofPct").innerHTML = "最大" + (state.face ? 35 : 30) + "<small>%OFF</small>";
-    document.getElementById("ofPctW").textContent = state.face
-      ? "お顔が見える掲載にご協力いただく場合、月8回で35%OFFです"
-      : "月8回のプランで30%OFF。ご契約期間を通して毎月続きます";
+    document.getElementById("ofPct").innerHTML = "最大30<small>%OFF</small>";
+    document.getElementById("ofPctW").textContent =
+      "月8回のプランで30%OFF。ご契約期間を通して毎月続きます";
 
     document.getElementById("qtTag").style.display = (u3 - u6 > 0) ? "" : "none";
 
@@ -656,12 +663,10 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
 
     var note = document.getElementById("faceNote");
     if (note){
-      note.innerHTML = state.face
-        ? "現在は、<b>お顔が見える掲載にご協力いただく場合</b>の価格を表示しています。月" + n +
-          "回なら <b>" + FACE[n] + "%OFF</b>、毎月のお支払いは <b>" + YEN(unit(3, n) * n) + "</b> です（3ヶ月コース）。"
-        : "";
+      /* ★どちらの表がどちらの価格かを、取り違えないように書いておく */
+      note.innerHTML = "下の表が、<b>お顔が見える掲載にご協力いただく場合</b>の価格です。"
+        + "ページ上部の料金表は、ご協力の有無にかかわらず適用されるモニター価格です。";
     }
-    document.body.classList.toggle("face-on", state.face);
 
     var ts = document.querySelectorAll("table[data-term]");
     for (var i=0;i<ts.length;i++) paint(ts[i]);
@@ -722,10 +727,8 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
     mb[i].addEventListener("click", function(){
       var p = document.getElementById(this.getAttribute("data-panel"));
       /* 4段目と5段目は同じ表。入会金だけ差し替えて開く */
-      /* 2段目は「顔出しでご掲載いただく場合」の提案そのもの。
-         開いている間だけ、その価格を出す。閉じれば元の価格に戻る。 */
-      state.face = (p.id === "pFace") && !p.classList.contains("open");
-      render();                       // 価格の表を塗り直す（選択ボタンが無くなったため）
+      /* ★段を開いても閉じても、ページ上部の料金表には一切触れない（2026-10-23）。
+         顔出し価格は、このパネルの中に複製された表にしか存在しない。 */
 
       if (p.id === "pShort"){
         var free = this.getAttribute("data-free") === "1";
@@ -764,13 +767,6 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
 
   document.getElementById("moreX").addEventListener("click", function(){
     closeOthers(null);
-    /* ★価格を元に戻す（2026-10-23）。
-       これが無いと、顔出しの段を開いて「閉じる」を押したあとも
-       表紙が「最大35%OFF」のまま、表も顔出し価格のまま残る。
-       顔出しにご協力いただけない方へ、出せない価格を見せたままになる。
-       他の段のボタンで閉じた場合は render() を通るので戻っていた。ここだけ抜けていた。 */
-    state.face = false;
-    render();
     syncMore();
     moreBox.scrollIntoView({behavior:"smooth", block:"start"});
   });
@@ -788,6 +784,8 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
     for (var si = 0; si < srcT.length; si++){
       var w = document.getElementById(srcT[si]).closest(".tw").cloneNode(true);
       w.querySelector("table").removeAttribute("id");
+      w.classList.remove("tw-std");
+      w.classList.add("tw-face");      // ★この印が「顔出し価格の表」の唯一の目印
       fw.appendChild(w);
     }
   }
