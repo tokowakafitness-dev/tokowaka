@@ -160,6 +160,11 @@ body.pick-off tbody tr.on{background:none;box-shadow:none}
 .more-tb{background:none;border:0;padding:4px 2px;font-family:inherit;font-size:10.5px;
   color:#bdb5a7;letter-spacing:.1em;cursor:pointer;line-height:1}
 .more-tb:hover{color:var(--soft)}
+/* 通常料金の表は比較の土台。主役はモニター価格なので、彩度を落として控えめに置く */
+.tw-std{margin-bottom:10px}
+.tw-std table{opacity:.92}
+.tw-std caption em{font-weight:400}
+.std-n{margin:8px 2px 0;font-size:12px;line-height:1.8;color:#6b6358}
 .panel{display:none}
 .panel.open{display:block}
 .pn{border:1px solid var(--bd);border-top:2px solid var(--navy);background:var(--white);padding:26px 24px;margin-top:20px}
@@ -322,6 +327,21 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
   <div class="s-en">Step 2</div>
   <h2 class="s-ttl">回数ごとの料金</h2>
   <p class="s-lead">1回60分・完全個室・完全マンツーマン。回数は翌月1/3までお繰り越しいただけます。</p>
+
+  <!-- 通常料金。モニター価格の比較の土台として、先にこちらをお見せする。
+       金額は U と ENROLL_NORMAL から描く。ここに書き写さない（ズレの元になる）。 -->
+  <div class="tw tw-std">
+    <table id="tStd">
+      <caption>バルクアップコース（通常料金）<em>モニターにご参加いただかない場合の、通常のご料金です。</em></caption>
+      <thead><tr><th>回数</th><th>1回あたり</th><th>月額</th><th>入会金</th></tr></thead>
+      <tbody>
+        <tr data-n="4"><td>月4回</td><td data-l="1回あたり" class="nm" data-sper></td><td data-l="月額" class="nm" data-smo></td><td data-l="入会金" class="nm" data-sen></td></tr>
+        <tr data-n="6"><td>月6回</td><td data-l="1回あたり" class="nm" data-sper></td><td data-l="月額" class="nm" data-smo></td><td data-l="入会金" class="nm" data-sen></td></tr>
+        <tr data-n="8"><td>月8回</td><td data-l="1回あたり" class="nm" data-sper></td><td data-l="月額" class="nm" data-smo></td><td data-l="入会金" class="nm" data-sen></td></tr>
+      </tbody>
+    </table>
+    <p class="std-n">6ヶ月でのご契約は、1回あたり <b>¥500</b> お安くなります。<br>下記はこのご料金から、モニターとしてのご優待を適用したものです。</p>
+  </div>
 
   <div class="tw">
     <table id="t3" data-term="3">
@@ -576,6 +596,17 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
     }
   }
 
+  /* 通常料金の表。モニター価格と同じ定数から描くので、片方だけ古くなることがない */
+  function paintStd(){
+    var rows = document.querySelectorAll("#tStd tbody tr");
+    for (var i = 0; i < rows.length; i++){
+      var n = parseInt(rows[i].getAttribute("data-n"), 10);
+      rows[i].querySelector("[data-sper]").textContent = YEN(U[3][n]);
+      rows[i].querySelector("[data-smo]").textContent  = YEN(U[3][n] * n);
+      rows[i].querySelector("[data-sen]").textContent  = YEN(ENROLL_NORMAL);
+    }
+  }
+
   function render(){
     var n = state.n;
     var b3 = U[3][n], b6 = U[6][n], u3 = unit(3, n), u6 = unit(6, n);
@@ -756,6 +787,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
     }
   }
 
+  paintStd();
   paintShort();
   render();
 })();
