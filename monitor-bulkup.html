@@ -1793,7 +1793,8 @@ document.addEventListener('click',function(e){
 
   /* サーバ側（pagehits.js）と同じ許可一覧。片方だけ直すとズレるので、
      変えるときは必ず両方を直す。検査が一致を見ている。 */
-  var CAMPAIGNS = ['monitor_bulkup','monitor_bulkup_202610','monitor','bulkup','none'];
+  /* 頭文字の規則で通す。固定の一覧だと新しい広告が other に落ち、台帳と突き合わない */
+  var CAMPAIGN_RE = /^((meta|google|line|ig|tr|mail|monitor|bulkup)[a-z0-9_]{0,30}|none)$/;
   var CONTENT_RE = /^(cr\d{1,3}|profile|story|post|highlight|bio|ig_bio|ig_story|ig_post|mail|none)$/;
   var SOURCE_RE  = /^(tr_[a-z]{2,12}|instagram|facebook|google|line|mail|direct|none)$/;
   function norm(v, list, re){
@@ -1812,7 +1813,7 @@ document.addEventListener('click',function(e){
       var c = 'none', t = 'none', sc = 'none';
       try{
         var q = new URLSearchParams(location.search);
-        c  = norm(q.get('utm_campaign'), CAMPAIGNS, null);
+        c  = norm(q.get('utm_campaign'), null, CAMPAIGN_RE);
         t  = norm(q.get('utm_content'),  null, CONTENT_RE);
         sc = norm(q.get('utm_source'),   null, SOURCE_RE);   // 紹介ならトレーナー
       }catch(e){}
