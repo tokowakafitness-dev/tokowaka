@@ -95,7 +95,7 @@ body.hide-internal .im,body.hide-internal .tbd{display:none}
 .tw{margin-top:8px}
 caption{text-align:left;font-family:var(--mincho);font-size:16px;font-weight:600;color:var(--navy);
   padding:22px 0 6px;letter-spacing:.05em}
-caption em{display:block;font-family:var(--gothic);font-size:11.5px;font-weight:400;font-style:normal;color:var(--soft);margin-top:3px;letter-spacing:.03em;line-height:1.75}
+caption em{display:block;font-family:var(--gothic);font-size:10px;font-weight:400;font-style:normal;color:var(--soft);margin-top:3px;letter-spacing:.03em;line-height:1.75}
 table{width:100%;border-collapse:collapse;font-size:13.5px}
 thead th{background:var(--navy);color:#fff;font-size:10.5px;font-weight:400;letter-spacing:.07em;padding:11px 7px;text-align:right;white-space:nowrap}
 thead th:first-child{text-align:left}
@@ -108,7 +108,8 @@ tbody tr.on{background:var(--gold-p);box-shadow:inset 3px 0 0 var(--gold)}
 .nm{font-family:var(--mincho);font-size:14px;color:var(--ink)}
 .cut{font-family:var(--mincho);font-size:14.5px;font-weight:600;color:var(--navy)}
 .per{display:block;font-size:10.5px;color:var(--soft);font-weight:400;font-family:var(--gothic)}
-.tn{font-size:11.5px;color:var(--soft);line-height:1.85;margin-top:10px}
+.tn{font-size:10px;color:#8b8378;line-height:1.75;margin-top:12px;letter-spacing:.01em}
+.tn b{font-weight:600;color:#6b6358}
 .flag{display:none;background:var(--gold-p);border:1px solid #ddc48a;border-left:3px solid var(--gold);
   font-size:11.5px;color:#7a5f28;padding:8px 13px;margin-top:10px;line-height:1.75}
 .tw-face .flag{display:block}
@@ -165,16 +166,25 @@ body.pick-off tbody tr.on{background:none;box-shadow:none}
      金額はモニター表と同じ定数から描いているので、隠している間に古くなることもない
      （一致は検査で固定している）。 */
 .tw-std{display:none}
+#tCmp tbody tr.mine{background:var(--gold-p);box-shadow:inset 3px 0 0 var(--gold)}
+#secCompare .s-lead .hi{color:var(--gold)}
+/* ★列幅・寄せは指定しない（2026-10-30 オーナー判断）。
+   社名とコース名を近づけるために2列目を左寄せにしたが、
+   今度はコース名と「1回の時間」の間が空いた。**既定の配置が一番詰まっている。** */
+#tCmp .ar{font-family:var(--gothic);font-size:11px;color:var(--soft);margin:0 5px}
+#tCmp .was{font-size:12.5px}
+#tCmp small{display:block;font-family:var(--gothic);font-size:9.5px;font-weight:400;color:var(--soft);margin-top:2px}
 .tw-std.on{display:block}
 .tw-std{margin-bottom:10px}
+
 .tw-std table{opacity:.92}
 .tw-std caption em{font-weight:400}
-.std-n{margin:8px 2px 0;font-size:12px;line-height:1.8;color:#6b6358}
+.std-n{margin:8px 2px 0;font-size:10.5px;line-height:1.8;color:#8b8378}
 .panel{display:none}
 .panel.open{display:block}
 .pn{border:1px solid var(--bd);border-top:2px solid var(--navy);background:var(--white);padding:26px 24px;margin-top:20px}
 .pn-h{font-family:var(--mincho);font-size:18px;font-weight:600;color:var(--navy);letter-spacing:.05em;line-height:1.5}
-.pn-l{font-size:12.5px;color:var(--soft);line-height:1.95;margin-top:8px}
+.pn-l{font-size:11px;color:#8b8378;line-height:1.9;margin-top:8px}
 .pn-l b{font-weight:600;color:var(--navy)}
 .pn .sel-o{margin-top:14px}
 
@@ -374,6 +384,37 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
     <p class="flag">お顔が見える掲載にご協力いただく場合の価格を表示しています（25／30／35%OFF）。</p>
   </div>
   <p class="tn">※ 表示価格はすべて税込です。<br>※ 6ヶ月コースは、3ヶ月コースより1回あたり¥500お安い価格を基準としています。<br>※ 入会金は、月6回以上のプランで0円となります。<br>※ 「◯ヶ月のお値引き」は、月額のお値引きをご契約期間ぶん合計した金額です。「ご優待の合計」は、それに入会金のご優待を加えた金額です（6ヶ月コースは3ヶ月コースの単価を基準に算出しています）。<br>※ 回数を増やすご変更は、期間中いつでも承ります。</p>
+</section>
+
+<!-- ══ 他社との比較 ══
+     景表法の比較広告3要件に合わせている：
+       ① 客観的な実証  … 各社公式サイトの掲載価格のみ。第三者のまとめ記事は使わない
+       ② 正確な引用    … コース名まで書き、「どのコースとの比較か」を限定する
+       ③ 公正な方法    … 条件（時間・食事指導・マンツーマン）を同じ表に並べる
+     ★価格は改定される。調査日を必ず出し、3ヶ月ごとに確認する。
+     ★TOKOWAKAの金額はここに書き写さない。U と OFF から描く（ズレの元になる）。
+       顔出し価格は絶対に混ぜない（face=false 固定）。 -->
+<section class="si" id="secCompare">
+  <div class="s-en">Reference</div>
+  <h2 class="s-ttl">他社との比較</h2>
+  <p class="s-lead"><b>いずれも全24回／3ヶ月</b>、マンツーマン指導に食事指導が付くコースです。<br>表の金額は、各社が公式に掲載しているご料金です。<b>当社の通常料金も、同じ水準にあります。</b><br><b class="hi">¥11,900 は、今回のモニター企画に限ったご料金です。</b></p>
+
+  <div class="tw">
+    <table id="tCmp">
+      <caption>1回あたりの料金（全24回／3ヶ月）<em>2026年10月30日 当社調べ／各社公式サイトに掲載された税込価格</em></caption>
+      <thead><tr><th>&nbsp;</th><th>コース</th><th>1回の時間</th><th>1回あたり</th><th>入会金</th><th>食事指導</th></tr></thead>
+      <tbody>
+        <tr><td>R社</td><td data-l="コース">BASICプラン<small>全24回／3ヶ月</small></td><td data-l="1回の時間" class="nm">50分</td><td data-l="1回あたり" class="nm">&yen;20,488</td><td data-l="入会金" class="nm">&yen;55,000</td><td data-l="食事指導" class="nm">あり</td></tr>
+        <tr><td>B社</td><td data-l="コース">ライフプランニング24<small>全24回／3ヶ月</small></td><td data-l="1回の時間" class="nm">約50分</td><td data-l="1回あたり" class="nm">&yen;18,150</td><td data-l="入会金" class="nm">&yen;0</td><td data-l="食事指導" class="nm">あり</td></tr>
+        <tr class="mine"><td>TOKOWAKA</td><td data-l="コース">バルクアップ モニター<small>3ヶ月／月8回（全24回）</small></td><td data-l="1回の時間" class="nm">60分</td><td data-l="1回あたり"><span class="was" data-cmpwas></span><span class="ar">&rarr;</span><span class="now" data-cmpper3></span><span class="pct">モニター価格</span></td><td data-l="入会金" class="cut">&yen;0</td><td data-l="食事指導" class="nm">あり</td></tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="tn">※ 2026年10月30日時点で各社公式サイトに掲載されていた価格です。価格は改定される場合がありますので、ご検討の際は各社の最新のご案内をご確認ください。<br>
+  ※ <b>3社とも全24回／3ヶ月の、回数・期間が同じコースで比べています。</b><br>
+  ※ R社・B社の金額は、各社が公式に掲載している<b>通常のコース料金</b>です。当社の <b>&yen;17,000</b> も通常料金で、<b>&yen;11,900</b> は今回のモニター企画に限ったご料金です。<br>
+  ※ 「1回あたり」はコース料金を24回で割った金額です。入会金を含めた1回あたりは、R社 <b>&yen;22,779</b>／B社 <b>&yen;18,150</b>／TOKOWAKA <b data-cmpper2></b> となります。<br>
+  ※ TOKOWAKAの金額は月8回の場合です。月4回・月6回では変わります（上の料金表をご覧ください）。</p>
 </section>
 
 <!-- ══ Step 2：お見積り ══ -->
@@ -792,6 +833,20 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
 
   paintStd();
   paintShort();
+
+  /* 他社比較の自社セル。★face=false 固定。顔出し価格を比較表に出さない
+     （顔出しは予算の話では開かない段＝別の土俵の価格） */
+  function paintCmp(){
+    var v3 = YEN(unit(3, 8, false));          // 表は3ヶ月（全24回）で揃えている
+    var w3 = YEN(U[3][8]);                    // 斜線を引く定価。同じ定数から出す
+    var cw = document.querySelector("[data-cmpwas]");
+    if (cw) cw.textContent = w3;
+    var c3 = document.querySelector("[data-cmpper3]");   // 表のセル
+    var b  = document.querySelector("[data-cmpper2]");   // 注記（入会金込み）。表の外にある
+    if (c3) c3.textContent = v3;
+    if (b)  b.textContent  = v3;
+  }
+  paintCmp();
   render();
 })();
 </script>
