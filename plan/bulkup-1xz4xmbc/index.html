@@ -372,7 +372,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
         <tr data-n="8"><td>月8回</td><td data-l="通常月額" class="was" data-was></td><td data-l="モニター月額"><span class="now" data-now></span><span class="pct" data-pct></span></td><td data-l="1回あたり" class="nm" data-per></td><td data-l="お値引き" class="cut" data-cut></td><td data-l="入会金" class="nm" data-en></td><td data-l="ご優待の合計" class="cut" data-tot></td></tr>
       </tbody>
     </table>
-    <p class="flag">お顔が見える掲載にご協力いただく場合の価格を表示しています（25／30／35%OFF）。</p>
+    <p class="flag"></p>
   </div>
 
   <div class="tw">
@@ -385,7 +385,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
         <tr data-n="8"><td>月8回</td><td data-l="通常月額" class="was" data-was></td><td data-l="モニター月額"><span class="now" data-now></span><span class="pct" data-pct></span></td><td data-l="1回あたり" class="nm" data-per></td><td data-l="お値引き" class="cut" data-cut></td><td data-l="入会金" class="nm" data-en></td><td data-l="ご優待の合計" class="cut" data-tot></td></tr>
       </tbody>
     </table>
-    <p class="flag">お顔が見える掲載にご協力いただく場合の価格を表示しています（25／30／35%OFF）。</p>
+    <p class="flag"></p>
   </div>
   <p class="tn">※ 表示価格はすべて税込です。<br>※ 6ヶ月コースは、3ヶ月コースより1回あたり¥500お安い価格を基準としています。<br>※ 入会金は、月6回以上のプランで0円となります。<br>※ 「◯ヶ月のお値引き」は、月額のお値引きをご契約期間ぶん合計した金額です。「ご優待の合計」は、それに入会金のご優待を加えた金額です（6ヶ月コースは3ヶ月コースの単価を基準に算出しています）。<br>※ 回数を増やすご変更は、期間中いつでも承ります。</p>
 </section>
@@ -519,7 +519,7 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
       <div class="pn-h">掲載へのご協力の範囲によって、<br>ご優待の幅が変わります</div>
       <p class="pn-l">お顔を出してのご掲載は、<b>必須ではありません。</b>首から下やモザイクでのご掲載も承っており、その場合が先ほどの価格です。<br>
       ただ、お顔が見えるご掲載は、これからお越しになる方にとっての<b>説得力がまったく違います。</b>私たちにとっては広告の素材としての価値が大きく変わるため、<b>その対価として、ご優待の幅を広げてご提供しています。</b>お値引きのご相談ではなく、いただくご協力に対してお返しする、という考え方です。</p>
-      <p class="pn-l"><b>お顔が見える掲載にご協力いただける場合、割引率をさらに5ポイント広げます。</b>月4回なら25%、月6回なら30%、月8回なら<b>最大35%OFF</b>です。</p>
+      <p class="pn-l" id="faceLead"></p>
       <p class="pn-l" id="faceNote" style="margin-top:14px"></p>
       <div id="faceTables"></div>
     </div>
@@ -600,6 +600,13 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
   var OFF  = {4:20, 6:25, 8:30};
   /* 顔出し掲載にご協力いただく場合：基本より5ポイント深い */
   var FACE = {4:25, 6:30, 8:35};
+  /* ★期間ごとの割引の上限（2026-11-06 オーナー指示／決定0096）
+     3ヶ月・6ヶ月とも最大25%OFF。基本・顔出しのどちらもこの上限を超えない。
+     ★2026-11-06、はじめは6ヶ月だけ25%にしたが、月8回で
+     「3ヶ月のほうが1回あたり安い」逆転が出た（3ヶ月¥11,900 / 6ヶ月¥12,375）。
+     長く契約した方が高くなるため、オーナー判断で3ヶ月も25%に揃えた。
+     注記・見出し・顔出しの段の文面・トレーナー用1枚は、すべてこの定数から描いている。 */
+  var CAP  = {3:25, 6:25};
   /* 入会金（月6回以上は0円）。通常は ¥33,000 */
   var EN   = {4:16500, 6:0, 8:0};
   var ENROLL_NORMAL = 33000;
@@ -612,9 +619,9 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
      35%OFFに変わり**、閉じても戻らなかった。顔出しにご協力いただけない方へ、
      出せない価格を見せたままになる。
      いまは顔出し価格はパネルの中の表にしか存在しない。上の表は動かない。 */
-  function offPct(n, face){ return face ? FACE[n] : OFF[n]; }
+  function offPct(term, n, face){ return Math.min(face ? FACE[n] : OFF[n], CAP[term]); }
   function unit(term, n, face){
-    return Math.round(U[term][n] * (100 - offPct(n, face)) / 100);
+    return Math.round(U[term][n] * (100 - offPct(term, n, face)) / 100);
   }
   /* ご優待の合計：月額の割引×契約月数 ＋ 入会金の割引 ＋ 6ヶ月の継続割 */
   function total(term, n, face){
@@ -645,12 +652,35 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
       var base = U[term][n], u = unit(term, n, face);
       r.querySelector("[data-was]").textContent = YEN(base * n);
       r.querySelector("[data-now]").textContent = YEN(u * n);
-      r.querySelector("[data-pct]").textContent = offPct(n, face) + "%OFF";
+      r.querySelector("[data-pct]").textContent = offPct(term, n, face) + "%OFF";
       r.querySelector("[data-per]").textContent = YEN(u);
       r.querySelector("[data-cut]").textContent = "▲" + YEN((base - u) * n * term);
       r.querySelector("[data-en]").textContent  = enroll(n);
       r.querySelector("[data-tot]").textContent = "▲" + YEN(total(term, n, face));
       if (n === state.n) r.classList.add("on"); else r.classList.remove("on");
+    }
+
+    /* ★注記と見出しは、この表の期間の実際の率から描く（2026-11-06）。
+       期間ごとに上限が違う（CAP）ので、書き写すと片方だけ古くなる。
+       2026-10-14 の応募フォームと同じ壊れ方＝目視では気づけない。 */
+    var wrap = tbl.parentNode;
+
+    var flag = wrap && wrap.querySelector(".flag");
+    if (flag){
+      var fp = [4,6,8].map(function(n){ return offPct(term, n, true); });
+      var uq = fp.filter(function(v,i){ return fp.indexOf(v) === i; });
+      flag.textContent = "お顔が見える掲載にご協力いただく場合の価格を表示しています（"
+        + uq.join("／") + "%OFF）。";
+    }
+
+    /* 6ヶ月の見出しは「1回あたりも3ヶ月より安い」と言っている。
+       上限で逆転したらこの一文を出さない。資料に嘘を残さないため。 */
+    var em = tbl.querySelector("caption em");
+    if (em && term === 6){
+      var cheaper = [4,6,8].every(function(n){ return unit(3,n,face) > unit(6,n,face); });
+      em.textContent = cheaper
+        ? "ご契約期間の6ヶ月すべてが対象です。1回あたりの金額も、3ヶ月コースよりお安くなります。"
+        : "ご契約期間の6ヶ月すべてが対象です。";
     }
   }
 
@@ -692,9 +722,22 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
     document.getElementById("ofEn").innerHTML = "最大0<small>円</small>";
     document.getElementById("ofEnW").textContent = "月6回以上のプランなら 0円 になります";
 
-    document.getElementById("ofPct").innerHTML = "最大30<small>%OFF</small>";
+    /* ★「最大◯%OFF」も定数から出す（2026-11-06）。期間で上限が違うので、
+       どちらの期間の話かを添える。見積カードは3ヶ月と6ヶ月を並べて見せているため、
+       期間を言わずに「最大30%」と書くと、6ヶ月の列（25%）と食い違う。 */
+    var best = { pct:0, term:0 };
+    [3,6].forEach(function(t){ [4,6,8].forEach(function(k){
+      var pv = offPct(t, k, false);
+      if (pv > best.pct) best = { pct:pv, term:t };
+    }); });
+    var sameAll = [3,6].every(function(t){
+      return [4,6,8].some(function(k){ return offPct(t, k, false) === best.pct; }); });
+    var bn = [4,6,8].filter(function(k){ return offPct(best.term, k, false) === best.pct; });
+    var bnL = (bn.length === 1) ? ("月" + bn[0] + "回") : ("月" + bn[0] + "回以上");
+    document.getElementById("ofPct").innerHTML = "最大" + best.pct + "<small>%OFF</small>";
     document.getElementById("ofPctW").textContent =
-      "月8回のプランで30%OFF。ご契約期間を通して毎月続きます";
+      (sameAll ? "" : best.term + "ヶ月コースの") + bnL + "のプランで" + best.pct
+      + "%OFF。ご契約期間を通して毎月続きます";
 
     document.getElementById("qtTag").style.display = (u3 - u6 > 0) ? "" : "none";
 
@@ -704,6 +747,38 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
       cmp.textContent = "（月" + n + "回で 1回あたり " + YEN(u3 - u6) + " お得）";
     } else {
       li.style.display = "none";
+    }
+
+    /* ★顔出しの段の説明は定数から描く（2026-11-06）。
+       期間ごとに上限（CAP）が違うため、「さらに5ポイント広げます」と
+       書き写すと、上限に当たった期間では嘘になる。 */
+    var fl = document.getElementById("faceLead");
+    if (fl){
+      var fLine = function(t){
+        var ps = [4,6,8].map(function(n){ return offPct(t, n, true); });
+        var uq = ps.filter(function(v,i){ return ps.indexOf(v) === i; });
+        return t + "ヶ月コースは" + (uq.length === 1
+          ? ("どの回数も" + uq[0] + "%OFF")
+          : ("月4回 " + ps[0] + "%・月6回 " + ps[1] + "%・月8回 " + ps[2] + "%OFF"));
+      };
+      var widens = function(t){
+        return [4,6,8].some(function(n){ return offPct(t,n,true) > offPct(t,n,false); });
+      };
+      var wT = [3,6].filter(widens), nT = [3,6].filter(function(t){ return !widens(t); });
+      var h = "";
+      if (wT.length){
+        h += "<b>お顔が見える掲載にご協力いただける場合、"
+          + wT.map(function(t){ return t + "ヶ月コース"; }).join("と")
+          + "の割引率を広げます。</b>" + wT.map(fLine).join("。") + "。";
+      }
+      if (nT.length){
+        /* 上限が同じ期間だけがここに来る（いまは6ヶ月のみ） */
+        h += (wT.length ? "<br>" : "")
+          + nT.map(function(t){ return t + "ヶ月コース"; }).join("と")
+          + "は割引率の上限が" + CAP[nT[0]] + "%のため、基本のモニター価格と同じ金額です"
+          + "（ご掲載へのご協力は、引き続きお願いしております）。";
+      }
+      fl.innerHTML = h;
     }
 
     var note = document.getElementById("faceNote");
@@ -828,6 +903,10 @@ footer{background:var(--navy-d);color:rgba(255,255,255,.55);text-align:center;pa
     var srcT = ["t3", "t6"];
     for (var si = 0; si < srcT.length; si++){
       var w = document.getElementById(srcT[si]).closest(".tw").cloneNode(true);
+      /* ★上限（CAP）で基本と同じ率になった期間は、顔出しの表を出さない（2026-11-06）。
+         金額がまったく同じ表を「顔出しのご優待」として並べることになる。 */
+      var wTerm = parseInt(w.querySelector("table").getAttribute("data-term"), 10);
+      if (![4,6,8].some(function(n){ return offPct(wTerm, n, true) > offPct(wTerm, n, false); })) continue;
       w.querySelector("table").removeAttribute("id");
       w.classList.remove("tw-std");
       w.classList.add("tw-face");      // ★この印が「顔出し価格の表」の唯一の目印
